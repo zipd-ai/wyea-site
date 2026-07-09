@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WYEA — Custom Legal Technology for Orange County Law Firms</title>
+  <meta name="description" content="Whittle and Ye Engineering Associates builds catered software for Orange County law firms — cutting-edge technology, delivered with white-glove service.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       WYEA — Whittle and Ye Engineering Associates
+       Palette: ink navy / warm paper / bronze accent
+       Inlined so the page renders styled anywhere — file previews,
+       double-clicked files, any static host — with zero extra requests.
+       ============================================================ */
+
+    :root {
+      --ink: #16213a;
+      --ink-soft: #3c4763;
+      --paper: #faf8f4;
+      --paper-deep: #f1ede5;
+      --bronze: #a5803c;
+      --bronze-deep: #8a6a2f;
+      --line: #e3ddd1;
+      --white: #ffffff;
+
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 0.6em; }
+    h3 { font-size: 1.2rem; margin-bottom: 0.4em; }
+
+    p { color: var(--ink-soft); }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bronze-deep);
+      margin-bottom: 1.1em;
+    }
+
+    .eyebrow-light { color: #d9bf85; }
+
+    /* ---------- header ---------- */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250, 248, 244, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      gap: 24px;
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .wordmark-sub {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+    }
+
+    .site-nav a:hover { color: var(--ink); }
+
+    .nav-cta {
+      color: var(--white) !important;
+      background: var(--ink);
+      padding: 9px 18px;
+      border-radius: 6px;
+    }
+
+    .nav-cta:hover { background: var(--ink-soft); }
+
+    /* ---------- hero ---------- */
+
+    .hero {
+      padding: 110px 0 90px;
+      background:
+        radial-gradient(1100px 480px at 85% -10%, rgba(165, 128, 60, 0.10), transparent 60%),
+        var(--paper);
+    }
+
+    .hero-lede {
+      max-width: 640px;
+      margin-top: 1.4em;
+      font-size: 1.12rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 2.2em;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary { background: var(--ink); color: var(--white); }
+    .btn-primary:hover { background: var(--ink-soft); }
+
+    .btn-ghost {
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+    .btn-ghost:hover { background: var(--ink); color: var(--white); }
+
+    .btn-light { background: var(--white); color: var(--ink); }
+    .btn-light:hover { background: var(--paper-deep); }
+
+    /* ---------- pillars ---------- */
+
+    .pillars {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      padding-top: 56px;
+      padding-bottom: 56px;
+    }
+
+    .pillar h3 {
+      color: var(--bronze-deep);
+      font-size: 1.1rem;
+    }
+
+    .pillar p { font-size: 0.97rem; }
+
+    /* ---------- sections ---------- */
+
+    .section { padding: 96px 0; }
+
+    .section-alt {
+      background: var(--paper-deep);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-lede {
+      max-width: 560px;
+      margin-bottom: 2.5em;
+      font-size: 1.05rem;
+    }
+
+    /* ---------- services ---------- */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 2.2em;
+    }
+
+    .service {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 30px 30px 26px;
+    }
+
+    .service h3 { font-size: 1.15rem; }
+    .service p { font-size: 0.97rem; }
+
+    /* ---------- steps ---------- */
+
+    .steps {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px 48px;
+      margin-top: 2.4em;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--bronze);
+      line-height: 1.2;
+      min-width: 48px;
+    }
+
+    .steps p { font-size: 0.97rem; }
+
+    /* ---------- case study ---------- */
+
+    .casestudy {
+      margin-top: 1.6em;
+      max-width: 780px;
+    }
+
+    .casestudy > p { font-size: 1.05rem; }
+
+    .casestudy-points {
+      list-style: none;
+      margin-top: 2em;
+      display: grid;
+      gap: 18px;
+    }
+
+    .casestudy-points li {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--bronze);
+      border-radius: 8px;
+      padding: 18px 22px;
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+    }
+
+    .casestudy-points strong { color: var(--ink); }
+
+    /* ---------- principals ---------- */
+
+    .principal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .principal {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 34px 32px;
+    }
+
+    .principal-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .principal-role {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bronze-deep);
+      margin-bottom: 1.2em;
+    }
+
+    .principal-bio { font-size: 0.96rem; }
+
+    .placeholder {
+      border: 1.5px dashed var(--bronze);
+      border-radius: 8px;
+      background: rgba(165, 128, 60, 0.06);
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      color: var(--bronze-deep);
+    }
+
+    /* ---------- contact ---------- */
+
+    .contact {
+      background: var(--ink);
+    }
+
+    .contact-inner {
+      text-align: center;
+      max-width: 640px;
+    }
+
+    .contact h2 { color: var(--white); }
+
+    .contact-lede {
+      color: #b9c0d4;
+      margin: 1em 0 2em;
+    }
+
+    .contact-note {
+      margin-top: 2em;
+      font-size: 0.88rem;
+      color: #8b94ad;
+    }
+
+    /* ---------- footer ---------- */
+
+    .site-footer {
+      background: #101a30;
+      color: #8b94ad;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 22px;
+      padding-bottom: 22px;
+    }
+
+    /* ---------- responsive ---------- */
+
+    @media (max-width: 860px) {
+      .pillar-grid,
+      .service-grid,
+      .steps,
+      .principal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .desktop-break { display: none; }
+
+      .hero { padding: 70px 0 60px; }
+      .section { padding: 64px 0; }
+
+      .site-nav a:not(.nav-cta) { display: none; }
+    }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="#top">WYEA<span class="wordmark-sub">Whittle &amp; Ye Engineering Associates</span></a>
+      <nav class="site-nav">
+        <a href="#services">What we build</a>
+        <a href="#approach">How we work</a>
+        <a href="#work">Recent work</a>
+        <a href="#principals">Who we are</a>
+        <a class="nav-cta" href="#contact">Start a conversation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Orange County · Legal technology, built to order</p>
+        <h1>Software built around your practice,<br class="desktop-break"> not the other way around.</h1>
+        <p class="hero-lede">
+          WYEA is a two-principal engineering firm serving Orange County law
+          firms. We sit with your attorneys, learn how your matters actually
+          move, and build the tool your practice needs — with the newest AI
+          capabilities where they help, and rigorous engineering everywhere.
+          One team, end to end, from the first conversation to the last
+          support call.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Start a conversation</a>
+          <a class="btn btn-ghost" href="#work">See recent work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PILLARS ============ -->
+    <section class="pillars">
+      <div class="container pillar-grid">
+        <div class="pillar">
+          <h3>Catered, not configured</h3>
+          <p>
+            No off-the-shelf platform bent to fit. We build for your document
+            types, your local rules, your workflow — and nothing you don't use.
+          </p>
+        </div>
+        <div class="pillar">
+          <h3>Cutting-edge, verifiable</h3>
+          <p>
+            We put frontier AI to work where it earns its keep — and engineer
+            guardrails so its output is checked against your source documents,
+            never taken on faith.
+          </p>
+        </div>
+        <div class="pillar">
+          <h3>White-glove, always</h3>
+          <p>
+            You work directly with the engineers who built your system. We
+            train your staff, answer the phone, and keep improving the tool as
+            your practice evolves.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="section">
+      <div class="container">
+        <p class="eyebrow">What we build</p>
+        <h2>Purpose-built tools for the work your firm actually does</h2>
+        <div class="service-grid">
+          <div class="service">
+            <h3>Document review &amp; drafting systems</h3>
+            <p>
+              Upload what you were served; get a grounded review and a
+              first-draft response in your firm's pleading format. Built around
+              your templates, your caption blocks, your signature lines.
+            </p>
+          </div>
+          <div class="service">
+            <h3>AI with verifiable grounding</h3>
+            <p>
+              Our systems treat your uploaded document as the source of truth.
+              A citation is only asserted when the exact quote is found
+              verbatim in the source — everything else is flagged for attorney
+              review, never silently asserted.
+            </p>
+          </div>
+          <div class="service">
+            <h3>Practice-workflow automation</h3>
+            <p>
+              Discovery-stage tooling, deadline flagging, matter and client
+              organization, conflict-check prompts — software shaped to how
+              California litigation actually moves.
+            </p>
+          </div>
+          <div class="service">
+            <h3>Secure, firm-owned deployments</h3>
+            <p>
+              Tenant isolation, tamper-evident records, and audit trails as
+              first-class engineering requirements — not afterthoughts. Your
+              documents stay yours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APPROACH ============ -->
+    <section id="approach" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow">How we work</p>
+        <h2>White-glove from the first meeting</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-num">01</span>
+            <div>
+              <h3>We come to you</h3>
+              <p>
+                We start in your office, with your attorneys and staff,
+                learning the practice area and the pain points — not with a
+                feature checklist.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <div>
+              <h3>Working software in weeks</h3>
+              <p>
+                We build against your real documents and real workflow, and
+                put a working system in your hands early — so the feedback
+                loop is yours, not ours.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <div>
+              <h3>Deployed your way</h3>
+              <p>
+                Cloud or on your own infrastructure, with security and
+                confidentiality engineered in from day one.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">04</span>
+            <div>
+              <h3>Supported, personally</h3>
+              <p>
+                The engineers who built your system train your team and stay
+                on call. When your practice changes, the software changes
+                with it.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ RECENT WORK ============ -->
+    <section id="work" class="section">
+      <div class="container">
+        <p class="eyebrow">Recent work</p>
+        <h2>A review &amp; drafting platform for a Newport Beach litigation firm</h2>
+        <div class="casestudy">
+          <p>
+            For a business-litigation firm in Newport Beach, we built a
+            document review and drafting platform tailored to California
+            pleading practice. An attorney uploads a document the firm was
+            served; the system reviews it, flags issues, and drafts a response
+            in the firm's own pleading format — grounded, at every step, in
+            the uploaded source.
+          </p>
+          <ul class="casestudy-points">
+            <li>
+              <strong>Every citation verified.</strong> The system asserts a
+              citation only when the exact quote appears verbatim in the
+              source document. Anything it cannot verify is explicitly flagged
+              — nothing is silently asserted.
+            </li>
+            <li>
+              <strong>Built for discovery practice.</strong> Motions to compel,
+              separate statements, and the deadlines that govern them — shaped
+              to the high-volume stage where the firm spends its time.
+            </li>
+            <li>
+              <strong>Tamper-evident by design.</strong> Completed reviews are
+              content-hashed and cryptographically signed, with full tenant
+              isolation between firms.
+            </li>
+            <li>
+              <strong>The firm's own brief bank.</strong> The firm's prior
+              filings power the drafting engine, so new drafts read like the
+              firm wrote them — because, structurally, it did.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRINCIPALS ============ -->
+    <section id="principals" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow">Who we are</p>
+        <h2>Two principals. No hand-offs.</h2>
+        <p class="section-lede">
+          Every WYEA engagement is led personally by the firm's two founding
+          engineers.
+        </p>
+        <div class="principal-grid">
+          <div class="principal">
+            <div class="principal-avatar" aria-hidden="true">AW</div>
+            <h3>Anderson Whittle</h3>
+            <p class="principal-role">Principal Engineer &amp; Co-Founder</p>
+            <p class="principal-bio">
+              Anderson is an AI/ML engineer who builds where the stakes are
+              real: as a senior engineer at a fintech startup he helped
+              scale the platform from a $20M to a $100M valuation, and
+              inside a Fortune 100 bank he built machine learning for
+              corporate risk technology. A Georgia Tech alum, at WYEA he leads
+              the engineering that makes AI safe to put in front of a law
+              practice — grounding, verification, and security from the
+              first line of code.
+            </p>
+          </div>
+          <div class="principal">
+            <div class="principal-avatar" aria-hidden="true">Y</div>
+            <h3>[PLACEHOLDER — Ye's full name]</h3>
+            <p class="principal-role">Principal Engineer &amp; Co-Founder</p>
+            <div class="placeholder">
+              [PLACEHOLDER — Ye's bio: education, prior employers, notable
+              projects, and relevant credentials.]
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section contact">
+      <div class="container contact-inner">
+        <p class="eyebrow eyebrow-light">Start a conversation</p>
+        <h2>Tell us about your practice.</h2>
+        <p class="contact-lede">
+          A first conversation costs nothing and usually takes half an hour.
+          We'll tell you honestly whether custom software is worth it for your
+          firm — and what it would take.
+        </p>
+        <a class="btn btn-light" href="mailto:PLACEHOLDER@wyea.example">
+          [PLACEHOLDER — contact email]
+        </a>
+        <p class="contact-note">Serving law firms throughout Orange County, California.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Whittle and Ye Engineering Associates LLC</span>
+      <span>Newport Beach · Orange County, California</span>
+    </div>
+  </footer>
+
+</body>
+</html>
