@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WYEA — Custom Legal Technology for Orange County Law Firms</title>
   <meta name="description" content="Whittle and Ye Engineering Associates builds catered software for Orange County law firms — cutting-edge technology, delivered with white-glove service.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="WYEA — Custom Legal Technology for Orange County Law Firms">
+  <meta property="og:description" content="Catered software for Orange County law firms: verifiable AI, white-glove service, built by the two engineers who answer your calls.">
+  <meta name="twitter:card" content="summary">
+  <!-- At launch (custom domain): add og:url and an og:image (1200x630 PNG, absolute URL). -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -295,6 +300,25 @@
 
     .casestudy-points strong { color: var(--ink); }
 
+    /* ---------- confidentiality ---------- */
+
+    .commit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .commit {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--bronze);
+      border-radius: 10px;
+      padding: 28px 26px 24px;
+    }
+
+    .commit h3 { font-size: 1.1rem; }
+    .commit p { font-size: 0.95rem; }
+
     /* ---------- principals ---------- */
 
     .principal-grid {
@@ -334,6 +358,18 @@
     }
 
     .principal-bio { font-size: 0.96rem; }
+
+    .principal-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--bronze-deep);
+      text-decoration: none;
+      border-bottom: 1px solid var(--bronze);
+    }
+
+    .principal-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
     .placeholder {
       border: 1.5px dashed var(--bronze);
@@ -391,6 +427,7 @@
       .pillar-grid,
       .service-grid,
       .steps,
+      .commit-grid,
       .principal-grid {
         grid-template-columns: 1fr;
       }
@@ -414,6 +451,7 @@
         <a href="#services">What we build</a>
         <a href="#approach">How we work</a>
         <a href="#work">Recent work</a>
+        <a href="#confidentiality">Confidentiality</a>
         <a href="#principals">Who we are</a>
         <a class="nav-cta" href="#contact">Start a conversation</a>
       </nav>
@@ -608,8 +646,45 @@
       </div>
     </section>
 
+    <!-- ============ CONFIDENTIALITY ============ -->
+    <section id="confidentiality" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow">Confidentiality</p>
+        <h2>Your documents are privileged. We build like it.</h2>
+        <p class="section-lede">
+          Everything we touch belongs to your clients. Before the first
+          working session, three commitments hold:
+        </p>
+        <div class="commit-grid">
+          <div class="commit">
+            <h3>Under NDA from day one</h3>
+            <p>
+              We sign a confidentiality agreement before we see a single
+              document — yours or ours, whichever your firm prefers.
+            </p>
+          </div>
+          <div class="commit">
+            <h3>Never used to train AI</h3>
+            <p>
+              Your clients' documents are never used to train AI models —
+              ours or anyone else's. They stay in your firm's isolated
+              environment, and they stay yours.
+            </p>
+          </div>
+          <div class="commit">
+            <h3>Provable, not promised</h3>
+            <p>
+              We build systems with audit trails and tamper-evident records,
+              so you can verify what happened to a document — not take our
+              word for it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ PRINCIPALS ============ -->
-    <section id="principals" class="section section-alt">
+    <section id="principals" class="section">
       <div class="container">
         <p class="eyebrow">Who we are</p>
         <h2>Two principals. No hand-offs.</h2>
@@ -632,6 +707,7 @@
               practice — grounding, verification, and security from the
               first line of code.
             </p>
+            <a class="principal-link" href="https://www.linkedin.com/in/anderson-whittle/" target="_blank" rel="noopener">LinkedIn&nbsp;↗</a>
           </div>
           <div class="principal">
             <div class="principal-avatar" aria-hidden="true">Y</div>
