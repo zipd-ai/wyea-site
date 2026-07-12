@@ -425,13 +425,10 @@
 
     /* ---------- responsive ---------- */
 
-    /* The nav must never wrap: hide the section links (CTA stays) as soon
-       as wordmark + 6 links can no longer fit on one row. */
-    @media (max-width: 1060px) {
-      .site-nav a:not(.nav-cta) { display: none; }
-    }
-
     @media (max-width: 860px) {
+      /* the nav must never wrap: below this, section links hide (CTA stays) */
+      .site-nav a:not(.nav-cta) { display: none; }
+
       .pillar-grid,
       .service-grid,
       .steps,
@@ -458,9 +455,7 @@
       <a class="wordmark" href="#top">WYEA<span class="wordmark-sub">Whittle &amp; Ye Engineering Associates</span></a>
       <nav class="site-nav">
         <a href="#services">What we build</a>
-        <a href="#approach">How we work</a>
         <a href="#work">Recent work</a>
-        <a href="#confidentiality">Confidentiality</a>
         <a href="#principals">Who we are</a>
         <a class="nav-cta" href="#contact">Start a conversation</a>
       </nav>
