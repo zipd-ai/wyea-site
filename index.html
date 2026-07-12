@@ -276,34 +276,6 @@
 
     .steps p { font-size: 0.97rem; }
 
-    /* ---------- case study ---------- */
-
-    .casestudy {
-      margin-top: 1.6em;
-      max-width: 780px;
-    }
-
-    .casestudy > p { font-size: 1.05rem; }
-
-    .casestudy-points {
-      list-style: none;
-      margin-top: 2em;
-      display: grid;
-      gap: 18px;
-    }
-
-    .casestudy-points li {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-left: 3px solid var(--bronze);
-      border-radius: 8px;
-      padding: 18px 22px;
-      font-size: 0.98rem;
-      color: var(--ink-soft);
-    }
-
-    .casestudy-points strong { color: var(--ink); }
-
     /* ---------- confidentiality ---------- */
 
     .commit-grid {
@@ -469,7 +441,7 @@
       <a class="wordmark" href="#top">WYEA<span class="wordmark-sub">Whittle &amp; Ye Engineering Associates</span></a>
       <nav class="site-nav">
         <a href="#services">What we build</a>
-        <a href="#work">Recent work</a>
+        <a href="#confidentiality">Confidentiality</a>
         <a href="#principals">Who we are</a>
         <a class="nav-cta" href="mailto:whittle.anderson@gmail.com?subject=About%20our%20practice">Start a conversation</a>
       </nav>
@@ -485,15 +457,15 @@
         <h1>Software built around your practice,<br class="desktop-break"> not the other way around.</h1>
         <p class="hero-lede">
           WYEA is a two-principal engineering firm serving Orange County law
-          firms. We sit with your attorneys, learn how your matters
-          move, and build the tool your practice needs, with the newest AI
-          where it helps and rigorous engineering everywhere.
-          One team, end to end, from the first conversation to the last
-          support call.
+          firms. We sit with your attorneys, learn how your matters move,
+          and build the tool your practice needs. Our AI cites only what it
+          can verify: every citation and reference is checked word for word
+          against the source document, and anything that fails the check is
+          flagged instead of asserted. No hallucinations, no guesswork.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:whittle.anderson@gmail.com?subject=About%20our%20practice">Start a conversation</a>
-          <a class="btn btn-ghost" href="#work">See recent work</a>
+          <a class="btn btn-ghost" href="#services">See what we build</a>
         </div>
       </div>
     </section>
@@ -502,18 +474,18 @@
     <section class="pillars">
       <div class="container pillar-grid">
         <div class="pillar">
+          <h3>Verified citations</h3>
+          <p>
+            A citation appears only when its exact quote is found in the
+            source document. Anything the AI cannot verify is flagged for
+            attorney review, so hallucinations never reach your filings.
+          </p>
+        </div>
+        <div class="pillar">
           <h3>Catered, not configured</h3>
           <p>
             No off-the-shelf platform bent to fit. We build for your document
             types, your local rules, your workflow, and nothing you don't use.
-          </p>
-        </div>
-        <div class="pillar">
-          <h3>Verifiable AI</h3>
-          <p>
-            We use the newest AI where it helps, and we build guardrails so
-            its output is checked against your source documents instead of
-            taken on faith.
           </p>
         </div>
         <div class="pillar">
@@ -534,20 +506,20 @@
         <h2>Purpose-built tools for the work your firm does</h2>
         <div class="service-grid">
           <div class="service">
+            <h3>Verified citations &amp; referencing</h3>
+            <p>
+              Our systems treat your uploaded document as the source of truth.
+              A citation is only asserted when the exact quote is found
+              verbatim in the source. Everything else is flagged for attorney
+              review. Nothing is invented.
+            </p>
+          </div>
+          <div class="service">
             <h3>Document review &amp; drafting systems</h3>
             <p>
               Upload what you were served; get a grounded review and a
               first-draft response in your firm's pleading format. Built around
               your templates, your caption blocks, your signature lines.
-            </p>
-          </div>
-          <div class="service">
-            <h3>AI with verifiable grounding</h3>
-            <p>
-              Our systems treat your uploaded document as the source of truth.
-              A citation is only asserted when the exact quote is found
-              verbatim in the source. Everything else is flagged for attorney
-              review.
             </p>
           </div>
           <div class="service">
@@ -623,48 +595,8 @@
       </div>
     </section>
 
-    <!-- ============ RECENT WORK ============ -->
-    <section id="work" class="section">
-      <div class="container">
-        <p class="eyebrow">Recent work</p>
-        <h2>A review &amp; drafting platform for a Newport Beach litigation firm</h2>
-        <div class="casestudy">
-          <p>
-            For a business-litigation firm in Newport Beach, we built a
-            document review and drafting platform tailored to California
-            pleading practice. An attorney uploads a document the firm was
-            served; the system reviews it, flags issues, and drafts a response
-            in the firm's own pleading format, grounded at every step in
-            the uploaded source.
-          </p>
-          <ul class="casestudy-points">
-            <li>
-              <strong>Every citation verified.</strong> The system asserts a
-              citation only when the exact quote appears verbatim in the
-              source document. Anything it cannot verify is flagged.
-            </li>
-            <li>
-              <strong>Built for discovery practice.</strong> Motions to compel,
-              separate statements, and the deadlines that govern them, shaped
-              to the high-volume stage where the firm spends its time.
-            </li>
-            <li>
-              <strong>Tamper-evident by design.</strong> Completed reviews are
-              content-hashed and cryptographically signed, with full tenant
-              isolation between firms.
-            </li>
-            <li>
-              <strong>The firm's own brief bank.</strong> The firm's prior
-              filings power the drafting engine, so new drafts read like the
-              firm's own work.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ CONFIDENTIALITY ============ -->
-    <section id="confidentiality" class="section section-alt">
+    <section id="confidentiality" class="section">
       <div class="container">
         <p class="eyebrow">Confidentiality</p>
         <h2>Your documents are privileged. We build like it.</h2>
@@ -701,7 +633,7 @@
     </section>
 
     <!-- ============ PRINCIPALS ============ -->
-    <section id="principals" class="section">
+    <section id="principals" class="section section-alt">
       <div class="container">
         <p class="eyebrow">Who we are</p>
         <h2>Two principals. No hand-offs.</h2>
