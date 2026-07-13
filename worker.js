@@ -112,7 +112,9 @@ async function notify(env, lead) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "WYEA Site <onboarding@resend.dev>",
+      // FROM_EMAIL: set to "WYEA <contact@wyea.ai>" once the domain is
+      // verified in Resend; the onboarding address needs no verification.
+      from: env.FROM_EMAIL || "WYEA Site <onboarding@resend.dev>",
       to: [env.CONTACT_EMAIL],
       reply_to: [lead.email],
       subject: `New inquiry from wyea.ai — ${lead.name}`,
