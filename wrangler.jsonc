@@ -15,8 +15,7 @@
     {
       "binding": "DB",
       "database_name": "wyea-leads",
-      // Set after `npx wrangler d1 create wyea-leads` (the create output prints it).
-      "database_id": "REPLACE_AFTER_D1_CREATE"
+      "database_id": "e7e1400f-3b6b-43cb-ae2a-9bc996893544"
     }
   ]
 }
