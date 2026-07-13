@@ -1,10 +1,22 @@
-// Cloudflare Workers config — serves the repo as a static site (no build step).
+// Cloudflare Workers config — static site + the contact-form endpoint (worker.js).
+// Asset requests are served directly; only non-asset paths (POST /api/contact)
+// invoke the Worker.
 {
   "name": "wyea-site",
+  "main": "worker.js",
   "compatibility_date": "2026-07-12",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "single-page-application"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "wyea-leads",
+      // Set after `npx wrangler d1 create wyea-leads` (the create output prints it).
+      "database_id": "REPLACE_AFTER_D1_CREATE"
+    }
+  ]
 }

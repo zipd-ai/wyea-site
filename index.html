@@ -392,6 +392,82 @@
       color: #8b94ad;
     }
 
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      text-align: left;
+      margin-top: 0.5em;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #b9c0d4;
+    }
+
+    .contact-form .optional { font-weight: 400; color: #8b94ad; }
+
+    .contact-form input,
+    .contact-form textarea {
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+      padding: 11px 13px;
+      border: 1px solid var(--ink-soft);
+      border-radius: 7px;
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.97rem;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: 2px solid var(--bronze);
+      outline-offset: 1px;
+    }
+
+    .contact-form button {
+      border: 0;
+      cursor: pointer;
+      justify-self: center;
+      margin-top: 6px;
+      font-family: var(--font-body);
+    }
+
+    .contact-form button[disabled] { opacity: 0.6; cursor: default; }
+
+    /* honeypot — invisible to people, present for bots */
+    .contact-form .hp {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .form-status {
+      font-size: 0.92rem;
+      color: #e6b8a8;
+      text-align: center;
+      min-height: 1.5em;
+      margin: 0;
+    }
+
+    .contact-success {
+      color: #b9c0d4;
+      font-size: 1.05rem;
+      margin: 1.5em 0;
+    }
+
     /* ---------- footer ---------- */
 
     .site-footer {
@@ -419,7 +495,8 @@
       .service-grid,
       .steps,
       .commit-grid,
-      .principal-grid {
+      .principal-grid,
+      .form-grid {
         grid-template-columns: 1fr;
       }
 
@@ -443,7 +520,7 @@
         <a href="#services">What we build</a>
         <a href="#confidentiality">Confidentiality</a>
         <a href="#principals">Who we are</a>
-        <a class="nav-cta" href="mailto:whittle.anderson@gmail.com?subject=About%20our%20practice">Start a conversation</a>
+        <a class="nav-cta" href="#contact">Start a conversation</a>
       </nav>
     </div>
   </header>
@@ -464,7 +541,7 @@
           flagged instead of asserted. No hallucinations, no guesswork.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:whittle.anderson@gmail.com?subject=About%20our%20practice">Start a conversation</a>
+          <a class="btn btn-primary" href="#contact">Start a conversation</a>
           <a class="btn btn-ghost" href="#services">See what we build</a>
         </div>
       </div>
@@ -689,7 +766,31 @@
           We'll tell you honestly whether custom software is worth it for your
           firm, and what it would take.
         </p>
-        <a class="btn btn-light" href="mailto:whittle.anderson@gmail.com">whittle.anderson@gmail.com</a>
+        <form id="contact-form" class="contact-form">
+          <div class="form-grid">
+            <label>Your name
+              <input type="text" name="name" autocomplete="name" maxlength="200" required>
+            </label>
+            <label>Firm <span class="optional">(optional)</span>
+              <input type="text" name="firm" autocomplete="organization" maxlength="200">
+            </label>
+          </div>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" maxlength="254" required>
+          </label>
+          <label>How can we help?
+            <textarea name="message" rows="5" maxlength="5000" required></textarea>
+          </label>
+          <label class="hp" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+          <div class="cf-turnstile" hidden></div>
+          <button type="submit" class="btn btn-light">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <p id="contact-success" class="contact-success" hidden>
+          Thanks — your message is on its way. We'll reply within one business day.
+        </p>
         <p class="contact-alt">
           Prefer LinkedIn? <a href="https://www.linkedin.com/in/anderson-whittle/" target="_blank" rel="noopener">Message us there&nbsp;↗</a>
         </p>
@@ -705,6 +806,77 @@
       <span>Newport Beach · Orange County, California</span>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      // Set to the Cloudflare Turnstile widget sitekey to enable bot
+      // verification (the Worker enforces it once TURNSTILE_SECRET is set).
+      var TURNSTILE_SITEKEY = "";
+
+      var form = document.getElementById("contact-form");
+      if (!form || !window.fetch) return;
+
+      var button = form.querySelector("button[type=submit]");
+      var status = form.querySelector(".form-status");
+      var tsBox = form.querySelector(".cf-turnstile");
+
+      // One token per page load: the server treats a repeated token as the
+      // same submission, so double-clicks and retries never duplicate.
+      var token = (window.crypto && crypto.randomUUID)
+        ? crypto.randomUUID()
+        : Date.now() + "-" + Math.random().toString(16).slice(2);
+
+      if (TURNSTILE_SITEKEY) {
+        tsBox.setAttribute("data-sitekey", TURNSTILE_SITEKEY);
+        tsBox.setAttribute("data-theme", "dark");
+        tsBox.hidden = false;
+        var s = document.createElement("script");
+        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+        s.async = true;
+        document.head.appendChild(s);
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        button.disabled = true;
+        button.textContent = "Sending…";
+        status.textContent = "";
+
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            token: token,
+            name: form.name.value,
+            firm: form.firm.value,
+            email: form.email.value,
+            message: form.message.value,
+            website: form.website.value,
+            turnstile: window.turnstile ? turnstile.getResponse() : undefined
+          })
+        }).then(function (res) {
+          return res.json().then(function (data) {
+            if (res.ok && data.ok) {
+              form.hidden = true;
+              document.getElementById("contact-success").hidden = false;
+            } else {
+              fail(data && data.error);
+            }
+          });
+        }).catch(function () {
+          fail();
+        });
+      });
+
+      function fail(message) {
+        button.disabled = false;
+        button.textContent = "Send message";
+        status.textContent = message ||
+          "Something went wrong on our end — please try again in a minute.";
+        if (window.turnstile) turnstile.reset();
+      }
+    })();
+  </script>
 
 </body>
 </html>
