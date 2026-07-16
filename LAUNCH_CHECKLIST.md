@@ -38,11 +38,12 @@ is checked, the page stays unannounced.
 - [ ] PHYSICAL POSTAL ADDRESS in brief.js (POSTAL_ADDRESS) — CAN-SPAM
       requires a street or PO box in every issue; hard legal gate before any
       non-Anderson recipient
-- [ ] First real issue dress rehearsal: pipeline markdown committed as
-      brief/issues/The-Brief-YYYY-MM-DD.md + manifest entry, merged, archive
-      page live at wyea.ai/brief/YYYY-MM-DD, blast to the private list
-- [ ] Archive page shows the real issue (no empty state) so prospects can
-      sample before subscribing
+- [x] First real issue dress rehearsal DONE 2026-07-16: The-Brief-2026-07-16
+      (9 items, every one verified against a fetched source; slip opinions
+      read directly) committed + manifest, archive live at
+      wyea.ai/brief/2026-07-16, blasted to the private list of 2, delivery
+      confirmed in inbox, issue_sent events in the audit chain
+- [x] Archive page lists the real issue (empty state gone) 2026-07-16
 - [ ] Resend plan check: free tier = 100 emails/day; upgrade before the
       confirmed list approaches ~80
 
@@ -56,3 +57,11 @@ is checked, the page stays unannounced.
    COUNT(*) AS subscribes, SUM(confirmed_at IS NOT NULL) AS confirmed,
    SUM(unsubscribed_at IS NOT NULL) AS unsubscribed FROM subscribers
    GROUP BY source ORDER BY subscribes DESC"`
+
+## Audit log (added 2026-07-16)
+
+- [x] subscriber_events: append-only, hash-chained record of every
+      subscribe / confirm / unsubscribe / resubscribe / issue-send.
+      `make audit-verify` recomputes the chain; tamper test passes.
+      Anchor habit: note the head hash in a commit message or email
+      after each send. Head after issue 1: 13 events.
