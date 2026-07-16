@@ -1,13 +1,16 @@
-// Cloudflare Worker: serves the static site and handles the contact form.
+// Cloudflare Worker: serves the static site, handles the contact form, and
+// runs The Brief (newsletter subscribe + archive — brief.js).
 //
 // POST /api/contact — validate, de-duplicate against D1, store the lead,
-// notify by email through Resend. Everything else falls through to the
-// static assets.
+// notify by email through Resend. /api/subscribe and /brief* are handled in
+// brief.js. Everything else falls through to the static assets.
 //
 // Bindings (wrangler.jsonc): DB (D1), ASSETS (static assets).
 // Secrets (wrangler secret put): CONTACT_EMAIL — where leads are delivered;
-// RESEND_API_KEY — Resend; TURNSTILE_SECRET — optional, enables Turnstile
-// verification when set.
+// RESEND_API_KEY — Resend (shared with The Brief); TURNSTILE_SECRET —
+// optional, enables Turnstile verification when set.
+
+import { handleBrief } from "./brief.js";
 
 const MAX_FIELD = { name: 200, firm: 200, email: 254, message: 5000 };
 const RATE_LIMIT_PER_HOUR = 5;
@@ -26,6 +29,8 @@ export default {
         return json({ error: "server error" }, 500);
       }
     }
+    const brief = await handleBrief(request, env, ctx, url);
+    if (brief) return brief;
     return env.ASSETS.fetch(request);
   },
 };

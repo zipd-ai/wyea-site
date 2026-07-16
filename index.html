@@ -468,6 +468,76 @@
       margin: 1.5em 0;
     }
 
+    /* ---------- the brief (newsletter band) ---------- */
+
+    .brief-band {
+      padding: 72px 0;
+      background: var(--paper-deep);
+      border-top: 1px solid var(--line);
+    }
+
+    .brief-inner { max-width: 640px; }
+
+    .brief-band .section-lede { margin-bottom: 0; }
+
+    .brief-form { margin-top: 1.8em; max-width: 480px; }
+
+    .brief-row { display: flex; gap: 10px; }
+
+    .brief-form input[type="email"] {
+      flex: 1;
+      min-width: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.97rem;
+    }
+
+    .brief-form input[type="email"]:focus {
+      outline: 2px solid var(--bronze);
+      outline-offset: 1px;
+    }
+
+    .brief-form button {
+      border: 0;
+      cursor: pointer;
+      font-family: var(--font-body);
+      padding: 12px 24px;
+    }
+
+    .brief-form button[disabled] { opacity: 0.6; cursor: default; }
+
+    .brief-form .hp {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .brief-micro { font-size: 0.85rem; margin-top: 0.7em; }
+
+    .brief-status {
+      font-size: 0.9rem;
+      color: #a04b32;
+      min-height: 1.4em;
+      margin-top: 0.4em;
+    }
+
+    .brief-success {
+      font-size: 1.05rem;
+      color: var(--bronze-deep);
+      font-weight: 600;
+      margin-top: 0.6em;
+    }
+
+    @media (max-width: 640px) {
+      .brief-row { flex-direction: column; }
+    }
+
     /* ---------- footer ---------- */
 
     .site-footer {
@@ -520,6 +590,7 @@
         <a href="#services">What we build</a>
         <a href="#confidentiality">Confidentiality</a>
         <a href="#principals">Who we are</a>
+        <a href="/brief">The Brief</a>
         <a class="nav-cta" href="#contact">Start a conversation</a>
       </nav>
     </div>
@@ -798,6 +869,33 @@
       </div>
     </section>
 
+    <!-- ============ THE BRIEF ============ -->
+    <section id="brief" class="brief-band">
+      <div class="container brief-inner">
+        <p class="eyebrow">The Brief · Weekly newsletter</p>
+        <h2>One email a week. Four minutes.</h2>
+        <p class="section-lede">
+          The Brief is our free weekly newsletter: the legal developments that
+          matter, national to Orange County, readable in four minutes.
+        </p>
+        <form id="brief-form" class="brief-form">
+          <div class="brief-row">
+            <label class="hp" for="brief-email">Email</label>
+            <input id="brief-email" type="email" name="email" autocomplete="email"
+                   maxlength="254" placeholder="you@yourfirm.com" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+          <label class="hp" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+          <p class="brief-micro">No spam. Unsubscribe anytime.
+            <a href="/brief">See the format and past issues</a>.</p>
+          <p class="brief-status" role="status" aria-live="polite"></p>
+          <p class="brief-success" hidden>Check your inbox to confirm.</p>
+        </form>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -874,6 +972,52 @@
         status.textContent = message ||
           "Something went wrong on our end — please try again in a minute.";
         if (window.turnstile) turnstile.reset();
+      }
+    })();
+
+    (function () {
+      // The Brief: subscribe from the homepage band (double opt-in follows
+      // by email; the Worker handles storage and the confirm link).
+      var form = document.getElementById("brief-form");
+      if (!form || !window.fetch) return;
+
+      var button = form.querySelector("button[type=submit]");
+      var status = form.querySelector(".brief-status");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        button.disabled = true;
+        button.textContent = "Subscribing…";
+        status.textContent = "";
+
+        fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: form.email.value,
+            website: form.website.value,
+            source: "homepage-footer"
+          })
+        }).then(function (res) {
+          return res.json().then(function (data) {
+            if (res.ok && data.ok) {
+              form.querySelector(".brief-row").hidden = true;
+              form.querySelector(".brief-micro").hidden = true;
+              form.querySelector(".brief-success").hidden = false;
+            } else {
+              fail(data && data.error);
+            }
+          });
+        }).catch(function () {
+          fail();
+        });
+      });
+
+      function fail(message) {
+        button.disabled = false;
+        button.textContent = "Subscribe";
+        status.textContent = message ||
+          "Something went wrong on our end, please try again in a minute.";
       }
     })();
   </script>

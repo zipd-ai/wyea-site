@@ -16,3 +16,22 @@ CREATE TABLE IF NOT EXISTS submissions (
 );
 
 CREATE INDEX IF NOT EXISTS idx_submissions_ip_time ON submissions (ip, created_at);
+
+-- Subscribers for The Brief (the weekly newsletter — brief.js). Double
+-- opt-in: a row is pending until confirmed_at is set via the emailed confirm
+-- link. Rows are never deleted: unsubscribed_at set = suppressed, so an
+-- unsubscribe is never forgotten (CAN-SPAM suppression list).
+CREATE TABLE IF NOT EXISTS subscribers (
+  id                INTEGER PRIMARY KEY AUTOINCREMENT,
+  email             TEXT NOT NULL UNIQUE,
+  source            TEXT,               -- placement that captured the subscribe: brief-page, homepage-footer, email-sig, ...
+  confirm_token     TEXT NOT NULL UNIQUE,
+  unsubscribe_token TEXT NOT NULL UNIQUE,
+  ip                TEXT,
+  created_at        TEXT NOT NULL DEFAULT (datetime('now')),
+  confirm_sent_at   TEXT,               -- last confirm/notice email, throttles resends
+  confirmed_at      TEXT,
+  unsubscribed_at   TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_subscribers_ip_time ON subscribers (ip, created_at);
