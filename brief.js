@@ -176,6 +176,10 @@ async function handleBlast(request, env, url) {
   const heading = markdown.split("\n").find((l) => l.startsWith("# "));
   const subject = heading ? heading.slice(2).trim() : `The Brief, ${prettyDate(date)}`;
   const rendered = renderMarkdown(markdown);
+  // Content hash in the idempotency key: a crash-rerun of the same issue
+  // still dedupes at Resend, but an intentional re-send of CHANGED content
+  // (same date, edited issue) is a new key instead of a 409 conflict.
+  const contentHash = (await sha256Hex(markdown)).slice(0, 12);
 
   const batch = eligible.slice(0, BLAST_BATCH);
   let sent = 0;
@@ -191,7 +195,7 @@ async function handleBlast(request, env, url) {
         "List-Unsubscribe": `<${unsubUrl}>`,
         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
       },
-      idempotencyKey: `brief-${date}-${(await sha256Hex(r.email)).slice(0, 32)}`,
+      idempotencyKey: `brief-${date}-${contentHash}-${(await sha256Hex(r.email)).slice(0, 24)}`,
     });
     if (ok) {
       await env.DB.prepare("INSERT OR IGNORE INTO issue_sends (issue, email) VALUES (?1, ?2)")
