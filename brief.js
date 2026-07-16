@@ -250,7 +250,7 @@ function emailShell(inner) {
   return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     color:#16213a;font-size:16px;line-height:1.6;max-width:560px;margin:0 auto;padding:8px 4px">
     <p style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#8a6a2f;
-    font-weight:600">The Brief · by WYEA</p>
+    font-weight:600">The Brief &middot; by WYEA</p>
     ${inner}
     <p style="font-size:13px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:14px;
     margin-top:28px">The Brief by WYEA, Newport Beach, California</p>

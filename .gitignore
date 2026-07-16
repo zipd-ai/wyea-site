@@ -1,2 +1,4 @@
 .DS_Store
 .wrangler/
+.env
+brief/issues/*.preview.html

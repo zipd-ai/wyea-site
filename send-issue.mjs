@@ -31,6 +31,16 @@ import { basename } from "node:path";
 import { createHash } from "node:crypto";
 import { renderMarkdown } from "./brief.js";
 
+// A gitignored .env next to this script supplies RESEND_API_KEY (and
+// optionally BRIEF_FROM_EMAIL) so `make send` needs no pasted secrets.
+// Real environment variables win over the file.
+try {
+  for (const line of readFileSync(new URL(".env", import.meta.url), "utf8").split("\n")) {
+    const m = line.match(/^([A-Z_]+)=(.*)$/);
+    if (m && !(m[1] in process.env)) process.env[m[1]] = m[2];
+  }
+} catch {}
+
 const SITE = "https://wyea.ai";
 const FROM = process.env.BRIEF_FROM_EMAIL || "The Brief by WYEA <brief@wyea.ai>";
 // CAN-SPAM requires a valid physical postal address in every issue.
@@ -156,10 +166,18 @@ function flushSendLog(issueDate, emails) {
 }
 
 function d1(sql) {
-  const out = execFileSync("npx", [
-    "wrangler", "d1", "execute", "wyea-leads", local ? "--local" : "--remote",
-    "--json", "--command", sql,
-  ], { encoding: "utf8", maxBuffer: 32 * 1024 * 1024 });
+  let out;
+  try {
+    out = execFileSync("npx", [
+      "wrangler", "d1", "execute", "wyea-leads", local ? "--local" : "--remote",
+      "--json", "--command", sql,
+    ], { encoding: "utf8", maxBuffer: 32 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
+  } catch (err) {
+    console.error(String(err.stderr || err.message).trim());
+    console.error("\ncould not query the subscriber database — check that `npx wrangler login`");
+    console.error("has run and that schema.sql was applied (--remote for the live database).");
+    process.exit(1);
+  }
   return JSON.parse(out)[0]?.results || [];
 }
 
@@ -181,7 +199,7 @@ function emailHtml(rendered, issueDate) {
   return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#faf8f4;padding:24px 8px">
   <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e3ddd1;border-radius:10px;padding:28px 30px">
     <p style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8a6a2f;font-weight:600;margin:0 0 18px">
-      The Brief · ${prettyDate(issueDate)} ·
+      The Brief &middot; ${prettyDate(issueDate)} &middot;
       <a href="${SITE}/brief/${issueDate}" style="color:#8a6a2f">read online</a></p>
     ${styled}
     <p style="font-size:12px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:14px;margin:28px 0 0;line-height:1.6">
