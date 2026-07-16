@@ -1,4 +1,8 @@
 {
   "_readme": "Archive manifest for The Brief. To publish an issue: commit the markdown as brief/issues/The-Brief-YYYY-MM-DD.md AND add {\"date\": \"YYYY-MM-DD\"} to the top of the issues list (optional \"title\" overrides the default 'The Brief, Month D, YYYY'). The archive page and /brief/YYYY-MM-DD render from these.",
-  "issues": []
+  "issues": [
+    {
+      "date": "2026-07-16"
+    }
+  ]
 }
