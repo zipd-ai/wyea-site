@@ -361,24 +361,29 @@ export function issueEmailText(markdown, issueDate, unsubUrl) {
 }
 
 export function issueEmailHtml(rendered, issueDate) {
+  // TLDR-style layout: centered header (links row, wordmark, issue title),
+  // left-aligned items below. The markdown's h1 is the centered title.
   const styled = rendered
-    .replaceAll("<h1>", '<h1 style="font-family:Georgia,serif;font-weight:500;font-size:26px;line-height:1.2;color:#16213a;margin:0 0 12px">')
-    .replaceAll("<h2>", '<h2 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:28px 0 10px">')
+    .replaceAll("<h1>", '<h1 style="font-size:19px;font-weight:700;color:#16213a;text-align:center;margin:6px 0 26px">')
+    .replaceAll("<h2>", '<h2 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:30px 0 10px">')
     .replaceAll("<h3>", '<h3 style="font-size:17px;font-weight:600;color:#16213a;margin:20px 0 4px">')
-    .replaceAll("<p>", '<p style="font-size:15px;line-height:1.6;color:#3c4763;margin:6px 0">')
-    .replaceAll("<ul>", '<ul style="font-size:15px;line-height:1.6;color:#3c4763;margin:6px 0 6px 20px;padding:0">')
+    .replaceAll("<p>", '<p style="font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0">')
+    .replaceAll("<ul>", '<ul style="font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0 8px 20px;padding:0">')
     .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e3ddd1;margin:24px 0">')
-    .replaceAll("<a ", '<a style="color:#8a6a2f" ');
-  return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#faf8f4;padding:24px 8px">
-  <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e3ddd1;border-radius:10px;padding:28px 30px">
-    <p style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8a6a2f;font-weight:600;margin:0 0 18px">
-      The Brief &middot; ${prettyDate(issueDate)} &middot;
-      <a href="${SITE}/brief/${issueDate}" style="color:#8a6a2f">read online</a></p>
+    .replaceAll("<a ", '<a style="color:#8a6a2f;text-decoration:underline" ');
+  return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:28px 12px">
+  <div style="max-width:600px;margin:0 auto">
+    <p style="text-align:center;font-size:13px;margin:0 0 20px">
+      <a href="${SITE}/brief" style="color:#3c4763;text-decoration:underline">Subscribe</a>
+      &nbsp;|&nbsp;
+      <a href="${SITE}/brief/${issueDate}" style="color:#3c4763;text-decoration:underline">View Online</a></p>
+    <p style="text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;color:#16213a;margin:0">The Brief</p>
+    <p style="text-align:center;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a6a2f;font-weight:600;margin:4px 0 24px">by WYEA &middot; Newport Beach</p>
     ${styled}
-    <p style="font-size:12px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:14px;margin:28px 0 0;line-height:1.6">
+    <p style="text-align:center;font-size:12px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:16px;margin:32px 0 0;line-height:1.7">
       ${SIGNATURE}<br>
       ${POSTAL_ADDRESS}<br>
-      <a href="{{unsubscribe_url}}" style="color:#8b94ad">Unsubscribe</a> with one click, anytime.</p>
+      <a href="{{unsubscribe_url}}" style="color:#8b94ad;text-decoration:underline">Unsubscribe</a> with one click, anytime.</p>
   </div>
 </div>`;
 }
