@@ -1,7 +1,9 @@
-# Operator commands for The Brief. One-time setup: put the Resend key in a
-# gitignored .env next to this file (RESEND_API_KEY=re_...); send-issue.mjs
-# reads it. ISSUE defaults to the newest committed issue; override with
-# ISSUE=brief/issues/The-Brief-YYYY-MM-DD.md.
+# Operator commands for The Brief. No credentials needed: the deployed
+# Worker sends with the Resend key in its secret store, authorized by
+# single-use operator tokens minted through your wrangler login (run
+# `npx wrangler login` once per machine). Only test-send needs a local
+# RESEND_API_KEY (env or gitignored .env). ISSUE defaults to the newest
+# committed issue; override with ISSUE=brief/issues/The-Brief-YYYY-MM-DD.md.
 
 ISSUE ?= $(shell ls brief/issues/The-Brief-????-??-??.md 2>/dev/null | sort | tail -1)
 

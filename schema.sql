@@ -36,6 +36,18 @@ CREATE TABLE IF NOT EXISTS subscribers (
 
 CREATE INDEX IF NOT EXISTS idx_subscribers_ip_time ON subscribers (ip, created_at);
 
+-- Single-use operator tokens authorizing a Worker-side blast
+-- (POST /api/brief/blast). Minted by send-issue.mjs through wrangler, so the
+-- ability to write to the production database IS the operator credential —
+-- no long-lived secret exists on the operator's machine. Hashed at rest,
+-- consumed on first use, expire after 15 minutes.
+CREATE TABLE IF NOT EXISTS operator_tokens (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  token_hash TEXT NOT NULL UNIQUE,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  used_at    TEXT
+);
+
 -- Send log for The Brief: one row per (issue, recipient) accepted by Resend.
 -- This is what makes the weekly send idempotent — send-issue.mjs skips
 -- anyone already logged for the issue, so a rerun (crash recovery, or a

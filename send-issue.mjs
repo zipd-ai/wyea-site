@@ -1,26 +1,27 @@
 #!/usr/bin/env node
 // Send an issue of The Brief to every confirmed subscriber.
 //
-//   RESEND_API_KEY=... node send-issue.mjs brief/issues/The-Brief-2026-07-15.md [--dry-run] [--test you@x.com]
+//   node send-issue.mjs brief/issues/The-Brief-2026-07-15.md [--dry-run] [--test you@x.com] [--direct] [--local]
 //
-// Reads the confirmed, not-unsubscribed list from the remote D1 database
-// (via wrangler, so `npx wrangler login` must have run), renders the issue
-// markdown with the same renderer the archive pages use, and sends one email
-// per subscriber through Resend with a personalized unsubscribe link and
-// RFC 8058 one-click List-Unsubscribe headers.
+// DEFAULT MODE (worker): no credentials needed on this machine. The script
+// mints a single-use operator token, writes its hash into the production
+// database through wrangler (your existing Cloudflare login is the
+// authorization), and asks the deployed Worker to do the sending with the
+// Resend key it already holds in its secret store. The key never exists
+// on this laptop. Batches loop automatically until the list is done.
 //
-// The send is IDEMPOTENT per issue: every accepted send is logged to the
-// issue_sends table (schema.sql) and logged recipients are excluded up
-// front, so rerunning the script — after a crash, or by accident — never
-// sends the same issue to the same person twice. A rerun only reaches
-// recipients who failed or confirmed after the previous run. Each send also
-// carries a deterministic Resend Idempotency-Key as a second layer, covering
-// the few sends a crash could leave unlogged (Resend dedupes those for 24h).
+// The send is IDEMPOTENT per issue: accepted sends are logged to
+// issue_sends and logged recipients are excluded, so rerunning after a
+// crash or by accident never sends the same issue to the same person
+// twice. A rerun only retries failures and catches late confirms.
 //
 //   --dry-run   render + count only; writes a preview HTML next to the issue
-//   --test X    send the rendered issue only to address X, nothing else
-//               (not logged, so it never blocks the real send)
-//   --local     use the local wrangler dev database instead of --remote
+//   --test X    send only to address X through Resend directly — requires
+//               RESEND_API_KEY (env or gitignored .env); not logged
+//   --direct    send from this machine via RESEND_API_KEY instead of the
+//               Worker (the old path; kept as a fallback)
+//   --local     target the local wrangler dev database + BRIEF_BLAST_URL
+//               (for testing the worker path against `wrangler dev`)
 //
 // Publishing order matters: merge the issue (markdown + manifest entry) to
 // main FIRST so the online/unsubscribe links resolve, then send.
@@ -28,12 +29,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { basename } from "node:path";
-import { createHash } from "node:crypto";
-import { renderMarkdown } from "./brief.js";
+import { createHash, randomBytes } from "node:crypto";
+import { renderMarkdown, issueEmailHtml, issueEmailText, prettyDate } from "./brief.js";
 
-// A gitignored .env next to this script supplies RESEND_API_KEY (and
-// optionally BRIEF_FROM_EMAIL) so `make send` needs no pasted secrets.
-// Real environment variables win over the file.
+// A gitignored .env next to this script may supply RESEND_API_KEY for the
+// --test/--direct paths. Real environment variables win over the file.
 try {
   for (const line of readFileSync(new URL(".env", import.meta.url), "utf8").split("\n")) {
     const m = line.match(/^([A-Z_]+)=(.*)$/);
@@ -43,25 +43,23 @@ try {
 
 const SITE = "https://wyea.ai";
 const FROM = process.env.BRIEF_FROM_EMAIL || "The Brief by WYEA <brief@wyea.ai>";
-// CAN-SPAM requires a valid physical postal address in every issue.
-// TODO(anderson): set the street or PO box address before the first send.
-const POSTAL_ADDRESS = "WYEA, Newport Beach, California";
-const SIGNATURE = "Curated by WYEA, Newport Beach - firm-owned drafting and review tools.";
-const SEND_INTERVAL_MS = 700; // stay under Resend's default 2 req/s
+const SEND_INTERVAL_MS = 700; // direct mode: stay under Resend's 2 req/s
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const local = args.includes("--local");
+const direct = args.includes("--direct");
 const testIdx = args.indexOf("--test");
 const testAddress = testIdx >= 0 ? args[testIdx + 1] : null;
 const issuePath = args.find((a) => a.endsWith(".md"));
 
 if (!issuePath || (testIdx >= 0 && !testAddress)) {
-  console.error("usage: node send-issue.mjs brief/issues/The-Brief-YYYY-MM-DD.md [--dry-run] [--test you@x.com] [--local]");
+  console.error("usage: node send-issue.mjs brief/issues/The-Brief-YYYY-MM-DD.md [--dry-run] [--test you@x.com] [--direct] [--local]");
   process.exit(1);
 }
-if (!dryRun && !process.env.RESEND_API_KEY) {
-  console.error("RESEND_API_KEY is not set (find it in the Resend dashboard).");
+if ((direct || testAddress) && !dryRun && !process.env.RESEND_API_KEY) {
+  console.error("--test/--direct send from this machine and need RESEND_API_KEY (env or .env).");
+  console.error("The default worker mode needs no key — drop the flag.");
   process.exit(1);
 }
 
@@ -73,9 +71,7 @@ if (!date) {
 }
 const heading = md.split("\n").find((l) => l.startsWith("# "));
 const subject = heading ? heading.slice(2).trim() : `The Brief, ${prettyDate(date)}`;
-
-const bodyHtml = emailHtml(renderMarkdown(md), date);
-const text = `${md}\n\n--\n${SIGNATURE}\n${POSTAL_ADDRESS}\nRead online: ${SITE}/brief/${date}\nUnsubscribe: {{unsubscribe_url}}`;
+const bodyHtml = issueEmailHtml(renderMarkdown(md), date);
 
 if (dryRun) {
   const preview = issuePath.replace(/\.md$/, ".preview.html");
@@ -86,76 +82,124 @@ if (dryRun) {
   process.exit(0);
 }
 
-const recipients = testAddress
-  ? [{ email: testAddress, unsubscribe_token: "TEST" }]
-  : fetchSubscribers(date);
-
-if (!recipients.length) {
-  console.log("nothing to send — every confirmed subscriber already received this issue.");
-  process.exit(0);
+if (testAddress) {
+  await directSend([{ email: testAddress, unsubscribe_token: "TEST" }], { log: false });
+} else if (direct) {
+  await directSend(fetchSubscribers(date), { log: true });
+} else {
+  await workerSend();
 }
 
-console.log(`sending "${subject}" to ${recipients.length} recipient(s)...`);
-const failures = [];
-const sentUnflushed = [];
-for (const [i, r] of recipients.entries()) {
-  const unsubUrl = `${SITE}/brief/unsubscribe?t=${r.unsubscribe_token}`;
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      "Content-Type": "application/json",
-      // Deterministic per (issue, recipient): if a crash loses the send-log
-      // entry, a rerun's retry of this recipient dedupes at Resend for 24h.
-      // Test sends get no key so they can be repeated on purpose.
-      ...(testAddress ? {} : { "Idempotency-Key": idempotencyKey(date, r.email) }),
-    },
-    body: JSON.stringify({
-      from: FROM,
-      to: [r.email],
-      subject,
-      text: text.replaceAll("{{unsubscribe_url}}", unsubUrl),
-      html: bodyHtml.replaceAll("{{unsubscribe_url}}", unsubUrl),
-      headers: {
-        "List-Unsubscribe": `<${unsubUrl}>`,
-        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
-      },
-    }),
-  });
-  if (res.ok) {
-    console.log(`  [${i + 1}/${recipients.length}] ${r.email} sent`);
-    if (!testAddress) {
-      sentUnflushed.push(r.email);
-      if (sentUnflushed.length >= 25) flushSendLog(date, sentUnflushed);
+/* ---------- worker mode (default): the deployed Worker sends ---------- */
+
+async function workerSend() {
+  const blastUrl = process.env.BRIEF_BLAST_URL || `${SITE}/api/brief/blast`;
+  let total = 0;
+  let round = 0;
+  for (;;) {
+    const token = randomBytes(32).toString("hex");
+    d1(`INSERT INTO operator_tokens (token_hash) VALUES ('${createHash("sha256").update(token).digest("hex")}')`);
+    let res, data;
+    try {
+      res = await fetch(blastUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, date, markdown: md }),
+      });
+      data = await res.json();
+    } catch (err) {
+      console.error(`could not reach the Worker at ${blastUrl}: ${err.message}`);
+      process.exit(1);
     }
-  } else {
-    failures.push({ email: r.email, status: res.status, body: await res.text() });
-    console.error(`  [${i + 1}/${recipients.length}] ${r.email} FAILED (${res.status})`);
+    if (!res.ok || !data.ok) {
+      console.error(`blast failed (${res.status}): ${JSON.stringify(data)}`);
+      process.exit(1);
+    }
+    total += data.sent;
+    round++;
+    console.log(`round ${round}: sent ${data.sent}, failed ${data.failed.length}, remaining ${data.remaining}`);
+    if (data.failed.length) console.error(`  failed: ${data.failed.join(", ")} (rerun to retry)`);
+    if (!data.remaining) {
+      if (round === 1 && total === 0 && !data.failed.length) {
+        console.log("nothing to send — every confirmed subscriber already received this issue.");
+      } else {
+        console.log(`done — ${total} email(s) sent by the Worker; the Resend key never left its vault.`);
+      }
+      process.exit(data.failed.length ? 1 : 0);
+    }
+    if (data.sent === 0) {
+      console.error("no progress this round — stopping so a bad address can't loop forever. Rerun to retry.");
+      process.exit(1);
+    }
   }
-  if (i < recipients.length - 1) await new Promise((f) => setTimeout(f, SEND_INTERVAL_MS));
 }
-if (!testAddress) flushSendLog(date, sentUnflushed);
 
-if (failures.length) {
-  console.error(`\n${failures.length} send(s) failed (rerun the same command to retry just these):`);
-  for (const f of failures) console.error(`  ${f.email}: ${f.status} ${f.body}`);
-  process.exit(1);
+/* ---------- direct mode (fallback): this machine sends via Resend ---------- */
+
+async function directSend(recipients, { log }) {
+  if (!recipients.length) {
+    console.log("nothing to send — every confirmed subscriber already received this issue.");
+    return;
+  }
+  console.log(`sending "${subject}" to ${recipients.length} recipient(s)...`);
+  const failures = [];
+  const sentUnflushed = [];
+  for (const [i, r] of recipients.entries()) {
+    const unsubUrl = `${SITE}/brief/unsubscribe?t=${r.unsubscribe_token}`;
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+        ...(log ? { "Idempotency-Key": idempotencyKey(date, r.email) } : {}),
+      },
+      body: JSON.stringify({
+        from: FROM,
+        to: [r.email],
+        subject,
+        text: issueEmailText(md, date, unsubUrl),
+        html: bodyHtml.replaceAll("{{unsubscribe_url}}", unsubUrl),
+        headers: {
+          "List-Unsubscribe": `<${unsubUrl}>`,
+          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+        },
+      }),
+    });
+    if (res.ok) {
+      console.log(`  [${i + 1}/${recipients.length}] ${r.email} sent`);
+      if (log) {
+        sentUnflushed.push(r.email);
+        if (sentUnflushed.length >= 25) flushSendLog(date, sentUnflushed);
+      }
+    } else {
+      failures.push({ email: r.email, status: res.status, body: await res.text() });
+      console.error(`  [${i + 1}/${recipients.length}] ${r.email} FAILED (${res.status})`);
+    }
+    if (i < recipients.length - 1) await new Promise((f) => setTimeout(f, SEND_INTERVAL_MS));
+  }
+  if (log) flushSendLog(date, sentUnflushed);
+  if (failures.length) {
+    console.error(`\n${failures.length} send(s) failed (rerun the same command to retry just these):`);
+    for (const f of failures) console.error(`  ${f.email}: ${f.status} ${f.body}`);
+    process.exit(1);
+  }
+  console.log("done — all sends accepted by Resend.");
 }
-console.log("done — all sends accepted by Resend and logged.");
+
+/* ---------- shared ---------- */
 
 function fetchSubscribers(issueDate) {
-  const results = d1(
+  return d1(
     `SELECT s.email, s.unsubscribe_token FROM subscribers s
      WHERE s.confirmed_at IS NOT NULL AND s.unsubscribed_at IS NULL
        AND NOT EXISTS (SELECT 1 FROM issue_sends x
                        WHERE x.issue = '${issueDate}' AND x.email = s.email)
      ORDER BY s.id`
   );
-  return results;
 }
 
-// Record accepted sends. INSERT OR IGNORE: a row already logged (e.g. by an
-// interrupted earlier run) is fine. Drains the passed array.
+// Record accepted direct-mode sends. INSERT OR IGNORE: a row already logged
+// (e.g. by an interrupted earlier run) is fine. Drains the passed array.
 function flushSendLog(issueDate, emails) {
   if (!emails.length) return;
   const values = emails
@@ -174,7 +218,7 @@ function d1(sql) {
     ], { encoding: "utf8", maxBuffer: 32 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
   } catch (err) {
     console.error(String(err.stderr || err.message).trim());
-    console.error("\ncould not query the subscriber database — check that `npx wrangler login`");
+    console.error("\ncould not reach the subscriber database — check that `npx wrangler login`");
     console.error("has run and that schema.sql was applied (--remote for the live database).");
     process.exit(1);
   }
@@ -183,36 +227,4 @@ function d1(sql) {
 
 function idempotencyKey(issueDate, email) {
   return `brief-${issueDate}-${createHash("sha256").update(email).digest("hex").slice(0, 32)}`;
-}
-
-function emailHtml(rendered, issueDate) {
-  // Inline the styles the archive page gets from its stylesheet — email
-  // clients are unreliable with <style> blocks.
-  const styled = rendered
-    .replaceAll("<h1>", '<h1 style="font-family:Georgia,serif;font-weight:500;font-size:26px;line-height:1.2;color:#16213a;margin:0 0 12px">')
-    .replaceAll("<h2>", '<h2 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:28px 0 10px">')
-    .replaceAll("<h3>", '<h3 style="font-size:17px;font-weight:600;color:#16213a;margin:20px 0 4px">')
-    .replaceAll("<p>", '<p style="font-size:15px;line-height:1.6;color:#3c4763;margin:6px 0">')
-    .replaceAll("<ul>", '<ul style="font-size:15px;line-height:1.6;color:#3c4763;margin:6px 0 6px 20px;padding:0">')
-    .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e3ddd1;margin:24px 0">')
-    .replaceAll("<a ", '<a style="color:#8a6a2f" ');
-  return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#faf8f4;padding:24px 8px">
-  <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e3ddd1;border-radius:10px;padding:28px 30px">
-    <p style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8a6a2f;font-weight:600;margin:0 0 18px">
-      The Brief &middot; ${prettyDate(issueDate)} &middot;
-      <a href="${SITE}/brief/${issueDate}" style="color:#8a6a2f">read online</a></p>
-    ${styled}
-    <p style="font-size:12px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:14px;margin:28px 0 0;line-height:1.6">
-      ${SIGNATURE}<br>
-      ${POSTAL_ADDRESS}<br>
-      <a href="{{unsubscribe_url}}" style="color:#8b94ad">Unsubscribe</a> with one click, anytime.</p>
-  </div>
-</div>`;
-}
-
-function prettyDate(iso) {
-  const [y, m, d] = iso.split("-").map(Number);
-  const months = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
-  return `${months[m - 1]} ${d}, ${y}`;
 }

@@ -38,6 +38,16 @@ export async function handleBrief(request, env, ctx, url) {
     }
   }
 
+  if (path === "/api/brief/blast") {
+    if (request.method !== "POST") return json({ error: "method not allowed" }, 405);
+    try {
+      return await handleBlast(request, env, url);
+    } catch (err) {
+      console.error("blast error:", err);
+      return json({ error: "server error" }, 500);
+    }
+  }
+
   if (path === "/brief" && request.method === "GET") return briefPage(env, url);
   if (path === "/brief/confirm") return confirmPage(env, url);
   if (path === "/brief/unsubscribe") return unsubscribePage(request, env, url);
@@ -114,6 +124,80 @@ async function handleSubscribe(request, env, url) {
   await env.DB.prepare("UPDATE subscribers SET confirm_sent_at = datetime('now') WHERE email = ?1")
     .bind(email).run();
   return json({ ok: true });
+}
+
+/* ---------- operator blast ----------
+   Sends an issue to every confirmed subscriber using the Worker's own
+   Resend key, so the key never leaves the secret store. Authorized by a
+   single-use token whose SHA-256 was written to operator_tokens through
+   wrangler — i.e. by someone already authenticated to the Cloudflare
+   account; the token is consumed on use and expires in 15 minutes.
+   Idempotent per issue via the same issue_sends log as the direct send
+   path. Capped per invocation to respect Worker subrequest limits; the
+   caller (send-issue.mjs) loops on `remaining` with a fresh token. */
+
+const BLAST_BATCH = 25;
+const MAX_ISSUE_BYTES = 200_000;
+
+async function handleBlast(request, env, url) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "bad request" }, 400);
+  }
+  const token = clean(body.token, 64);
+  const date = clean(body.date, 10);
+  const markdown = typeof body.markdown === "string" ? body.markdown : "";
+  if (!token || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !markdown || markdown.length > MAX_ISSUE_BYTES) {
+    return json({ error: "bad request" }, 400);
+  }
+
+  const grant = await env.DB.prepare(
+    `SELECT id FROM operator_tokens
+     WHERE token_hash = ?1 AND used_at IS NULL
+       AND created_at > datetime('now', '-15 minutes')`
+  ).bind(await sha256Hex(token)).first();
+  if (!grant) return json({ error: "invalid or expired operator token" }, 403);
+  await env.DB.prepare("UPDATE operator_tokens SET used_at = datetime('now') WHERE id = ?1")
+    .bind(grant.id).run();
+
+  const { results: eligible } = await env.DB.prepare(
+    `SELECT s.email, s.unsubscribe_token FROM subscribers s
+     WHERE s.confirmed_at IS NOT NULL AND s.unsubscribed_at IS NULL
+       AND NOT EXISTS (SELECT 1 FROM issue_sends x WHERE x.issue = ?1 AND x.email = s.email)
+     ORDER BY s.id`
+  ).bind(date).all();
+
+  const heading = markdown.split("\n").find((l) => l.startsWith("# "));
+  const subject = heading ? heading.slice(2).trim() : `The Brief, ${prettyDate(date)}`;
+  const rendered = renderMarkdown(markdown);
+
+  const batch = eligible.slice(0, BLAST_BATCH);
+  let sent = 0;
+  const failed = [];
+  for (const r of batch) {
+    const unsubUrl = `${url.origin}/brief/unsubscribe?t=${r.unsubscribe_token}`;
+    const ok = await sendEmail(env, {
+      to: r.email,
+      subject,
+      text: issueEmailText(markdown, date, unsubUrl),
+      html: issueEmailHtml(rendered, date).replaceAll("{{unsubscribe_url}}", unsubUrl),
+      emailHeaders: {
+        "List-Unsubscribe": `<${unsubUrl}>`,
+        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      },
+      idempotencyKey: `brief-${date}-${(await sha256Hex(r.email)).slice(0, 32)}`,
+    });
+    if (ok) {
+      await env.DB.prepare("INSERT OR IGNORE INTO issue_sends (issue, email) VALUES (?1, ?2)")
+        .bind(date, r.email).run();
+      sent++;
+    } else {
+      failed.push(r.email);
+    }
+  }
+  return json({ ok: true, sent, failed, remaining: eligible.length - batch.length });
 }
 
 /* ---------- confirm / unsubscribe ---------- */
@@ -221,7 +305,7 @@ async function sendAlreadySubscribed(env, origin, row) {
   });
 }
 
-async function sendEmail(env, { to, subject, text, html }) {
+async function sendEmail(env, { to, subject, text, html, emailHeaders, idempotencyKey }) {
   if (!env.RESEND_API_KEY) {
     // Local dev: no key configured — log instead of send so the flow still
     // works end to end (the link is in the console).
@@ -233,6 +317,7 @@ async function sendEmail(env, { to, subject, text, html }) {
     headers: {
       Authorization: `Bearer ${env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
+      ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
     },
     body: JSON.stringify({
       from: env.BRIEF_FROM_EMAIL || DEFAULT_FROM,
@@ -240,10 +325,49 @@ async function sendEmail(env, { to, subject, text, html }) {
       subject,
       text,
       html,
+      ...(emailHeaders ? { headers: emailHeaders } : {}),
     }),
   });
   if (!res.ok) console.error("brief resend failed:", res.status, await res.text());
   return res.ok;
+}
+
+/* ---------- issue email (shared with send-issue.mjs) ----------
+   The markdown issue rendered as the weekly email. Inline styles: email
+   clients are unreliable with <style> blocks. {{unsubscribe_url}} is
+   substituted per recipient. */
+
+export const SIGNATURE = "Curated by WYEA, Newport Beach - firm-owned drafting and review tools.";
+// CAN-SPAM requires a valid physical postal address in every issue.
+// TODO(anderson): set the street or PO box address before the first real send.
+export const POSTAL_ADDRESS = "WYEA, Newport Beach, California";
+const SITE = "https://wyea.ai";
+
+export function issueEmailText(markdown, issueDate, unsubUrl) {
+  return `${markdown}\n\n--\n${SIGNATURE}\n${POSTAL_ADDRESS}\nRead online: ${SITE}/brief/${issueDate}\nUnsubscribe: ${unsubUrl || "{{unsubscribe_url}}"}`;
+}
+
+export function issueEmailHtml(rendered, issueDate) {
+  const styled = rendered
+    .replaceAll("<h1>", '<h1 style="font-family:Georgia,serif;font-weight:500;font-size:26px;line-height:1.2;color:#16213a;margin:0 0 12px">')
+    .replaceAll("<h2>", '<h2 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:28px 0 10px">')
+    .replaceAll("<h3>", '<h3 style="font-size:17px;font-weight:600;color:#16213a;margin:20px 0 4px">')
+    .replaceAll("<p>", '<p style="font-size:15px;line-height:1.6;color:#3c4763;margin:6px 0">')
+    .replaceAll("<ul>", '<ul style="font-size:15px;line-height:1.6;color:#3c4763;margin:6px 0 6px 20px;padding:0">')
+    .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e3ddd1;margin:24px 0">')
+    .replaceAll("<a ", '<a style="color:#8a6a2f" ');
+  return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#faf8f4;padding:24px 8px">
+  <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e3ddd1;border-radius:10px;padding:28px 30px">
+    <p style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#8a6a2f;font-weight:600;margin:0 0 18px">
+      The Brief &middot; ${prettyDate(issueDate)} &middot;
+      <a href="${SITE}/brief/${issueDate}" style="color:#8a6a2f">read online</a></p>
+    ${styled}
+    <p style="font-size:12px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:14px;margin:28px 0 0;line-height:1.6">
+      ${SIGNATURE}<br>
+      ${POSTAL_ADDRESS}<br>
+      <a href="{{unsubscribe_url}}" style="color:#8b94ad">Unsubscribe</a> with one click, anytime.</p>
+  </div>
+</div>`;
 }
 
 function emailShell(inner) {
@@ -628,11 +752,16 @@ const SUBSCRIBE_JS = `
 
 /* ---------- utilities ---------- */
 
-function prettyDate(iso) {
+export function prettyDate(iso) {
   const [y, m, d] = iso.split("-").map(Number);
   const months = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
   return `${months[(m || 1) - 1]} ${d}, ${y}`;
+}
+
+async function sha256Hex(text) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 function randomToken() {

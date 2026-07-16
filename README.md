@@ -45,11 +45,16 @@ through the prototype path.
 1. Save the markdown as `brief/issues/The-Brief-YYYY-MM-DD.md` and add
    `{"date": "YYYY-MM-DD"}` to `brief/issues/index.json`.
 2. PR + merge to main (auto-deploys). Check `https://wyea.ai/brief/YYYY-MM-DD`.
-3. Send: `RESEND_API_KEY=… node send-issue.mjs brief/issues/The-Brief-YYYY-MM-DD.md`
-   (`--dry-run` first to preview; `--test you@x.com` for a single test send).
-   The script adds the personalized unsubscribe link, one-click unsubscribe
-   headers, and the CAN-SPAM footer. Set the physical postal address in
-   `send-issue.mjs` before the first real send.
+3. Send: `make send` (or double-click `Send The Brief.command` on the
+   desktop). No credentials needed on the machine: the script mints a
+   single-use operator token into D1 through your wrangler login and the
+   deployed Worker does the sending with the Resend key in its secret
+   store (`POST /api/brief/blast`, brief.js) — personalized unsubscribe
+   link, one-click unsubscribe headers, and the CAN-SPAM footer included.
+   Set the physical postal address in `brief.js` (`POSTAL_ADDRESS`) before
+   the first real send. `--direct` falls back to sending from this machine
+   via `RESEND_API_KEY`; `--test you@x.com` (also keyed) sends to one
+   address only.
 
    The send is idempotent per issue: accepted sends are logged to
    `issue_sends` and logged recipients are skipped, so rerunning the same
