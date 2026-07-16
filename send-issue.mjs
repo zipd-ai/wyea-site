@@ -226,6 +226,6 @@ function d1(sql) {
 }
 
 function idempotencyKey(issueDate, email) {
-  const contentHash = createHash("sha256").update(md).digest("hex").slice(0, 12);
+  const contentHash = createHash("sha256").update(bodyHtml).digest("hex").slice(0, 12);
   return `brief-${issueDate}-${contentHash}-${createHash("sha256").update(email).digest("hex").slice(0, 24)}`;
 }

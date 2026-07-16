@@ -178,8 +178,9 @@ async function handleBlast(request, env, url) {
   const rendered = renderMarkdown(markdown);
   // Content hash in the idempotency key: a crash-rerun of the same issue
   // still dedupes at Resend, but an intentional re-send of CHANGED content
-  // (same date, edited issue) is a new key instead of a 409 conflict.
-  const contentHash = (await sha256Hex(markdown)).slice(0, 12);
+  // is a new key instead of a 409 conflict. Hashed over the final email
+  // HTML so template changes count as new content too.
+  const contentHash = (await sha256Hex(issueEmailHtml(rendered, date))).slice(0, 12);
 
   const batch = eligible.slice(0, BLAST_BATCH);
   let sent = 0;
@@ -362,30 +363,40 @@ export function issueEmailText(markdown, issueDate, unsubUrl) {
 
 export function issueEmailHtml(rendered, issueDate) {
   // TLDR-style layout: centered header (links row, wordmark, issue title),
-  // left-aligned items below. The markdown's h1 is the centered title.
+  // left-aligned items below. Table-based with align="center" cells —
+  // margin:0 auto centering is ignored by enough mobile clients (Gmail
+  // app included) that tables remain the only reliable way to center in
+  // email. Font stack repeated per cell for the same reason.
+  const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
   const styled = rendered
-    .replaceAll("<h1>", '<h1 style="font-size:19px;font-weight:700;color:#16213a;text-align:center;margin:6px 0 26px">')
-    .replaceAll("<h2>", '<h2 style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:30px 0 10px">')
-    .replaceAll("<h3>", '<h3 style="font-size:17px;font-weight:600;color:#16213a;margin:20px 0 4px">')
-    .replaceAll("<p>", '<p style="font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0">')
-    .replaceAll("<ul>", '<ul style="font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0 8px 20px;padding:0">')
+    .replaceAll("<h1>", `<h1 align="center" style="font-family:${FONT};font-size:19px;font-weight:700;color:#16213a;text-align:center;margin:6px 0 26px">`)
+    .replaceAll("<h2>", `<h2 style="font-family:${FONT};font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:30px 0 10px">`)
+    .replaceAll("<h3>", `<h3 style="font-family:${FONT};font-size:17px;font-weight:600;color:#16213a;margin:20px 0 4px">`)
+    .replaceAll("<p>", `<p style="font-family:${FONT};font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0">`)
+    .replaceAll("<ul>", `<ul style="font-family:${FONT};font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0 8px 20px;padding:0">`)
     .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e3ddd1;margin:24px 0">')
     .replaceAll("<a ", '<a style="color:#8a6a2f;text-decoration:underline" ');
-  return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#ffffff;padding:28px 12px">
-  <div style="max-width:600px;margin:0 auto">
-    <p style="text-align:center;font-size:13px;margin:0 0 20px">
-      <a href="${SITE}/brief" style="color:#3c4763;text-decoration:underline">Subscribe</a>
-      &nbsp;|&nbsp;
-      <a href="${SITE}/brief/${issueDate}" style="color:#3c4763;text-decoration:underline">View Online</a></p>
-    <p style="text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;color:#16213a;margin:0">The Brief</p>
-    <p style="text-align:center;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a6a2f;font-weight:600;margin:4px 0 24px">by WYEA &middot; Newport Beach</p>
-    ${styled}
-    <p style="text-align:center;font-size:12px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:16px;margin:32px 0 0;line-height:1.7">
-      ${SIGNATURE}<br>
-      ${POSTAL_ADDRESS}<br>
-      <a href="{{unsubscribe_url}}" style="color:#8b94ad;text-decoration:underline">Unsubscribe</a> with one click, anytime.</p>
-  </div>
-</div>`;
+  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#ffffff">
+  <tr><td align="center" style="padding:28px 12px">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px">
+      <tr><td align="center" style="font-family:${FONT};font-size:13px;color:#3c4763;text-align:center;padding-bottom:20px">
+        <a href="${SITE}/brief" style="color:#3c4763;text-decoration:underline">Subscribe</a>
+        &nbsp;|&nbsp;
+        <a href="${SITE}/brief/${issueDate}" style="color:#3c4763;text-decoration:underline">View Online</a>
+      </td></tr>
+      <tr><td align="center" style="font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;color:#16213a;text-align:center;line-height:1.1">The Brief</td></tr>
+      <tr><td align="center" style="font-family:${FONT};font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a6a2f;font-weight:600;text-align:center;padding:4px 0 24px">by WYEA &middot; Newport Beach</td></tr>
+      <tr><td align="left" style="text-align:left">
+        ${styled}
+      </td></tr>
+      <tr><td align="center" style="font-family:${FONT};font-size:12px;color:#8b94ad;text-align:center;border-top:1px solid #e3ddd1;padding-top:16px;line-height:1.7">
+        ${SIGNATURE}<br>
+        ${POSTAL_ADDRESS}<br>
+        <a href="{{unsubscribe_url}}" style="color:#8b94ad;text-decoration:underline">Unsubscribe</a> with one click, anytime.
+      </td></tr>
+    </table>
+  </td></tr>
+</table>`;
 }
 
 function emailShell(inner) {
