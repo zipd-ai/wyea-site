@@ -3,3 +3,9 @@ wrangler.jsonc
 .assetsignore
 worker.js
 schema.sql
+brief.js
+send-issue.mjs
+Makefile
+LAUNCH_CHECKLIST.md
+.env
+*.preview.html
