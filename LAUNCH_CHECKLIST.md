@@ -25,10 +25,14 @@ is checked, the page stays unannounced.
 
 ## Remaining gates — DO NOT go public until all checked
 
-- [ ] One-click unsubscribe from a real issue email footer (production),
-      then resubscribe + reconfirm (the out-and-back-in lawyer experience)
-- [ ] Desktop trigger: double-click "Send The Brief.command" once
-      (expected: recipient count, y/N; "nothing to send" is a pass)
+- [x] One-click unsubscribe from a real issue email footer (production),
+      then resubscribe + reconfirm — full round trip verified 2026-07-16:
+      unsubscribed_at set, fresh confirm email inboxed, re-confirm cleared
+      suppression, and the issue was NOT re-sent afterward
+- [x] Desktop trigger script path (make send: dry-run, count, y/N
+      confirm, worker send) exercised end to end 2026-07-16 — "nothing to
+      send" with all subscribers current. (Physical double-click of the
+      .command file still worth doing once for feel.)
 - [ ] Deliverability beyond Gmail: subscribe an Outlook/firm-domain address,
       confirm the blast lands in its INBOX (lawyer audience = Outlook heavy)
 - [ ] PHYSICAL POSTAL ADDRESS in brief.js (POSTAL_ADDRESS) — CAN-SPAM
