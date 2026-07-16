@@ -28,3 +28,8 @@ test-send: check-issue
 
 check-issue:
 	@[ -n "$(ISSUE)" ] || { echo "no issue found in brief/issues/ — save the markdown there first"; exit 1; }
+
+# Verify the append-only subscriber audit chain (subscriber_events).
+.PHONY: audit-verify
+audit-verify:
+	node audit.mjs verify

@@ -48,6 +48,26 @@ CREATE TABLE IF NOT EXISTS operator_tokens (
   used_at    TEXT
 );
 
+-- Append-only, hash-chained audit log of every subscriber lifecycle event
+-- (subscribed / confirm_email_sent / confirmed / unsubscribed /
+-- resubscribe_requested / issue_sent ...). Rows are never updated or
+-- deleted by code; each row's event_hash covers its content plus the
+-- previous row's hash, so any edit or deletion breaks the chain —
+-- `make audit-verify` recomputes it. Tamper-EVIDENT, not tamper-proof:
+-- anyone with account access could rewrite the whole chain, so anchor the
+-- head hash externally now and then (audit-verify prints it; a git commit
+-- or an email to yourself is an anchor).
+CREATE TABLE IF NOT EXISTS subscriber_events (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  email      TEXT NOT NULL,
+  event      TEXT NOT NULL,
+  detail     TEXT,               -- source / issue date / method, per event type
+  ip         TEXT,
+  created_at TEXT NOT NULL,
+  prev_hash  TEXT NOT NULL,      -- event_hash of the previous row ("genesis" for the first)
+  event_hash TEXT NOT NULL       -- sha256(prev_hash|email|event|detail|ip|created_at)
+);
+
 -- Send log for The Brief: one row per (issue, recipient) accepted by Resend.
 -- This is what makes the weekly send idempotent — send-issue.mjs skips
 -- anyone already logged for the issue, so a rerun (crash recovery, or a

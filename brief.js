@@ -90,8 +90,8 @@ async function handleSubscribe(request, env, url) {
     if (recent) return json({ ok: true });
   }
 
+  const ip = request.headers.get("CF-Connecting-IP") || "";
   if (!row) {
-    const ip = request.headers.get("CF-Connecting-IP") || "";
     const recent = await env.DB.prepare(
       "SELECT COUNT(*) AS n FROM subscribers WHERE ip = ?1 AND created_at > datetime('now', '-1 hour')"
     ).bind(ip).first();
@@ -109,6 +109,9 @@ async function handleSubscribe(request, env, url) {
       `INSERT INTO subscribers (email, source, confirm_token, unsubscribe_token, ip)
        VALUES (?1, ?2, ?3, ?4, ?5)`
     ).bind(email, source, row.confirm_token, row.unsubscribe_token, ip).run();
+    await logEvent(env, email, "subscribed", source, ip);
+  } else if (row.unsubscribed_at) {
+    await logEvent(env, email, "resubscribe_requested", source, ip);
   }
 
   // Active subscribers get a short note instead of a confirm link; everyone
@@ -121,6 +124,7 @@ async function handleSubscribe(request, env, url) {
   if (!sent) {
     return json({ error: "we could not send the confirmation email, please try again in a minute" }, 500);
   }
+  await logEvent(env, email, active ? "already_subscribed_note_sent" : "confirm_email_sent", "", ip);
   await env.DB.prepare("UPDATE subscribers SET confirm_sent_at = datetime('now') WHERE email = ?1")
     .bind(email).run();
   return json({ ok: true });
@@ -192,6 +196,7 @@ async function handleBlast(request, env, url) {
     if (ok) {
       await env.DB.prepare("INSERT OR IGNORE INTO issue_sends (issue, email) VALUES (?1, ?2)")
         .bind(date, r.email).run();
+      await logEvent(env, r.email, "issue_sent", date);
       sent++;
     } else {
       failed.push(r.email);
@@ -219,6 +224,7 @@ async function confirmPage(env, url) {
      SET confirmed_at = COALESCE(confirmed_at, datetime('now')), unsubscribed_at = NULL
      WHERE confirm_token = ?1`
   ).bind(token).run();
+  await logEvent(env, row.email, "confirmed", row.unsubscribed_at ? "after-unsubscribe" : "");
   return page("You're in — The Brief", statusCard(
     "You're in.",
     `First issue arrives Wednesday. One email a week, readable in four minutes.
@@ -243,6 +249,9 @@ async function unsubscribePage(request, env, url) {
   await env.DB.prepare(
     "UPDATE subscribers SET unsubscribed_at = COALESCE(unsubscribed_at, datetime('now')) WHERE unsubscribe_token = ?1"
   ).bind(token).run();
+  if (!row.unsubscribed_at) {
+    await logEvent(env, row.email, "unsubscribed", request.method === "POST" ? "one-click" : "link");
+  }
   // RFC 8058 one-click POST (mail clients) gets a plain 200; a person in a
   // browser gets the page.
   if (request.method === "POST") return json({ ok: true });
@@ -762,6 +771,33 @@ export function prettyDate(iso) {
 async function sha256Hex(text) {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* ---------- audit log ----------
+   Append-only, hash-chained record of every subscriber lifecycle event
+   (schema.sql: subscriber_events). Best-effort: a logging failure is
+   reported but never blocks the user action it describes. The canonical
+   hash is exported so audit.mjs verifies the chain with the same code. */
+
+export async function eventHash(prevHash, email, event, detail, ip, createdAt) {
+  return sha256Hex([prevHash, email, event, detail || "", ip || "", createdAt].join("|"));
+}
+
+async function logEvent(env, email, event, detail = "", ip = "") {
+  try {
+    const head = await env.DB.prepare(
+      "SELECT event_hash FROM subscriber_events ORDER BY id DESC LIMIT 1"
+    ).first();
+    const prev = head ? head.event_hash : "genesis";
+    const ts = new Date().toISOString();
+    const hash = await eventHash(prev, email, event, detail, ip, ts);
+    await env.DB.prepare(
+      `INSERT INTO subscriber_events (email, event, detail, ip, created_at, prev_hash, event_hash)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)`
+    ).bind(email, event, detail, ip, ts, prev, hash).run();
+  } catch (err) {
+    console.error("audit log failed:", err);
+  }
 }
 
 function randomToken() {
