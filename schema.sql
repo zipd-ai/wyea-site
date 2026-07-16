@@ -35,3 +35,16 @@ CREATE TABLE IF NOT EXISTS subscribers (
 );
 
 CREATE INDEX IF NOT EXISTS idx_subscribers_ip_time ON subscribers (ip, created_at);
+
+-- Send log for The Brief: one row per (issue, recipient) accepted by Resend.
+-- This is what makes the weekly send idempotent — send-issue.mjs skips
+-- anyone already logged for the issue, so a rerun (crash recovery, or a
+-- second invocation by mistake) never sends the same issue to the same
+-- person twice. It doubles as the delivery record per issue.
+CREATE TABLE IF NOT EXISTS issue_sends (
+  id      INTEGER PRIMARY KEY AUTOINCREMENT,
+  issue   TEXT NOT NULL,               -- issue date, YYYY-MM-DD
+  email   TEXT NOT NULL,
+  sent_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE (issue, email)
+);

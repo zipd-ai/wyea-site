@@ -9,8 +9,18 @@
 // per subscriber through Resend with a personalized unsubscribe link and
 // RFC 8058 one-click List-Unsubscribe headers.
 //
+// The send is IDEMPOTENT per issue: every accepted send is logged to the
+// issue_sends table (schema.sql) and logged recipients are excluded up
+// front, so rerunning the script — after a crash, or by accident — never
+// sends the same issue to the same person twice. A rerun only reaches
+// recipients who failed or confirmed after the previous run. Each send also
+// carries a deterministic Resend Idempotency-Key as a second layer, covering
+// the few sends a crash could leave unlogged (Resend dedupes those for 24h).
+//
 //   --dry-run   render + count only; writes a preview HTML next to the issue
 //   --test X    send the rendered issue only to address X, nothing else
+//               (not logged, so it never blocks the real send)
+//   --local     use the local wrangler dev database instead of --remote
 //
 // Publishing order matters: merge the issue (markdown + manifest entry) to
 // main FIRST so the online/unsubscribe links resolve, then send.
@@ -18,6 +28,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { basename } from "node:path";
+import { createHash } from "node:crypto";
 import { renderMarkdown } from "./brief.js";
 
 const SITE = "https://wyea.ai";
@@ -30,12 +41,13 @@ const SEND_INTERVAL_MS = 700; // stay under Resend's default 2 req/s
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
+const local = args.includes("--local");
 const testIdx = args.indexOf("--test");
 const testAddress = testIdx >= 0 ? args[testIdx + 1] : null;
 const issuePath = args.find((a) => a.endsWith(".md"));
 
 if (!issuePath || (testIdx >= 0 && !testAddress)) {
-  console.error("usage: node send-issue.mjs brief/issues/The-Brief-YYYY-MM-DD.md [--dry-run] [--test you@x.com]");
+  console.error("usage: node send-issue.mjs brief/issues/The-Brief-YYYY-MM-DD.md [--dry-run] [--test you@x.com] [--local]");
   process.exit(1);
 }
 if (!dryRun && !process.env.RESEND_API_KEY) {
@@ -58,23 +70,24 @@ const text = `${md}\n\n--\n${SIGNATURE}\n${POSTAL_ADDRESS}\nRead online: ${SITE}
 if (dryRun) {
   const preview = issuePath.replace(/\.md$/, ".preview.html");
   writeFileSync(preview, bodyHtml.replaceAll("{{unsubscribe_url}}", `${SITE}/brief/unsubscribe?t=PREVIEW`));
-  const list = testAddress ? [] : fetchSubscribers();
-  console.log(`dry run: subject "${subject}", ${list.length} confirmed subscriber(s).`);
+  const list = testAddress ? [] : fetchSubscribers(date);
+  console.log(`dry run: subject "${subject}", ${list.length} confirmed subscriber(s) not yet sent this issue.`);
   console.log(`preview written to ${preview}`);
   process.exit(0);
 }
 
 const recipients = testAddress
   ? [{ email: testAddress, unsubscribe_token: "TEST" }]
-  : fetchSubscribers();
+  : fetchSubscribers(date);
 
 if (!recipients.length) {
-  console.log("no confirmed subscribers — nothing to send.");
+  console.log("nothing to send — every confirmed subscriber already received this issue.");
   process.exit(0);
 }
 
 console.log(`sending "${subject}" to ${recipients.length} recipient(s)...`);
 const failures = [];
+const sentUnflushed = [];
 for (const [i, r] of recipients.entries()) {
   const unsubUrl = `${SITE}/brief/unsubscribe?t=${r.unsubscribe_token}`;
   const res = await fetch("https://api.resend.com/emails", {
@@ -82,6 +95,10 @@ for (const [i, r] of recipients.entries()) {
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
+      // Deterministic per (issue, recipient): if a crash loses the send-log
+      // entry, a rerun's retry of this recipient dedupes at Resend for 24h.
+      // Test sends get no key so they can be repeated on purpose.
+      ...(testAddress ? {} : { "Idempotency-Key": idempotencyKey(date, r.email) }),
     },
     body: JSON.stringify({
       from: FROM,
@@ -97,28 +114,57 @@ for (const [i, r] of recipients.entries()) {
   });
   if (res.ok) {
     console.log(`  [${i + 1}/${recipients.length}] ${r.email} sent`);
+    if (!testAddress) {
+      sentUnflushed.push(r.email);
+      if (sentUnflushed.length >= 25) flushSendLog(date, sentUnflushed);
+    }
   } else {
     failures.push({ email: r.email, status: res.status, body: await res.text() });
     console.error(`  [${i + 1}/${recipients.length}] ${r.email} FAILED (${res.status})`);
   }
   if (i < recipients.length - 1) await new Promise((f) => setTimeout(f, SEND_INTERVAL_MS));
 }
+if (!testAddress) flushSendLog(date, sentUnflushed);
 
 if (failures.length) {
-  console.error(`\n${failures.length} send(s) failed:`);
+  console.error(`\n${failures.length} send(s) failed (rerun the same command to retry just these):`);
   for (const f of failures) console.error(`  ${f.email}: ${f.status} ${f.body}`);
   process.exit(1);
 }
-console.log("done — all sends accepted by Resend.");
+console.log("done — all sends accepted by Resend and logged.");
 
-function fetchSubscribers() {
+function fetchSubscribers(issueDate) {
+  const results = d1(
+    `SELECT s.email, s.unsubscribe_token FROM subscribers s
+     WHERE s.confirmed_at IS NOT NULL AND s.unsubscribed_at IS NULL
+       AND NOT EXISTS (SELECT 1 FROM issue_sends x
+                       WHERE x.issue = '${issueDate}' AND x.email = s.email)
+     ORDER BY s.id`
+  );
+  return results;
+}
+
+// Record accepted sends. INSERT OR IGNORE: a row already logged (e.g. by an
+// interrupted earlier run) is fine. Drains the passed array.
+function flushSendLog(issueDate, emails) {
+  if (!emails.length) return;
+  const values = emails
+    .map((e) => `('${issueDate}', '${e.replaceAll("'", "''")}')`)
+    .join(", ");
+  d1(`INSERT OR IGNORE INTO issue_sends (issue, email) VALUES ${values}`);
+  emails.length = 0;
+}
+
+function d1(sql) {
   const out = execFileSync("npx", [
-    "wrangler", "d1", "execute", "wyea-leads", "--remote", "--json",
-    "--command",
-    "SELECT email, unsubscribe_token FROM subscribers WHERE confirmed_at IS NOT NULL AND unsubscribed_at IS NULL ORDER BY id",
+    "wrangler", "d1", "execute", "wyea-leads", local ? "--local" : "--remote",
+    "--json", "--command", sql,
   ], { encoding: "utf8", maxBuffer: 32 * 1024 * 1024 });
-  const parsed = JSON.parse(out);
-  return parsed[0]?.results || [];
+  return JSON.parse(out)[0]?.results || [];
+}
+
+function idempotencyKey(issueDate, email) {
+  return `brief-${issueDate}-${createHash("sha256").update(email).digest("hex").slice(0, 32)}`;
 }
 
 function emailHtml(rendered, issueDate) {

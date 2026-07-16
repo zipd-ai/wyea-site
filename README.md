@@ -51,6 +51,12 @@ through the prototype path.
    headers, and the CAN-SPAM footer. Set the physical postal address in
    `send-issue.mjs` before the first real send.
 
+   The send is idempotent per issue: accepted sends are logged to
+   `issue_sends` and logged recipients are skipped, so rerunning the same
+   command is always safe — it retries failures and catches late confirms,
+   and never sends the same issue to the same person twice (Resend
+   idempotency keys back this up for anything a crash leaves unlogged).
+
 **Source tracking**: link placements as `https://wyea.ai/brief?src=email-sig`
 (`src` lands in the `source` column: `email-sig`, `linkedin`, `breakup`, …).
 Channel numbers for the sales tracker:
