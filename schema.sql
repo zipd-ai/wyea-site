@@ -16,3 +16,35 @@ CREATE TABLE IF NOT EXISTS submissions (
 );
 
 CREATE INDEX IF NOT EXISTS idx_submissions_ip_time ON submissions (ip, created_at);
+
+-- Subscribers for The Brief (the weekly newsletter — brief.js). Double
+-- opt-in: a row is pending until confirmed_at is set via the emailed confirm
+-- link. Rows are never deleted: unsubscribed_at set = suppressed, so an
+-- unsubscribe is never forgotten (CAN-SPAM suppression list).
+CREATE TABLE IF NOT EXISTS subscribers (
+  id                INTEGER PRIMARY KEY AUTOINCREMENT,
+  email             TEXT NOT NULL UNIQUE,
+  source            TEXT,               -- placement that captured the subscribe: brief-page, homepage-footer, email-sig, ...
+  confirm_token     TEXT NOT NULL UNIQUE,
+  unsubscribe_token TEXT NOT NULL UNIQUE,
+  ip                TEXT,
+  created_at        TEXT NOT NULL DEFAULT (datetime('now')),
+  confirm_sent_at   TEXT,               -- last confirm/notice email, throttles resends
+  confirmed_at      TEXT,
+  unsubscribed_at   TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_subscribers_ip_time ON subscribers (ip, created_at);
+
+-- Send log for The Brief: one row per (issue, recipient) accepted by Resend.
+-- This is what makes the weekly send idempotent — send-issue.mjs skips
+-- anyone already logged for the issue, so a rerun (crash recovery, or a
+-- second invocation by mistake) never sends the same issue to the same
+-- person twice. It doubles as the delivery record per issue.
+CREATE TABLE IF NOT EXISTS issue_sends (
+  id      INTEGER PRIMARY KEY AUTOINCREMENT,
+  issue   TEXT NOT NULL,               -- issue date, YYYY-MM-DD
+  email   TEXT NOT NULL,
+  sent_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE (issue, email)
+);
