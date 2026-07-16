@@ -429,19 +429,18 @@ async function briefPage(env, url) {
       <div class="sample">
         <p class="sample-section">ORANGE COUNTY</p>
         <article class="item">
-          <h3>A bold, factual headline stating exactly what happened (3 minute read)</h3>
+          <h3><a href="#archive" class="sample-headline">A bold, factual headline stating exactly what happened, linking to the source (3 minute read)</a></h3>
           <p>Two or three sentences that give you the complete story, so the
           headline never baits: what the court held or the rule changed, who it
-          applies to, and the so-what for your practice. You click through only
-          when you want the full text.</p>
-          <p class="item-source">the source link: the opinion, the rule text, or primary reporting</p>
+          applies to, and the so-what for your practice. The headline links to
+          the opinion, the rule text, or primary reporting; you click through
+          only when you want the full text.</p>
         </article>
         <p class="sample-section">AI &amp; PRACTICE</p>
         <article class="item">
-          <h3>A development in legal AI or practice management, stated plainly (2 minute read)</h3>
+          <h3><a href="#archive" class="sample-headline">A development in legal AI or practice management, stated plainly (2 minute read)</a></h3>
           <p>The same shape: the fact, the context, and what a small or midsize
           firm should do about it, if anything. No hype, no vendor pitches.</p>
-          <p class="item-source">the source link</p>
         </article>
       </div>
       <p class="fine">Every case and holding is verified against the fetched
@@ -691,7 +690,8 @@ margin:1.4em 0 .6em}
 .sample-section:first-child{margin-top:0}
 .item h3{font-size:1.05rem}
 .item p{font-size:.95rem}
-.item-source{font-size:.85rem;color:var(--bronze-deep);margin-top:.3em}
+.sample-headline{color:var(--bronze-deep);text-decoration:none;border-bottom:1px solid var(--bronze)}
+.sample-headline:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .fine{font-size:.88rem;margin-top:1.6em}
 .empty-note{font-size:1rem}
 .archive-list{list-style:none;margin-top:.5em}
