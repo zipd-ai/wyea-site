@@ -79,7 +79,8 @@ if (dryRun) {
     .replaceAll("{{unsubscribe_url}}", `${SITE}/brief/unsubscribe?t=PREVIEW`)
     .replaceAll("{{referral_url}}", `${SITE}/brief?ref=preview`)
     .replaceAll("{{referral_count}}", "0")
-    .replaceAll("{{share_url}}", `${SITE}/brief/share?t=PREVIEW`));
+    .replaceAll("{{share_url}}", `${SITE}/brief/share?t=PREVIEW`)
+    .replaceAll("{{postal_address}}", process.env.POSTAL_ADDRESS || "WYEA, Newport Beach, California"));
   const list = testAddress ? [] : fetchSubscribers(date);
   console.log(`dry run: subject "${subject}", ${list.length} confirmed subscriber(s) not yet sent this issue.`);
   console.log(`preview written to ${preview}`);
@@ -155,6 +156,9 @@ async function directSend(recipients, { log }) {
       "{{referral_url}}": `${SITE}/brief?ref=${r.ref_code || "unknown"}`,
       "{{referral_count}}": String(r.ref_count || 0),
       "{{share_url}}": `${SITE}/brief/share?t=${r.unsubscribe_token}`,
+      // Direct mode reads the address from env/.env; the worker path reads
+      // its POSTAL_ADDRESS secret. Never commit the real address (public repo).
+      "{{postal_address}}": process.env.POSTAL_ADDRESS || "WYEA, Newport Beach, California",
     };
     const fill = (s) => Object.entries(fills).reduce((acc, [k, v]) => acc.replaceAll(k, v), s);
     const res = await fetch("https://api.resend.com/emails", {

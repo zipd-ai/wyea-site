@@ -51,8 +51,9 @@ through the prototype path.
    deployed Worker does the sending with the Resend key in its secret
    store (`POST /api/brief/blast`, brief.js) — personalized unsubscribe
    link, one-click unsubscribe headers, and the CAN-SPAM footer included.
-   Set the physical postal address in `brief.js` (`POSTAL_ADDRESS`) before
-   the first real send. `--direct` falls back to sending from this machine
+   The CAN-SPAM postal address lives in the `POSTAL_ADDRESS` Worker secret
+   (`npx wrangler secret put POSTAL_ADDRESS`), never in this public repo;
+   issue templates carry a `{{postal_address}}` merge field. `--direct` falls back to sending from this machine
    via `RESEND_API_KEY`; `--test you@x.com` (also keyed) sends to one
    address only.
 

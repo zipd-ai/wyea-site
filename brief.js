@@ -223,6 +223,7 @@ async function handleBlast(request, env, url) {
       "{{referral_url}}": `${url.origin}/brief?ref=${code}`,
       "{{referral_count}}": String(await referralCount(env, code)),
       "{{share_url}}": `${url.origin}/brief/share?t=${r.unsubscribe_token}`,
+      "{{postal_address}}": env.POSTAL_ADDRESS || POSTAL_ADDRESS_FALLBACK,
     };
     const fill = (s) => Object.entries(fills).reduce((acc, [k, v]) => acc.replaceAll(k, v), s);
     const ok = await sendEmail(env, {
@@ -411,13 +412,16 @@ async function sendEmail(env, { to, subject, text, html, emailHeaders, idempoten
    substituted per recipient. */
 
 export const SIGNATURE = "Curated by WYEA, Newport Beach - firm-owned drafting and review tools.";
-// CAN-SPAM postal address (the LLC's registered address; swap for a PO box
-// anytime — the change reaches the next send automatically).
-export const POSTAL_ADDRESS = "WYEA, 20264 Estuary Lane, Newport Beach, CA 92660";
+// CAN-SPAM postal address. The real street/PO-box line lives in the
+// POSTAL_ADDRESS Worker secret (this repo is public — a mailing address
+// belongs in outgoing email, not in source). Issue templates carry a
+// {{postal_address}} merge field filled at send time; this fallback keeps
+// dev rendering sane but is NOT compliant on its own.
+export const POSTAL_ADDRESS_FALLBACK = "WYEA, Newport Beach, California";
 const SITE = "https://wyea.ai";
 
 export function issueEmailText(markdown, issueDate, unsubUrl) {
-  return `${markdown}\n\n--\nForward this to one colleague who would use it.\nOr share your personal link: {{referral_url}} ({{referral_count}} confirmed referrals so far)\nTrack your rewards: {{share_url}}\n\n${SIGNATURE}\n${POSTAL_ADDRESS}\nRead online: ${SITE}/brief/${issueDate}\nUnsubscribe: ${unsubUrl || "{{unsubscribe_url}}"}`;
+  return `${markdown}\n\n--\nForward this to one colleague who would use it.\nOr share your personal link: {{referral_url}} ({{referral_count}} confirmed referrals so far)\nTrack your rewards: {{share_url}}\n\n${SIGNATURE}\n{{postal_address}}\nRead online: ${SITE}/brief/${issueDate}\nUnsubscribe: ${unsubUrl || "{{unsubscribe_url}}"}`;
 }
 
 export function issueEmailHtml(rendered, issueDate) {
@@ -464,7 +468,7 @@ export function issueEmailHtml(rendered, issueDate) {
       </td></tr>
       <tr><td align="center" style="font-family:${FONT};font-size:12px;color:#8b94ad;text-align:center;padding-top:16px;line-height:1.7">
         ${SIGNATURE}<br>
-        ${POSTAL_ADDRESS}<br>
+        {{postal_address}}<br>
         <a href="{{unsubscribe_url}}" style="color:#8b94ad;text-decoration:underline">Unsubscribe</a> with one click, anytime.
       </td></tr>
     </table>
