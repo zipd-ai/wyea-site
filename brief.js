@@ -439,8 +439,7 @@ async function briefPage(env, url) {
       <p class="eyebrow">The Brief · A weekly newsletter from WYEA</p>
       <h1>The legal developments that matter, national to Orange County.</h1>
       <p class="lede">One email a week, readable in four minutes. Court decisions,
-      rule changes, and AI-and-practice developments, each verified against the
-      source before it is summarized. Free.</p>
+      rule changes, and AI-and-practice developments. Free.</p>
       ${subscribeFormHtml(src, "brief")}
     </div>
   </section>
