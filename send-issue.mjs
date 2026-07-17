@@ -30,7 +30,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { basename } from "node:path";
 import { createHash, randomBytes } from "node:crypto";
-import { renderMarkdown, issueEmailHtml, issueEmailText, prettyDate } from "./brief.js";
+import { renderMarkdown, issueEmailHtml, issueEmailText } from "./brief.js";
 
 // A gitignored .env next to this script may supply RESEND_API_KEY for the
 // --test/--direct paths. Real environment variables win over the file.
@@ -69,8 +69,9 @@ if (!date) {
   console.error("issue filename must contain the date: The-Brief-YYYY-MM-DD.md");
   process.exit(1);
 }
-const heading = md.split("\n").find((l) => l.startsWith("# "));
-const subject = heading ? heading.slice(2).trim() : `The Brief, ${prettyDate(date)}`;
+// Subject is always just "The Brief" (owner's call); the date lives in the
+// email body title.
+const subject = "The Brief";
 const bodyHtml = issueEmailHtml(renderMarkdown(md), date);
 
 if (dryRun) {

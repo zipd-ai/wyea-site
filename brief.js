@@ -201,8 +201,9 @@ async function handleBlast(request, env, url) {
      ORDER BY s.id`
   ).bind(date).all();
 
-  const heading = markdown.split("\n").find((l) => l.startsWith("# "));
-  const subject = heading ? heading.slice(2).trim() : `The Brief, ${prettyDate(date)}`;
+  // Subject is always just "The Brief" (owner's call); the date lives in
+  // the email body title and the markdown h1.
+  const subject = "The Brief";
   const rendered = renderMarkdown(markdown);
   // Content hash in the idempotency key: a crash-rerun of the same issue
   // still dedupes at Resend, but an intentional re-send of CHANGED content
