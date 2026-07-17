@@ -62,6 +62,29 @@ through the prototype path.
    and never sends the same issue to the same person twice (Resend
    idempotency keys back this up for anything a crash leaves unlogged).
 
+**Delivery telemetry** (`POST /api/resend-events`, brief.js): Resend
+webhooks feed back what happened after the send — delivered, bounced,
+complained, opened, clicked — into the audit chain. Hard bounces and spam
+complaints auto-suppress the subscriber (like an unsubscribe; a real
+re-opt-in clears it). One-time setup in the Resend dashboard:
+
+1. Webhooks → Add endpoint → `https://wyea.ai/api/resend-events`, select
+   the email.delivered / bounced / complained / opened / clicked events.
+2. Copy the endpoint's signing secret (whsec_…) →
+   `npx wrangler secret put RESEND_WEBHOOK_SECRET`.
+3. Domains → wyea.ai → enable open tracking (and click tracking if wanted).
+
+The endpoint answers 503 until the secret is set, verifies every delivery
+(Svix signature, 5-minute replay window), and is safe to retry. Opens per
+issue afterward:
+
+```
+npx wrangler d1 execute wyea-leads --remote --command "
+  SELECT detail AS issue_subject, COUNT(DISTINCT email) AS unique_opens
+  FROM subscriber_events WHERE event = 'email_opened'
+  GROUP BY detail ORDER BY MAX(id) DESC"
+```
+
 **Source tracking**: link placements as `https://wyea.ai/brief?src=email-sig`
 (`src` lands in the `source` column: `email-sig`, `linkedin`, `breakup`, …).
 Channel numbers for the sales tracker:

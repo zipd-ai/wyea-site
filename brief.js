@@ -38,6 +38,16 @@ export async function handleBrief(request, env, ctx, url) {
     }
   }
 
+  if (path === "/api/resend-events") {
+    if (request.method !== "POST") return json({ error: "method not allowed" }, 405);
+    try {
+      return await handleResendEvents(request, env);
+    } catch (err) {
+      console.error("resend webhook error:", err);
+      return json({ error: "server error" }, 500);
+    }
+  }
+
   if (path === "/api/brief/blast") {
     if (request.method !== "POST") return json({ error: "method not allowed" }, 405);
     try {
@@ -904,6 +914,73 @@ export function prettyDate(iso) {
 async function sha256Hex(text) {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* ---------- delivery telemetry (Resend webhooks) ----------
+   POST /api/resend-events ingests what happens AFTER Resend accepts an
+   email: delivered / bounced / complained / opened / clicked. Signature
+   verified (Svix scheme: HMAC-SHA256 over "id.timestamp.body" with the
+   whsec_ secret, 5-minute replay window). Hard bounces and spam
+   complaints auto-suppress the subscriber exactly like an unsubscribe —
+   they stop receiving and the suppression is never forgotten; a genuine
+   re-opt-in through the normal double-confirm flow clears it. Everything
+   lands in the audit chain, which makes opens-per-issue a query.
+   Inactive (503) until the RESEND_WEBHOOK_SECRET Worker secret is set. */
+
+async function handleResendEvents(request, env) {
+  if (!env.RESEND_WEBHOOK_SECRET) return json({ error: "webhook not configured" }, 503);
+  const svixId = request.headers.get("svix-id") || "";
+  const svixTs = request.headers.get("svix-timestamp") || "";
+  const svixSig = request.headers.get("svix-signature") || "";
+  const body = await request.text();
+  if (!svixId || !svixTs || !svixSig) return json({ error: "missing signature" }, 401);
+  const age = Math.abs(Date.now() / 1000 - Number(svixTs));
+  if (!Number.isFinite(age) || age > 300) return json({ error: "stale timestamp" }, 401);
+
+  const keyBytes = Uint8Array.from(atob(env.RESEND_WEBHOOK_SECRET.replace(/^whsec_/, "")),
+    (c) => c.charCodeAt(0));
+  const key = await crypto.subtle.importKey("raw", keyBytes,
+    { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  const mac = await crypto.subtle.sign("HMAC", key,
+    new TextEncoder().encode(`${svixId}.${svixTs}.${body}`));
+  const expected = btoa(String.fromCharCode(...new Uint8Array(mac)));
+  const match = svixSig.split(" ").some((part) => part.split(",")[1] === expected);
+  if (!match) return json({ error: "bad signature" }, 401);
+
+  let evt;
+  try {
+    evt = JSON.parse(body);
+  } catch {
+    return json({ error: "bad request" }, 400);
+  }
+  const type = String(evt.type || "");
+  const to = Array.isArray(evt.data?.to) ? String(evt.data.to[0] || "").toLowerCase() : "";
+  const subject = clean(evt.data?.subject, 80);
+  if (!to) return json({ ok: true, ignored: true });
+
+  const suppress = async (reason) => {
+    await env.DB.prepare(
+      "UPDATE subscribers SET unsubscribed_at = COALESCE(unsubscribed_at, datetime('now')) WHERE email = ?1"
+    ).bind(to).run();
+    await logEvent(env, to, "suppressed", reason);
+  };
+
+  if (type === "email.bounced") {
+    const bounceType = String(evt.data?.bounce?.type || "").toLowerCase();
+    const transient = bounceType === "transient";
+    await logEvent(env, to, "email_bounced", `${transient ? "transient" : "permanent"}: ${subject}`);
+    if (!transient) await suppress("hard bounce");
+  } else if (type === "email.complained") {
+    await logEvent(env, to, "email_complained", subject);
+    await suppress("spam complaint");
+  } else if (type === "email.delivered") {
+    await logEvent(env, to, "email_delivered", subject);
+  } else if (type === "email.opened") {
+    await logEvent(env, to, "email_opened", subject);
+  } else if (type === "email.clicked") {
+    await logEvent(env, to, "email_clicked", clean(evt.data?.click?.link, 120) || subject);
+  }
+  return json({ ok: true });
 }
 
 /* ---------- referral loop ----------
