@@ -68,6 +68,38 @@ CREATE TABLE IF NOT EXISTS subscriber_events (
   event_hash TEXT NOT NULL       -- sha256(prev_hash|email|event|detail|ip|created_at)
 );
 
+-- Referral loop (side tables so schema.sql stays idempotent — no ALTERs).
+-- Every subscriber gets a stable share code (generated lazily). A referral
+-- row is written when someone subscribes through ?ref=<code>; its
+-- confirmed_at is stamped when the referee completes double opt-in — that
+-- is the ONLY moment credit exists (pending signups are worth nothing, so
+-- fake-email stuffing earns nothing). Reward tiers are granted once per
+-- (referrer, tier) in reward_grants.
+CREATE TABLE IF NOT EXISTS referral_codes (
+  email      TEXT PRIMARY KEY,
+  code       TEXT NOT NULL UNIQUE,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS referrals (
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  referee_email TEXT NOT NULL UNIQUE,  -- one referrer per referee, first link wins
+  code          TEXT NOT NULL,         -- referral_codes.code that brought them
+  ip            TEXT,                  -- referee signup ip, for fraud review
+  created_at    TEXT NOT NULL DEFAULT (datetime('now')),
+  confirmed_at  TEXT                   -- stamped at referee double opt-in = credit
+);
+
+CREATE INDEX IF NOT EXISTS idx_referrals_code ON referrals (code);
+
+CREATE TABLE IF NOT EXISTS reward_grants (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  email      TEXT NOT NULL,            -- the referrer being rewarded
+  tier       INTEGER NOT NULL,         -- referral count threshold crossed
+  granted_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE (email, tier)
+);
+
 -- Send log for The Brief: one row per (issue, recipient) accepted by Resend.
 -- This is what makes the weekly send idempotent — send-issue.mjs skips
 -- anyone already logged for the issue, so a rerun (crash recovery, or a

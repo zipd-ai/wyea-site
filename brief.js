@@ -49,6 +49,7 @@ export async function handleBrief(request, env, ctx, url) {
   }
 
   if (path === "/brief" && request.method === "GET") return briefPage(env, url);
+  if (path === "/brief/share" && request.method === "GET") return sharePage(env, url);
   if (path === "/brief/confirm") return confirmPage(env, url);
   if (path === "/brief/unsubscribe") return unsubscribePage(request, env, url);
 
@@ -72,7 +73,8 @@ async function handleSubscribe(request, env, url) {
   if (body.website) return json({ ok: true });
 
   const email = clean(body.email, MAX_EMAIL).toLowerCase();
-  const source = clean(body.source, MAX_SOURCE) || "unknown";
+  const ref = clean(body.ref, 16).toLowerCase();
+  const source = clean(body.source, MAX_SOURCE) || (ref ? "referral" : "unknown");
   if (!EMAIL_RE.test(email)) {
     return json({ error: "please enter a valid email address" }, 400);
   }
@@ -110,6 +112,22 @@ async function handleSubscribe(request, env, url) {
        VALUES (?1, ?2, ?3, ?4, ?5)`
     ).bind(email, source, row.confirm_token, row.unsubscribe_token, ip).run();
     await logEvent(env, email, "subscribed", source, ip);
+    // Referral attribution: only for brand-new signups, only when the code
+    // is real and not the subscriber's own. First link wins (UNIQUE email).
+    if (ref) {
+      try {
+        const owner = await env.DB.prepare("SELECT email FROM referral_codes WHERE code = ?1")
+          .bind(ref).first();
+        if (owner && owner.email !== email) {
+          await env.DB.prepare(
+            "INSERT OR IGNORE INTO referrals (referee_email, code, ip) VALUES (?1, ?2, ?3)"
+          ).bind(email, ref, ip).run();
+          await logEvent(env, email, "referred_signup", `code:${ref}`, ip);
+        }
+      } catch (err) {
+        console.error("referral attribution failed:", err);
+      }
+    }
   } else if (row.unsubscribed_at) {
     await logEvent(env, email, "resubscribe_requested", source, ip);
   }
@@ -185,13 +203,23 @@ async function handleBlast(request, env, url) {
   const batch = eligible.slice(0, BLAST_BATCH);
   let sent = 0;
   const failed = [];
+  const htmlTemplate = issueEmailHtml(rendered, date);
+  const textTemplate = issueEmailText(markdown, date);
   for (const r of batch) {
     const unsubUrl = `${url.origin}/brief/unsubscribe?t=${r.unsubscribe_token}`;
+    const code = await referralCode(env, r.email);
+    const fills = {
+      "{{unsubscribe_url}}": unsubUrl,
+      "{{referral_url}}": `${url.origin}/brief?ref=${code}`,
+      "{{referral_count}}": String(await referralCount(env, code)),
+      "{{share_url}}": `${url.origin}/brief/share?t=${r.unsubscribe_token}`,
+    };
+    const fill = (s) => Object.entries(fills).reduce((acc, [k, v]) => acc.replaceAll(k, v), s);
     const ok = await sendEmail(env, {
       to: r.email,
       subject,
-      text: issueEmailText(markdown, date, unsubUrl),
-      html: issueEmailHtml(rendered, date).replaceAll("{{unsubscribe_url}}", unsubUrl),
+      text: fill(textTemplate),
+      html: fill(htmlTemplate),
       emailHeaders: {
         "List-Unsubscribe": `<${unsubUrl}>`,
         "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
@@ -230,6 +258,11 @@ async function confirmPage(env, url) {
      WHERE confirm_token = ?1`
   ).bind(token).run();
   await logEvent(env, row.email, "confirmed", row.unsubscribed_at ? "after-unsubscribe" : "");
+  // Double opt-in complete: if someone referred this subscriber, the
+  // referrer's credit exists as of this moment (and never before it).
+  if (!row.confirmed_at || row.unsubscribed_at) {
+    await creditReferral(env, url, row.email);
+  }
   // Tell the operator the list grew — same channel as contact-form leads.
   // Only on a real state change: repeat clicks of the same link stay quiet.
   if (env.CONTACT_EMAIL && (!row.confirmed_at || row.unsubscribed_at)) {
@@ -374,7 +407,7 @@ export const POSTAL_ADDRESS = "WYEA, Newport Beach, California";
 const SITE = "https://wyea.ai";
 
 export function issueEmailText(markdown, issueDate, unsubUrl) {
-  return `${markdown}\n\n--\n${SIGNATURE}\n${POSTAL_ADDRESS}\nRead online: ${SITE}/brief/${issueDate}\nUnsubscribe: ${unsubUrl || "{{unsubscribe_url}}"}`;
+  return `${markdown}\n\n--\nForward this to one colleague who would use it.\nOr share your personal link: {{referral_url}} ({{referral_count}} confirmed referrals so far)\nTrack your rewards: {{share_url}}\n\n${SIGNATURE}\n${POSTAL_ADDRESS}\nRead online: ${SITE}/brief/${issueDate}\nUnsubscribe: ${unsubUrl || "{{unsubscribe_url}}"}`;
 }
 
 export function issueEmailHtml(rendered, issueDate) {
@@ -412,7 +445,14 @@ export function issueEmailHtml(rendered, issueDate) {
       <tr><td align="center" style="text-align:center">
         ${styled}
       </td></tr>
-      <tr><td align="center" style="font-family:${FONT};font-size:12px;color:#8b94ad;text-align:center;border-top:1px solid #e3ddd1;padding-top:16px;line-height:1.7">
+      <tr><td align="center" style="font-family:${FONT};font-size:13px;color:#3c4763;text-align:center;border-top:1px solid #e3ddd1;padding:18px 0 0;line-height:1.7">
+        Forward this to one colleague who would use it.<br>
+        Or share your personal link:
+        <a href="{{referral_url}}" style="color:#16213a;text-decoration:underline">{{referral_url}}</a><br>
+        {{referral_count}} confirmed referral(s) so far &middot;
+        <a href="{{share_url}}" style="color:#16213a;text-decoration:underline">track your rewards</a>
+      </td></tr>
+      <tr><td align="center" style="font-family:${FONT};font-size:12px;color:#8b94ad;text-align:center;padding-top:16px;line-height:1.7">
         ${SIGNATURE}<br>
         ${POSTAL_ADDRESS}<br>
         <a href="{{unsubscribe_url}}" style="color:#8b94ad;text-decoration:underline">Unsubscribe</a> with one click, anytime.
@@ -438,6 +478,7 @@ function emailShell(inner) {
 async function briefPage(env, url) {
   const issues = await loadManifest(env, url.origin);
   const src = clean(url.searchParams.get("src"), MAX_SOURCE) || "brief-page";
+  const ref = clean(url.searchParams.get("ref"), 16).toLowerCase();
 
   const archive = issues.length
     ? `<ul class="archive-list">${issues.map((i) => {
@@ -456,7 +497,7 @@ async function briefPage(env, url) {
       <h1>The legal developments that matter, national to Orange County.</h1>
       <p class="lede">One email a week, readable in four minutes. Court decisions,
       rule changes, and AI-and-practice developments. Free.</p>
-      ${subscribeFormHtml(src, "brief")}
+      ${subscribeFormHtml(src, "brief", ref)}
     </div>
   </section>
 
@@ -531,9 +572,10 @@ async function issuePage(env, url, date) {
   });
 }
 
-function subscribeFormHtml(source, idSuffix) {
+function subscribeFormHtml(source, idSuffix, ref = "") {
   return `
   <form class="subscribe-form" data-source="${escapeHtml(source)}" id="subscribe-${idSuffix}">
+    <input type="hidden" name="ref" value="${escapeHtml(ref)}">
     <div class="subscribe-row">
       <label class="visually-hidden" for="email-${idSuffix}">Email</label>
       <input id="email-${idSuffix}" type="email" name="email" autocomplete="email"
@@ -558,6 +600,48 @@ function statusCard(title, inner) {
       <p class="lede">${inner}</p>
     </div>
   </section>`;
+}
+
+/* ---------- share / referral status page ----------
+   Linked from every issue footer; authenticated by the subscriber's own
+   unsubscribe token (already in their email, never guessable). Shows the
+   personal link, confirmed-referral count, and tier progress. */
+
+async function sharePage(env, url) {
+  const token = clean(url.searchParams.get("t"), 64);
+  const row = token
+    ? await env.DB.prepare("SELECT * FROM subscribers WHERE unsubscribe_token = ?1").bind(token).first()
+    : null;
+  if (!row) {
+    return page("The Brief", statusCard(
+      "That link did not work",
+      `This share link is not valid. Use the Share link from any issue of
+       The Brief in your inbox.`
+    ), 404);
+  }
+  const code = await referralCode(env, row.email);
+  const count = await referralCount(env, code);
+  const link = `${url.origin}/brief?ref=${code}`;
+  const tiers = REFERRAL_TIERS.map((t) => {
+    const done = count >= t.count;
+    return `<li class="${done ? "tier-done" : ""}">${done ? "Unlocked" : `${count} of ${t.count}`}:
+      refer ${t.count} colleagues and get ${escapeHtml(t.name)}</li>`;
+  }).join("");
+  const body = `
+  <section class="brief-hero">
+    <div class="container narrow">
+      <p class="eyebrow">The Brief · Share it</p>
+      <h1>Forward The Brief to a colleague who would use it.</h1>
+      <p class="lede">Your personal link. When a colleague subscribes and
+      confirms through it, the referral counts toward your rewards.</p>
+      <div class="share-box">
+        <p class="share-link"><a href="${link}">${link}</a></p>
+        <p class="micro">Confirmed referrals so far: <strong>${count}</strong></p>
+      </div>
+      <ul class="tier-list">${tiers}</ul>
+    </div>
+  </section>`;
+  return page("Share The Brief — WYEA", body);
 }
 
 /* ---------- assets ---------- */
@@ -752,6 +836,12 @@ text-transform:uppercase;color:var(--bronze-deep);margin:2em 0 .7em}
 .issue hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 .issue a{word-break:break-all}
 .issue-cta{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
+.share-box{border:1px solid var(--line);border-radius:10px;background:var(--white);
+padding:22px 24px;margin-top:1.6em}
+.share-link a{font-family:var(--font-display);font-size:1.15rem;word-break:break-all}
+.tier-list{list-style:none;margin-top:1.4em}
+.tier-list li{padding:12px 2px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+.tier-list li.tier-done{color:var(--bronze-deep);font-weight:600}
 .site-footer{background:#101a30;color:#8b94ad;font-size:.85rem;margin-top:0}
 .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
 padding-top:22px;padding-bottom:22px}
@@ -778,6 +868,7 @@ const SUBSCRIBE_JS = `
         body: JSON.stringify({
           email: form.email.value,
           website: form.website.value,
+          ref: (form.ref && form.ref.value) || params.get("ref") || "",
           source: params.get("src") || form.getAttribute("data-source") || "brief-page"
         })
       }).then(function (res) {
@@ -813,6 +904,92 @@ export function prettyDate(iso) {
 async function sha256Hex(text) {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/* ---------- referral loop ----------
+   TLDR-style growth engine on the owned stack. Codes are stable per
+   subscriber and generated lazily; credit exists only when a referee
+   completes double opt-in; rewards are granted once per (referrer, tier)
+   and fulfillment is manual (operator notification) until an asset ships. */
+
+export const REFERRAL_TIERS = [
+  { count: 3, name: "the WYEA practice-area prompt pack" },
+];
+
+async function referralCode(env, email) {
+  const existing = await env.DB.prepare("SELECT code FROM referral_codes WHERE email = ?1")
+    .bind(email).first();
+  if (existing) return existing.code;
+  const bytes = new Uint8Array(5);
+  crypto.getRandomValues(bytes);
+  const code = [...bytes].map((b) => "abcdefghjkmnpqrstuvwxyz23456789"[b % 31]).join("");
+  await env.DB.prepare("INSERT OR IGNORE INTO referral_codes (email, code) VALUES (?1, ?2)")
+    .bind(email, code).run();
+  // INSERT OR IGNORE lost a race or the code collided: read back the truth.
+  const row = await env.DB.prepare("SELECT code FROM referral_codes WHERE email = ?1")
+    .bind(email).first();
+  return row ? row.code : code;
+}
+
+async function referralCount(env, code) {
+  const r = await env.DB.prepare(
+    "SELECT COUNT(*) AS n FROM referrals WHERE code = ?1 AND confirmed_at IS NOT NULL"
+  ).bind(code).first();
+  return r ? r.n : 0;
+}
+
+// Called when a referee completes double opt-in: stamp the credit, then
+// grant any tier the referrer just crossed. Everything best-effort — a
+// referral hiccup must never break the confirm page.
+async function creditReferral(env, url, refereeEmail) {
+  try {
+    const ref = await env.DB.prepare(
+      "SELECT code FROM referrals WHERE referee_email = ?1 AND confirmed_at IS NULL"
+    ).bind(refereeEmail).first();
+    if (!ref) return;
+    await env.DB.prepare(
+      "UPDATE referrals SET confirmed_at = datetime('now') WHERE referee_email = ?1"
+    ).bind(refereeEmail).run();
+    const owner = await env.DB.prepare("SELECT email FROM referral_codes WHERE code = ?1")
+      .bind(ref.code).first();
+    if (!owner) return;
+    await logEvent(env, owner.email, "referral_confirmed", `referee:${refereeEmail}`);
+    const count = await referralCount(env, ref.code);
+    for (const tier of REFERRAL_TIERS) {
+      if (count < tier.count) continue;
+      const granted = await env.DB.prepare(
+        "INSERT OR IGNORE INTO reward_grants (email, tier) VALUES (?1, ?2)"
+      ).bind(owner.email, tier.count).run();
+      if (!granted.meta.changes) continue; // already granted earlier
+      await logEvent(env, owner.email, "reward_granted", `tier:${tier.count}`);
+      await sendEmail(env, {
+        to: owner.email,
+        subject: `You unlocked ${tier.name}`,
+        text: [
+          `${tier.count} colleagues you referred are now confirmed readers of The Brief.`,
+          `That unlocks ${tier.name}. Reply to this email and we will send it over.`,
+          "",
+          `Keep sharing: ${url.origin}/brief?ref=${ref.code}`,
+          "",
+          "The Brief by WYEA, Newport Beach, California",
+        ].join("\n"),
+        html: emailShell(`
+          <p><strong>${tier.count} colleagues you referred are now confirmed readers of The Brief.</strong></p>
+          <p>That unlocks ${escapeHtml(tier.name)}. Reply to this email and we will send it over.</p>
+          <p>Keep sharing: <a href="${url.origin}/brief?ref=${ref.code}">${url.origin}/brief?ref=${ref.code}</a></p>
+        `),
+      });
+      if (env.CONTACT_EMAIL) {
+        await sendEmail(env, {
+          to: env.CONTACT_EMAIL,
+          subject: `The Brief: reward tier ${tier.count} unlocked by ${owner.email}`,
+          text: `${owner.email} reached ${count} confirmed referrals and was promised ${tier.name}. Fulfill by reply.`,
+        });
+      }
+    }
+  } catch (err) {
+    console.error("referral credit failed:", err);
+  }
 }
 
 /* ---------- audit log ----------

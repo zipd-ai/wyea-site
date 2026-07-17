@@ -9,3 +9,5 @@ Makefile
 LAUNCH_CHECKLIST.md
 .env
 *.preview.html
+REFERRALS.md
+audit.mjs

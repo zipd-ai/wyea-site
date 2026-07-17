@@ -75,7 +75,11 @@ const bodyHtml = issueEmailHtml(renderMarkdown(md), date);
 
 if (dryRun) {
   const preview = issuePath.replace(/\.md$/, ".preview.html");
-  writeFileSync(preview, bodyHtml.replaceAll("{{unsubscribe_url}}", `${SITE}/brief/unsubscribe?t=PREVIEW`));
+  writeFileSync(preview, bodyHtml
+    .replaceAll("{{unsubscribe_url}}", `${SITE}/brief/unsubscribe?t=PREVIEW`)
+    .replaceAll("{{referral_url}}", `${SITE}/brief?ref=preview`)
+    .replaceAll("{{referral_count}}", "0")
+    .replaceAll("{{share_url}}", `${SITE}/brief/share?t=PREVIEW`));
   const list = testAddress ? [] : fetchSubscribers(date);
   console.log(`dry run: subject "${subject}", ${list.length} confirmed subscriber(s) not yet sent this issue.`);
   console.log(`preview written to ${preview}`);
@@ -146,6 +150,13 @@ async function directSend(recipients, { log }) {
   const sentUnflushed = [];
   for (const [i, r] of recipients.entries()) {
     const unsubUrl = `${SITE}/brief/unsubscribe?t=${r.unsubscribe_token}`;
+    const fills = {
+      "{{unsubscribe_url}}": unsubUrl,
+      "{{referral_url}}": `${SITE}/brief?ref=${r.ref_code || "unknown"}`,
+      "{{referral_count}}": String(r.ref_count || 0),
+      "{{share_url}}": `${SITE}/brief/share?t=${r.unsubscribe_token}`,
+    };
+    const fill = (s) => Object.entries(fills).reduce((acc, [k, v]) => acc.replaceAll(k, v), s);
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -157,8 +168,8 @@ async function directSend(recipients, { log }) {
         from: FROM,
         to: [r.email],
         subject,
-        text: issueEmailText(md, date, unsubUrl),
-        html: bodyHtml.replaceAll("{{unsubscribe_url}}", unsubUrl),
+        text: fill(issueEmailText(md, date)),
+        html: fill(bodyHtml),
         headers: {
           "List-Unsubscribe": `<${unsubUrl}>`,
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
@@ -189,8 +200,17 @@ async function directSend(recipients, { log }) {
 /* ---------- shared ---------- */
 
 function fetchSubscribers(issueDate) {
+  // Direct mode generates any missing referral codes up front (the worker
+  // path does it lazily per recipient).
+  d1(`INSERT OR IGNORE INTO referral_codes (email, code)
+      SELECT email, lower(hex(randomblob(4))) FROM subscribers
+      WHERE confirmed_at IS NOT NULL AND unsubscribed_at IS NULL`);
   return d1(
-    `SELECT s.email, s.unsubscribe_token FROM subscribers s
+    `SELECT s.email, s.unsubscribe_token, rc.code AS ref_code,
+            (SELECT COUNT(*) FROM referrals r
+             WHERE r.code = rc.code AND r.confirmed_at IS NOT NULL) AS ref_count
+     FROM subscribers s
+     LEFT JOIN referral_codes rc ON rc.email = s.email
      WHERE s.confirmed_at IS NOT NULL AND s.unsubscribed_at IS NULL
        AND NOT EXISTS (SELECT 1 FROM issue_sends x
                        WHERE x.issue = '${issueDate}' AND x.email = s.email)
