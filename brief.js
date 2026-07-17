@@ -230,6 +230,22 @@ async function confirmPage(env, url) {
      WHERE confirm_token = ?1`
   ).bind(token).run();
   await logEvent(env, row.email, "confirmed", row.unsubscribed_at ? "after-unsubscribe" : "");
+  // Tell the operator the list grew — same channel as contact-form leads.
+  // Only on a real state change: repeat clicks of the same link stay quiet.
+  if (env.CONTACT_EMAIL && (!row.confirmed_at || row.unsubscribed_at)) {
+    try {
+      await sendEmail(env, {
+        to: env.CONTACT_EMAIL,
+        subject: `The Brief: new subscriber confirmed (${row.email})`,
+        text: [
+          `${row.email} just confirmed their subscription to The Brief.`,
+          `Source: ${row.source || "unknown"}${row.unsubscribed_at ? " (resubscribe after an unsubscribe)" : ""}`,
+        ].join("\n"),
+      });
+    } catch (err) {
+      console.error("subscriber notification failed:", err);
+    }
+  }
   return page("You're in — The Brief", statusCard(
     "You're in.",
     `First issue arrives Wednesday. One email a week, readable in four minutes.
