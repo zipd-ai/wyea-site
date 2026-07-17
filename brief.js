@@ -370,9 +370,9 @@ export function issueEmailHtml(rendered, issueDate) {
   const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
   const styled = rendered
     .replaceAll("<h1>", `<h1 align="center" style="font-family:${FONT};font-size:19px;font-weight:700;color:#16213a;text-align:center;margin:6px 0 26px">`)
-    .replaceAll("<h2>", `<h2 style="font-family:${FONT};font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:30px 0 10px">`)
-    .replaceAll("<h3>", `<h3 style="font-family:${FONT};font-size:17px;font-weight:600;color:#16213a;margin:20px 0 4px">`)
-    .replaceAll("<p>", `<p style="font-family:${FONT};font-size:15px;line-height:1.6;color:#1f2733;margin:8px 0">`)
+    .replaceAll("<h2>", `<h2 align="center" style="font-family:${FONT};font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;text-align:center;margin:30px 0 10px">`)
+    .replaceAll("<h3>", `<h3 align="center" style="font-family:${FONT};font-size:17px;font-weight:600;color:#16213a;text-align:center;margin:20px 0 4px">`)
+    .replaceAll("<p>", `<p align="center" style="font-family:${FONT};font-size:15px;line-height:1.6;color:#1f2733;text-align:center;margin:8px 0">`)
     .replaceAll("<ul>", `<ul style="font-family:${FONT};font-size:15px;line-height:1.6;color:#1f2733;margin:8px 0 8px 20px;padding:0">`)
     .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e3ddd1;margin:24px 0">')
     .replaceAll("<a ", '<a style="color:#16213a;text-decoration:underline" ');
@@ -390,7 +390,7 @@ export function issueEmailHtml(rendered, issueDate) {
       </td></tr>
       <tr><td align="center" style="font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;color:#16213a;text-align:center;line-height:1.1">The Brief</td></tr>
       <tr><td align="center" style="font-family:${FONT};font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a6a2f;font-weight:600;text-align:center;padding:4px 0 24px">by WYEA &middot; Newport Beach</td></tr>
-      <tr><td align="left" style="text-align:left">
+      <tr><td align="center" style="text-align:center">
         ${styled}
       </td></tr>
       <tr><td align="center" style="font-family:${FONT};font-size:12px;color:#8b94ad;text-align:center;border-top:1px solid #e3ddd1;padding-top:16px;line-height:1.7">
