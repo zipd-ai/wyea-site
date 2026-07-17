@@ -372,13 +372,17 @@ export function issueEmailHtml(rendered, issueDate) {
     .replaceAll("<h1>", `<h1 align="center" style="font-family:${FONT};font-size:19px;font-weight:700;color:#16213a;text-align:center;margin:6px 0 26px">`)
     .replaceAll("<h2>", `<h2 style="font-family:${FONT};font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;margin:30px 0 10px">`)
     .replaceAll("<h3>", `<h3 style="font-family:${FONT};font-size:17px;font-weight:600;color:#16213a;margin:20px 0 4px">`)
-    .replaceAll("<p>", `<p style="font-family:${FONT};font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0">`)
-    .replaceAll("<ul>", `<ul style="font-family:${FONT};font-size:15px;line-height:1.6;color:#3c4763;margin:8px 0 8px 20px;padding:0">`)
+    .replaceAll("<p>", `<p style="font-family:${FONT};font-size:15px;line-height:1.6;color:#1f2733;margin:8px 0">`)
+    .replaceAll("<ul>", `<ul style="font-family:${FONT};font-size:15px;line-height:1.6;color:#1f2733;margin:8px 0 8px 20px;padding:0">`)
     .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e3ddd1;margin:24px 0">')
-    .replaceAll("<a ", '<a style="color:#8a6a2f;text-decoration:underline" ');
+    .replaceAll("<a ", '<a style="color:#16213a;text-decoration:underline" ');
   return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#ffffff">
   <tr><td align="center" style="padding:28px 12px">
-    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:600px">
+    <!-- classic newsletter centering: align attribute + fixed width
+         attribute on the table. No width:100% here — clients that strip
+         max-width would blow the column out to full width; mobile apps
+         shrink fixed-width tables to fit on their own. -->
+    <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;margin:0 auto">
       <tr><td align="center" style="font-family:${FONT};font-size:13px;color:#3c4763;text-align:center;padding-bottom:20px">
         <a href="${SITE}/brief" style="color:#3c4763;text-decoration:underline">Subscribe</a>
         &nbsp;|&nbsp;
