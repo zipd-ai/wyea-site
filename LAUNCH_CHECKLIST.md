@@ -35,9 +35,9 @@ is checked, the page stays unannounced.
       .command file still worth doing once for feel.)
 - [ ] Deliverability beyond Gmail: subscribe an Outlook/firm-domain address,
       confirm the blast lands in its INBOX (lawyer audience = Outlook heavy)
-- [ ] PHYSICAL POSTAL ADDRESS in brief.js (POSTAL_ADDRESS) — CAN-SPAM
-      requires a street or PO box in every issue; hard legal gate before any
-      non-Anderson recipient
+- [x] PHYSICAL POSTAL ADDRESS set in brief.js (2026-07-17, the LLC's
+      registered address; swappable for a PO box anytime) — CAN-SPAM gate
+      cleared, external recipients are legal
 - [x] First real issue dress rehearsal DONE 2026-07-16: The-Brief-2026-07-16
       (9 items, every one verified against a fetched source; slip opinions
       read directly) committed + manifest, archive live at

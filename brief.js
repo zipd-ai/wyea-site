@@ -411,9 +411,9 @@ async function sendEmail(env, { to, subject, text, html, emailHeaders, idempoten
    substituted per recipient. */
 
 export const SIGNATURE = "Curated by WYEA, Newport Beach - firm-owned drafting and review tools.";
-// CAN-SPAM requires a valid physical postal address in every issue.
-// TODO(anderson): set the street or PO box address before the first real send.
-export const POSTAL_ADDRESS = "WYEA, Newport Beach, California";
+// CAN-SPAM postal address (the LLC's registered address; swap for a PO box
+// anytime — the change reaches the next send automatically).
+export const POSTAL_ADDRESS = "WYEA, 20264 Estuary Lane, Newport Beach, CA 92660";
 const SITE = "https://wyea.ai";
 
 export function issueEmailText(markdown, issueDate, unsubUrl) {
