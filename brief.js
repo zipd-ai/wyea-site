@@ -369,6 +369,9 @@ export function issueEmailHtml(rendered, issueDate) {
   // email. Font stack repeated per cell for the same reason.
   const FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
   const styled = rendered
+    // The wordmark above already says The Brief; the title shows only the
+    // date (the full "The Brief, <date>" stays as the email subject).
+    .replace(/<h1>The Brief,\s*/, "<h1>")
     .replaceAll("<h1>", `<h1 align="center" style="font-family:${FONT};font-size:19px;font-weight:700;color:#16213a;text-align:center;margin:6px 0 26px">`)
     .replaceAll("<h2>", `<h2 align="center" style="font-family:${FONT};font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;text-align:center;margin:30px 0 10px">`)
     .replaceAll("<h3>", `<h3 align="center" style="font-family:${FONT};font-size:17px;font-weight:600;color:#16213a;text-align:center;margin:20px 0 4px">`)
@@ -389,7 +392,7 @@ export function issueEmailHtml(rendered, issueDate) {
         <a href="${SITE}/brief/${issueDate}" style="color:#3c4763;text-decoration:underline">View Online</a>
       </td></tr>
       <tr><td align="center" style="font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;color:#16213a;text-align:center;line-height:1.1">The Brief</td></tr>
-      <tr><td align="center" style="font-family:${FONT};font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a6a2f;font-weight:600;text-align:center;padding:4px 0 24px">by WYEA &middot; Newport Beach</td></tr>
+      <tr><td align="center" style="font-family:${FONT};font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a6a2f;font-weight:600;text-align:center;padding:4px 0 24px">by WYEA</td></tr>
       <tr><td align="center" style="text-align:center">
         ${styled}
       </td></tr>
