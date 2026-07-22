@@ -594,7 +594,7 @@ function subscribeFormHtml(source, idSuffix, ref = "") {
     <div class="subscribe-row">
       <label class="visually-hidden" for="email-${idSuffix}">Email</label>
       <input id="email-${idSuffix}" type="email" name="email" autocomplete="email"
-             maxlength="254" placeholder="you@yourfirm.com" required>
+             maxlength="254" placeholder="you@example.com" required>
       <button type="submit" class="btn btn-primary">Subscribe</button>
     </div>
     <label class="hp" aria-hidden="true">Website
