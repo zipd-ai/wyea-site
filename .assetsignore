@@ -1,6 +1,10 @@
 README.md
 wrangler.jsonc
 .assetsignore
+.git/
+.gitignore
+.wrangler/
+.env*
 worker.js
 schema.sql
 brief.js
