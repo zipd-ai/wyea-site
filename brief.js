@@ -747,7 +747,7 @@ function page(title, body, status = 200, meta = {}) {
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="wordmark" href="/">WYEA<span class="wordmark-sub">Whittle &amp; Ye Engineering Associates</span></a>
+      <a class="wordmark" href="/">WYEA</a>
       <nav class="site-nav">
         <a href="/brief">The Brief</a>
         <a class="nav-cta" href="/#contact">Start a conversation</a>
@@ -758,7 +758,7 @@ function page(title, body, status = 200, meta = {}) {
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>Curated by WYEA, Newport Beach - firm-owned drafting and review tools.</span>
-      <span>© 2026 Whittle and Ye Engineering Associates LLC</span>
+      <span>© 2026 WYEA</span>
     </div>
   </footer>
   <script>${SUBSCRIBE_JS}</script>
