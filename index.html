@@ -4,24 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WYEA — Custom Legal Technology for Orange County Law Firms</title>
-  <meta name="description" content="WYEA builds catered software for Orange County law firms: modern technology, delivered with white-glove service.">
+  <meta name="description" content="WYEA builds custom software for Orange County law firms: every citation verified word-for-word against the source, delivered with white-glove service.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="WYEA — Custom Legal Technology for Orange County Law Firms">
-  <meta property="og:description" content="Catered software for Orange County law firms: verifiable AI, white-glove service, built by the two engineers who answer your calls.">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:description" content="Custom software for Orange County law firms: verified citations, white-glove service, built by the two engineers who answer your calls.">
+  <meta name="twitter:card" content="summary_large_image">
   <meta property="og:url" content="https://wyea.ai/">
+  <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://wyea.ai/">
-  <!-- Still to add: og:image (1200x630 PNG, absolute URL) once we design one. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts are self-hosted: no third-party origin round-trips (Google Fonts
+       costs two — CSS then files — and cache partitioning means first-time
+       visitors always pay). Preload + font-display: swap per web.dev. -->
+  <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* ============================================================
        WYEA
        Palette: ink navy / warm paper / bronze accent
        Inlined so the page renders styled anywhere — file previews,
        double-clicked files, any static host — with zero extra requests.
+
+       Redesigned Aug 2026 against competitor/UX research: fragment-
+       length copy, meaning-carrying headings, proof strip, promise
+       band, security section, FAQ for depth-on-demand.
        ============================================================ */
+
+    @font-face {
+      font-family: "Fraunces";
+      font-style: normal;
+      font-weight: 400 600;
+      font-display: swap;
+      src: url("/fonts/fraunces-var.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400 600;
+      font-display: swap;
+      src: url("/fonts/inter-var.woff2") format("woff2");
+    }
 
     :root {
       --ink: #16213a;
@@ -32,6 +56,8 @@
       --bronze-deep: #8a6a2f;
       --line: #e3ddd1;
       --white: #ffffff;
+      --verify: #1e6b45;
+      --flag: #9a5b2f;
 
       --font-display: "Fraunces", Georgia, "Times New Roman", serif;
       --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -45,7 +71,7 @@
       font-family: var(--font-body);
       color: var(--ink);
       background: var(--paper);
-      line-height: 1.65;
+      line-height: 1.6;
       font-size: 17px;
       -webkit-font-smoothing: antialiased;
     }
@@ -59,23 +85,24 @@
     h1, h2, h3 {
       font-family: var(--font-display);
       font-weight: 500;
-      line-height: 1.15;
+      line-height: 1.12;
       letter-spacing: -0.01em;
+      text-wrap: balance;
     }
 
-    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
-    h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 0.6em; }
-    h3 { font-size: 1.2rem; margin-bottom: 0.4em; }
+    h1 { font-size: clamp(2.3rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin-bottom: 0.5em; }
+    h3 { font-size: 1.12rem; margin-bottom: 0.35em; }
 
-    p { color: var(--ink-soft); }
+    p { color: var(--ink-soft); max-width: 65ch; }
 
     .eyebrow {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--bronze-deep);
-      margin-bottom: 1.1em;
+      margin-bottom: 1em;
     }
 
     .eyebrow-light { color: #d9bf85; }
@@ -86,7 +113,7 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(250, 248, 244, 0.92);
+      background: rgba(250, 248, 244, 0.94);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
@@ -95,30 +122,18 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 14px;
-      padding-bottom: 14px;
+      padding-top: 13px;
+      padding-bottom: 13px;
       gap: 24px;
     }
 
     .wordmark {
       font-family: var(--font-display);
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 600;
       color: var(--ink);
       text-decoration: none;
-      display: flex;
-      flex-direction: column;
       line-height: 1.1;
-    }
-
-    .wordmark-sub {
-      font-family: var(--font-body);
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      white-space: nowrap;
     }
 
     .site-nav {
@@ -129,7 +144,7 @@
     }
 
     .site-nav a {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       font-weight: 500;
       color: var(--ink-soft);
       text-decoration: none;
@@ -150,31 +165,46 @@
     /* ---------- hero ---------- */
 
     .hero {
-      padding: 110px 0 90px;
+      padding: 88px 0 72px;
       background:
-        radial-gradient(1100px 480px at 85% -10%, rgba(165, 128, 60, 0.10), transparent 60%),
+        radial-gradient(1100px 480px at 88% -10%, rgba(165, 128, 60, 0.10), transparent 60%),
         var(--paper);
     }
 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+
     .hero-lede {
-      max-width: 640px;
-      margin-top: 1.4em;
-      font-size: 1.12rem;
+      margin-top: 1.1em;
+      font-size: 1.13rem;
+      max-width: 46ch;
     }
 
     .hero-actions {
       display: flex;
       gap: 14px;
-      margin-top: 2.2em;
+      margin-top: 1.8em;
       flex-wrap: wrap;
     }
+
+    .hero-trust {
+      margin-top: 1.6em;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
+    .hero-trust span { white-space: nowrap; }
 
     .btn {
       display: inline-block;
       padding: 13px 26px;
       border-radius: 7px;
       font-weight: 600;
-      font-size: 0.98rem;
+      font-size: 0.97rem;
       text-decoration: none;
       transition: background 0.15s ease, color 0.15s ease;
     }
@@ -191,32 +221,103 @@
     .btn-light { background: var(--white); color: var(--ink); }
     .btn-light:hover { background: var(--paper-deep); }
 
-    /* ---------- pillars ---------- */
+    /* verification card (hero visual) */
 
-    .pillars {
+    .verify-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 18px 44px rgba(22, 33, 58, 0.10);
+      overflow: hidden;
+      font-size: 0.85rem;
+    }
+
+    .verify-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink-soft);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .verify-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+
+    .verify-body { padding: 16px; display: grid; gap: 10px; }
+
+    .verify-line { height: 9px; border-radius: 4px; background: var(--paper-deep); }
+    .verify-line.w80 { width: 80%; }
+    .verify-line.w60 { width: 60%; }
+
+    .cite {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: var(--paper);
+    }
+
+    .cite-badge {
+      flex: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 99px;
+      margin-top: 1px;
+    }
+
+    .cite-ok .cite-badge { background: rgba(30, 107, 69, 0.12); color: var(--verify); }
+    .cite-flag .cite-badge { background: rgba(154, 91, 47, 0.13); color: var(--flag); }
+
+    .cite b { display: block; font-size: 0.85rem; color: var(--ink); }
+    .cite small { color: var(--ink-soft); font-size: 0.82rem; line-height: 1.45; display: block; }
+
+    .verify-caption {
+      padding: 12px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.85rem;
+    }
+
+    .verify-caption b { color: var(--ink); }
+
+    /* ---------- proof strip ---------- */
+
+    .proof {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       background: var(--white);
     }
 
-    .pillar-grid {
+    .proof-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      padding-top: 56px;
-      padding-bottom: 56px;
+      gap: 28px;
+      padding-top: 34px;
+      padding-bottom: 34px;
     }
 
-    .pillar h3 {
-      color: var(--bronze-deep);
-      font-size: 1.1rem;
+    .proof-item b {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      line-height: 1.25;
     }
 
-    .pillar p { font-size: 0.97rem; }
+    .proof-item span { font-size: 0.85rem; color: var(--ink-soft); }
 
     /* ---------- sections ---------- */
 
-    .section { padding: 96px 0; }
+    .section { padding: 84px 0; }
 
     .section-alt {
       background: var(--paper-deep);
@@ -225,9 +326,9 @@
     }
 
     .section-lede {
-      max-width: 560px;
-      margin-bottom: 2.5em;
-      font-size: 1.05rem;
+      max-width: 58ch;
+      margin-bottom: 2em;
+      font-size: 1.03rem;
     }
 
     /* ---------- services ---------- */
@@ -235,53 +336,58 @@
     .service-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-top: 2.2em;
+      gap: 24px;
     }
 
     .service {
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 30px 30px 26px;
+      padding: 26px 28px 22px;
     }
 
-    .service h3 { font-size: 1.15rem; }
-    .service p { font-size: 0.97rem; }
+    .service h3 { font-size: 1.1rem; }
+    .service p { font-size: 0.94rem; }
+
+    /* ---------- prototype promise band ---------- */
+
+    .promise {
+      background: var(--ink);
+      padding: 64px 0;
+    }
+
+    .promise h2 { color: var(--white); max-width: 22ch; }
+    .promise p { color: #b9c0d4; max-width: 58ch; margin-top: 0.7em; }
+    .promise .btn { margin-top: 1.6em; }
 
     /* ---------- steps ---------- */
 
     .steps {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 36px 48px;
-      margin-top: 2.4em;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: 2em;
     }
 
-    .steps li {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
+    .steps h3 { font-size: 1.02rem; }
+    .steps p { font-size: 0.9rem; }
 
     .step-num {
       font-family: var(--font-display);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: var(--bronze);
-      line-height: 1.2;
-      min-width: 48px;
+      display: block;
+      margin-bottom: 6px;
     }
-
-    .steps p { font-size: 0.97rem; }
 
     /* ---------- confidentiality ---------- */
 
     .commit-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 24px;
     }
 
     .commit {
@@ -289,20 +395,17 @@
       border: 1px solid var(--line);
       border-top: 3px solid var(--bronze);
       border-radius: 10px;
-      padding: 28px 26px 24px;
+      padding: 24px 24px 20px;
     }
 
-    .commit h3 { font-size: 1.1rem; }
-    .commit p { font-size: 0.95rem; }
+    .commit h3 { font-size: 1.05rem; }
+    .commit p { font-size: 0.92rem; }
 
     /* ---------- principals ---------- */
 
     .principal-grid {
       display: grid;
-      /* Single card while Johnson's is commented out; restore
-         repeat(2, 1fr) and drop the max-width when it returns. */
-      grid-template-columns: 1fr;
-      max-width: 620px;
+      grid-template-columns: repeat(2, 1fr);
       gap: 28px;
     }
 
@@ -310,16 +413,17 @@
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 34px 32px;
+      padding: 30px 30px 26px;
     }
 
     .principal-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
+      width: 96px;
+      height: 96px;
+      border-radius: 12px;
       object-fit: cover;
       display: block;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
     }
 
     .principal-role {
@@ -328,14 +432,14 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--bronze-deep);
-      margin-bottom: 1.2em;
+      margin-bottom: 1em;
     }
 
-    .principal-bio { font-size: 0.96rem; }
+    .principal-bio { font-size: 0.95rem; }
 
     .principal-link {
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 14px;
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--bronze-deep);
@@ -345,14 +449,50 @@
 
     .principal-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
-    .placeholder {
-      border: 1.5px dashed var(--bronze);
-      border-radius: 8px;
-      background: rgba(165, 128, 60, 0.06);
-      padding: 14px 16px;
-      font-size: 0.9rem;
-      color: var(--bronze-deep);
+    /* Reserved: when the pilot firm agrees in writing to be named, add a
+       testimonial block here — one named OC partner with a concrete number
+       outperforms everything else on this page. */
+
+    /* ---------- FAQ ---------- */
+
+    .faq { max-width: 760px; }
+
+    .faq details {
+      border-bottom: 1px solid var(--line);
+      padding: 4px 0;
     }
+
+    .faq summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.08rem;
+      padding: 16px 0;
+      color: var(--ink);
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      font-family: var(--font-body);
+      color: var(--bronze-deep);
+      font-size: 1.3rem;
+      font-weight: 400;
+      flex: none;
+    }
+    .faq details[open] summary::after { content: "–"; }
+
+    .faq details p {
+      padding: 0 0 18px;
+      font-size: 0.95rem;
+    }
+
+    .faq summary:focus-visible { outline: 2px solid var(--bronze); outline-offset: 2px; }
 
     /* ---------- contact ---------- */
 
@@ -369,13 +509,15 @@
 
     .contact-lede {
       color: #b9c0d4;
-      margin: 1em 0 2em;
+      margin: 0.8em auto 2em;
+      max-width: 48ch;
     }
 
     .contact-alt {
       margin-top: 1.4em;
       font-size: 0.92rem;
       color: #b9c0d4;
+      max-width: none;
     }
 
     .contact-alt a {
@@ -388,6 +530,7 @@
       margin-top: 2em;
       font-size: 0.88rem;
       color: #8b94ad;
+      max-width: none;
     }
 
     .contact-form {
@@ -458,18 +601,20 @@
       text-align: center;
       min-height: 1.5em;
       margin: 0;
+      max-width: none;
     }
 
     .contact-success {
       color: #b9c0d4;
       font-size: 1.05rem;
       margin: 1.5em 0;
+      max-width: none;
     }
 
     /* ---------- the brief (newsletter band) ---------- */
 
     .brief-band {
-      padding: 72px 0;
+      padding: 56px 0;
       background: var(--paper-deep);
       border-top: 1px solid var(--line);
     }
@@ -478,7 +623,7 @@
 
     .brief-band .section-lede { margin-bottom: 0; }
 
-    .brief-form { margin-top: 1.8em; max-width: 480px; }
+    .brief-form { margin-top: 1.2em; max-width: 480px; }
 
     .brief-row { display: flex; gap: 10px; }
 
@@ -555,29 +700,124 @@
 
     /* ---------- responsive ---------- */
 
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .proof-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 860px) {
       /* the nav must never wrap: below this, section links hide (CTA stays) */
       .site-nav a:not(.nav-cta) { display: none; }
 
-      .pillar-grid,
       .service-grid,
       .steps,
       .commit-grid,
       .principal-grid,
+      .proof-grid,
       .form-grid {
         grid-template-columns: 1fr;
       }
 
-      .desktop-break { display: none; }
+      .hero { padding: 56px 0 48px; }
+      .section { padding: 60px 0; }
+    }
 
-      .hero { padding: 70px 0 60px; }
-      .section { padding: 64px 0; }
-
-      /* the subtitle may wrap on small screens; nowrap would overflow the viewport */
-      .wordmark-sub { white-space: normal; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
     }
   </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "WYEA",
+    "legalName": "Whittle and Ye Engineering Associates LLC",
+    "url": "https://wyea.ai/",
+    "description": "WYEA builds custom AI software for Orange County law firms. Every citation is checked word-for-word against the source document — verified, or flagged for attorney review.",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Orange County, California"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Newport Beach",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "founder": [
+      {
+        "@type": "Person",
+        "name": "Anderson Whittle",
+        "jobTitle": "Principal Engineer & Founder",
+        "sameAs": "https://www.linkedin.com/in/anderson-whittle/"
+      },
+      {
+        "@type": "Person",
+        "name": "Johnson Ye",
+        "jobTitle": "Principal Engineer & Co-Founder",
+        "sameAs": "https://www.linkedin.com/in/johnsonye0303/"
+      }
+    ],
+    "knowsAbout": [
+      "legal AI software",
+      "verified AI citations",
+      "legal document review and drafting",
+      "law firm workflow automation",
+      "California litigation technology"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does WYEA handle privilege and confidentiality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "WYEA signs an NDA before seeing a single document. Client materials live in the firm's isolated environment, are never used to train any model, and every access is logged in a tamper-evident audit trail the firm can inspect. On-premise deployment is available when a matter demands it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does a WYEA engagement cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every engagement starts with a fixed-price four-week prototype, quoted before work begins — never an open-ended hourly bill for exploratory work. If the prototype earns it, the full build is scoped the same way: fixed price, defined deliverables."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is WYEA different from Harvey, CoCounsel, or other legal AI platforms?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Those are subscriptions to someone else's product; the firm adapts to them. WYEA builds one system around the firm's documents, local rules, and workflow — and the engineers who built it answer the phone. For many firms the platforms are the right call; a first conversation determines honestly which is needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if the AI can't verify a citation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It is flagged and held for attorney review — never asserted. A citation appears in output only when its exact quote is found in the source document. That rule is architectural, not a setting."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the law firm own the software WYEA builds?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The firm owns its data, its documents, and its deployment outright. Code ownership and licensing are set in the engagement agreement, with the options presented before anything is built."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -586,10 +826,11 @@
       <a class="wordmark" href="#top">WYEA</a>
       <nav class="site-nav">
         <a href="#services">What we build</a>
-        <a href="#confidentiality">Confidentiality</a>
+        <a href="#approach">How we work</a>
+        <a href="#confidentiality">Security</a>
         <a href="#principals">Who we are</a>
         <a href="/brief">The Brief</a>
-        <a class="nav-cta" href="#contact">Start a conversation</a>
+        <a class="nav-cta" href="#contact">Book a call</a>
       </nav>
     </div>
   </header>
@@ -598,50 +839,50 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <div class="container">
-        <p class="eyebrow">Orange County · Legal technology, built to order</p>
-        <h1>Software built around your practice,<br class="desktop-break"> not the other way around.</h1>
-        <p class="hero-lede">
-          WYEA is a principal-led engineering firm serving Orange County law
-          firms. We sit with your attorneys, learn how your matters move,
-          and build the tool your practice needs. Our AI cites only what it
-          can verify: every citation and reference is checked word for word
-          against the source document, and anything that fails the check is
-          flagged instead of asserted. No hallucinations, no guesswork.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Start a conversation</a>
-          <a class="btn btn-ghost" href="#services">See what we build</a>
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Custom AI software · Orange County law firms</p>
+          <h1>Legal AI that shows its work.</h1>
+          <p class="hero-lede">
+            WYEA builds custom software for Orange County law firms. Every
+            citation is checked word-for-word against your source documents —
+            verified, or flagged for attorney review.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Book a 30-minute call</a>
+            <a class="btn btn-ghost" href="#services">See what we build</a>
+          </div>
+          <p class="hero-trust"><span>Under NDA before we see a document</span> · <span>Your data never trains a model</span></p>
+        </div>
+        <div class="verify-card" role="img" aria-label="Illustration of WYEA's citation verification: one citation verified verbatim against the source, one flagged for attorney review">
+          <div class="verify-head"><span class="verify-dot"></span> Draft response — Motion to Compel</div>
+          <div class="verify-body">
+            <div class="verify-line"></div>
+            <div class="verify-line w80"></div>
+            <div class="cite cite-ok">
+              <span class="cite-badge">Verified</span>
+              <span><b>Depo. Tr. 142:5–11</b><small>Exact quote found in source — cited.</small></span>
+            </div>
+            <div class="verify-line w60"></div>
+            <div class="cite cite-flag">
+              <span class="cite-badge">Flagged</span>
+              <span><b>Smith Decl. ¶ 12</b><small>Not found verbatim — held for attorney review, not asserted.</small></span>
+            </div>
+          </div>
+          <div class="verify-caption">Every citation: <b>verified against the source, or flagged.</b> Nothing invented.</div>
         </div>
       </div>
     </section>
 
-    <!-- ============ PILLARS ============ -->
-    <section class="pillars">
-      <div class="container pillar-grid">
-        <div class="pillar">
-          <h3>Verified citations</h3>
-          <p>
-            A citation appears only when its exact quote is found in the
-            source document. Anything the AI cannot verify is flagged for
-            attorney review, so hallucinations never reach your filings.
-          </p>
-        </div>
-        <div class="pillar">
-          <h3>Catered, not configured</h3>
-          <p>
-            No off-the-shelf platform bent to fit. We build for your document
-            types, your local rules, your workflow, and nothing you don't use.
-          </p>
-        </div>
-        <div class="pillar">
-          <h3>White-glove service</h3>
-          <p>
-            You work directly with the engineers who built your system. We
-            train your staff, answer the phone, and keep improving the tool as
-            your practice evolves.
-          </p>
-        </div>
+    <!-- ============ PROOF STRIP ============ -->
+    <!-- Career markers until client logos/testimonials exist. Swap in firm
+         logos and a named, quantified quote the moment a client agrees in
+         writing to be named. Never pad this section. -->
+    <section class="proof">
+      <div class="container proof-grid">
+        <div class="proof-item"><b>Two principal engineers</b><span>Amazon · Fortune 100 bank · Georgia Tech · UC San Diego</span></div>
+        <div class="proof-item"><b>Machine learning since 2017</b><span>Grounded, verified, and secured for legal work</span></div>
+        <div class="proof-item"><b>Newport Beach, CA</b><span>In your office, in person</span></div>
       </div>
     </section>
 
@@ -649,129 +890,107 @@
     <section id="services" class="section">
       <div class="container">
         <p class="eyebrow">What we build</p>
-        <h2>Purpose-built tools for the work your firm does</h2>
+        <h2>Purpose-built for the work your firm does</h2>
         <div class="service-grid">
           <div class="service">
-            <h3>Verified citations &amp; referencing</h3>
+            <h3>Citations verified against the source — never invented</h3>
             <p>
-              Our systems treat your uploaded document as the source of truth.
-              A citation is only asserted when the exact quote is found
-              verbatim in the source. Everything else is flagged for attorney
-              review. Nothing is invented.
+              Your uploaded documents are the only source of truth. Exact
+              match, or flagged. No hallucinations reach a filing.
             </p>
           </div>
           <div class="service">
-            <h3>Document review &amp; drafting systems</h3>
+            <h3>First drafts in your firm's own pleading format</h3>
             <p>
-              Upload what you were served; get a grounded review and a
-              first-draft response in your firm's pleading format. Built around
-              your templates, your caption blocks, your signature lines.
+              Upload what you were served; get a grounded review and a draft
+              response — your templates, captions, signature lines.
             </p>
           </div>
           <div class="service">
-            <h3>Practice-workflow automation</h3>
+            <h3>Workflow automation shaped to California litigation</h3>
             <p>
-              Discovery-stage tooling, deadline flagging, matter and client
-              organization, and conflict-check prompts, shaped to how
-              California litigation moves.
+              Discovery tooling, deadline flagging, matter organization, and
+              conflict-check prompts that match how your matters actually move.
             </p>
           </div>
           <div class="service">
-            <h3>Secure, firm-owned deployments</h3>
+            <h3>Deployments your firm owns and controls</h3>
             <p>
-              Tenant isolation, tamper-evident records, and audit trails as
-              first-class engineering requirements, not afterthoughts. Your
-              documents stay yours.
+              Cloud or on your own infrastructure — tenant isolation, audit
+              trails, and tamper-evident records engineered in from day one.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ============ PROTOTYPE PROMISE ============ -->
+    <section class="promise">
+      <div class="container">
+        <h2>A working prototype on your real documents, in four weeks.</h2>
+        <p>
+          Not a slide deck — software your attorneys can try on a live matter
+          before you commit to anything larger.
+        </p>
+        <a class="btn btn-light" href="#contact">Book a 30-minute call</a>
+      </div>
+    </section>
+
     <!-- ============ APPROACH ============ -->
-    <section id="approach" class="section section-alt">
+    <section id="approach" class="section">
       <div class="container">
         <p class="eyebrow">How we work</p>
-        <h2>White-glove from the first meeting</h2>
+        <h2>White-glove, from first meeting to every update</h2>
         <ol class="steps">
           <li>
             <span class="step-num">01</span>
-            <div>
-              <h3>We come to you</h3>
-              <p>
-                We start in your office, with your attorneys and staff,
-                learning the practice area and the pain points, not working
-                through a feature checklist.
-              </p>
-            </div>
+            <h3>We sit with your attorneys</h3>
+            <p>In your office, learning the practice — not a feature checklist.</p>
           </li>
           <li>
             <span class="step-num">02</span>
-            <div>
-              <h3>Working software in weeks</h3>
-              <p>
-                We build against your real documents and real workflow, and
-                put a working system in your hands early, so your team's
-                feedback shapes the build.
-              </p>
-            </div>
+            <h3>Prototype in four weeks</h3>
+            <p>Built against your real documents, shaped by your team's feedback.</p>
           </li>
           <li>
             <span class="step-num">03</span>
-            <div>
-              <h3>Deployed your way</h3>
-              <p>
-                Cloud or on your own infrastructure, with security and
-                confidentiality engineered in from day one.
-              </p>
-            </div>
+            <h3>Deployed your way</h3>
+            <p>Cloud or on-premise, security engineered in from day one.</p>
           </li>
           <li>
             <span class="step-num">04</span>
-            <div>
-              <h3>Supported, personally</h3>
-              <p>
-                The engineers who built your system train your team and stay
-                on call. When your practice changes, the software changes
-                with it.
-              </p>
-            </div>
+            <h3>Supported by the builders</h3>
+            <p>The engineers who built it train your staff and answer the phone.</p>
           </li>
         </ol>
       </div>
     </section>
 
     <!-- ============ CONFIDENTIALITY ============ -->
-    <section id="confidentiality" class="section">
+    <section id="confidentiality" class="section section-alt">
       <div class="container">
         <p class="eyebrow">Confidentiality</p>
-        <h2>Your documents are privileged. We build like it.</h2>
-        <p class="section-lede">
-          Everything we touch belongs to your clients. These three
-          commitments come before the first working session:
-        </p>
+        <h2>Your clients' documents never train a model — and you can audit everything.</h2>
         <div class="commit-grid">
           <div class="commit">
-            <h3>Under NDA from day one</h3>
+            <h3>NDA before we see anything</h3>
             <p>
-              We sign a confidentiality agreement before we see a single
-              document. Yours or ours, whichever your firm prefers.
+              Signed before the first document — yours or ours, whichever your
+              firm prefers.
             </p>
           </div>
           <div class="commit">
-            <h3>Never used to train AI</h3>
+            <h3>Isolated, firm-owned environment</h3>
             <p>
-              Your clients' documents are never used to train AI models,
-              ours or anyone else's. They stay in your firm's isolated
-              environment, and they stay yours.
+              Your data stays in your firm's own environment and is never used
+              to train AI — ours or anyone's.
             </p>
           </div>
           <div class="commit">
-            <h3>You can check our work</h3>
+            <h3>Verify us, don't trust us</h3>
             <p>
-              We build systems with audit trails and tamper-evident records,
-              so you can verify what happened to a document rather than take
-              our word for it.
+              Tamper-evident records and audit trails show exactly what
+              happened to every document.
             </p>
           </div>
         </div>
@@ -779,50 +998,100 @@
     </section>
 
     <!-- ============ PRINCIPALS ============ -->
-    <section id="principals" class="section section-alt">
+    <section id="principals" class="section">
       <div class="container">
         <p class="eyebrow">Who we are</p>
-        <h2>Principal-led. No hand-offs.</h2>
+        <h2>You work with the engineers. There are no account managers.</h2>
         <p class="section-lede">
           Every WYEA engagement is led personally by the firm's founding
-          engineer.
+          engineers.
         </p>
         <div class="principal-grid">
           <div class="principal">
-            <img class="principal-avatar" src="/assets/anderson.jpg" alt="Anderson Whittle" width="64" height="64" />
+            <img class="principal-avatar" src="/assets/anderson.jpg" alt="Anderson Whittle" width="96" height="96" />
             <h3>Anderson Whittle</h3>
             <p class="principal-role">Principal Engineer &amp; Founder</p>
             <p class="principal-bio">
-              Anderson has been at the cutting edge of machine-learning
-              techniques and research since 2017, beginning at Georgia
-              Tech. As a senior engineer at a fintech startup he helped
-              scale the platform from a $20M to a $100M valuation, and
-              inside a Fortune 100 bank he built machine learning for
-              corporate risk technology. At WYEA he leads the engineering
-              that makes AI safe to put in front of a law practice:
-              grounding, verification, and security from the first line
-              of code.
+              Machine learning since 2017, starting at Georgia Tech. Anderson
+              helped scale a fintech platform from a $20M to a $100M valuation
+              and built corporate-risk ML inside a Fortune 100 bank. At WYEA he
+              leads the engineering that makes AI safe for a law practice:
+              grounding, verification, and security from the first line of code.
             </p>
             <a class="principal-link" href="https://www.linkedin.com/in/anderson-whittle/" target="_blank" rel="noopener">LinkedIn&nbsp;↗</a>
           </div>
-          <!-- Johnson temporarily hidden; restore this card when he's back on the page.
           <div class="principal">
-            <img class="principal-avatar" src="/assets/johnson.jpg" alt="Johnson Ye" width="64" height="64" />
+            <img class="principal-avatar" src="/assets/johnson.jpg" alt="Johnson Ye" width="96" height="96" />
             <h3>Johnson Ye</h3>
             <p class="principal-role">Principal Engineer &amp; Co-Founder</p>
             <p class="principal-bio">
-              Johnson is a Senior Engineer at Amazon and a UC San Diego alum,
-              with more than eight years in software and AI. At Amazon he led a
-              third-party seller platform for one of the fastest-growing
-              markets in the world, opening a new marketplace to thousands of
-              merchants. At WYEA he leads product and delivery, starting with
-              how a firm works and then building software that fits it
-              exactly. Johnson cares about the small things, because the small
-              things are what make people trust the whole.
+              Eight-plus years in software and AI, from UC San Diego to Senior
+              Engineer at Amazon, where he led a third-party seller platform
+              that opened a new marketplace to thousands of merchants. At WYEA
+              he leads product and delivery: starting from how your firm works,
+              then building software that fits it exactly.
             </p>
             <a class="principal-link" href="https://www.linkedin.com/in/johnsonye0303/" target="_blank" rel="noopener">LinkedIn&nbsp;&#8599;</a>
           </div>
-          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section section-alt">
+      <div class="container">
+        <p class="eyebrow">Questions partners ask</p>
+        <h2>The details, before you have to ask</h2>
+        <div class="faq">
+          <details>
+            <summary>How do you handle privilege and confidentiality?</summary>
+            <p>
+              We sign an NDA before seeing a single document. Client materials
+              live in your firm's isolated environment, are never used to train
+              any model, and every access is logged in a tamper-evident audit
+              trail you can inspect. On-premise deployment is available when a
+              matter demands it.
+            </p>
+          </details>
+          <details>
+            <!-- DRAFT: confirm this pricing posture before deploy -->
+            <summary>What does an engagement cost?</summary>
+            <p>
+              Every engagement starts with a fixed-price four-week prototype,
+              quoted before we begin — you'll never see an open-ended hourly
+              bill for exploratory work. If the prototype earns it, we scope
+              the full build the same way: fixed price, defined deliverables.
+            </p>
+          </details>
+          <details>
+            <summary>How is this different from Harvey, CoCounsel, or other legal AI platforms?</summary>
+            <p>
+              Those are subscriptions to someone else's product; your firm
+              adapts to them. We build one system around your documents, your
+              local rules, and your workflow — and the engineers who built it
+              answer your phone calls. For many firms the platforms are the
+              right call; a first conversation will tell you honestly which
+              you need.
+            </p>
+          </details>
+          <details>
+            <summary>What happens if the AI can't verify a citation?</summary>
+            <p>
+              It is flagged and held for attorney review — never asserted. A
+              citation appears in output only when its exact quote is found in
+              the source document. That rule is architectural, not a setting.
+            </p>
+          </details>
+          <details>
+            <!-- DRAFT: confirm ownership/licensing language before deploy -->
+            <summary>Do we own the software?</summary>
+            <p>
+              Your firm owns its data, its documents, and its deployment
+              outright. Code ownership and licensing are set in the engagement
+              agreement — we'll put the options in front of you before anything
+              is built.
+            </p>
+          </details>
         </div>
       </div>
     </section>
@@ -831,11 +1100,10 @@
     <section id="contact" class="section contact">
       <div class="container contact-inner">
         <p class="eyebrow eyebrow-light">Start a conversation</p>
-        <h2>Tell us about your practice.</h2>
+        <h2>Talk to the engineers, not a salesperson.</h2>
         <p class="contact-lede">
-          A first conversation costs nothing and usually takes half an hour.
-          We'll tell you honestly whether custom software is worth it for your
-          firm, and what it would take.
+          Thirty minutes, no obligation. We'll tell you honestly whether custom
+          software is worth it for your firm — and if it isn't, we'll say so.
         </p>
         <form id="contact-form" class="contact-form">
           <div class="form-grid">
@@ -856,11 +1124,11 @@
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
           <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
+          <button type="submit" class="btn btn-light">Book my call</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <p id="contact-success" class="contact-success" hidden>
-          Thanks — your message is on its way. We'll reply within one business day.
+          Thanks — your message is on its way. We'll reply within one business day to set a time.
         </p>
         <p class="contact-alt">
           Prefer LinkedIn? <a href="https://www.linkedin.com/in/anderson-whittle/" target="_blank" rel="noopener">Message us there&nbsp;↗</a>
@@ -873,10 +1141,9 @@
     <section id="brief" class="brief-band">
       <div class="container brief-inner">
         <p class="eyebrow">The Brief · Weekly newsletter</p>
-        <h2>One email a week. Four minutes.</h2>
+        <h2>The week in legal, in four minutes.</h2>
         <p class="section-lede">
-          The Brief is our free weekly newsletter: the legal developments that
-          matter, national to Orange County, readable in four minutes.
+          Free, national to Orange County, every Wednesday.
         </p>
         <form id="brief-form" class="brief-form">
           <div class="brief-row">
@@ -968,7 +1235,7 @@
 
       function fail(message) {
         button.disabled = false;
-        button.textContent = "Send message";
+        button.textContent = "Book my call";
         status.textContent = message ||
           "Something went wrong on our end — please try again in a minute.";
         if (window.turnstile) turnstile.reset();

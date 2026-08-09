@@ -12,7 +12,7 @@
     "not_found_handling": "single-page-application",
     // SPA mode serves index.html to unknown navigations WITHOUT invoking the
     // Worker; The Brief's pages are Worker-rendered, so they must run first.
-    "run_worker_first": ["/api/*", "/brief", "/brief/*"]
+    "run_worker_first": ["/api/*", "/brief", "/brief/*", "/sitemap.xml"]
   },
   "d1_databases": [
     {

@@ -584,6 +584,20 @@ async function issuePage(env, url, date) {
   return page(`The Brief, ${prettyDate(date)} — WYEA`, body, 200, {
     description: `The Brief for ${prettyDate(date)}: the week's legal developments, national to Orange County, verified against the sources.`,
     canonical: `${url.origin}/brief/${date}`,
+    // Article schema with datePublished: AI engines reward fresh, dated
+    // content, and these issue pages are the site's citation surface.
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: `The Brief, ${prettyDate(date)}`,
+      datePublished: date,
+      url: `https://wyea.ai/brief/${date}`,
+      publisher: {
+        "@type": "Organization",
+        name: "WYEA",
+        url: "https://wyea.ai/",
+      },
+    },
   });
 }
 
@@ -738,9 +752,9 @@ function page(title, body, status = 200, meta = {}) {
   <title>${escapeHtml(title)}</title>
   ${meta.description ? `<meta name="description" content="${escapeHtml(meta.description)}">` : ""}
   ${meta.canonical ? `<link rel="canonical" href="${escapeHtml(meta.canonical)}">` : ""}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  ${meta.jsonLd ? `<script type="application/ld+json">${JSON.stringify(meta.jsonLd)}</script>` : ""}
+  <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>${PAGE_CSS}</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
 </head>
@@ -771,6 +785,10 @@ function page(title, body, status = 200, meta = {}) {
 }
 
 const PAGE_CSS = `
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:400 600;
+font-display:swap;src:url("/fonts/fraunces-var.woff2") format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400 600;
+font-display:swap;src:url("/fonts/inter-var.woff2") format("woff2")}
 :root{--ink:#16213a;--ink-soft:#3c4763;--paper:#faf8f4;--paper-deep:#f1ede5;
 --bronze:#a5803c;--bronze-deep:#8a6a2f;--line:#e3ddd1;--white:#ffffff;
 --font-display:"Fraunces",Georgia,"Times New Roman",serif;

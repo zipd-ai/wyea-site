@@ -29,11 +29,51 @@ export default {
         return json({ error: "server error" }, 500);
       }
     }
+    if (url.pathname === "/sitemap.xml") {
+      return sitemap(env, url.origin);
+    }
     const brief = await handleBrief(request, env, ctx, url);
     if (brief) return brief;
     return env.ASSETS.fetch(request);
   },
 };
+
+// Sitemap: homepage + The Brief index + every published issue, generated
+// from the same manifest brief.js renders from, so it can never go stale.
+async function sitemap(env, origin) {
+  const base = "https://wyea.ai";
+  let issues = [];
+  try {
+    const res = await env.ASSETS.fetch(new Request(new URL("/brief/issues/index.json", origin)));
+    if (res.ok && !(res.headers.get("Content-Type") || "").includes("text/html")) {
+      const data = JSON.parse(await res.text());
+      if (Array.isArray(data.issues)) issues = data.issues;
+    }
+  } catch (err) {
+    console.error("sitemap manifest unreadable:", err);
+  }
+  const urls = [
+    { loc: `${base}/`, priority: "1.0" },
+    { loc: `${base}/brief`, priority: "0.8" },
+    ...issues
+      .filter((i) => /^\d{4}-\d{2}-\d{2}$/.test(String(i.date)))
+      .map((i) => ({ loc: `${base}/brief/${i.date}`, lastmod: i.date, priority: "0.6" })),
+  ];
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    urls.map((u) =>
+      `  <url><loc>${u.loc}</loc>` +
+      (u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : "") +
+      `<priority>${u.priority}</priority></url>`
+    ).join("\n") +
+    `\n</urlset>\n`;
+  return new Response(xml, {
+    headers: {
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": "public, max-age=3600",
+    },
+  });
+}
 
 async function handleContact(request, env, ctx) {
   let body;
