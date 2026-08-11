@@ -57,6 +57,7 @@ async function sitemap(env, origin) {
     { loc: `${base}/custom-ai-for-law-firms`, priority: "0.8" },
     { loc: `${base}/about`, priority: "0.7" },
     { loc: `${base}/brief`, priority: "0.8" },
+    { loc: `${base}/privacy`, priority: "0.3" },
     ...issues
       .filter((i) => /^\d{4}-\d{2}-\d{2}$/.test(String(i.date)))
       .map((i) => ({ loc: `${base}/brief/${i.date}`, lastmod: i.date, priority: "0.6" })),
