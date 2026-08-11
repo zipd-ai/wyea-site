@@ -55,6 +55,7 @@ async function sitemap(env, origin) {
   const urls = [
     { loc: `${base}/`, priority: "1.0" },
     { loc: `${base}/custom-ai-for-law-firms`, priority: "0.8" },
+    { loc: `${base}/about`, priority: "0.7" },
     { loc: `${base}/brief`, priority: "0.8" },
     ...issues
       .filter((i) => /^\d{4}-\d{2}-\d{2}$/.test(String(i.date)))
