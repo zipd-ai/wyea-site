@@ -533,6 +533,13 @@
       max-width: none;
     }
 
+    .contact-or {
+      margin: 2em auto 0.8em;
+      font-size: 0.92rem;
+      color: #8b94ad;
+      max-width: none;
+    }
+
     .contact-form {
       display: grid;
       gap: 16px;
@@ -838,7 +845,7 @@
         <a href="#confidentiality">Security</a>
         <a href="#principals">Who we are</a>
         <a href="/brief">The Brief</a>
-        <a class="nav-cta" href="#contact">Book a call</a>
+        <a class="nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
       </nav>
     </div>
   </header>
@@ -857,7 +864,7 @@
             verified, or flagged for attorney review.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Book a 30-minute call</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
             <a class="btn btn-ghost" href="#services">See what we build</a>
           </div>
           <p class="hero-trust"><span>Under NDA before we see a document</span> · <span>Your data never trains a model</span></p>
@@ -940,7 +947,7 @@
           Not a slide deck — software your attorneys can try on a live matter
           before you commit to anything larger.
         </p>
-        <a class="btn btn-light" href="#contact">Book a 30-minute call</a>
+        <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
       </div>
     </section>
 
@@ -1122,6 +1129,8 @@
           Thirty minutes, no obligation. We'll tell you honestly whether custom
           software is worth it for your firm — and if it isn't, we'll say so.
         </p>
+        <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
+        <p class="contact-or">Prefer to write? Send a message and we'll reply within one business day:</p>
         <form id="contact-form" class="contact-form">
           <div class="form-grid">
             <label>Your name
@@ -1141,11 +1150,11 @@
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
           <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Book my call</button>
+          <button type="submit" class="btn btn-light">Send message</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <p id="contact-success" class="contact-success" hidden>
-          Thanks — your message is on its way. We'll reply within one business day to set a time.
+          Thanks — your message is on its way. We'll reply within one business day.
         </p>
         <p class="contact-alt">
           Prefer LinkedIn? <a href="https://www.linkedin.com/in/anderson-whittle/" target="_blank" rel="noopener">Message us there&nbsp;↗</a>
@@ -1253,7 +1262,7 @@
 
       function fail(message) {
         button.disabled = false;
-        button.textContent = "Book my call";
+        button.textContent = "Send message";
         status.textContent = message ||
           "Something went wrong on our end — please try again in a minute.";
         if (window.turnstile) turnstile.reset();
