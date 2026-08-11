@@ -27,8 +27,8 @@
        double-clicked files, any static host — with zero extra requests.
 
        Redesigned Aug 2026 against competitor/UX research: fragment-
-       length copy, meaning-carrying headings, proof strip, promise
-       band, security section, FAQ for depth-on-demand.
+       length copy, meaning-carrying headings, promise band, security
+       section, FAQ for depth-on-demand.
        ============================================================ */
 
     @font-face {
@@ -287,33 +287,6 @@
     }
 
     .verify-caption b { color: var(--ink); }
-
-    /* ---------- proof strip ---------- */
-
-    .proof {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: var(--white);
-    }
-
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      padding-top: 34px;
-      padding-bottom: 34px;
-    }
-
-    .proof-item b {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--ink);
-      display: block;
-      line-height: 1.25;
-    }
-
-    .proof-item span { font-size: 0.85rem; color: var(--ink-soft); }
 
     /* ---------- sections ---------- */
 
@@ -710,7 +683,6 @@
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .steps { grid-template-columns: repeat(2, 1fr); }
-      .proof-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 860px) {
@@ -721,7 +693,6 @@
       .steps,
       .commit-grid,
       .principal-grid,
-      .proof-grid,
       .form-grid {
         grid-template-columns: 1fr;
       }
@@ -872,18 +843,6 @@
           </div>
           <div class="verify-caption">Every citation: <b>verified against the source, or flagged.</b> Nothing invented.</div>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ PROOF STRIP ============ -->
-    <!-- Career markers until client logos/testimonials exist. Swap in firm
-         logos and a named, quantified quote the moment a client agrees in
-         writing to be named. Never pad this section. -->
-    <section class="proof">
-      <div class="container proof-grid">
-        <div class="proof-item"><b>Two principal engineers</b><span>Amazon · Fortune 100 bank · Georgia Tech · UC San Diego</span></div>
-        <div class="proof-item"><b>Machine learning since 2017</b><span>Grounded, verified, and secured for legal work</span></div>
-        <div class="proof-item"><b>Newport Beach, CA</b><span>In your office, in person</span></div>
       </div>
     </section>
 
