@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WYEA — Custom Legal Technology for Orange County Law Firms</title>
+  <title>WYEA | Custom Legal Technology for Orange County Law Firms</title>
   <meta name="description" content="WYEA builds custom software for Orange County law firms: every citation verified word-for-word against the source, delivered with white-glove service.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WYEA — Custom Legal Technology for Orange County Law Firms">
+  <meta property="og:title" content="WYEA | Custom Legal Technology for Orange County Law Firms">
   <meta property="og:description" content="Custom software for Orange County law firms: verified citations, white-glove service, built by the two engineers who answer your calls.">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:url" content="https://wyea.ai/">
@@ -15,7 +15,7 @@
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://wyea.ai/">
   <!-- Fonts are self-hosted: no third-party origin round-trips (Google Fonts
-       costs two — CSS then files — and cache partitioning means first-time
+       costs two (CSS then files) and cache partitioning means first-time
        visitors always pay). Preload + font-display: swap per web.dev. -->
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -24,8 +24,8 @@
        WYEA
        Palette: black ink / true white / oxblood accent ("Direction A")
        Type: Newsreader display / Public Sans body
-       Inlined so the page renders styled anywhere — file previews,
-       double-clicked files, any static host — with zero extra requests.
+       Inlined so the page renders styled anywhere (file previews,
+       double-clicked files, any static host) with zero extra requests.
 
        Redesigned Aug 2026 against competitor/UX research: fragment-
        length copy, meaning-carrying headings, promise band, security
@@ -428,7 +428,7 @@
     .principal-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
     /* Reserved: when the pilot firm agrees in writing to be named, add a
-       testimonial block here — one named OC partner with a concrete number
+       testimonial block here; one named OC partner with a concrete number
        outperforms everything else on this page. */
 
     /* ---------- FAQ ---------- */
@@ -571,7 +571,7 @@
 
     .contact-form button[disabled] { opacity: 0.6; cursor: default; }
 
-    /* honeypot — invisible to people, present for bots */
+    /* honeypot: invisible to people, present for bots */
     .contact-form .hp {
       position: absolute;
       left: -10000px;
@@ -719,7 +719,7 @@
     "name": "WYEA",
     "legalName": "Whittle and Ye Engineering Associates LLC",
     "url": "https://wyea.ai/",
-    "description": "WYEA builds custom software that lets Orange County law firms handle more matters without adding staff. Every citation is checked word-for-word against the source document — verified, or flagged for attorney review.",
+    "description": "WYEA builds custom software that lets Orange County law firms handle more matters without adding staff. Every citation is checked word-for-word against the source document and either verified or flagged for attorney review.",
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": "Orange County, California"
@@ -765,7 +765,7 @@
         "name": "What does a WYEA engagement cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every engagement starts with a fixed-price one-week prototype, quoted before work begins — never an open-ended hourly bill for exploratory work. If the prototype earns it, the full build is scoped the same way: fixed price, defined deliverables."
+          "text": "Every engagement starts with a fixed-price one-week prototype, quoted before work begins, never an open-ended hourly bill for exploratory work. If the prototype earns it, the full build is scoped the same way: fixed price, defined deliverables."
         }
       },
       {
@@ -773,7 +773,7 @@
         "name": "How is WYEA different from Harvey, CoCounsel, or the other platforms?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Those are subscriptions to someone else's product; the firm adapts to them. WYEA builds one system around the firm's documents, local rules, and workflow — and the engineers who built it answer the phone. For many firms the platforms are the right call; a first conversation determines honestly which is needed."
+          "text": "Those are subscriptions to someone else's product; the firm adapts to them. WYEA builds one system around the firm's documents, local rules, and workflow, and the engineers who built it answer the phone. For many firms the platforms are the right call; a first conversation determines honestly which is needed."
         }
       },
       {
@@ -781,7 +781,7 @@
         "name": "What happens when a citation can't be verified?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It is flagged and held for attorney review — never asserted. A citation appears in output only when its exact quote is found in the source document. That rule is architectural, not a setting."
+          "text": "It is flagged and held for attorney review, never asserted. A citation appears in output only when its exact quote is found in the source document. That rule is architectural, not a setting."
         }
       },
       {
@@ -823,7 +823,7 @@
           <p class="hero-lede">
             WYEA builds custom software that lets Orange County law firms
             handle more matters without adding staff. Every citation is
-            checked word-for-word against your source documents — verified,
+            checked word-for-word against your source documents and either verified
             or flagged for attorney review.
           </p>
           <div class="hero-actions">
@@ -833,21 +833,21 @@
           <p class="hero-trust"><span>Under NDA before we see a document</span> · <span>Your data never trains a model</span></p>
         </div>
         <div class="verify-card" role="img" aria-label="Illustration of WYEA's citation verification: one citation verified verbatim against the source, one flagged for attorney review">
-          <div class="verify-head"><span class="verify-dot"></span> Draft response — Motion to Compel</div>
+          <div class="verify-head"><span class="verify-dot"></span> Draft response: Motion to Compel</div>
           <div class="verify-body">
             <div class="verify-line"></div>
             <div class="verify-line w80"></div>
             <div class="cite cite-ok">
               <span class="cite-badge">Verified</span>
-              <span><b>Depo. Tr. 142:5–11</b><small>Exact quote found in source — cited.</small></span>
+              <span><b>Depo. Tr. 142:5–11</b><small>Exact quote found in source. Cited.</small></span>
             </div>
             <div class="verify-line w60"></div>
             <div class="cite cite-flag">
               <span class="cite-badge">Flagged</span>
-              <span><b>Smith Decl. ¶ 12</b><small>Not found verbatim — held for attorney review, not asserted.</small></span>
+              <span><b>Smith Decl. ¶ 12</b><small>Not found verbatim. Held for attorney review, not asserted.</small></span>
             </div>
           </div>
-          <div class="verify-caption">Every citation: <b>verified against the source, or flagged.</b> Nothing invented.</div>
+          <div class="verify-caption">Every citation: <b>verified against the source, or flagged.</b></div>
         </div>
       </div>
     </section>
@@ -859,17 +859,17 @@
         <h2>Purpose-built for the work your firm does</h2>
         <div class="service-grid">
           <div class="service">
-            <h3>Citations verified against the source — never invented</h3>
+            <h3>Citations verified against the source, never invented</h3>
             <p>
               Your uploaded documents are the only source of truth. Exact
-              match, or flagged. No hallucinations reach a filing.
+              match, or flagged.
             </p>
           </div>
           <div class="service">
             <h3>First drafts in your firm's own pleading format</h3>
             <p>
               Upload what you were served; get a grounded review and a draft
-              response — your templates, captions, signature lines.
+              response in your templates, captions, and signature lines.
             </p>
           </div>
           <div class="service">
@@ -882,7 +882,7 @@
           <div class="service">
             <h3>Deployments your firm owns and controls</h3>
             <p>
-              Cloud or on your own infrastructure — tenant isolation, audit
+              Cloud or on your own infrastructure, with tenant isolation, audit
               trails, and tamper-evident records engineered in from day one.
             </p>
           </div>
@@ -895,7 +895,7 @@
       <div class="container">
         <h2>A working prototype on your real documents, in one week.</h2>
         <p>
-          Not a slide deck — software your attorneys can try on a live matter
+          Software your attorneys can try on a live matter
           before you commit to anything larger.
         </p>
         <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
@@ -911,7 +911,7 @@
           <li>
             <span class="step-num">01</span>
             <h3>We sit with your attorneys</h3>
-            <p>In your office, learning the practice — not a feature checklist.</p>
+            <p>In your office, learning the practice firsthand.</p>
           </li>
           <li>
             <span class="step-num">02</span>
@@ -936,12 +936,12 @@
     <section id="confidentiality" class="section section-alt">
       <div class="container">
         <p class="eyebrow">Confidentiality</p>
-        <h2>Your clients' documents never train a model — and you can audit everything.</h2>
+        <h2>Your clients' documents never train a model, and you can audit everything.</h2>
         <div class="commit-grid">
           <div class="commit">
             <h3>NDA before we see anything</h3>
             <p>
-              Signed before the first document — yours or ours, whichever your
+              Signed before the first document, yours or ours, whichever your
               firm prefers.
             </p>
           </div>
@@ -949,7 +949,7 @@
             <h3>Isolated, firm-owned environment</h3>
             <p>
               Your data stays in your firm's own environment and is never used
-              for training — by us or anyone else.
+              for training by us or anyone else.
             </p>
           </div>
           <div class="commit">
@@ -987,7 +987,7 @@
             <summary>Who will we actually work with?</summary>
             <p>
               Both of the firm's principal engineers, directly. Your questions
-              go to the person who wrote the code — not into a support queue —
+              go to the person who wrote the code, not into a support queue,
               so answers come back in minutes, and nothing is lost in relay.
               <a href="/about">Meet the principals</a>.
             </p>
@@ -1007,7 +1007,7 @@
             <summary>What does an engagement cost?</summary>
             <p>
               Every engagement starts with a fixed-price one-week prototype,
-              quoted before we begin — you'll never see an open-ended hourly
+              quoted before we begin. You'll never see an open-ended hourly
               bill for exploratory work. If the prototype earns it, we scope
               the full build the same way: fixed price, defined deliverables.
             </p>
@@ -1017,7 +1017,7 @@
             <p>
               Those are subscriptions to someone else's product; your firm
               adapts to them. We build one system around your documents, your
-              local rules, and your workflow — and the engineers who built it
+              local rules, and your workflow, and the engineers who built it
               answer your phone calls. For many firms the platforms are the
               right call; a first conversation will tell you honestly which
               you need.
@@ -1026,7 +1026,7 @@
           <details>
             <summary>What happens when a citation can't be verified?</summary>
             <p>
-              It is flagged and held for attorney review — never asserted. A
+              It is flagged and held for attorney review, never asserted. A
               citation appears in output only when its exact quote is found in
               the source document. That rule is architectural, not a setting.
             </p>
@@ -1037,7 +1037,7 @@
             <p>
               Your firm owns its data, its documents, and its deployment
               outright. Code ownership and licensing are set in the engagement
-              agreement — we'll put the options in front of you before anything
+              agreement. We'll put the options in front of you before anything
               is built.
             </p>
           </details>
@@ -1052,7 +1052,7 @@
         <h2>Tell us about your practice.</h2>
         <p class="contact-lede">
           Thirty minutes, no obligation. We'll tell you honestly whether custom
-          software is worth it for your firm — and if it isn't, we'll say so.
+          software is worth it for your firm, and if it isn't, we'll say so.
         </p>
         <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
         <p class="contact-or">Prefer to write? Send a message and we'll reply within one business day:</p>
@@ -1079,7 +1079,7 @@
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <p id="contact-success" class="contact-success" hidden>
-          Thanks — your message is on its way. We'll reply within one business day.
+          Thanks. Your message is on its way. We'll reply within one business day.
         </p>
         <p class="contact-alt">
           Prefer LinkedIn? <a href="https://www.linkedin.com/in/anderson-whittle/" target="_blank" rel="noopener">Message us there&nbsp;↗</a>
@@ -1190,7 +1190,7 @@
         button.disabled = false;
         button.textContent = "Send message";
         status.textContent = message ||
-          "Something went wrong on our end — please try again in a minute.";
+          "Something went wrong on our end. Please try again in a minute.";
         if (window.turnstile) turnstile.reset();
       }
     })();
