@@ -291,7 +291,7 @@ async function confirmPage(env, url) {
       console.error("subscriber notification failed:", err);
     }
   }
-  return page("You're in — The Brief", statusCard(
+  return page("You're in | The Brief", statusCard(
     "You're in.",
     `First issue arrives Wednesday. One email a week, readable in four minutes.
      Until then, <a href="/brief">the archive</a> has past issues.`
@@ -321,7 +321,7 @@ async function unsubscribePage(request, env, url) {
   // RFC 8058 one-click POST (mail clients) gets a plain 200; a person in a
   // browser gets the page.
   if (request.method === "POST") return json({ ok: true });
-  return page("Unsubscribed — The Brief", statusCard(
+  return page("Unsubscribed | The Brief", statusCard(
     "You're unsubscribed.",
     `No more issues will be sent to ${escapeHtml(row.email)}. If you change
      your mind, you can <a href="/brief">resubscribe anytime</a>.`
@@ -349,8 +349,8 @@ async function sendConfirm(env, origin, row) {
     html: emailShell(`
       <p>You (or someone using this address) asked to subscribe to
       <strong>The Brief</strong>, WYEA's weekly legal newsletter.</p>
-      <p style="margin:28px 0"><a href="${link}" style="background:#16213a;color:#ffffff;
-      padding:12px 24px;border-radius:7px;text-decoration:none;font-weight:600">
+      <p style="margin:28px 0"><a href="${link}" style="background:#191713;color:#ffffff;
+      padding:12px 24px;border-radius: 0;text-decoration:none;font-weight:600">
       Confirm subscription</a></p>
       <p>Or open this link: <a href="${link}">${link}</a></p>
       <p>One email a week. No spam. Unsubscribe anytime.<br>
@@ -436,13 +436,13 @@ export function issueEmailHtml(rendered, issueDate) {
     // The wordmark above already says The Brief; the title shows only the
     // date (the full "The Brief, <date>" stays as the email subject).
     .replace(/<h1>The Brief,\s*/, "<h1>")
-    .replaceAll("<h1>", `<h1 align="center" style="font-family:${FONT};font-size:19px;font-weight:700;color:#16213a;text-align:center;margin:6px 0 26px">`)
-    .replaceAll("<h2>", `<h2 align="center" style="font-family:${FONT};font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#8a6a2f;text-align:center;margin:30px 0 10px">`)
-    .replaceAll("<h3>", `<h3 align="center" style="font-family:${FONT};font-size:17px;font-weight:600;color:#16213a;text-align:center;margin:20px 0 4px">`)
+    .replaceAll("<h1>", `<h1 align="center" style="font-family:${FONT};font-size:19px;font-weight:700;color:#191713;text-align:center;margin:6px 0 26px">`)
+    .replaceAll("<h2>", `<h2 align="center" style="font-family:${FONT};font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5a1723;text-align:center;margin:30px 0 10px">`)
+    .replaceAll("<h3>", `<h3 align="center" style="font-family:${FONT};font-size:17px;font-weight:600;color:#191713;text-align:center;margin:20px 0 4px">`)
     .replaceAll("<p>", `<p align="center" style="font-family:${FONT};font-size:15px;line-height:1.6;color:#1f2733;text-align:center;margin:8px 0">`)
     .replaceAll("<ul>", `<ul style="font-family:${FONT};font-size:15px;line-height:1.6;color:#1f2733;margin:8px 0 8px 20px;padding:0">`)
-    .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e3ddd1;margin:24px 0">')
-    .replaceAll("<a ", '<a style="color:#16213a;text-decoration:underline" ');
+    .replaceAll("<hr>", '<hr style="border:0;border-top:1px solid #e7e5e0;margin:24px 0">')
+    .replaceAll("<a ", '<a style="color:#191713;text-decoration:underline" ');
   return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#ffffff">
   <tr><td align="center" style="padding:28px 12px">
     <!-- classic newsletter centering: align attribute + fixed width
@@ -450,27 +450,27 @@ export function issueEmailHtml(rendered, issueDate) {
          max-width would blow the column out to full width; mobile apps
          shrink fixed-width tables to fit on their own. -->
     <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;margin:0 auto">
-      <tr><td align="center" style="font-family:${FONT};font-size:13px;color:#3c4763;text-align:center;padding-bottom:20px">
-        <a href="${SITE}/brief" style="color:#3c4763;text-decoration:underline">Subscribe</a>
+      <tr><td align="center" style="font-family:${FONT};font-size:13px;color:#444038;text-align:center;padding-bottom:20px">
+        <a href="${SITE}/brief" style="color:#444038;text-decoration:underline">Subscribe</a>
         &nbsp;|&nbsp;
-        <a href="${SITE}/brief/${issueDate}" style="color:#3c4763;text-decoration:underline">View Online</a>
+        <a href="${SITE}/brief/${issueDate}" style="color:#444038;text-decoration:underline">View Online</a>
       </td></tr>
-      <tr><td align="center" style="font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;color:#16213a;text-align:center;line-height:1.1">The Brief</td></tr>
-      <tr><td align="center" style="font-family:${FONT};font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a6a2f;font-weight:600;text-align:center;padding:4px 0 24px">by WYEA</td></tr>
+      <tr><td align="center" style="font-family:Georgia,'Times New Roman',serif;font-size:36px;font-weight:600;color:#191713;text-align:center;line-height:1.1">The Brief</td></tr>
+      <tr><td align="center" style="font-family:${FONT};font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#5a1723;font-weight:600;text-align:center;padding:4px 0 24px">by WYEA</td></tr>
       <tr><td align="center" style="text-align:center">
         ${styled}
       </td></tr>
-      <tr><td align="center" style="font-family:${FONT};font-size:13px;color:#3c4763;text-align:center;border-top:1px solid #e3ddd1;padding:18px 0 0;line-height:1.7">
+      <tr><td align="center" style="font-family:${FONT};font-size:13px;color:#444038;text-align:center;border-top:1px solid #e7e5e0;padding:18px 0 0;line-height:1.7">
         Forward this to one colleague who would use it.<br>
         Or share your personal link:
-        <a href="{{referral_url}}" style="color:#16213a;text-decoration:underline">{{referral_url}}</a><br>
+        <a href="{{referral_url}}" style="color:#191713;text-decoration:underline">{{referral_url}}</a><br>
         {{referral_count}} confirmed referral(s) so far &middot;
-        <a href="{{share_url}}" style="color:#16213a;text-decoration:underline">track your rewards</a>
+        <a href="{{share_url}}" style="color:#191713;text-decoration:underline">track your rewards</a>
       </td></tr>
-      <tr><td align="center" style="font-family:${FONT};font-size:12px;color:#8b94ad;text-align:center;padding-top:16px;line-height:1.7">
+      <tr><td align="center" style="font-family:${FONT};font-size:12px;color:#8f8a82;text-align:center;padding-top:16px;line-height:1.7">
         ${SIGNATURE}<br>
         {{postal_address}}<br>
-        <a href="{{unsubscribe_url}}" style="color:#8b94ad;text-decoration:underline">Unsubscribe</a> with one click, anytime.
+        <a href="{{unsubscribe_url}}" style="color:#8f8a82;text-decoration:underline">Unsubscribe</a> with one click, anytime.
       </td></tr>
     </table>
   </td></tr>
@@ -479,11 +479,11 @@ export function issueEmailHtml(rendered, issueDate) {
 
 function emailShell(inner) {
   return `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    color:#16213a;font-size:16px;line-height:1.6;max-width:560px;margin:0 auto;padding:8px 4px">
-    <p style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#8a6a2f;
+    color:#191713;font-size:16px;line-height:1.6;max-width:560px;margin:0 auto;padding:8px 4px">
+    <p style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#5a1723;
     font-weight:600">The Brief &middot; by WYEA</p>
     ${inner}
-    <p style="font-size:13px;color:#8b94ad;border-top:1px solid #e3ddd1;padding-top:14px;
+    <p style="font-size:13px;color:#8f8a82;border-top:1px solid #e7e5e0;padding-top:14px;
     margin-top:28px">The Brief by WYEA, Newport Beach, California</p>
   </div>`;
 }
@@ -554,7 +554,7 @@ async function briefPage(env, url) {
     </div>
   </section>`;
 
-  return page("The Brief — a weekly legal newsletter by WYEA", body, 200, {
+  return page("The Brief | a weekly legal newsletter by WYEA", body, 200, {
     description: "The Brief: one email a week with the legal developments that matter, national to Orange County, readable in four minutes. Free, by WYEA.",
     canonical: `${url.origin}/brief`,
   });
@@ -581,7 +581,7 @@ async function issuePage(env, url, date) {
       </div>
     </div>
   </section>`;
-  return page(`The Brief, ${prettyDate(date)} — WYEA`, body, 200, {
+  return page(`The Brief, ${prettyDate(date)} | WYEA`, body, 200, {
     description: `The Brief for ${prettyDate(date)}: the week's legal developments, national to Orange County, verified against the sources.`,
     canonical: `${url.origin}/brief/${date}`,
     // Article schema with datePublished: AI engines reward fresh, dated
@@ -670,7 +670,7 @@ async function sharePage(env, url) {
       <ul class="tier-list">${tiers}</ul>
     </div>
   </section>`;
-  return page("Share The Brief — WYEA", body);
+  return page("Share The Brief | WYEA", body);
 }
 
 /* ---------- assets ---------- */
@@ -753,8 +753,8 @@ function page(title, body, status = 200, meta = {}) {
   ${meta.description ? `<meta name="description" content="${escapeHtml(meta.description)}">` : ""}
   ${meta.canonical ? `<link rel="canonical" href="${escapeHtml(meta.canonical)}">` : ""}
   ${meta.jsonLd ? `<script type="application/ld+json">${JSON.stringify(meta.jsonLd)}</script>` : ""}
-  <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>${PAGE_CSS}</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
 </head>
@@ -785,14 +785,14 @@ function page(title, body, status = 200, meta = {}) {
 }
 
 const PAGE_CSS = `
-@font-face{font-family:"Fraunces";font-style:normal;font-weight:400 600;
-font-display:swap;src:url("/fonts/fraunces-var.woff2") format("woff2")}
-@font-face{font-family:"Inter";font-style:normal;font-weight:400 600;
-font-display:swap;src:url("/fonts/inter-var.woff2") format("woff2")}
-:root{--ink:#16213a;--ink-soft:#3c4763;--paper:#faf8f4;--paper-deep:#f1ede5;
---bronze:#a5803c;--bronze-deep:#8a6a2f;--line:#e3ddd1;--white:#ffffff;
---font-display:"Fraunces",Georgia,"Times New Roman",serif;
---font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:400 700;
+font-display:swap;src:url("/fonts/newsreader-var.woff2") format("woff2")}
+@font-face{font-family:"Public Sans";font-style:normal;font-weight:400 700;
+font-display:swap;src:url("/fonts/public-sans-var.woff2") format("woff2")}
+:root{--ink:#191713;--ink-soft:#444038;--paper:#ffffff;--paper-deep:#f4f2ee;
+--bronze:#6e1e2b;--bronze-deep:#5a1723;--line:#e7e5e0;--white:#ffffff;
+--font-display:"Newsreader",Georgia,"Times New Roman",serif;
+--font-body:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--font-body);color:var(--ink);background:var(--paper);
 line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
@@ -804,11 +804,11 @@ h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.6em}
 h3{font-size:1.15rem;margin-bottom:.35em}
 p{color:var(--ink-soft)}
 a{color:var(--bronze-deep)}
-.eyebrow{font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+.eyebrow{font-size:.9rem;font-weight:600;
 color:var(--bronze-deep);margin-bottom:1.1em}
 .quiet-link{color:inherit;text-decoration:none}
 .quiet-link:hover{text-decoration:underline}
-.site-header{position:sticky;top:0;z-index:20;background:rgba(250,248,244,.92);
+.site-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
 backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;
 padding-top:14px;padding-bottom:14px;gap:24px}
@@ -819,14 +819,14 @@ letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);white-space:
 .site-nav{display:flex;align-items:center;gap:20px}
 .site-nav a{font-size:.88rem;font-weight:500;color:var(--ink-soft);text-decoration:none;white-space:nowrap}
 .site-nav a:hover{color:var(--ink)}
-.nav-cta{color:var(--white)!important;background:var(--ink);padding:8px 16px;border-radius:6px}
+.nav-cta{color:var(--white)!important;background:var(--ink);padding:8px 16px;border-radius: 0}
 .nav-cta:hover{background:var(--ink-soft)}
 .brief-hero{padding:80px 0 64px;background:
-radial-gradient(1100px 480px at 85% -10%,rgba(165,128,60,.10),transparent 60%),var(--paper)}
+var(--paper)}
 .lede{max-width:640px;margin-top:1.2em;font-size:1.08rem}
 .band{padding:72px 0;background:var(--white);border-top:1px solid var(--line)}
 .band-alt{background:var(--paper-deep)}
-.btn{display:inline-block;padding:12px 24px;border-radius:7px;font-weight:600;
+.btn{display:inline-block;padding:12px 24px;border-radius: 0;font-weight:600;
 font-size:.98rem;text-decoration:none;border:0;cursor:pointer;font-family:var(--font-body);
 transition:background .15s ease}
 .btn-primary{background:var(--ink);color:var(--white)}
@@ -835,14 +835,14 @@ transition:background .15s ease}
 .subscribe-form{margin-top:1.8em;max-width:480px}
 .subscribe-row{display:flex;gap:10px}
 .subscribe-form input[type=email]{flex:1;min-width:0;padding:12px 14px;border:1px solid var(--line);
-border-radius:7px;background:var(--white);color:var(--ink);font-family:var(--font-body);font-size:.97rem}
+border-radius: 0;background:var(--white);color:var(--ink);font-family:var(--font-body);font-size:.97rem}
 .subscribe-form input[type=email]:focus{outline:2px solid var(--bronze);outline-offset:1px}
 .micro{font-size:.85rem;color:var(--ink-soft);margin-top:.7em}
 .form-status{font-size:.9rem;color:#a04b32;min-height:1.4em;margin-top:.4em}
 .subscribe-success{font-size:1.05rem;color:var(--bronze-deep);font-weight:600;margin-top:.6em}
 .hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 .visually-hidden{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
-.sample{border:1px solid var(--line);border-radius:10px;background:var(--paper);
+.sample{border:1px solid var(--line);border-radius: 0;background:var(--paper);
 padding:26px 28px;margin-top:1.6em}
 .sample-section{font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--bronze-deep);
 margin:1.4em 0 .6em}
@@ -869,13 +869,13 @@ text-transform:uppercase;color:var(--bronze-deep);margin:2em 0 .7em}
 .issue hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 .issue a{word-break:break-all}
 .issue-cta{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
-.share-box{border:1px solid var(--line);border-radius:10px;background:var(--white);
+.share-box{border:1px solid var(--line);border-radius: 0;background:var(--white);
 padding:22px 24px;margin-top:1.6em}
 .share-link a{font-family:var(--font-display);font-size:1.15rem;word-break:break-all}
 .tier-list{list-style:none;margin-top:1.4em}
 .tier-list li{padding:12px 2px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
 .tier-list li.tier-done{color:var(--bronze-deep);font-weight:600}
-.site-footer{background:#101a30;color:#8b94ad;font-size:.85rem;margin-top:0}
+.site-footer{background:#121110;color:#8f8a82;font-size:.85rem;margin-top:0}
 .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
 padding-top:22px;padding-bottom:22px}
 @media(max-width:640px){.subscribe-row{flex-direction:column}.brief-hero{padding:56px 0 44px}

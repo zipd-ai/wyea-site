@@ -3,47 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About WYEA — The Principals</title>
+  <title>About WYEA | The Principals</title>
   <meta name="description" content="WYEA is a principal-led engineering firm in Newport Beach building custom AI software for Orange County law firms. Meet the two engineers who lead every engagement.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="About WYEA — The Principals">
+  <meta property="og:title" content="About WYEA | The Principals">
   <meta property="og:description" content="The two engineers who build your system are the ones who answer your calls.">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:url" content="https://wyea.ai/about">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <link rel="canonical" href="https://wyea.ai/about">
-  <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* Shares the wyea.ai design system (see index.html). */
 
     @font-face {
-      font-family: "Fraunces";
+      font-family: "Newsreader";
       font-style: normal;
-      font-weight: 400 600;
+      font-weight: 400 700;
       font-display: swap;
-      src: url("/fonts/fraunces-var.woff2") format("woff2");
+      src: url("/fonts/newsreader-var.woff2") format("woff2");
     }
 
     @font-face {
-      font-family: "Inter";
+      font-family: "Public Sans";
       font-style: normal;
-      font-weight: 400 600;
+      font-weight: 400 700;
       font-display: swap;
-      src: url("/fonts/inter-var.woff2") format("woff2");
+      src: url("/fonts/public-sans-var.woff2") format("woff2");
     }
 
     :root {
-      --ink: #16213a;
-      --ink-soft: #3c4763;
-      --paper: #faf8f4;
-      --paper-deep: #f1ede5;
-      --bronze: #a5803c;
-      --bronze-deep: #8a6a2f;
-      --line: #e3ddd1;
+      --ink: #191713;
+      --ink-soft: #444038;
+      --paper: #ffffff;
+      --paper-deep: #f4f2ee;
+      --bronze: #6e1e2b;
+      --bronze-deep: #5a1723;
+      --line: #e7e5e0;
       --white: #ffffff;
-      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-      --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+      --font-body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -74,7 +74,7 @@
 
     .site-header {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(250, 248, 244, 0.94);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
@@ -92,15 +92,15 @@
     .nav-cta {
       font-size: 0.87rem; font-weight: 500; white-space: nowrap;
       color: var(--white); background: var(--ink);
-      padding: 8px 16px; border-radius: 6px; text-decoration: none;
+      padding: 8px 16px; border-radius: 0; text-decoration: none;
     }
     .nav-cta:hover { background: var(--ink-soft); color: var(--white); }
 
     .page { padding: 64px 0 80px; }
 
     .eyebrow {
-      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--bronze-deep); margin-bottom: 1em;
+      font-size: 0.92rem; font-weight: 600;
+      color: var(--bronze); margin-bottom: 1em;
     }
 
     .lede { font-size: 1.1rem; margin-bottom: 2.5em; }
@@ -110,18 +110,18 @@
     .principal {
       background: var(--white);
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 0;
       padding: 30px 30px 26px;
     }
 
     .principal-avatar {
-      width: 96px; height: 96px; border-radius: 12px; object-fit: cover;
+      width: 96px; height: 96px; border-radius: 0; object-fit: cover;
       display: block; margin-bottom: 16px; border: 1px solid var(--line);
     }
 
     .principal-role {
-      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--bronze-deep); margin-bottom: 1em;
+      font-size: 0.92rem; font-weight: 600;
+      color: var(--bronze); margin-bottom: 1em;
     }
 
     .principal-bio { font-size: 0.95rem; }
@@ -136,14 +136,14 @@
     .cta-band {
       margin-top: 3.5em;
       background: var(--ink);
-      border-radius: 12px;
+      border-radius: 0;
       padding: 34px 32px;
     }
     .cta-band h2 { color: var(--white); margin: 0 0 0.4em; font-size: clamp(1.3rem, 2.6vw, 1.6rem); }
-    .cta-band p { color: #b9c0d4; }
+    .cta-band p { color: #b6b1a9; }
     .btn {
       display: inline-block; margin-top: 1.2em; padding: 13px 26px;
-      border-radius: 7px; font-weight: 600; font-size: 0.97rem;
+      border-radius: 0; font-weight: 600; font-size: 0.97rem;
       text-decoration: none; background: var(--white); color: var(--ink);
     }
     .btn:hover { background: var(--paper-deep); }
@@ -151,7 +151,7 @@
     .back { font-size: 0.9rem; margin-top: 2.5em; }
     .back a { color: var(--bronze-deep); }
 
-    .site-footer { background: #101a30; color: #8b94ad; font-size: 0.85rem; }
+    .site-footer { background: #121110; color: #8f8a82; font-size: 0.85rem; }
     .footer-inner {
       max-width: 1080px; margin: 0 auto; padding: 22px 28px;
       display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
@@ -204,7 +204,7 @@
       <p class="eyebrow">About WYEA</p>
       <h1>The engineers who answer your calls.</h1>
       <p class="lede">
-        WYEA — Whittle and Ye Engineering Associates — is a principal-led
+        WYEA (Whittle and Ye Engineering Associates) is a principal-led
         engineering firm in Newport Beach. Every engagement is led personally
         by the firm's two founding engineers.
       </p>
@@ -251,7 +251,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <span>© 2026 WYEA</span>
-      <span><a href="/privacy" style="color:#b9c0d4;text-decoration:none">Privacy</a></span>
+      <span><a href="/privacy" style="color:#b6b1a9;text-decoration:none">Privacy</a></span>
       <span>Newport Beach · Orange County, California</span>
     </div>
   </footer>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom AI Software for Law Firms in Orange County | WYEA</title>
-  <meta name="description" content="WYEA builds custom AI software for law firms in Orange County, California — verified citations, document drafting, and workflow automation, with a working prototype in one week.">
+  <meta name="description" content="WYEA builds custom AI software for law firms in Orange County, California: verified citations, document drafting, and workflow automation, with a working prototype in one week.">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Custom AI Software for Law Firms in Orange County">
   <meta property="og:description" content="What custom legal AI costs, how it compares to platforms like Harvey and CoCounsel, and how confidentiality is protected.">
@@ -12,40 +12,40 @@
   <meta property="og:url" content="https://wyea.ai/custom-ai-for-law-firms">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <link rel="canonical" href="https://wyea.ai/custom-ai-for-law-firms">
-  <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* Shares the wyea.ai design system (see index.html). Answer-first page:
        every H2 is a question a partner actually asks; first sentences carry
        the whole answer so both scanners and AI engines can lift them. */
 
     @font-face {
-      font-family: "Fraunces";
+      font-family: "Newsreader";
       font-style: normal;
-      font-weight: 400 600;
+      font-weight: 400 700;
       font-display: swap;
-      src: url("/fonts/fraunces-var.woff2") format("woff2");
+      src: url("/fonts/newsreader-var.woff2") format("woff2");
     }
 
     @font-face {
-      font-family: "Inter";
+      font-family: "Public Sans";
       font-style: normal;
-      font-weight: 400 600;
+      font-weight: 400 700;
       font-display: swap;
-      src: url("/fonts/inter-var.woff2") format("woff2");
+      src: url("/fonts/public-sans-var.woff2") format("woff2");
     }
 
     :root {
-      --ink: #16213a;
-      --ink-soft: #3c4763;
-      --paper: #faf8f4;
-      --paper-deep: #f1ede5;
-      --bronze: #a5803c;
-      --bronze-deep: #8a6a2f;
-      --line: #e3ddd1;
+      --ink: #191713;
+      --ink-soft: #444038;
+      --paper: #ffffff;
+      --paper-deep: #f4f2ee;
+      --bronze: #6e1e2b;
+      --bronze-deep: #5a1723;
+      --line: #e7e5e0;
       --white: #ffffff;
-      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-      --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+      --font-body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -85,7 +85,7 @@
 
     .site-header {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(250, 248, 244, 0.94);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
@@ -103,15 +103,15 @@
     .nav-cta {
       font-size: 0.87rem; font-weight: 500; white-space: nowrap;
       color: var(--white); background: var(--ink);
-      padding: 8px 16px; border-radius: 6px; text-decoration: none;
+      padding: 8px 16px; border-radius: 0; text-decoration: none;
     }
     .nav-cta:hover { background: var(--ink-soft); color: var(--white); }
 
     .page { padding: 64px 0 80px; }
 
     .eyebrow {
-      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--bronze-deep); margin-bottom: 1em;
+      font-size: 0.92rem; font-weight: 600;
+      color: var(--bronze); margin-bottom: 1em;
     }
 
     .lede { font-size: 1.1rem; }
@@ -128,26 +128,26 @@
     .cta-band {
       margin-top: 3em;
       background: var(--ink);
-      border-radius: 12px;
+      border-radius: 0;
       padding: 34px 32px;
     }
     .cta-band h2 { color: var(--white); margin: 0 0 0.4em; }
-    .cta-band p { color: #b9c0d4; }
+    .cta-band p { color: #b6b1a9; }
     .btn {
       display: inline-block; margin-top: 1.2em; padding: 13px 26px;
-      border-radius: 7px; font-weight: 600; font-size: 0.97rem;
+      border-radius: 0; font-weight: 600; font-size: 0.97rem;
       text-decoration: none; background: var(--white); color: var(--ink);
     }
     .btn:hover { background: var(--paper-deep); color: var(--ink); }
 
     .updated { font-size: 0.85rem; color: var(--ink-soft); margin-top: 2.5em; }
 
-    .site-footer { background: #101a30; color: #8b94ad; font-size: 0.85rem; }
+    .site-footer { background: #121110; color: #8f8a82; font-size: 0.85rem; }
     .footer-inner {
       max-width: 1080px; margin: 0 auto; padding: 22px 28px;
       display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
     }
-    .footer-inner a { color: #b9c0d4; text-decoration: none; }
+    .footer-inner a { color: #b6b1a9; text-decoration: none; }
   </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
   <script type="application/ld+json">
@@ -186,7 +186,7 @@
         <strong>WYEA builds custom AI software for law firms in Orange County,
         California.</strong> Instead of subscribing to a platform and adapting
         your practice to it, your firm gets one system built around your
-        documents, your local rules, and your workflow — with every AI citation
+        documents, your local rules, and your workflow, with every AI citation
         checked word-for-word against the source document: verified, or flagged
         for attorney review.
       </p>
@@ -194,20 +194,20 @@
       <h2>What are a small California firm's options for legal AI?</h2>
       <p>A firm evaluating legal AI in 2026 has three realistic paths:</p>
       <ol>
-        <li><strong>Subscription platforms</strong> — Harvey, Thomson Reuters
+        <li><strong>Subscription platforms</strong>: Harvey, Thomson Reuters
           CoCounsel, Spellbook, and similar products. Broad, proven, priced per
           seat; your firm adapts its workflow to the product.</li>
-        <li><strong>General AI tools</strong> — ChatGPT or Claude with careful
+        <li><strong>General AI tools</strong>: ChatGPT or Claude with careful
           prompting. Inexpensive, but nothing is verified against your
           documents, and confidentiality depends on settings your staff must
           get right every time.</li>
-        <li><strong>Custom software</strong> — a system built for your firm's
+        <li><strong>Custom software</strong>: a system built for your firm's
           documents and practice area, owned and deployed your way. This is
           what WYEA does, and it fits firms whose workflow doesn't match what
           the platforms assume.</li>
       </ol>
       <p>
-        For many firms the platforms are the right call — a first conversation
+        For many firms the platforms are the right call. A first conversation
         with us will tell you honestly which path fits. Attorneys shop
         carefully here:
       </p>
@@ -221,12 +221,12 @@
       <p>
         <strong>Client documents never train a model, and every access is
         auditable.</strong> We sign an NDA before seeing anything. Materials
-        live in your firm's isolated environment — cloud or on your own
-        infrastructure — and tamper-evident records show exactly what happened,
+        live in your firm's isolated environment, cloud or on your own
+        infrastructure, and tamper-evident records show exactly what happened,
         and when, to every document we touch.
       </p>
       <div class="stat-note">
-        Data security is the legal profession's top concern about AI —
+        Data security is the legal profession's top concern about AI,
         <strong>46%</strong> of legal professionals rank it first, ahead of
         ethics at 42%
         (<a href="https://www.8am.com/reports/legal-tech-buyers-guide/" rel="noopener">8am 2026 Legal Industry Report</a>).
@@ -236,7 +236,7 @@
 
       <h2>What happens when the AI can't verify a citation?</h2>
       <p>
-        <strong>It is flagged and held for attorney review — never
+        <strong>It is flagged and held for attorney review, never
         asserted.</strong> A citation appears in output only when its exact
         quote is found in the source document. That rule is architectural, not
         a setting, and it is the difference between AI you can put in a filing
@@ -246,7 +246,7 @@
       <h2>What does custom legal AI software cost?</h2>
       <p>
         <strong>Every WYEA engagement starts with a fixed-price, one-week
-        prototype</strong> built against your firm's real documents — quoted
+        prototype</strong> built against your firm's real documents, quoted
         before we begin, never an open-ended hourly bill. If the prototype
         earns it, the full build is scoped the same way: fixed price, defined
         deliverables. Your firm owns its data, its documents, and its
@@ -255,8 +255,8 @@
 
       <h2>Who builds it?</h2>
       <p>
-        Two principal engineers — backgrounds at Amazon, a Fortune 100 bank's
-        corporate-risk machine-learning group, Georgia Tech, and UC San Diego —
+        Two principal engineers, with backgrounds at Amazon, a Fortune 100 bank's
+        corporate-risk machine-learning group, Georgia Tech, and UC San Diego,
         based in Newport Beach. We come to your office, and the engineers who
         build your system are the ones who answer your calls.
         <a href="/about">Meet the principals</a>.
@@ -265,7 +265,7 @@
       <div class="cta-band">
         <h2>Tell us about your practice.</h2>
         <p>Thirty minutes, no obligation. We'll tell you honestly whether
-        custom software is worth it for your firm — and if it isn't, we'll
+        custom software is worth it for your firm, and if it isn't, we'll
         say so.</p>
         <a class="btn" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
       </div>
@@ -280,7 +280,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <span>© 2026 WYEA</span>
-      <span><a href="/privacy" style="color:#b9c0d4;text-decoration:none">Privacy</a></span>
+      <span><a href="/privacy" style="color:#b6b1a9;text-decoration:none">Privacy</a></span>
       <span>Newport Beach · Orange County, California</span>
     </div>
   </footer>

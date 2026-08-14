@@ -3,45 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — WYEA</title>
+  <title>Privacy Policy | WYEA</title>
   <meta name="description" content="How WYEA handles information: what this website collects, and how the WYEA platform treats a law firm's documents and connected accounts, including Dropbox.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Privacy Policy — WYEA">
+  <meta property="og:title" content="Privacy Policy | WYEA">
   <meta property="og:description" content="How WYEA handles information on this site and in the WYEA platform.">
   <meta property="og:url" content="https://wyea.ai/privacy">
   <link rel="canonical" href="https://wyea.ai/privacy">
-  <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* Shares the wyea.ai design system (see index.html). */
 
     @font-face {
-      font-family: "Fraunces";
+      font-family: "Newsreader";
       font-style: normal;
-      font-weight: 400 600;
+      font-weight: 400 700;
       font-display: swap;
-      src: url("/fonts/fraunces-var.woff2") format("woff2");
+      src: url("/fonts/newsreader-var.woff2") format("woff2");
     }
 
     @font-face {
-      font-family: "Inter";
+      font-family: "Public Sans";
       font-style: normal;
-      font-weight: 400 600;
+      font-weight: 400 700;
       font-display: swap;
-      src: url("/fonts/inter-var.woff2") format("woff2");
+      src: url("/fonts/public-sans-var.woff2") format("woff2");
     }
 
     :root {
-      --ink: #16213a;
-      --ink-soft: #3c4763;
-      --paper: #faf8f4;
-      --paper-deep: #f1ede5;
-      --bronze: #a5803c;
-      --bronze-deep: #8a6a2f;
-      --line: #e3ddd1;
+      --ink: #191713;
+      --ink-soft: #444038;
+      --paper: #ffffff;
+      --paper-deep: #f4f2ee;
+      --bronze: #6e1e2b;
+      --bronze-deep: #5a1723;
+      --line: #e7e5e0;
       --white: #ffffff;
-      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-      --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+      --font-body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,7 +78,7 @@
 
     .site-header {
       position: sticky; top: 0; z-index: 20;
-      background: rgba(250, 248, 244, 0.94);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--line);
     }
@@ -96,22 +96,22 @@
     .nav-cta {
       font-size: 0.87rem; font-weight: 500; white-space: nowrap;
       color: var(--white); background: var(--ink);
-      padding: 8px 16px; border-radius: 6px; text-decoration: none;
+      padding: 8px 16px; border-radius: 0; text-decoration: none;
     }
     .nav-cta:hover { background: var(--ink-soft); color: var(--white); }
 
     .page { padding: 64px 0 80px; }
 
     .eyebrow {
-      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--bronze-deep); margin-bottom: 1em;
+      font-size: 0.92rem; font-weight: 600;
+      color: var(--bronze); margin-bottom: 1em;
     }
 
     .effective { font-size: 0.9rem; margin-bottom: 2.2em; }
 
     .back { font-size: 0.9rem; margin-top: 3em; }
 
-    .site-footer { background: #101a30; color: #8b94ad; font-size: 0.85rem; }
+    .site-footer { background: #121110; color: #8f8a82; font-size: 0.85rem; }
     .footer-inner {
       max-width: 1080px; margin: 0 auto; padding: 22px 28px;
       display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
@@ -136,7 +136,7 @@
 
       <p>
         This page covers two things: what this website collects, and how the
-        WYEA platform — the software we run for client law firms — treats the
+        WYEA platform (the software we run for client law firms) treats the
         information that passes through it, including accounts a firm connects
         to it such as Dropbox.
       </p>
@@ -149,8 +149,8 @@
       </p>
       <ul>
         <li>
-          <strong>The contact form</strong> stores what you type — name, firm,
-          email, message — so we can reply, and sends it to us by email. The
+          <strong>The contact form</strong> stores what you type (name, firm,
+          email, message) so we can reply, and sends it to us by email. The
           form is protected by Cloudflare Turnstile, which checks that you are
           a person and not a script.
         </li>
@@ -182,8 +182,8 @@
 
       <h2>Connected accounts, including Dropbox</h2>
       <p>
-        A firm can connect accounts it already uses — for example Dropbox,
-        where its documents live — so the platform can work with documents in
+        A firm can connect accounts it already uses, for example Dropbox,
+        where its documents live, so the platform can work with documents in
         place. When someone at a firm connects Dropbox:
       </p>
       <ul>
@@ -195,7 +195,7 @@
         <li>
           The connection lets the platform read account and file information,
           read document contents, save documents back, and read sharing
-          settings — the things a document workspace needs. It is used for
+          settings: the things a document workspace needs. It is used for
           nothing else.
         </li>
         <li>
@@ -208,7 +208,7 @@
         </li>
         <li>
           The credential Dropbox issues us for the connection is stored
-          encrypted, and is never shown to anyone — including the person who
+          encrypted, and is never shown to anyone, including the person who
           connected.
         </li>
         <li>
@@ -220,7 +220,7 @@
 
       <h2>Service providers</h2>
       <p>
-        We use a small number of infrastructure providers to run our systems —
+        We use a small number of infrastructure providers to run our systems:
         cloud hosting, email delivery, payment processing where a firm has
         turned billing on. Each receives only what it needs to do its job.
         We do not sell personal information, and we have not sold it in the
@@ -230,8 +230,8 @@
       <h2>California rights</h2>
       <p>
         We are a California company and our clients are California firms. If
-        California privacy law gives you rights over information we hold —
-        access, correction, deletion — write to us and we will honor them.
+        California privacy law gives you rights over information we hold:
+        access, correction, deletion. Write to us and we will honor them.
         Note that for a firm's matter content, your request usually belongs
         with the firm: they are the ones who decide what their system keeps.
       </p>
@@ -239,7 +239,7 @@
       <h2>Questions</h2>
       <p>
         Write to <a href="mailto:contact@wyea.ai">contact@wyea.ai</a>. A
-        person reads it — usually one of the two of us.
+        person reads it, usually one of the two of us.
       </p>
       <p>
         If this policy changes in a way that matters, we will change this page
@@ -253,7 +253,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <span>© 2026 WYEA</span>
-      <span><a href="/privacy" style="color:#b9c0d4;text-decoration:none">Privacy</a></span>
+      <span><a href="/privacy" style="color:#b6b1a9;text-decoration:none">Privacy</a></span>
       <span>Newport Beach · Orange County, California</span>
     </div>
   </footer>
