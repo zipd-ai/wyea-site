@@ -446,7 +446,7 @@ export function issueEmailHtml(rendered, issueDate) {
   return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#ffffff">
   <tr><td align="center" style="padding:28px 12px">
     <!-- classic newsletter centering: align attribute + fixed width
-         attribute on the table. No width:100% here — clients that strip
+         attribute on the table. No width:100% here, since clients that strip
          max-width would blow the column out to full width; mobile apps
          shrink fixed-width tables to fit on their own. -->
     <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;margin:0 auto">
