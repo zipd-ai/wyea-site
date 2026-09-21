@@ -4,10 +4,39 @@ Marketing site for **Whittle and Ye Engineering Associates LLC** (WYEA):
 catered software for Orange County law firms, cutting-edge tech, white-glove
 service.
 
-A single self-contained `index.html` (CSS inlined, renders styled from any
-viewer) plus a small Cloudflare Worker (`worker.js`) behind the contact form
-and The Brief, our weekly newsletter (`brief.js`). No build step, no
+Static HTML plus a small Cloudflare Worker (`worker.js`) behind the contact
+form and The Brief, our weekly newsletter (`brief.js`). No build step, no
 dependencies.
+
+## Pages and shared chrome
+
+Every page loads two shared files, so a brand or navigation change lands once:
+
+- **`styles.css`** — the whole design system: tokens, type scale, section
+  bands, tiles, and the interface figures (the "screenshots" are drawn in
+  HTML, not captured, so they stay legible at any width).
+- **`site.js`** — the navigation dropdowns, the mobile menu, the
+  reveal-on-scroll, and both forms. Everything degrades: with scripting off
+  the nav is a plain list of links and every section is visible.
+
+```
+/                          index.html                 marquee
+/what-we-build             what-we-build.html         overview of the four systems
+/build/verified-drafting   build/verified-drafting.html
+/build/discovery           build/discovery.html
+/build/matter-workflow     build/matter-workflow.html
+/build/deployment          build/deployment.html
+/how-we-work               how-we-work.html           engagement model
+/security                  security.html
+/about                     about.html                 the principals
+/custom-ai-for-law-firms   custom-ai-for-law-firms.html   answer-first commercial page
+/privacy                   privacy.html
+/brief, /brief/YYYY-MM-DD  Worker-rendered (brief.js)
+```
+
+The header and footer are duplicated in each file (no build step) and again
+in `brief.js` for the Worker-rendered pages. Change one, change them all;
+`worker.js` also lists every page in the generated `/sitemap.xml`.
 
 ## Contact form
 
@@ -17,7 +46,7 @@ recipient address lives only in the `CONTACT_EMAIL` secret — never in the
 page or the repo. De-duplication is two-layer: a per-page-load idempotency
 token (double-clicks/retries) and a hash of email + message (repeat
 inquiries); both are `UNIQUE` columns, and a duplicate reads as success.
-Spam: honeypot field always; Turnstile once `TURNSTILE_SITEKEY` (index.html)
+Spam: honeypot field always; Turnstile once `TURNSTILE_SITEKEY` (site.js)
 and the `TURNSTILE_SECRET` secret are set — the Worker skips verification
 until then.
 
@@ -121,7 +150,7 @@ npx wrangler d1 create wyea-leads        # paste the id into wrangler.jsonc
 npx wrangler d1 execute wyea-leads --file schema.sql --remote
 npx wrangler secret put CONTACT_EMAIL    # where leads are delivered
 npx wrangler secret put RESEND_API_KEY   # resend.com API key
-npx wrangler secret put TURNSTILE_SECRET # optional, with the sitekey in index.html
+npx wrangler secret put TURNSTILE_SECRET # optional, with the sitekey in site.js
 ```
 
 Then `npx wrangler deploy`. Reading the lead log:

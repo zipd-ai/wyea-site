@@ -755,26 +755,16 @@ function page(title, body, status = 200, meta = {}) {
   ${meta.jsonLd ? `<script type="application/ld+json">${JSON.stringify(meta.jsonLd)}</script>` : ""}
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.className += " js";</script>
   <style>${PAGE_CSS}</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="wordmark" href="/">WYEA</a>
-      <nav class="site-nav">
-        <a href="/brief">The Brief</a>
-        <a class="nav-cta" href="/#contact">Start a conversation</a>
-      </nav>
-    </div>
-  </header>
-  <main>${body}</main>
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <span>Curated by WYEA, Newport Beach - firm-owned drafting and review tools.</span>
-      <span>© 2026 WYEA</span>
-    </div>
-  </footer>
+${SITE_HEADER}
+  <main id="main">${body}</main>
+${SITE_FOOTER}
+  <script src="/site.js" defer></script>
   <script>${SUBSCRIBE_JS}</script>
 </body>
 </html>`;
@@ -784,102 +774,148 @@ function page(title, body, status = 200, meta = {}) {
   });
 }
 
+// The Brief's pages are Worker-rendered, so the site header and footer are
+// duplicated here rather than in an HTML file. Keep them in step with the
+// committed pages: same links, same order, same markup.
+const CAL_URL = "https://calendar.app.google/hMuBjTub3YHa9rKT7";
+
+const SITE_HEADER = `<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">WYEA</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">What we build <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-build" hidden>
+          <a class="mega-link" href="/what-we-build"><b>Overview</b><span>The four systems a firm can have built, and how they fit together.</span></a>
+          <a class="mega-link" href="/build/verified-drafting"><b>Verified drafting</b><span>First drafts in your format, with every citation matched to the source.</span></a>
+          <a class="mega-link" href="/build/discovery"><b>Discovery and review</b><span>Production sets read and ranked against the requests actually served.</span></a>
+          <a class="mega-link" href="/build/matter-workflow"><b>Matter workflow</b><span>Deadlines computed from the governing rules and shown with authority.</span></a>
+          <a class="mega-link" href="/build/deployment"><b>Deployment and control</b><span>Your environment, your infrastructure, your audit trail.</span></a>
+          <a class="mega-link" href="/custom-ai-for-law-firms"><b>For Orange County firms</b><span>What the options are, what each costs, and which one fits.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/security">Security</a>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-company" hidden>
+          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
+          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for Orange County firms.</span></a>
+          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>Fixed price, one week to a prototype, defined deliverables.</span></a>
+          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/brief" aria-current="page">The Brief</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="${CAL_URL}" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </div>
+</header>`;
+
+const SITE_FOOTER = `<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="/">WYEA</a>
+        <p>Whittle and Ye Engineering Associates. Custom software for law firms, built in Newport Beach.</p>
+      </div>
+      <div class="footer-col">
+        <h4>What we build</h4>
+        <ul>
+          <li><a href="/what-we-build">Overview</a></li>
+          <li><a href="/build/verified-drafting">Verified drafting</a></li>
+          <li><a href="/build/discovery">Discovery and review</a></li>
+          <li><a href="/build/matter-workflow">Matter workflow</a></li>
+          <li><a href="/build/deployment">Deployment and control</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>How we work</h4>
+        <ul>
+          <li><a href="/how-we-work">Engagement model</a></li>
+          <li><a href="/security">Security and confidentiality</a></li>
+          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About the firm</a></li>
+          <li><a href="/brief">The Brief</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="${CAL_URL}" target="_blank" rel="noopener">Book a 30-minute call</a></li>
+          <li><a href="/#contact">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 WYEA</span>
+      <span>Newport Beach &middot; Orange County, California</span>
+      <a href="/privacy">Privacy</a>
+    </div>
+  </div>
+</footer>`;
+
+// Only what The Brief adds on top of /styles.css. Shared tokens, typography,
+// header, footer, and buttons all come from the stylesheet the rest of the
+// site loads, so a brand change lands here without a second edit.
 const PAGE_CSS = `
-@font-face{font-family:"Newsreader";font-style:normal;font-weight:400 700;
-font-display:swap;src:url("/fonts/newsreader-var.woff2") format("woff2")}
-@font-face{font-family:"Public Sans";font-style:normal;font-weight:400 700;
-font-display:swap;src:url("/fonts/public-sans-var.woff2") format("woff2")}
-:root{--ink:#191713;--ink-soft:#444038;--paper:#ffffff;--paper-deep:#f4f2ee;
---bronze:#6e1e2b;--bronze-deep:#5a1723;--line:#e7e5e0;--white:#ffffff;
---font-display:"Newsreader",Georgia,"Times New Roman",serif;
---font-body:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--font-body);color:var(--ink);background:var(--paper);
-line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
-.container{max-width:1080px;margin:0 auto;padding:0 28px}
-.container.narrow{max-width:720px}
-h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.15;letter-spacing:-0.01em}
-h1{font-size:clamp(1.9rem,4.5vw,2.9rem)}
-h2{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:.6em}
-h3{font-size:1.15rem;margin-bottom:.35em}
-p{color:var(--ink-soft)}
-a{color:var(--bronze-deep)}
-.eyebrow{font-size:.9rem;font-weight:600;
-color:var(--bronze-deep);margin-bottom:1.1em}
+.container{width:100%;max-width:var(--w-page);margin:0 auto;padding:0 var(--gutter)}
+.container.narrow{max-width:calc(800px + var(--gutter) * 2)}
+.band{border-top:1px solid var(--line)}
+.band-alt{background:var(--paper-deep)}
+.brief-hero{padding:clamp(56px,7vw,96px) 0 clamp(40px,5vw,64px)}
 .quiet-link{color:inherit;text-decoration:none}
 .quiet-link:hover{text-decoration:underline}
-.site-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;
-padding-top:14px;padding-bottom:14px;gap:24px}
-.wordmark{font-family:var(--font-display);font-size:1.5rem;font-weight:600;color:var(--ink);
-text-decoration:none;display:flex;flex-direction:column;line-height:1.1}
-.wordmark-sub{font-family:var(--font-body);font-size:.62rem;font-weight:500;
-letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);white-space:nowrap}
-.site-nav{display:flex;align-items:center;gap:20px}
-.site-nav a{font-size:.88rem;font-weight:500;color:var(--ink-soft);text-decoration:none;white-space:nowrap}
-.site-nav a:hover{color:var(--ink)}
-.nav-cta{color:var(--white)!important;background:var(--ink);padding:8px 16px;border-radius: 0}
-.nav-cta:hover{background:var(--ink-soft)}
-.brief-hero{padding:80px 0 64px;background:
-var(--paper)}
-.lede{max-width:640px;margin-top:1.2em;font-size:1.08rem}
-.band{padding:72px 0;background:var(--white);border-top:1px solid var(--line)}
-.band-alt{background:var(--paper-deep)}
-.btn{display:inline-block;padding:12px 24px;border-radius: 0;font-weight:600;
-font-size:.98rem;text-decoration:none;border:0;cursor:pointer;font-family:var(--font-body);
-transition:background .15s ease}
-.btn-primary{background:var(--ink);color:var(--white)}
-.btn-primary:hover{background:var(--ink-soft)}
-.btn[disabled]{opacity:.6;cursor:default}
+.visually-hidden{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
 .subscribe-form{margin-top:1.8em;max-width:480px}
 .subscribe-row{display:flex;gap:10px}
-.subscribe-form input[type=email]{flex:1;min-width:0;padding:12px 14px;border:1px solid var(--line);
-border-radius: 0;background:var(--white);color:var(--ink);font-family:var(--font-body);font-size:.97rem}
-.subscribe-form input[type=email]:focus{outline:2px solid var(--bronze);outline-offset:1px}
-.micro{font-size:.85rem;color:var(--ink-soft);margin-top:.7em}
-.form-status{font-size:.9rem;color:#a04b32;min-height:1.4em;margin-top:.4em}
+.subscribe-form input[type=email]{flex:1;min-width:0;height:46px;padding:0 14px}
+.micro{font-size:.86rem;color:var(--ink-muted);margin-top:.8em}
+.form-status{font-size:.9rem;color:var(--bronze-deep);min-height:1.4em;margin-top:.5em}
 .subscribe-success{font-size:1.05rem;color:var(--bronze-deep);font-weight:600;margin-top:.6em}
-.hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
-.visually-hidden{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
-.sample{border:1px solid var(--line);border-radius: 0;background:var(--paper);
-padding:26px 28px;margin-top:1.6em}
-.sample-section{font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--bronze-deep);
-margin:1.4em 0 .6em}
+.sample{border:1px solid var(--line);background:var(--paper);padding:28px 30px;margin-top:1.8em}
+.band-alt .sample{background:var(--white)}
+.sample-section{font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+color:var(--bronze);margin:1.6em 0 .7em}
 .sample-section:first-child{margin-top:0}
-.item h3{font-size:1.05rem}
-.item p{font-size:.95rem}
+.item h3{font-size:1.06rem}
+.item p{font-size:.95rem;margin-top:.3em}
 .sample-headline{color:var(--bronze-deep);text-decoration:none;border-bottom:1px solid var(--bronze)}
 .sample-headline:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .fine{font-size:.88rem;margin-top:1.6em}
 .empty-note{font-size:1rem}
-.archive-list{list-style:none;margin-top:.5em}
+.archive-list{list-style:none;margin-top:1em;border-top:1px solid var(--line)}
 .archive-list li{display:flex;justify-content:space-between;gap:16px;align-items:baseline;
-padding:14px 2px;border-bottom:1px solid var(--line)}
-.archive-list a{font-family:var(--font-display);font-size:1.1rem;color:var(--ink);text-decoration:none}
+padding:18px 2px;border-bottom:1px solid var(--line)}
+.archive-list a{font-family:var(--font-display);font-size:1.18rem;font-weight:450;
+letter-spacing:-.01em;color:var(--ink);text-decoration:none}
 .archive-list a:hover{color:var(--bronze-deep)}
-.archive-date{font-size:.85rem;color:var(--ink-soft);white-space:nowrap}
+.archive-date{font-size:.85rem;color:var(--ink-muted);white-space:nowrap}
 .issue{margin-top:.5em}
-.issue h1{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.4em}
-.issue h2{font-size:1rem;font-weight:600;font-family:var(--font-body);letter-spacing:.14em;
-text-transform:uppercase;color:var(--bronze-deep);margin:2em 0 .7em}
-.issue h3{font-size:1.12rem;margin-top:1.4em}
-.issue p{margin:.5em 0;font-size:1rem}
-.issue ul{margin:.5em 0 .5em 1.2em}
-.issue hr{border:0;border-top:1px solid var(--line);margin:2em 0}
-.issue a{word-break:break-all}
-.issue-cta{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
-.share-box{border:1px solid var(--line);border-radius: 0;background:var(--white);
-padding:22px 24px;margin-top:1.6em}
-.share-link a{font-family:var(--font-display);font-size:1.15rem;word-break:break-all}
-.tier-list{list-style:none;margin-top:1.4em}
-.tier-list li{padding:12px 2px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+.issue h1{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.5em}
+.issue h2{font-size:.82rem;font-weight:700;font-family:var(--font-body);letter-spacing:.13em;
+text-transform:uppercase;color:var(--bronze);margin:2.4em 0 .8em}
+.issue h3{font-size:1.14rem;margin-top:1.5em}
+.issue p{margin:.55em 0;font-size:1.02rem;line-height:1.65}
+.issue ul{margin:.6em 0 .6em 1.2em}
+.issue li{color:var(--ink-soft);margin-bottom:.4em}
+.issue hr{border:0;border-top:1px solid var(--line);margin:2.4em 0}
+.issue a{color:var(--bronze-deep);word-break:break-word}
+.issue-cta{margin-top:64px;padding-top:36px;border-top:1px solid var(--line)}
+.share-box{border:1px solid var(--line);background:var(--white);padding:24px 26px;margin-top:1.8em}
+.share-link a{font-family:var(--font-display);font-size:1.18rem;word-break:break-all}
+.tier-list{list-style:none;margin-top:1.4em;border-top:1px solid var(--line)}
+.tier-list li{padding:14px 2px;border-bottom:1px solid var(--line);color:var(--ink-muted)}
 .tier-list li.tier-done{color:var(--bronze-deep);font-weight:600}
-.site-footer{background:#121110;color:#8f8a82;font-size:.85rem;margin-top:0}
-.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-padding-top:22px;padding-bottom:22px}
-@media(max-width:640px){.subscribe-row{flex-direction:column}.brief-hero{padding:56px 0 44px}
-.band{padding:52px 0}.wordmark-sub{white-space:normal}}
+@media(max-width:640px){.subscribe-row{flex-direction:column}}
 `;
 
 const SUBSCRIBE_JS = `

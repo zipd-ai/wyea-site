@@ -54,6 +54,13 @@ async function sitemap(env, origin) {
   }
   const urls = [
     { loc: `${base}/`, priority: "1.0" },
+    { loc: `${base}/what-we-build`, priority: "0.9" },
+    { loc: `${base}/build/verified-drafting`, priority: "0.8" },
+    { loc: `${base}/build/discovery`, priority: "0.8" },
+    { loc: `${base}/build/matter-workflow`, priority: "0.8" },
+    { loc: `${base}/build/deployment`, priority: "0.8" },
+    { loc: `${base}/how-we-work`, priority: "0.9" },
+    { loc: `${base}/security`, priority: "0.8" },
     { loc: `${base}/custom-ai-for-law-firms`, priority: "0.8" },
     { loc: `${base}/about`, priority: "0.7" },
     { loc: `${base}/brief`, priority: "0.8" },

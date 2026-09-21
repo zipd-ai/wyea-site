@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security and Confidentiality | WYEA</title>
+  <meta name="description" content="Single-tenant deployment your firm controls, no client document used to train a model, and an append-only audit trail your firm can read at any time.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Security and Confidentiality | WYEA">
+  <meta property="og:description" content="Single-tenant deployment your firm controls, no client document used to train a model, and an append-only audit trail your firm can read at any time.">
+  <meta property="og:url" content="https://wyea.ai/security">
+  <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://wyea.ai/security">
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.className += " js";</script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does WYEA use client documents to train models?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Client documents are never used to train any model, by WYEA or by anyone else. The guarantee is written into the engagement agreement and enforced by the deployment boundary, which has no outbound path for client documents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does a law firm's data live in a WYEA deployment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In a single-tenant environment the firm controls: a managed deployment that belongs to the firm alone, the firm's own cloud account, or hardware in the firm's office. There is no shared index and nothing is pooled across clients."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a law firm audit what WYEA accessed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every document access is recorded in an append-only audit trail the firm can read at any time without asking, and WYEA's own support sessions are scoped, time-limited, and recorded on the same terms."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When does WYEA sign an NDA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Before seeing a single document. The firm's own form is preferred; WYEA's is available if the firm would rather not draft one."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="announce">
+  <a href="/brief">
+    <strong>The Brief</strong> · What changed in legal technology this week<span class="announce-long">, written for Orange County firms</span>.<span class="arrow">Read the latest</span>
+  </a>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">WYEA</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">What we build <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-build" hidden>
+          <a class="mega-link" href="/what-we-build"><b>Overview</b><span>The four systems a firm can have built, and how they fit together.</span></a>
+          <a class="mega-link" href="/build/verified-drafting"><b>Verified drafting</b><span>First drafts in your format, with every citation matched to the source.</span></a>
+          <a class="mega-link" href="/build/discovery"><b>Discovery and review</b><span>Production sets read and ranked against the requests actually served.</span></a>
+          <a class="mega-link" href="/build/matter-workflow"><b>Matter workflow</b><span>Deadlines computed from the governing rules and shown with authority.</span></a>
+          <a class="mega-link" href="/build/deployment"><b>Deployment and control</b><span>Your environment, your infrastructure, your audit trail.</span></a>
+          <a class="mega-link" href="/custom-ai-for-law-firms"><b>For Orange County firms</b><span>What the options are, what each costs, and which one fits.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/security" aria-current="page">Security</a>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-company" hidden>
+          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
+          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for Orange County firms.</span></a>
+          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>Fixed price, one week to a prototype, defined deliverables.</span></a>
+          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/brief">The Brief</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="crumb"><a href="/">WYEA</a> / Security</p>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Security and confidentiality</p>
+          <h1>Your clients' documents never train a model, and you can audit everything</h1>
+        </div>
+        <div>
+          <p class="lede">Confidentiality is the first engineering requirement on every engagement, ahead of any feature. These are commitments in the engagement agreement, enforced by how the system is built.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Talk to us about your obligations</a>
+            <a class="btn btn-ghost" href="/build/deployment">Deployment options</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="wrap wrap-wide">
+        <figure class="app reveal" role="img" aria-label="Illustration of a single-firm deployment: documents, application, and audit log inside the firm's own environment, with egress of client documents for training, analytics, or product improvement blocked.">
+          <div class="app-bar">
+            <span class="dot"></span> Deployment, Newport Beach firm
+            <span class="app-meta">Tenant: single firm</span>
+          </div>
+          <div class="fig-deploy">
+            <div class="boundary">
+              <span class="boundary-label">Your firm's environment</span>
+              <div class="node-row">
+                <div class="node"><b>Documents</b><span>Encrypted at rest, firm-held keys</span></div>
+                <div class="node"><b>Application</b><span>Single tenant, no shared index</span></div>
+                <div class="node"><b>Audit log</b><span>Append only, firm readable</span></div>
+              </div>
+              <div class="egress">
+                <span class="pill pill-flag">Blocked</span>
+                Egress of client documents for training, analytics, or product improvement
+              </div>
+            </div>
+          </div>
+          <div class="app-foot">
+            <b>One firm per deployment.</b> Nothing is pooled across clients.
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Six commitments</p>
+          <h2 class="head">What your firm is promised, in writing</h2>
+        </div>
+        <p class="lede">
+          Each of these is a term in the engagement agreement and a constraint in the build, not a preference we hold.
+        </p>
+      </div>
+
+      <div class="vprops reveal">
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>Before we see a document</h3>
+            <p>The protections that are in place before your firm sends us anything at all.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>NDA first</h4>
+                <p>Signed before we are sent a single document. Your firm's own form is preferred; ours is available if you would rather not draft one.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>One firm per deployment</h4>
+                <p>Single tenant, with no shared index and no shared storage. Nothing your firm uploads is pooled with another client's matter.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>No model training, ever</h4>
+                <p>Client documents are never used to train a model, by us or by anyone else, and the deployment has no outbound path that would allow it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>While we are working</h3>
+            <p>What your firm can see and control for as long as the system is running.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>Audit trail you can read</h4>
+                <p>Every document access is written to an append-only record your firm can inspect at any time, without asking us first.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Our access is scoped</h4>
+                <p>Support sessions are limited in time and scope, tied to a named engineer, and logged in the same trail as anyone else's.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Deletion on your instruction</h4>
+                <p>Retention is set by your firm. When you ask for documents to go, they go, and the deletion is recorded as an event.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band band-ink">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">The boundary</p>
+          <h2 class="head">What crosses it, and what does not</h2>
+        </div>
+        <p class="lede">
+          Training, analytics, and product improvement all sit outside the boundary, and they stay outside it.
+        </p>
+      </div>
+
+      <div class="rulelist reveal">
+        <div><b>Client documents</b><span>Stay inside the deployment</span></div>
+        <div><b>Model training</b><span>Never, on any client material</span></div>
+        <div><b>Usage analytics</b><span>No document content, ever</span></div>
+        <div><b>Encryption at rest</b><span>Firm-held keys</span></div>
+        <div><b>Encryption in transit</b><span>Between every component</span></div>
+        <div><b>Access records</b><span>Append only, firm readable</span></div>
+        <div><b>Retention</b><span>Set by your firm</span></div>
+        <div><b>Exit</b><span>Your data exported in an open format</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Built in, not bolted on</p>
+          <h2 class="head">Three places this shows up in the engineering</h2>
+        </div>
+      </div>
+
+      <div class="grid-3 reveal">
+        <div class="tile">
+          <span class="tile-num">01</span>
+          <h3>No citation without a source</h3>
+          <p>
+            Output can only rest on documents your firm supplied. An unmatched
+            citation is flagged and held, never asserted.
+          </p>
+          <a class="arrow" href="/build/verified-drafting">How verification works</a>
+        </div>
+        <div class="tile">
+          <span class="tile-num">02</span>
+          <h3>No privilege call by software</h3>
+          <p>
+            Candidates are surfaced with the reason. The decision is made by an
+            attorney at your firm, and recorded with their name.
+          </p>
+          <a class="arrow" href="/build/discovery">How review works</a>
+        </div>
+        <div class="tile">
+          <span class="tile-num">03</span>
+          <h3>No hosting you did not choose</h3>
+          <p>
+            Managed single tenant, your own cloud account, or your own hardware.
+            The guarantees are identical in all three.
+          </p>
+          <a class="arrow" href="/build/deployment">Deployment options</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band band-paper band-rule">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Questions your general counsel will ask</p>
+          <h2 class="head">Answered plainly</h2>
+        </div>
+      </div>
+
+      <div class="faq reveal">
+        <details open>
+          <summary>Do you train on our documents?</summary>
+          <p>No. Client documents are never used to train any model, by us or by anyone else. The guarantee is written into the engagement agreement, and the deployment has no outbound path that would allow it.</p>
+        </details>
+        <details>
+          <summary>Where does our data actually live?</summary>
+          <p>In a single-tenant environment your firm controls: a managed deployment that belongs to your firm alone, your own cloud account, or hardware in your office. There is no shared index, and nothing is pooled across clients.</p>
+        </details>
+        <details>
+          <summary>Can we see what you accessed?</summary>
+          <p>Yes. Every document access is recorded in an append-only audit trail your firm can read at any time without asking us. Our own support sessions are scoped, time-limited, and recorded on the same terms.</p>
+        </details>
+        <details>
+          <summary>When do you sign an NDA?</summary>
+          <p>Before we see a single document. We prefer your firm's own form. If you would rather not draft one, ours is ready and takes a partner about five minutes to read.</p>
+        </details>
+        <details>
+          <summary>What happens to our documents if we stop working with you?</summary>
+          <p>Your data is exported in an open format and the deployment is handed over or destroyed, on your instruction. The exit terms are part of the engagement agreement, agreed before any build begins.</p>
+        </details>
+        <details>
+          <summary>Can this run entirely inside our office?</summary>
+          <p>Yes. On-premise deployment is available when a matter demands it, with no outbound path for documents. The isolation, logging, and training guarantees are the same as in every other deployment.</p>
+        </details>
+        <details>
+          <summary>How do you handle a security incident?</summary>
+          <p>You hear from a principal, not a status page. Notification terms, including timing, are set in the engagement agreement before any documents change hands, and the audit trail is yours to inspect throughout.</p>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="head-stack reveal" style="margin-bottom:32px">
+        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
+      </div>
+      <div class="explore reveal">
+        <a href="/what-we-build"><small>What we build</small><b>The four systems a firm can have built</b></a>
+        <a href="/how-we-work"><small>Engagement</small><b>How an engagement runs, week by week</b></a>
+        <a href="/build/deployment"><small>Deployment</small><b>Where the software runs, and who controls it</b></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band band-ink">
+    <div class="wrap cta-split">
+      <div class="reveal">
+        <p class="eyebrow">Start a conversation</p>
+        <h2>Tell us about your practice.</h2>
+        <p class="lede">
+          Thirty minutes, no obligation. We'll tell you honestly whether custom
+          software is worth it for your firm, and if it isn't, we'll say so.
+        </p>
+        <div class="actions">
+          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
+          <a class="btn btn-outline-light" href="/#contact">Send a message</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">The Brief</p>
+        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">The week in legal, in four minutes.</h2>
+        <p class="lede" style="font-size:1.02rem">Free, national to Orange County, every Wednesday.</p>
+        <form id="brief-form" class="brief-form" data-source="page">
+          <div class="brief-row">
+            <label class="hp" for="brief-email">Email</label>
+            <input id="brief-email" type="email" name="email" autocomplete="email"
+                   maxlength="254" placeholder="you@example.com" required>
+            <button type="submit" class="btn btn-light">Subscribe</button>
+          </div>
+          <label class="hp" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+          <p class="brief-micro">No spam. Unsubscribe anytime.
+            <a href="/brief">See the format and past issues</a>.</p>
+          <p class="brief-status" role="status" aria-live="polite"></p>
+          <p class="brief-success" hidden>Check your inbox to confirm.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="/">WYEA</a>
+        <p>
+          Whittle and Ye Engineering Associates. Custom software for law firms,
+          built in Newport Beach.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>What we build</h4>
+        <ul>
+          <li><a href="/what-we-build">Overview</a></li>
+          <li><a href="/build/verified-drafting">Verified drafting</a></li>
+          <li><a href="/build/discovery">Discovery and review</a></li>
+          <li><a href="/build/matter-workflow">Matter workflow</a></li>
+          <li><a href="/build/deployment">Deployment and control</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>How we work</h4>
+        <ul>
+          <li><a href="/how-we-work">Engagement model</a></li>
+          <li><a href="/security">Security and confidentiality</a></li>
+          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About the firm</a></li>
+          <li><a href="/brief">The Brief</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a></li>
+          <li><a href="/#contact">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 WYEA</span>
+      <span>Newport Beach · Orange County, California</span>
+      <a href="/privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js" defer></script>
+</body>
+</html>
