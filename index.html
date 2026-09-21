@@ -65,6 +65,11 @@
       },
       {
         "@type": "Question",
+        "name": "Why not just buy a shared legal software platform?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For many firms a shared platform is the right call. It has to work the same way for everyone who buys it, which is what makes it affordable. The trade is that the parts of a practice that are genuinely distinctive become settings to work around, and a change one firm needs waits behind every other customer. WYEA builds one system per firm instead." }
+      },
+      {
+        "@type": "Question",
         "name": "Is a firm's content shared with other firms?",
         "acceptedAnswer": { "@type": "Answer", "text": "No. Each firm runs in its own cell with its own database, network and identity. There is no shared content plane, no cross-firm retrieval, and no training on firm content. Instances share code, never data." }
       },
@@ -211,6 +216,50 @@
     </div>
   </section>
 
+  <section id="thesis" class="band">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Why it is built one firm at a time</p>
+          <h2 class="head">Your firm has an edge. So should your software.</h2>
+        </div>
+        <p class="lede">
+          Software sold to a whole market has to behave the same way for
+          everyone who buys it. That is what makes it cheap, and for plenty of
+          work it is the right thing to buy.
+        </p>
+      </div>
+
+      <div class="grid-3 reveal">
+        <div class="tile">
+          <h3>Your conventions are the configuration</h3>
+          <p>
+            The way you open a matter, the format your partners insist on, the
+            checks you run before anything goes out. On a shared product those
+            are settings you bend to fit. Here they are what the system is
+            shaped from.
+          </p>
+        </div>
+        <div class="tile">
+          <h3>What you know stays in the system</h3>
+          <p>
+            The courts you appear in, the officers you use, the parties across
+            your matters. Reviewed once with you, then held. Nobody retypes them
+            and nobody guesses at them later.
+          </p>
+        </div>
+        <div class="tile">
+          <h3>Changes do not queue behind a roadmap</h3>
+          <p>
+            When the work changes, two engineers who already know your practice
+            change the software. There is no ticket sitting behind three hundred
+            other firms asking for the opposite thing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="platform" class="band band-paper band-rule">
     <div class="wrap">
       <div class="head-split reveal">
@@ -306,39 +355,39 @@
                         <tbody>
                           <tr>
                             <td><b>Dropbox</b><small>first adapter</small></td>
-                            <td>Documents</td>
-                            <td><small>rev</small></td>
-                            <td><span class="pill pill-mute">Yours</span></td>
+                            <td data-label="Reads">Documents</td>
+                            <td data-label="Version identity"><small>rev</small></td>
+                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
                           </tr>
                           <tr>
                             <td><b>SharePoint, OneDrive</b><small>Microsoft Graph</small></td>
-                            <td>Documents</td>
-                            <td><small>driveItemVersion.id</small></td>
-                            <td><span class="pill pill-mute">Yours</span></td>
+                            <td data-label="Reads">Documents</td>
+                            <td data-label="Version identity"><small>driveItemVersion.id</small></td>
+                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
                           </tr>
                           <tr>
                             <td><b>Google Drive</b><small></small></td>
-                            <td>Documents</td>
-                            <td><small>revisionId</small></td>
-                            <td><span class="pill pill-mute">Yours</span></td>
+                            <td data-label="Reads">Documents</td>
+                            <td data-label="Version identity"><small>revisionId</small></td>
+                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
                           </tr>
                           <tr>
                             <td><b>iManage, NetDocuments</b><small></small></td>
-                            <td>Documents</td>
-                            <td><small>version / subversion</small></td>
-                            <td><span class="pill pill-mute">Yours</span></td>
+                            <td data-label="Reads">Documents</td>
+                            <td data-label="Version identity"><small>version / subversion</small></td>
+                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
                           </tr>
                           <tr>
                             <td><b>Outlook</b><small>inbound mail</small></td>
-                            <td>Mail and attachments</td>
-                            <td><small>message id</small></td>
-                            <td><span class="pill pill-mute">Yours</span></td>
+                            <td data-label="Reads">Mail and attachments</td>
+                            <td data-label="Version identity"><small>message id</small></td>
+                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
                           </tr>
                           <tr>
                             <td><b>Public court record</b><small>shared corpus</small></td>
-                            <td>Dockets, opinions</td>
-                            <td><small>corpus revision</small></td>
-                            <td><span class="pill pill-ok">Public</span></td>
+                            <td data-label="Reads">Dockets, opinions</td>
+                            <td data-label="Version identity"><small>corpus revision</small></td>
+                            <td data-label="Authority"><span class="pill pill-ok">Public</span></td>
                           </tr>
                         </tbody>
                       </table>
@@ -466,37 +515,37 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">The grounding rule</p>
-          <h2 class="head">Three answers, and one of them is "I could not check".</h2>
+          <p class="eyebrow">Context</p>
+          <h2 class="head">Context does not get lost.</h2>
         </div>
         <p class="lede">
-          Most systems have two states and quietly collapse the third into a
-          confident sentence. This one keeps them apart.
+          Most tools start from nothing every time you open them. Three things
+          here are designed to outlast the session, the edit, and the provider.
         </p>
       </div>
 
       <div class="vprops reveal">
         <div class="vprop">
           <div class="vprop-head">
-            <h3>Located</h3>
+            <h3>The matter outlives the question</h3>
             <p>
-              The quote was found in the source, character for character, after
-              whitespace is normalised.
+              Caption, parties and roles are recorded once. Every part of the
+              system reads from that record rather than asking again.
             </p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>It carries its span</h4>
-                <p>The answer records the character offsets where the text was found, so you can open the document and land on it.</p>
+                <h4>One record, read by everything</h4>
+                <p>Deadlines, documents and correspondence all key off the same matter, so they cannot drift apart from each other.</p>
               </div>
               <div class="vprop-part">
-                <h4>It carries its version</h4>
-                <p>The offsets mean nothing without the version they refer to, so the version identity travels with them.</p>
+                <h4>Your directories are reviewed, not scraped</h4>
+                <p>Courts and the officers you use are checked with you at onboarding and then held fixed, rather than looked up fresh and hopefully right.</p>
               </div>
               <div class="vprop-part">
-                <h4>It survives the file changing</h4>
-                <p>A later edit does not silently move the answer. It creates a new record and leaves the old one resolvable.</p>
+                <h4>A handoff is not a retelling</h4>
+                <p>Someone picking the matter up reads what the record already holds instead of reconstructing it from a mailbox.</p>
               </div>
             </div>
           </div>
@@ -504,25 +553,25 @@
 
         <div class="vprop">
           <div class="vprop-head">
-            <h3>Not located</h3>
+            <h3>An answer still resolves a year later</h3>
             <p>
-              The quote was looked for and was not there. This is the case that
-              produces hallucinations elsewhere.
+              Evidence records supersede rather than change, so work done in
+              March can still be opened and checked in March's terms.
             </p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>It is flagged, not dropped</h4>
-                <p>The claim stays visible with a flag on it. Deleting it quietly would hide that the system tried and failed.</p>
+                <h4>An edit does not rewrite history</h4>
+                <p>Changing the file writes a new record. The old answer keeps pointing at the version it was actually made from.</p>
               </div>
               <div class="vprop-part">
-                <h4>It is never rephrased into safety</h4>
-                <p>There is no fallback that softens an unlocatable quote into a vaguer sentence that no longer needs a source.</p>
+                <h4>Expired versions stay checkable</h4>
+                <p>Dropbox drops history after 30 days on some plans. The bytes behind a claim we already made are kept anyway.</p>
               </div>
               <div class="vprop-part">
-                <h4>The run records it</h4>
-                <p>Whoever reviews the work can see how many claims failed the check, not just the ones that passed.</p>
+                <h4>Who did what is on the run</h4>
+                <p>Each run records the person who acted, so a question about a piece of work has somewhere to go.</p>
               </div>
             </div>
           </div>
@@ -530,30 +579,32 @@
 
         <div class="vprop">
           <div class="vprop-head">
-            <h3>Not checked</h3>
+            <h3>It is your context, not the market's</h3>
             <p>
-              The source could not be read at all. Treating this as a failed
-              check would be as wrong as treating it as a pass.
+              Everything above lives in your cell. There is no shared pool it
+              could be averaged into, and nothing to leak out of.
             </p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Permissions can change mid-run</h4>
-                <p>A document you could read on Monday may be walled on Tuesday. The system says so rather than answering from memory.</p>
+                <h4>Configured per firm</h4>
+                <p>The mapping from your folders to your matters is yours, because no two firms file the same way and pretending otherwise breaks both.</p>
               </div>
               <div class="vprop-part">
-                <h4>Version history expires</h4>
-                <p>Providers age out old versions on a schedule set by the plan you pay for, which is why the evidentiary cache exists.</p>
+                <h4>Never pooled</h4>
+                <p>No shared corpus, no cross-firm retrieval, no training on your content. Instances share code and never data.</p>
               </div>
               <div class="vprop-part">
-                <h4>A limitation is a result</h4>
-                <p>When a connector cannot supply a real version identity it says so, rather than substituting a timestamp and moving on.</p>
+                <h4>Portable on the way out</h4>
+                <p>What the system holds about your practice is yours. Ask us where that stands today and you will get the honest answer.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <p style="margin-top:44px"><a class="arrow" href="/platform/verification">How a claim is checked, in full</a></p>
     </div>
   </section>
 
@@ -605,6 +656,10 @@
         <details>
           <summary>What happens when someone edits the source document?</summary>
           <p>Every answer binds to one version identity supplied by your own platform, never to whatever the file says now. An edit writes a new evidence record rather than changing the old one, so an answer given in March still resolves against the March version. <a href="/platform/evidence">How evidence is recorded</a>.</p>
+        </details>
+        <details>
+          <summary>Why not just buy a shared platform?</summary>
+          <p>For a lot of firms that is the right call, and we will say so on the first call if it is. A shared product has to work the same way for everyone who buys it, which is what makes it affordable. The trade is that the parts of your practice that are actually yours become settings you work around, and a change you need waits behind everyone else's. If the work you want handled is the work that makes you different, that trade stops being worth it. <a href="/custom-ai-for-law-firms">The three paths, compared</a>.</p>
         </details>
         <details>
           <summary>Is our content mixed with another firm's?</summary>

@@ -1277,7 +1277,7 @@ button[disabled] { opacity: 0.55; cursor: default; }
 .explore a::after {
   content: "\2192";
   display: inline-block;
-  margin-top: 0.9em;
+  margin-top: 0.55em;
   font-size: 0.95rem;
   color: var(--bronze);
   transition: transform 0.16s ease;
@@ -1509,6 +1509,34 @@ button[disabled] { opacity: 0.55; cursor: default; }
 .pill-mute { color: var(--ink-muted); background: var(--paper-deep); }
 
 .fig-scroll { overflow-x: auto; }
+
+/* On a phone the connector table stops being a table: each row becomes a
+   block with its column names inline, so the version identity stays visible
+   instead of living off the right-hand edge behind a horizontal scroll. */
+@media (max-width: 660px) {
+  .fig-table thead { position: absolute; left: -10000px; }
+  .fig-table, .fig-table tbody, .fig-table tr, .fig-table td { display: block; width: 100%; }
+  .fig-table tr { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .fig-table tr:last-child { border-bottom: 0; }
+  .fig-table td { border: 0; padding: 0; }
+  .fig-table td + td {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-top: 6px;
+  }
+  .fig-table td + td::before {
+    content: attr(data-label);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    flex: none;
+  }
+  .fig-scroll { overflow-x: visible; }
+}
 
 /* --------------------------------------------------- figure 3: deadlines -- */
 
