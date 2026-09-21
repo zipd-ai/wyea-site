@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Security and Confidentiality | WYEA</title>
-  <meta name="description" content="Single-tenant deployment your firm controls, no client document used to train a model, and an append-only audit trail your firm can read at any time.">
+  <title>Security | WYEA</title>
+  <meta name="description" content="What holds today and what is not finished: no training on firm content, one isolated cell per firm, and a plainly stated list of what WYEA does not yet claim.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Security and Confidentiality | WYEA">
-  <meta property="og:description" content="Single-tenant deployment your firm controls, no client document used to train a model, and an append-only audit trail your firm can read at any time.">
+  <meta property="og:title" content="Security | WYEA">
+  <meta property="og:description" content="What holds today and what is not finished: no training on firm content, one isolated cell per firm, and a plainly stated list of what WYEA does not yet claim.">
   <meta property="og:url" content="https://wyea.ai/security">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -24,35 +24,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does WYEA use client documents to train models?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Client documents are never used to train any model, by WYEA or by anyone else. The guarantee is written into the engagement agreement and enforced by the deployment boundary, which has no outbound path for client documents."
-        }
+        "name": "Does WYEA train models on client content?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. There is no shared corpus, no cross-firm retrieval, and no training on firm content. Instances share code and never data." }
       },
       {
         "@type": "Question",
-        "name": "Where does a law firm's data live in a WYEA deployment?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In a single-tenant environment the firm controls: a managed deployment that belongs to the firm alone, the firm's own cloud account, or hardware in the firm's office. There is no shared index and nothing is pooled across clients."
-        }
+        "name": "Where does a firm's content live?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The firm's own document system remains the system of record. The platform runs one isolated cell per firm, in WYEA-operated infrastructure, with its own database, network and identity. It is not currently deployed into a client's own cloud account or on client hardware." }
       },
       {
         "@type": "Question",
-        "name": "Can a law firm audit what WYEA accessed?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Every document access is recorded in an append-only audit trail the firm can read at any time without asking, and WYEA's own support sessions are scoped, time-limited, and recorded on the same terms."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "When does WYEA sign an NDA?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Before seeing a single document. The firm's own form is preferred; WYEA's is available if the firm would rather not draft one."
-        }
+        "name": "What is not finished yet?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Export, deletion and offboarding are designed and not yet implemented, and support access is not yet recorded as a client-visible event. WYEA states the current position in writing during diligence rather than describing the target as though it already shipped." }
       }
     ]
   }
@@ -64,7 +47,7 @@
 
 <div class="announce">
   <a href="/brief">
-    <strong>The Brief</strong> · What changed in legal technology this week<span class="announce-long">, written for the people who run the practice</span>.<span class="arrow">Read the latest</span>
+    <strong>The Brief</strong> · What changed in legal technology this week<span class="announce-long">, written for Orange County firms</span>.<span class="arrow">Read the latest</span>
   </a>
 </div>
 
@@ -74,13 +57,13 @@
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">What we build <i class="nav-caret" aria-hidden="true"></i></button>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/what-we-build"><b>Overview</b><span>The four systems a firm can have built, and how they fit together.</span></a>
-          <a class="mega-link" href="/build/verified-drafting"><b>Verified drafting</b><span>First drafts in your format, with every citation matched to the source.</span></a>
-          <a class="mega-link" href="/build/discovery"><b>Discovery and review</b><span>Production sets read and ranked against the requests actually served.</span></a>
-          <a class="mega-link" href="/build/matter-workflow"><b>Matter workflow</b><span>Deadlines computed from the governing rules and shown with authority.</span></a>
-          <a class="mega-link" href="/build/deployment"><b>Deployment and control</b><span>Your environment, your infrastructure, your audit trail.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
@@ -90,7 +73,7 @@
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-company" hidden>
           <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for practicing lawyers.</span></a>
+          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for Orange County firms.</span></a>
           <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>Fixed price, one week to a prototype, defined deliverables.</span></a>
           <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
         </div>
@@ -108,14 +91,14 @@
       <p class="crumb"><a href="/">WYEA</a> / Security</p>
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Security and confidentiality</p>
-          <h1>Your clients' documents never train a model, and you can audit everything</h1>
+          <p class="eyebrow">Security</p>
+          <h1>What is true today, and what is not finished</h1>
         </div>
         <div>
-          <p class="lede">Confidentiality is the first engineering requirement on every engagement, ahead of any feature. These are commitments in the engagement agreement, enforced by how the system is built.</p>
+          <p class="lede">A security page is only useful if it distinguishes the two. Everything below is a property of the running system. The section after it lists what we are not claiming yet, which is the part most vendors leave out.</p>
           <div class="actions">
             <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Talk to us about your obligations</a>
-            <a class="btn btn-ghost" href="/build/deployment">Deployment options</a>
+            <a class="btn btn-ghost" href="/platform/isolation">How isolation works</a>
           </div>
         </div>
       </div>
@@ -123,27 +106,33 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Illustration of a single-firm deployment: documents, application, and audit log inside the firm's own environment, with egress of client documents for training, analytics, or product improvement blocked.">
+        <figure class="app reveal" role="img" aria-label="Diagram of one cell per firm: configuration, credentials and derived data inside a single firm's boundary, with no shared content plane between firms and the firm's own document system remaining authoritative.">
           <div class="app-bar">
-            <span class="dot"></span> Deployment, Newport Beach firm
-            <span class="app-meta">Tenant: single firm</span>
+            <span class="dot"></span> One cell, one firm
+            <span class="app-meta">No shared content plane</span>
           </div>
           <div class="fig-deploy">
             <div class="boundary">
-              <span class="boundary-label">Your firm's environment</span>
+              <span class="boundary-label">Your cell</span>
               <div class="node-row">
-                <div class="node"><b>Documents</b><span>Encrypted at rest, firm-held keys</span></div>
-                <div class="node"><b>Application</b><span>Single tenant, no shared index</span></div>
-                <div class="node"><b>Audit log</b><span>Append only, firm readable</span></div>
+                <div class="node"><b>Your credentials</b><span>Scoped to what you grant</span></div>
+                <div class="node"><b>Workflow state</b><span>Yours alone</span></div>
+                <div class="node"><b>Evidence records</b><span>Append only</span></div>
               </div>
               <div class="egress">
-                <span class="pill pill-flag">Blocked</span>
-                Egress of client documents for training, analytics, or product improvement
+                <span class="pill pill-flag">None</span>
+                Shared corpus, cross-firm retrieval, or training on your content
               </div>
             </div>
+            <p class="src-note" style="margin-top:14px">
+              Your document system sits outside this boundary and stays
+              authoritative. The cell reads from it and writes back only where
+              you turn that on.
+            </p>
           </div>
           <div class="app-foot">
-            <b>One firm per deployment.</b> Nothing is pooled across clients.
+            Instances share code, <b>never data.</b> WYEA operates the cell;
+            see the limits we publish on the security page.
           </div>
         </figure>
       </div>
@@ -154,55 +143,77 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Six commitments</p>
-          <h2 class="head">What your firm is promised, in writing</h2>
+          <p class="eyebrow">Holds today</p>
+          <h2 class="head">Properties of the running system</h2>
         </div>
         <p class="lede">
-          Each of these is a term in the engagement agreement and a constraint in the build, not a preference we hold.
+          These are enforced by how the platform is built, and we will put each of them in an engagement agreement.
         </p>
       </div>
 
       <div class="vprops reveal">
         <div class="vprop">
           <div class="vprop-head">
-            <h3>Before we see a document</h3>
-            <p>The protections that are in place before your firm sends us anything at all.</p>
+            <h3>Your content is not reused</h3>
+            <p>The commitment most questionnaires open with, and the one we can answer without qualification.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>NDA first</h4>
-                <p>Signed before we are sent a single document. Your firm's own form is preferred; ours is available if you would rather not draft one.</p>
+                <h4>No training on firm content</h4>
+                <p>Not by us and not by a model provider underneath us. This is a contractual term as well as an architectural one.</p>
               </div>
               <div class="vprop-part">
-                <h4>One firm per deployment</h4>
-                <p>Single tenant, with no shared index and no shared storage. Nothing your firm uploads is pooled with another client's matter.</p>
+                <h4>No shared corpus</h4>
+                <p>There is no cross-firm store to retrieve from. The isolation is structural rather than a filter applied at query time.</p>
               </div>
               <div class="vprop-part">
-                <h4>No model training, ever</h4>
-                <p>Client documents are never used to train a model, by us or by anyone else, and the deployment has no outbound path that would allow it.</p>
+                <h4>No secondary use</h4>
+                <p>Your documents are read to answer your questions. They are not mined for product analytics or benchmarking.</p>
               </div>
             </div>
           </div>
         </div>
         <div class="vprop">
           <div class="vprop-head">
-            <h3>While we are working</h3>
-            <p>What your firm can see and control for as long as the system is running.</p>
+            <h3>Answers are evidence-bound</h3>
+            <p>The grounding rule is a security property as much as a quality one, because an unsourced claim is an unauditable one.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Audit trail you can read</h4>
-                <p>Every document access is written to an append-only record your firm can inspect at any time, without asking us first.</p>
+                <h4>Verbatim or flagged</h4>
+                <p>A quote is located in the source character for character or the claim is flagged. Nothing unlocatable is asserted.</p>
               </div>
               <div class="vprop-part">
-                <h4>Our access is scoped</h4>
-                <p>Support sessions are limited in time and scope, tied to a named engineer, and logged in the same trail as anyone else's.</p>
+                <h4>Bound to a version</h4>
+                <p>Answers bind to a version identity supplied by your own platform, so a claim can be rechecked after the file changes.</p>
               </div>
               <div class="vprop-part">
-                <h4>Deletion on your instruction</h4>
-                <p>Retention is set by your firm. When you ask for documents to go, they go, and the deletion is recorded as an event.</p>
+                <h4>Unreadable is recorded</h4>
+                <p>A source that could not be read comes back as not checked rather than as a confident answer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>The platform does not act alone</h3>
+            <p>It drafts, locates and flags. It does not send, file or decide.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>Nothing is filed</h4>
+                <p>No output leaves your firm without a person releasing it.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>No clearance is rendered</h4>
+                <p>Where a conflict or a privilege question arises, the platform can surface a signal. Your own systems and people remain authoritative.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Your access rules govern</h4>
+                <p>Reads run under credentials you grant, scoped to what those credentials can already see.</p>
               </div>
             </div>
           </div>
@@ -216,23 +227,20 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">The boundary</p>
-          <h2 class="head">What crosses it, and what does not</h2>
+          <p class="eyebrow">Isolation</p>
+          <h2 class="head">One firm, one cell</h2>
         </div>
-        <p class="lede">
-          Training, analytics, and product improvement all sit outside the boundary, and they stay outside it.
-        </p>
       </div>
 
       <div class="rulelist reveal">
-        <div><b>Client documents</b><span>Stay inside the deployment</span></div>
-        <div><b>Model training</b><span>Never, on any client material</span></div>
-        <div><b>Usage analytics</b><span>No document content, ever</span></div>
-        <div><b>Encryption at rest</b><span>Firm-held keys</span></div>
-        <div><b>Encryption in transit</b><span>Between every component</span></div>
-        <div><b>Access records</b><span>Append only, firm readable</span></div>
-        <div><b>Retention</b><span>Set by your firm</span></div>
-        <div><b>Exit</b><span>Your data exported in an open format</span></div>
+        <div><b>Tenancy</b><span>One cell per firm</span></div>
+        <div><b>Database and network</b><span>Per cell, not shared</span></div>
+        <div><b>Identity</b><span>Per cell, federated to yours</span></div>
+        <div><b>Shared corpus</b><span>None</span></div>
+        <div><b>Cross-firm retrieval</b><span>None</span></div>
+        <div><b>Training on your content</b><span>Never</span></div>
+        <div><b>Your document system</b><span>Stays authoritative</span></div>
+        <div><b>Operator</b><span>WYEA</span></div>
       </div>
 
     </div>
@@ -242,38 +250,61 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Built in, not bolted on</p>
-          <h2 class="head">Three places this shows up in the engineering</h2>
+          <p class="eyebrow">Not claimed yet</p>
+          <h2 class="head">The unfinished list</h2>
         </div>
+        <p class="lede">
+          We would rather lose a deal on this page than win one and be corrected in diligence. Ask for the current position in writing and you will get it.
+        </p>
       </div>
 
       <div class="grid-3 reveal">
         <div class="tile">
-          <span class="tile-num">01</span>
-          <h3>No citation without a source</h3>
+          <h3>Client-controlled hosting</h3>
           <p>
-            Output can only rest on documents your firm supplied. An unmatched
-            citation is flagged and held, never asserted.
+            The cell runs in WYEA infrastructure. Deployment into your own cloud
+            account, or onto hardware in your building, is a design target and
+            not something running today.
           </p>
-          <a class="arrow" href="/build/verified-drafting">How verification works</a>
         </div>
         <div class="tile">
-          <span class="tile-num">02</span>
-          <h3>No privilege call by software</h3>
+          <h3>Export and deletion</h3>
           <p>
-            Candidates are surfaced with the reason. The decision is made by an
-            attorney at your firm, and recorded with their name.
+            Retention, legal hold, export, deletion and offboarding are
+            specified and not yet implemented. Until they are, offboarding is a
+            manual process we run with you.
           </p>
-          <a class="arrow" href="/build/discovery">How review works</a>
         </div>
         <div class="tile">
-          <span class="tile-num">03</span>
-          <h3>No hosting you did not choose</h3>
+          <h3>Client-visible operator access</h3>
           <p>
-            Managed single tenant, your own cloud account, or your own hardware.
-            The guarantees are identical in all three.
+            Our support access is scoped and limited, but you cannot yet watch
+            it in a log of your own. Closing that gap is on the build, and it is
+            not closed.
           </p>
-          <a class="arrow" href="/build/deployment">Deployment options</a>
+        </div>
+        <div class="tile">
+          <h3>Customer-managed keys</h3>
+          <p>
+            Content is encrypted at rest by the platform. Keys you hold and can
+            revoke independently of us are not something we offer today.
+          </p>
+        </div>
+        <div class="tile">
+          <h3>Independent audit</h3>
+          <p>
+            There is no SOC 2 report, no ISO certificate and no third-party
+            penetration test to hand you. When that changes this page will say
+            so and name the firm.
+          </p>
+        </div>
+        <div class="tile">
+          <h3>Production history</h3>
+          <p>
+            The platform is early. Anyone who tells you their first deployment
+            is battle-tested is telling you something else. Ask us where we are
+            and we will tell you.
+          </p>
         </div>
       </div>
 
@@ -284,7 +315,7 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Questions your general counsel will ask</p>
+          <p class="eyebrow">Questions your counsel will ask</p>
           <h2 class="head">Answered plainly</h2>
         </div>
       </div>
@@ -292,31 +323,31 @@
       <div class="faq reveal">
         <details open>
           <summary>Do you train on our documents?</summary>
-          <p>No. Client documents are never used to train any model, by us or by anyone else. The guarantee is written into the engagement agreement, and the deployment has no outbound path that would allow it.</p>
+          <p>No. There is no shared corpus, no cross-firm retrieval, and no training on firm content, by us or by a provider underneath us. Instances share code and never data. This goes in the engagement agreement, not just on this page.</p>
         </details>
         <details>
-          <summary>Where does our data actually live?</summary>
-          <p>In a single-tenant environment your firm controls: a managed deployment that belongs to your firm alone, your own cloud account, or hardware in your office. There is no shared index, and nothing is pooled across clients.</p>
-        </details>
-        <details>
-          <summary>Can we see what you accessed?</summary>
-          <p>Yes. Every document access is recorded in an append-only audit trail your firm can read at any time without asking us. Our own support sessions are scoped, time-limited, and recorded on the same terms.</p>
+          <summary>Where does our content actually live?</summary>
+          <p>Your own document system stays the system of record. The platform runs one cell for your firm, with its own database, network and identity, in infrastructure WYEA operates. It is not deployed inside your cloud account or on your hardware today.</p>
         </details>
         <details>
           <summary>When do you sign an NDA?</summary>
-          <p>Before we see a single document. We prefer your firm's own form. If you would rather not draft one, ours is ready and takes a partner about five minutes to read.</p>
+          <p>Before we are sent a single document. We prefer your form. If you would rather not draft one, ours takes about five minutes to read.</p>
         </details>
         <details>
-          <summary>What happens to our documents if we stop working with you?</summary>
-          <p>Your data is exported in an open format and the deployment is handed over or destroyed, on your instruction. The exit terms are part of the engagement agreement, agreed before any build begins.</p>
+          <summary>Can we see an audit trail?</summary>
+          <p>Events are written to an append-only chain that is protected against edit and deletion at the database level, and four flows produce entries today. What does not exist yet is a client-facing view of it, including of our own support access. We will show you the current state rather than describe the target.</p>
         </details>
         <details>
-          <summary>Can this run entirely inside our office?</summary>
-          <p>Yes. On-premise deployment is available when a matter demands it, with no outbound path for documents. The isolation, logging, and training guarantees are the same as in every other deployment.</p>
+          <summary>What happens to our content if we stop working with you?</summary>
+          <p>Today, offboarding is manual: we return or destroy content on your instruction and confirm it in writing. The automated export and deletion path is specified and not built. If a contractual deadline for return matters to you, say so early and we will write the manual process into the agreement.</p>
         </details>
         <details>
-          <summary>How do you handle a security incident?</summary>
-          <p>You hear from a principal, not a status page. Notification terms, including timing, are set in the engagement agreement before any documents change hands, and the audit trail is yours to inspect throughout.</p>
+          <summary>Do you have SOC 2?</summary>
+          <p>No. There is no SOC 2 report, no ISO certificate and no third-party penetration test. If a certificate is a hard requirement for your firm, we are not the right vendor yet and we would rather say that on the first call.</p>
+        </details>
+        <details>
+          <summary>Why does this page list your gaps?</summary>
+          <p>Because the alternative is being caught out by a security questionnaire, and because a platform whose central claim is that it will not assert things it cannot support should hold its own marketing to the same rule.</p>
         </details>
       </div>
 
@@ -329,9 +360,9 @@
         <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
       </div>
       <div class="explore reveal">
-        <a href="/what-we-build"><small>What we build</small><b>The four systems a firm can have built</b></a>
-        <a href="/how-we-work"><small>Engagement</small><b>How an engagement runs, week by week</b></a>
-        <a href="/build/deployment"><small>Deployment</small><b>Where the software runs, and who controls it</b></a>
+        <a href="/platform/isolation"><small>Platform</small><b>How isolation is built</b></a>
+        <a href="/platform/verification"><small>Platform</small><b>How a claim is checked</b></a>
+        <a href="/how-we-work"><small>Engagement</small><b>How an engagement runs</b></a>
       </div>
     </div>
   </section>
@@ -381,18 +412,18 @@
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
         <p>
-          Whittle and Ye Engineering Associates. Custom software for law firms,
+          Whittle and Ye Engineering Associates. Document knowledge systems,
           built in Newport Beach.
         </p>
       </div>
       <div class="footer-col">
-        <h4>What we build</h4>
+        <h4>Platform</h4>
         <ul>
-          <li><a href="/what-we-build">Overview</a></li>
-          <li><a href="/build/verified-drafting">Verified drafting</a></li>
-          <li><a href="/build/discovery">Discovery and review</a></li>
-          <li><a href="/build/matter-workflow">Matter workflow</a></li>
-          <li><a href="/build/deployment">Deployment and control</a></li>
+          <li><a href="/platform">Overview</a></li>
+          <li><a href="/platform/sources">Connected sources</a></li>
+          <li><a href="/platform/verification">Grounding and verification</a></li>
+          <li><a href="/platform/evidence">Evidence and the record</a></li>
+          <li><a href="/platform/isolation">Isolation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -400,7 +431,7 @@
         <ul>
           <li><a href="/how-we-work">Engagement model</a></li>
           <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/custom-ai-for-law-firms">Comparing your options</a></li>
+          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
         </ul>
       </div>
       <div class="footer-col">

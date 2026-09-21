@@ -3,20 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WYEA | Custom Legal Technology Built for One Firm</title>
-  <meta name="description" content="WYEA builds custom software for law firms: every citation verified word-for-word against the source, delivered with white-glove service.">
+  <title>WYEA | Document Knowledge Systems, Grounded in Your Own Sources</title>
+  <meta name="description" content="WYEA builds document knowledge systems over a firm's own document store, mail and the public record. An answer stands only when its quote is located in the source, character for character.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WYEA | Custom Legal Technology Built for One Firm">
-  <meta property="og:description" content="Custom software for law firms: verified citations, white-glove service, built by the two engineers who answer your calls.">
+  <meta property="og:title" content="WYEA | Document Knowledge Systems, Grounded in Your Own Sources">
+  <meta property="og:description" content="A knowledge system over the documents you already keep. Nothing is asserted that cannot be located in a source document.">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:url" content="https://wyea.ai/">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://wyea.ai/">
-  <!-- Fonts are self-hosted: no third-party origin round-trips (Google Fonts
-       costs two, CSS then files, and cache partitioning means first-time
-       visitors always pay). Preload + font-display: swap per web.dev. -->
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
@@ -29,11 +26,8 @@
     "name": "WYEA",
     "legalName": "Whittle and Ye Engineering Associates LLC",
     "url": "https://wyea.ai/",
-    "description": "WYEA builds custom software that lets law firms handle more matters without adding staff. Every citation is checked word-for-word against the source document and either verified or flagged for attorney review.",
-    "areaServed": {
-      "@type": "Country",
-      "name": "United States"
-    },
+    "description": "WYEA builds document knowledge systems. The system reads a firm's own document store, mail, and the public record, and will not state anything it cannot locate in a source document.",
+    "areaServed": { "@type": "Country", "name": "United States" },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Newport Beach",
@@ -41,11 +35,11 @@
       "addressCountry": "US"
     },
     "knowsAbout": [
-      "legal AI software",
-      "verified AI citations",
-      "legal document review and drafting",
-      "law firm workflow automation",
-      "California litigation technology"
+      "document knowledge systems",
+      "retrieval grounded in source documents",
+      "verbatim citation verification",
+      "document management system integration",
+      "single tenant deployment"
     ]
   }
   </script>
@@ -56,51 +50,28 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Who do law firms actually work with at WYEA?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Both of the firm's principal engineers, directly. Questions go to the person who wrote the code, not into a support queue, so answers come back in minutes and nothing is lost in relay."
-        }
+        "name": "What stops the system from making something up?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A claim only stands if its quote is located in the source document character for character. If the quote cannot be found, the claim is flagged rather than asserted. If the source could not be read at all, it is recorded as not checked, which is a separate state from false." }
       },
       {
         "@type": "Question",
-        "name": "How does WYEA handle privilege and confidentiality?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "WYEA signs an NDA before seeing a single document. Client materials live in the firm's isolated environment, are never used to train any model, and every access is logged in a tamper-evident audit trail the firm can inspect. On-premise deployment is available when a matter demands it."
-        }
+        "name": "Which systems does WYEA read from?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The firm's own document store, its mail, and the public court record. Dropbox is the first connector; SharePoint, OneDrive, Google Drive, iManage and NetDocuments are what the connector layer is designed against. The firm's store remains the system of record." }
       },
       {
         "@type": "Question",
-        "name": "What does a WYEA engagement cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every engagement starts with a fixed-price one-week prototype, quoted before work begins, never an open-ended hourly bill for exploratory work. If the prototype earns it, the full build is scoped the same way: fixed price, defined deliverables."
-        }
+        "name": "What happens when a source document is edited?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every answer binds to a specific version identity supplied by the source platform, never to the current state of the file. An edit produces a new evidence record rather than changing the old one, and earlier answers still resolve against the version they were made from." }
       },
       {
         "@type": "Question",
-        "name": "How is WYEA different from Harvey, CoCounsel, or the other platforms?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Those are subscriptions to someone else's product; the firm adapts to them. WYEA builds one system around the firm's documents, local rules, and workflow, and the engineers who built it answer the phone. For many firms the platforms are the right call; a first conversation determines honestly which is needed."
-        }
+        "name": "Is a firm's content shared with other firms?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Each firm runs in its own cell with its own database, network and identity. There is no shared content plane, no cross-firm retrieval, and no training on firm content. Instances share code, never data." }
       },
       {
         "@type": "Question",
-        "name": "What happens when a citation can't be verified?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It is flagged and held for attorney review, never asserted. A citation appears in output only when its exact quote is found in the source document. That rule is architectural, not a setting."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the law firm own the software WYEA builds?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The firm owns its data, its documents, and its deployment outright. Code ownership and licensing are set in the engagement agreement, with the options presented before anything is built."
-        }
+        "name": "Does WYEA only work with law firms?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The system is built around documents, versions and evidence rather than around any one profession. Legal work is where it started; insurance is the other line of work it runs in today." }
       }
     ]
   }
@@ -112,7 +83,7 @@
 
 <div class="announce">
   <a href="/brief">
-    <strong>The Brief</strong> · What changed in legal technology this week<span class="announce-long">, written for the people who run the practice</span>.<span class="arrow">Read the latest</span>
+    <strong>The Brief</strong> · What changed in legal technology this week<span class="announce-long">, written for Orange County firms</span>.<span class="arrow">Read the latest</span>
   </a>
 </div>
 
@@ -122,13 +93,13 @@
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">What we build <i class="nav-caret" aria-hidden="true"></i></button>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/what-we-build"><b>Overview</b><span>The four systems a firm can have built, and how they fit together.</span></a>
-          <a class="mega-link" href="/build/verified-drafting"><b>Verified drafting</b><span>First drafts in your format, with every citation matched to the source.</span></a>
-          <a class="mega-link" href="/build/discovery"><b>Discovery and review</b><span>Production sets read and ranked against the requests actually served.</span></a>
-          <a class="mega-link" href="/build/matter-workflow"><b>Matter workflow</b><span>Deadlines computed from the governing rules and shown with authority.</span></a>
-          <a class="mega-link" href="/build/deployment"><b>Deployment and control</b><span>Your environment, your infrastructure, your audit trail.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
@@ -138,7 +109,7 @@
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-company" hidden>
           <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for practicing lawyers.</span></a>
+          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for Orange County firms.</span></a>
           <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>Fixed price, one week to a prototype, defined deliverables.</span></a>
           <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
         </div>
@@ -151,26 +122,24 @@
 
 <main id="main">
 
-  <!-- ==================================================== hero ========= -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Custom software, built for one firm</p>
-        <h1>Take on more cases <em>with the team you have.</em></h1>
+        <p class="eyebrow">Document knowledge systems</p>
+        <h1>Take on more work <em>with the team you have.</em></h1>
       </div>
       <div>
         <p class="lede">
-          WYEA builds custom software that lets a law firm handle more matters
-          without adding staff. Every citation is checked
-          word-for-word against your source documents and either verified or
-          flagged for attorney review.
+          WYEA builds a knowledge system over the documents your firm already
+          keeps. It reads your document store, your mail and the public record,
+          and it will not tell you anything it cannot show you in a source.
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
-          <a class="btn btn-ghost" href="/what-we-build">See what we build</a>
+          <a class="btn btn-ghost" href="/platform">How it works</a>
         </div>
         <p class="hero-note">
-          <span>Under NDA before we see a document</span> ·
+          <span>Under NDA before we see a document</span> &middot;
           <span>Your data never trains a model</span>
         </p>
       </div>
@@ -178,57 +147,58 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Illustration of a draft opposition: one citation verified word for word against the deposition transcript and cited, one flagged as not found in the source and held for attorney review.">
+        <figure class="app reveal" role="img" aria-label="A grounded read showing three outcomes: one claim verified with the located character span in a pinned document version, one flagged because its quote was not found in the source, and one marked not checked because the source could not be read.">
           <div class="app-bar">
-            <span class="dot"></span> Opposition to Motion to Compel
-            <span class="app-meta">2 citations checked</span>
+            <span class="dot"></span> Grounded read
+            <span class="app-meta">3 claims &middot; 2 sources</span>
           </div>
           <div class="fig-draft">
             <div class="fig-draft-main">
-              <p class="fig-label">Draft</p>
-              <div class="ln ln-90"></div>
-              <div class="ln"></div>
-              <div class="ln ln-70"></div>
+              <p class="fig-label">Claims</p>
               <div class="cite cite-ok">
                 <span class="cite-badge">Verified</span>
-                <b>Wilson Depo. 142:5&ndash;11</b>
-                <small>Exact quote located in the source. Cited.</small>
+                <b>&ldquo;the vendor retained the onboarding log&rdquo;</b>
+                <small>Located at characters 4,181&ndash;4,226.</small>
               </div>
-              <div class="ln ln-80"></div>
-              <div class="ln ln-60"></div>
               <div class="cite cite-flag">
                 <span class="cite-badge">Flagged</span>
-                <b>Smith Decl. &para; 12</b>
-                <small>Not found word-for-word. Held for attorney review, not asserted.</small>
+                <b>&ldquo;the log was retained for seven years&rdquo;</b>
+                <small>Quote not found in the source. Not asserted.</small>
               </div>
-              <div class="ln ln-45"></div>
+              <div class="cite cite-mute">
+                <span class="cite-badge">Not checked</span>
+                <b>&ldquo;the addendum superseded clause 9&rdquo;</b>
+                <small>Source unreadable at read time. State is recorded, not guessed.</small>
+              </div>
             </div>
             <div class="fig-draft-side">
-              <p class="fig-label">Source</p>
-              <div class="quote-chip">
-                &ldquo;I did not review the production log before I signed the
-                verification.&rdquo;
+              <p class="fig-label">Pinned source</p>
+              <div class="kv">
+                <span>connector</span><b>sharepoint</b>
+                <span>object</span><b>01JZQ4&hellip;K7</b>
+                <span>version</span><b>3.14</b>
+                <span>sha256</span><b>9f2c1a&hellip;7e40</b>
+                <span>read</span><b>2026-09-21 14:02Z</b>
               </div>
-              <p class="src-meta">Wilson Depo., Mar. 4 2026, p. 142 ln. 5&ndash;11</p>
-              <div class="quote-chip is-missing" style="margin-top:22px">
-                No matching text in the source document.
-              </div>
-              <p class="src-meta">Smith Decl., filed Feb. 19 2026</p>
+              <p class="src-note">
+                The claim binds to this version, never to &ldquo;current&rdquo;.
+                Editing the file in SharePoint produces a new record rather than
+                changing this one.
+              </p>
             </div>
           </div>
           <div class="app-foot">
-            A citation reaches the draft only when its quote is found in the
-            source: <b>matched word for word, or flagged.</b>
+            A quote that cannot be located <b>does not become an answer.</b> It
+            is flagged, and the run records why.
           </div>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- ============================================ who builds it ======== -->
   <section class="band band-tight">
     <div class="wrap credo reveal">
-      <p>Software built for one firm, owned by that firm, and delivered by the two engineers who wrote it.</p>
+      <p>Two engineers build it, run it, and answer the phone when it breaks.</p>
       <div class="credo-row">
         <span>Amazon</span>
         <span>Fortune 100 bank, corporate risk</span>
@@ -241,17 +211,16 @@
     </div>
   </section>
 
-  <!-- ============================================== what we build ====== -->
-  <section id="services" class="band band-paper band-rule">
+  <section id="platform" class="band band-paper band-rule">
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">What we build</p>
-          <h2 class="head">Purpose-built for the work your firm does</h2>
+          <p class="eyebrow">The platform</p>
+          <h2 class="head">Four parts, and the rule that holds them together</h2>
         </div>
         <p class="lede">
-          Four systems, each shaped around the documents your firm already
-          files and the rules your matters already run on.
+          Sources go in. Answers come out pinned to the exact version of the
+          exact document they were found in.
         </p>
       </div>
 
@@ -259,269 +228,275 @@
         <div class="explorer-list">
         <div class="explorer-item is-open">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="true" aria-controls="ex-1">Verified drafting</button>
+            <button class="explorer-trigger" type="button" aria-expanded="true" aria-controls="ex-1">Connected sources</button>
           </h3>
           <div class="explorer-body" id="ex-1">
             <div class="explorer-body-inner">
-              <p>Upload what you were served. Get a grounded review and a draft response in your firm's own pleading format.</p>
+              <p>The system reads your document store, your mail, and the public court record. Your store stays authoritative; we mirror it and keep no competing library.</p>
               <ul class="explorer-meta">
-                <li>Your captions, templates, and signature blocks</li>
-                <li>Every quoted passage located in the source before it is cited</li>
-                <li>Anything unmatched flagged and held for attorney review</li>
+                <li>Dropbox today. SharePoint, OneDrive, Google Drive, iManage and NetDocuments are what the connector layer is built against</li>
+                <li>Outlook mail arrives as a proposal, not as a second mailbox</li>
+                <li>Filenames never participate in identity or access, because at a firm the filename is often the sensitive part</li>
               </ul>
-              <a class="arrow" href="/build/verified-drafting">How it works</a>
+              <a class="arrow" href="/platform/sources">Read the detail</a>
             </div>
           </div>
         </div>
         <div class="explorer-item">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-2">Discovery and review</button>
+            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-2">How a claim is checked</button>
           </h3>
           <div class="explorer-body" id="ex-2">
             <div class="explorer-body-inner">
-              <p>Production sets read, indexed, and ranked against the requests that were actually served.</p>
+              <p>A quote has to be found in the source, character for character, before it is allowed to stand as an answer. There is no confidence score and no second opinion.</p>
               <ul class="explorer-meta">
-                <li>Bates numbers, custodians, and dates carried through to the log</li>
-                <li>Ranked against your served requests, not a generic relevance score</li>
-                <li>Privilege candidates surfaced with the reason, decided by an attorney</li>
+                <li>Located: the answer carries the character span it was found at</li>
+                <li>Not located: flagged, and the run records that it was flagged</li>
+                <li>Source unreadable: recorded as not checked, which is different from false</li>
               </ul>
-              <a class="arrow" href="/build/discovery">How it works</a>
+              <a class="arrow" href="/platform/verification">Read the detail</a>
             </div>
           </div>
         </div>
         <div class="explorer-item">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-3">Matter workflow</button>
+            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-3">Evidence that survives an edit</button>
           </h3>
           <div class="explorer-body" id="ex-3">
             <div class="explorer-body-inner">
-              <p>Deadlines computed from the rules that govern the matter and calendared with the authority attached.</p>
+              <p>Every answer binds to one version of one document, never to whatever the file says today. Editing the file writes a new record instead of changing the old one.</p>
               <ul class="explorer-meta">
-                <li>Service method, court, and local rules carried into every calculation</li>
-                <li>Your firm's own internal lead times on the same calendar</li>
-                <li>Conflict-check prompts raised at intake, before the matter opens</li>
+                <li>Version identity comes from your platform, not from us. There is no WYEA seal</li>
+                <li>Dropbox drops version history after 30 days on some plans; matters outlive that</li>
+                <li>We keep the bytes we made a claim about, and only those</li>
               </ul>
-              <a class="arrow" href="/build/matter-workflow">How it works</a>
+              <a class="arrow" href="/platform/evidence">Read the detail</a>
             </div>
           </div>
         </div>
         <div class="explorer-item">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-4">Deployment and control</button>
+            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-4">One cell per firm</button>
           </h3>
           <div class="explorer-body" id="ex-4">
             <div class="explorer-body-inner">
-              <p>The environment the other three run in: single tenant, isolated, audited, and deployable on your own hardware.</p>
+              <p>Each firm gets its own runtime with its own database, network and identity. There is no shared content plane, so there is nothing to leak between firms.</p>
               <ul class="explorer-meta">
-                <li>Cloud tenant, your own cloud account, or your own hardware</li>
-                <li>Tamper-evident record of every document access</li>
-                <li>Retention and deletion set by your firm</li>
+                <li>No shared corpus and no cross-firm retrieval</li>
+                <li>Nothing you upload trains a model, ours or anyone's</li>
+                <li>WYEA operates the cell. The security page says what that means and what it does not</li>
               </ul>
-              <a class="arrow" href="/build/deployment">How it works</a>
+              <a class="arrow" href="/platform/isolation">Read the detail</a>
             </div>
           </div>
         </div>
         </div>
         <div class="explorer-panels">
         <div class="explorer-panel is-shown">
-          <figure class="app" role="img" aria-label="Illustration of a draft opposition: one citation verified word for word against the deposition transcript and cited, one flagged as not found in the source and held for attorney review.">
+          <figure class="app reveal" role="img" aria-label="Connector table listing the document systems, mailboxes, and public record sources the platform reads from, with the version identity each one supplies.">
                     <div class="app-bar">
-                      <span class="dot"></span> Opposition to Motion to Compel
-                      <span class="app-meta">2 citations checked</span>
+                      <span class="dot"></span> Connected sources
+                      <span class="app-meta">Read only unless write-back is enabled</span>
                     </div>
-                    <div class="fig-draft">
-                      <div class="fig-draft-main">
-                        <p class="fig-label">Draft</p>
-                        <div class="ln ln-90"></div>
-                        <div class="ln"></div>
-                        <div class="ln ln-70"></div>
-                        <div class="cite cite-ok">
-                          <span class="cite-badge">Verified</span>
-                          <b>Wilson Depo. 142:5&ndash;11</b>
-                          <small>Exact quote located in the source. Cited.</small>
-                        </div>
-                        <div class="ln ln-80"></div>
-                        <div class="ln ln-60"></div>
-                        <div class="cite cite-flag">
-                          <span class="cite-badge">Flagged</span>
-                          <b>Smith Decl. &para; 12</b>
-                          <small>Not found word-for-word. Held for attorney review, not asserted.</small>
-                        </div>
-                        <div class="ln ln-45"></div>
-                      </div>
-                      <div class="fig-draft-side">
-                        <p class="fig-label">Source</p>
-                        <div class="quote-chip">
-                          &ldquo;I did not review the production log before I signed the
-                          verification.&rdquo;
-                        </div>
-                        <p class="src-meta">Wilson Depo., Mar. 4 2026, p. 142 ln. 5&ndash;11</p>
-                        <div class="quote-chip is-missing" style="margin-top:22px">
-                          No matching text in the source document.
-                        </div>
-                        <p class="src-meta">Smith Decl., filed Feb. 19 2026</p>
-                      </div>
+                    <div class="fig-scroll">
+                      <table class="fig-table">
+                        <thead>
+                          <tr><th>Source</th><th>Reads</th><th>Version identity</th><th>Authority</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><b>Dropbox</b><small>first adapter</small></td>
+                            <td>Documents</td>
+                            <td><small>rev</small></td>
+                            <td><span class="pill pill-mute">Yours</span></td>
+                          </tr>
+                          <tr>
+                            <td><b>SharePoint, OneDrive</b><small>Microsoft Graph</small></td>
+                            <td>Documents</td>
+                            <td><small>driveItemVersion.id</small></td>
+                            <td><span class="pill pill-mute">Yours</span></td>
+                          </tr>
+                          <tr>
+                            <td><b>Google Drive</b><small></small></td>
+                            <td>Documents</td>
+                            <td><small>revisionId</small></td>
+                            <td><span class="pill pill-mute">Yours</span></td>
+                          </tr>
+                          <tr>
+                            <td><b>iManage, NetDocuments</b><small></small></td>
+                            <td>Documents</td>
+                            <td><small>version / subversion</small></td>
+                            <td><span class="pill pill-mute">Yours</span></td>
+                          </tr>
+                          <tr>
+                            <td><b>Outlook</b><small>inbound mail</small></td>
+                            <td>Mail and attachments</td>
+                            <td><small>message id</small></td>
+                            <td><span class="pill pill-mute">Yours</span></td>
+                          </tr>
+                          <tr>
+                            <td><b>Public court record</b><small>shared corpus</small></td>
+                            <td>Dockets, opinions</td>
+                            <td><small>corpus revision</small></td>
+                            <td><span class="pill pill-ok">Public</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                     <div class="app-foot">
-                      A citation reaches the draft only when its quote is found in the
-                      source: <b>matched word for word, or flagged.</b>
+                      Your system stays the system of record. <b>We mirror it and never
+                      contradict it,</b> and we do not keep a competing library.
                     </div>
                   </figure>
         </div>
         <div class="explorer-panel">
-          <figure class="app" role="img" aria-label="Illustration of a document review queue: four documents from a production set with Bates numbers and the served request each answers, two marked responsive, one held for an attorney privilege call, one not responsive.">
-                      <div class="app-bar">
-                        <span class="dot"></span> Production set, Vendor matter
-                        <span class="app-meta">4 of 11,482 shown</span>
+          <figure class="app reveal" role="img" aria-label="A grounded read showing three outcomes: one claim verified with the located character span in a pinned document version, one flagged because its quote was not found in the source, and one marked not checked because the source could not be read.">
+                    <div class="app-bar">
+                      <span class="dot"></span> Grounded read
+                      <span class="app-meta">3 claims &middot; 2 sources</span>
+                    </div>
+                    <div class="fig-draft">
+                      <div class="fig-draft-main">
+                        <p class="fig-label">Claims</p>
+                        <div class="cite cite-ok">
+                          <span class="cite-badge">Verified</span>
+                          <b>&ldquo;the vendor retained the onboarding log&rdquo;</b>
+                          <small>Located at characters 4,181&ndash;4,226.</small>
+                        </div>
+                        <div class="cite cite-flag">
+                          <span class="cite-badge">Flagged</span>
+                          <b>&ldquo;the log was retained for seven years&rdquo;</b>
+                          <small>Quote not found in the source. Not asserted.</small>
+                        </div>
+                        <div class="cite cite-mute">
+                          <span class="cite-badge">Not checked</span>
+                          <b>&ldquo;the addendum superseded clause 9&rdquo;</b>
+                          <small>Source unreadable at read time. State is recorded, not guessed.</small>
+                        </div>
                       </div>
-                      <div class="fig-scroll">
-                        <table class="fig-table">
-                          <thead>
-                            <tr><th>Document</th><th>Bates</th><th>Served request</th><th>Review</th></tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td><b>Email, vendor onboarding</b><small>2025-11-04</small></td>
-                              <td><small>VEN-004112</small></td>
-                              <td>RFP No. 14</td>
-                              <td><span class="pill pill-ok">Responsive</span></td>
-                            </tr>
-                            <tr>
-                              <td><b>Master services agreement</b><small>2025-12-18</small></td>
-                              <td><small>VEN-004380</small></td>
-                              <td>RFP No. 14, 17</td>
-                              <td><span class="pill pill-ok">Responsive</span></td>
-                            </tr>
-                            <tr>
-                              <td><b>Memo to outside counsel</b><small>2026-01-22</small></td>
-                              <td><small>VEN-006201</small></td>
-                              <td>RFP No. 17</td>
-                              <td><span class="pill pill-flag">Attorney call</span></td>
-                            </tr>
-                            <tr>
-                              <td><b>Invoice batch, Q4</b><small>2026-02-03</small></td>
-                              <td><small>VEN-007744</small></td>
-                              <td>None</td>
-                              <td><span class="pill pill-mute">Not responsive</span></td>
-                            </tr>
-                          </tbody>
-                        </table>
+                      <div class="fig-draft-side">
+                        <p class="fig-label">Pinned source</p>
+                        <div class="kv">
+                          <span>connector</span><b>sharepoint</b>
+                          <span>object</span><b>01JZQ4&hellip;K7</b>
+                          <span>version</span><b>3.14</b>
+                          <span>sha256</span><b>9f2c1a&hellip;7e40</b>
+                          <span>read</span><b>2026-09-21 14:02Z</b>
+                        </div>
+                        <p class="src-note">
+                          The claim binds to this version, never to &ldquo;current&rdquo;.
+                          Editing the file in SharePoint produces a new record rather than
+                          changing this one.
+                        </p>
                       </div>
-                      <div class="app-foot">
-                        <b>Privilege is never decided by the software.</b> Candidates are
-                        surfaced with the reason and held for an attorney.
-                      </div>
-                    </figure>
+                    </div>
+                    <div class="app-foot">
+                      A quote that cannot be located <b>does not become an answer.</b> It
+                      is flagged, and the run records why.
+                    </div>
+                  </figure>
         </div>
         <div class="explorer-panel">
-          <figure class="app" role="img" aria-label="Illustration of a discovery calendar: requests served February 4, document collection due February 27 under a firm rule, internal draft deadline March 4, and responses due March 11 computed under Code of Civil Procedure sections 2031.260 and 1013.">
-                      <div class="app-bar">
-                        <span class="dot"></span> Discovery calendar
-                        <span class="app-meta">Orange County Superior Court</span>
+          <figure class="app reveal" role="img" aria-label="An evidence record showing that a new version of a document produces a new immutable record rather than editing the old one, with the superseded record retained.">
+                    <div class="app-bar">
+                      <span class="dot"></span> Evidence records for one document
+                      <span class="app-meta">Immutable, superseding</span>
+                    </div>
+                    <div class="fig-dates">
+                      <div class="date-row">
+                        <span class="date-when">v3.14</span>
+                        <span class="date-what"><b>Read for a grounded answer</b><small>sha256 9f2c1a&hellip;7e40 &middot; 3 claims bound to this version</small></span>
+                        <span class="pill pill-ok">Current</span>
                       </div>
-                      <div class="fig-dates">
-                        <div class="date-row">
-                          <span class="date-when">Feb 4</span>
-                          <span class="date-what"><b>Requests for production served</b><small>Service by mail on counsel of record</small></span>
-                          <span class="pill pill-mute">Docketed</span>
-                        </div>
-                        <div class="date-row is-near">
-                          <span class="date-when">Feb 27</span>
-                          <span class="date-what"><b>Document collection complete</b><small>Firm rule: 14 days before service</small></span>
-                          <span class="pill pill-flag">Due this week</span>
-                        </div>
-                        <div class="date-row">
-                          <span class="date-when">Mar 4</span>
-                          <span class="date-what"><b>Internal draft deadline</b><small>Firm rule: 7 days before service</small></span>
-                          <span class="pill pill-ok">Calendared</span>
-                        </div>
-                        <div class="date-row">
-                          <span class="date-when">Mar 11</span>
-                          <span class="date-what"><b>Responses due</b><small>Code Civ. Proc. §§ 2031.260, 1013</small></span>
-                          <span class="pill pill-ok">Computed</span>
-                        </div>
+                      <div class="date-row">
+                        <span class="date-when">v3.9</span>
+                        <span class="date-what"><b>Superseded by an edit in SharePoint</b><small>Earlier answers still point here, and still resolve</small></span>
+                        <span class="pill pill-mute">Retained</span>
                       </div>
-                      <div class="app-foot">
-                        <b>Every date shows the rule it came from,</b> so the calendaring
-                        attorney can check it in seconds.
+                      <div class="date-row is-near">
+                        <span class="date-when">v2.1</span>
+                        <span class="date-what"><b>Aged out of the provider's version history</b><small>Bytes held in the evidentiary cache so the old answer can still be checked</small></span>
+                        <span class="pill pill-flag">Cached</span>
                       </div>
-                    </figure>
+                    </div>
+                    <div class="app-foot">
+                      Dropbox keeps versions for 30 days on some plans. Matters run for
+                      years. <b>The cache holds exactly the bytes we made a claim about,</b>
+                      and nothing else.
+                    </div>
+                  </figure>
         </div>
         <div class="explorer-panel">
-          <figure class="app" role="img" aria-label="Illustration of a single-firm deployment: documents, application, and audit log inside the firm's own environment, with egress of client documents for training, analytics, or product improvement blocked.">
-                      <div class="app-bar">
-                        <span class="dot"></span> Deployment, Newport Beach firm
-                        <span class="app-meta">Tenant: single firm</span>
-                      </div>
-                      <div class="fig-deploy">
-                        <div class="boundary">
-                          <span class="boundary-label">Your firm's environment</span>
-                          <div class="node-row">
-                            <div class="node"><b>Documents</b><span>Encrypted at rest, firm-held keys</span></div>
-                            <div class="node"><b>Application</b><span>Single tenant, no shared index</span></div>
-                            <div class="node"><b>Audit log</b><span>Append only, firm readable</span></div>
-                          </div>
-                          <div class="egress">
-                            <span class="pill pill-flag">Blocked</span>
-                            Egress of client documents for training, analytics, or product improvement
-                          </div>
+          <figure class="app reveal" role="img" aria-label="Diagram of one cell per firm: configuration, credentials and derived data inside a single firm's boundary, with no shared content plane between firms and the firm's own document system remaining authoritative.">
+                    <div class="app-bar">
+                      <span class="dot"></span> One cell, one firm
+                      <span class="app-meta">No shared content plane</span>
+                    </div>
+                    <div class="fig-deploy">
+                      <div class="boundary">
+                        <span class="boundary-label">Your cell</span>
+                        <div class="node-row">
+                          <div class="node"><b>Your credentials</b><span>Scoped to what you grant</span></div>
+                          <div class="node"><b>Workflow state</b><span>Yours alone</span></div>
+                          <div class="node"><b>Evidence records</b><span>Append only</span></div>
+                        </div>
+                        <div class="egress">
+                          <span class="pill pill-flag">None</span>
+                          Shared corpus, cross-firm retrieval, or training on your content
                         </div>
                       </div>
-                      <div class="app-foot">
-                        <b>One firm per deployment.</b> Nothing is pooled across clients.
-                      </div>
-                    </figure>
+                      <p class="src-note" style="margin-top:14px">
+                        Your document system sits outside this boundary and stays
+                        authoritative. The cell reads from it and writes back only where
+                        you turn that on.
+                      </p>
+                    </div>
+                    <div class="app-foot">
+                      Instances share code, <b>never data.</b> WYEA operates the cell;
+                      see the limits we publish on the security page.
+                    </div>
+                  </figure>
         </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================================================ what is whose ==== -->
   <section class="band">
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Inside the work</p>
-          <h2 class="head">The software does the reading. Your attorneys keep the judgment.</h2>
+          <p class="eyebrow">The grounding rule</p>
+          <h2 class="head">Three answers, and one of them is "I could not check".</h2>
         </div>
         <p class="lede">
-          Where the line falls is a design decision, and it is the same on
-          every engagement.
+          Most systems have two states and quietly collapse the third into a
+          confident sentence. This one keeps them apart.
         </p>
       </div>
 
       <div class="vprops reveal">
         <div class="vprop">
           <div class="vprop-head">
-            <h3>What the software does</h3>
+            <h3>Located</h3>
             <p>
-              The mechanical part of a matter: reading, locating, counting, and
-              formatting, done the same way every time.
+              The quote was found in the source, character for character, after
+              whitespace is normalised.
             </p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Reads what was served</h4>
-                <p>
-                  Motions, requests, declarations, and exhibits are read against
-                  the matter file, and the points that need a response are listed.
-                </p>
+                <h4>It carries its span</h4>
+                <p>The answer records the character offsets where the text was found, so you can open the document and land on it.</p>
               </div>
               <div class="vprop-part">
-                <h4>Locates every quoted passage</h4>
-                <p>
-                  Each candidate quote is searched for in its source document and
-                  compared word for word, not paraphrase to paraphrase.
-                </p>
+                <h4>It carries its version</h4>
+                <p>The offsets mean nothing without the version they refer to, so the version identity travels with them.</p>
               </div>
               <div class="vprop-part">
-                <h4>Counts the days</h4>
-                <p>
-                  Court holidays, weekends, and service-method extensions applied,
-                  with the governing rule shown next to the date.
-                </p>
+                <h4>It survives the file changing</h4>
+                <p>A later edit does not silently move the answer. It creates a new record and leaves the old one resolvable.</p>
               </div>
             </div>
           </div>
@@ -529,34 +504,25 @@
 
         <div class="vprop">
           <div class="vprop-head">
-            <h3>What an attorney decides</h3>
+            <h3>Not located</h3>
             <p>
-              Every call that carries a consequence stays with a person at your
-              firm, and is recorded with their name.
+              The quote was looked for and was not there. This is the case that
+              produces hallucinations elsewhere.
             </p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Whether a citation stands</h4>
-                <p>
-                  Unmatched citations are flagged and held for review. The
-                  software never asserts one on its own.
-                </p>
+                <h4>It is flagged, not dropped</h4>
+                <p>The claim stays visible with a flag on it. Deleting it quietly would hide that the system tried and failed.</p>
               </div>
               <div class="vprop-part">
-                <h4>Whether a document is privileged</h4>
-                <p>
-                  Candidates are surfaced with the reason they were raised. The
-                  call is an attorney's, every time.
-                </p>
+                <h4>It is never rephrased into safety</h4>
+                <p>There is no fallback that softens an unlocatable quote into a vaguer sentence that no longer needs a source.</p>
               </div>
               <div class="vprop-part">
-                <h4>Whether anything is filed</h4>
-                <p>
-                  Nothing leaves the firm without a person releasing it, and the
-                  release is recorded.
-                </p>
+                <h4>The run records it</h4>
+                <p>Whoever reviews the work can see how many claims failed the check, not just the ones that passed.</p>
               </div>
             </div>
           </div>
@@ -564,34 +530,25 @@
 
         <div class="vprop">
           <div class="vprop-head">
-            <h3>What your firm keeps</h3>
+            <h3>Not checked</h3>
             <p>
-              The system is a deliverable your firm holds, not access your firm
-              rents.
+              The source could not be read at all. Treating this as a failed
+              check would be as wrong as treating it as a pass.
             </p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>The deployment</h4>
-                <p>
-                  Single tenant, in an environment your firm controls, cloud or
-                  on your own hardware.
-                </p>
+                <h4>Permissions can change mid-run</h4>
+                <p>A document you could read on Monday may be walled on Tuesday. The system says so rather than answering from memory.</p>
               </div>
               <div class="vprop-part">
-                <h4>The audit trail</h4>
-                <p>
-                  Append only, readable by your firm at any time, covering our
-                  access on the same terms as yours.
-                </p>
+                <h4>Version history expires</h4>
+                <p>Providers age out old versions on a schedule set by the plan you pay for, which is why the evidentiary cache exists.</p>
               </div>
               <div class="vprop-part">
-                <h4>The data</h4>
-                <p>
-                  Your documents and your matter record, exported in an open
-                  format whenever you ask for them.
-                </p>
+                <h4>A limitation is a result</h4>
+                <p>When a connector cannot supply a real version identity it says so, rather than substituting a timestamp and moving on.</p>
               </div>
             </div>
           </div>
@@ -600,200 +557,76 @@
     </div>
   </section>
 
-  <!-- ============================================== how we work ======== -->
-  <section id="approach" class="band band-paper band-rule">
+  <section id="isolation" class="band band-ink">
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">How we work</p>
-          <h2 class="head">White-glove, from first meeting to every update</h2>
+          <p class="eyebrow">Isolation</p>
+          <h2 class="head">Instances share code. They never share data.</h2>
         </div>
         <p class="lede">
-          One engagement at a time, run by both principals, with a working
-          prototype in your attorneys' hands in the first week.
+          One firm, one cell. What we can honestly claim today is on the
+          security page, including the parts that are not finished.
         </p>
       </div>
-
-      <ol class="steps reveal">
-        <li>
-          <span class="step-num">01</span>
-          <h3>We sit with your attorneys</h3>
-          <p>In your office, learning the practice firsthand.</p>
-        </li>
-        <li>
-          <span class="step-num">02</span>
-          <h3>Prototype in one week</h3>
-          <p>Built against your real documents, shaped by your team's feedback.</p>
-        </li>
-        <li>
-          <span class="step-num">03</span>
-          <h3>Deployed your way</h3>
-          <p>Cloud or on-premise, security engineered in from day one.</p>
-        </li>
-        <li>
-          <span class="step-num">04</span>
-          <h3>Supported by the builders</h3>
-          <p>The engineers who built it train your staff and answer the phone.</p>
-        </li>
-      </ol>
-
-      <p style="margin-top:32px"><a class="arrow" href="/how-we-work">The full engagement model</a></p>
-    </div>
-  </section>
-
-  <!-- ================================================ the numbers ====== -->
-  <section class="band-ink">
-    <div class="wrap band-tight" style="padding-bottom:0">
-      <div class="head-split reveal" style="margin-bottom:40px">
-        <div>
-          <p class="eyebrow">The terms</p>
-          <h2 class="head">What every engagement holds to</h2>
-        </div>
-        <p class="lede">
-          These are commitments in the engagement agreement, not settings in a
-          product.
-        </p>
-      </div>
-    </div>
-    <div class="wrap reveal">
-      <div class="stats">
-        <div class="stat">
-          <b>1 week</b>
-          <span>To a working prototype running on your firm's real documents</span>
-        </div>
-        <div class="stat">
-          <b>2</b>
-          <span>Principal engineers on your engagement, from first meeting to last release</span>
-        </div>
-        <div class="stat">
-          <b>0</b>
-          <span>Of your documents used to train a model, by us or by anyone</span>
-        </div>
-        <div class="stat">
-          <b>Fixed</b>
-          <span>Price, quoted before work begins, with deliverables defined in writing</span>
-        </div>
-      </div>
-    </div>
-    <div class="wrap band-tight">
-      <p><a class="arrow" href="/how-we-work">Read the engagement model</a></p>
-    </div>
-  </section>
-
-  <!-- ================================================== security ======= -->
-  <section id="confidentiality" class="band band-paper band-rule">
-    <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">Security and confidentiality</p>
-          <h2 class="head">Your clients' documents never train a model, and you can audit everything.</h2>
-        </div>
-        <p class="lede">
-          Confidentiality is the first engineering requirement on every
-          engagement, ahead of any feature. Each line below is a term in the
-          engagement agreement.
-        </p>
-      </div>
-
       <div class="rulelist reveal">
-        <div><b>NDA</b><span>Signed before we see a document</span></div>
-        <div><b>Tenancy</b><span>One firm per deployment</span></div>
-        <div><b>Model training</b><span>Never, on any client material</span></div>
-        <div><b>Hosting</b><span>Managed, your cloud, or your hardware</span></div>
-        <div><b>Encryption at rest</b><span>Firm-held keys</span></div>
-        <div><b>Audit log</b><span>Append only, firm readable</span></div>
-        <div><b>Our access</b><span>Scoped, time-limited, and logged</span></div>
-        <div><b>Retention and exit</b><span>Set by your firm, exported on request</span></div>
+        <div><b>Tenancy</b><span>One cell per firm, own database and network</span></div>
+        <div><b>Shared corpus</b><span>None</span></div>
+        <div><b>Cross-firm retrieval</b><span>None</span></div>
+        <div><b>Training on your content</b><span>Never</span></div>
+        <div><b>Your document store</b><span>Stays authoritative</span></div>
+        <div><b>Operator</b><span>WYEA, and we publish the limits</span></div>
       </div>
-
-      <p style="margin-top:36px"><a class="arrow" href="/security">Read the full security posture</a></p>
+      <p style="margin-top:36px"><a class="arrow" href="/security">What we can and cannot claim yet</a></p>
     </div>
   </section>
 
-  <!-- Reserved: when the pilot firm agrees in writing to be named, a
-       testimonial belongs here. One named partner with a concrete number
-       outperforms everything else on this page. -->
+  <!-- Reserved: when a client agrees in writing to be named, a testimonial
+       belongs here. One named partner with a concrete number outperforms
+       everything else on this page. -->
 
-  <!-- ======================================================= faq ======= -->
   <section class="band band-paper band-rule">
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Questions partners ask</p>
+          <p class="eyebrow">Questions</p>
           <h2 class="head">The details, before you have to ask</h2>
         </div>
       </div>
-
       <div class="faq reveal">
-        <details>
-          <summary>Who will we actually work with?</summary>
-          <p>
-            Both of the firm's principal engineers, directly. Your questions go
-            to the person who wrote the code, not into a support queue, so
-            answers come back in minutes, and nothing is lost in relay.
-            <a href="/about">Meet the principals</a>.
-          </p>
+        <details open>
+          <summary>What stops it making something up?</summary>
+          <p>A claim only stands if its quote is located in the source document, character for character. If the quote is not there, the claim is flagged instead of asserted. If the source could not be read at all, that is recorded as not checked, which is a different state from false. <a href="/platform/verification">How the check works</a>.</p>
         </details>
         <details>
-          <summary>How do you handle privilege and confidentiality?</summary>
-          <p>
-            We sign an NDA before seeing a single document. Client materials
-            live in your firm's isolated environment, are never used to train
-            any model, and every access is logged in a tamper-evident audit
-            trail you can inspect. On-premise deployment is available when a
-            matter demands it. <a href="/security">Read the full security posture</a>.
-          </p>
+          <summary>Which systems does it read from?</summary>
+          <p>Your document store, your mail, and the public court record. Dropbox is the first connector; SharePoint, OneDrive, Google Drive, iManage and NetDocuments are what the connector layer is designed against. Your store stays the system of record and we keep no competing library. <a href="/platform/sources">The connector list</a>.</p>
+        </details>
+        <details>
+          <summary>What happens when someone edits the source document?</summary>
+          <p>Every answer binds to one version identity supplied by your own platform, never to whatever the file says now. An edit writes a new evidence record rather than changing the old one, so an answer given in March still resolves against the March version. <a href="/platform/evidence">How evidence is recorded</a>.</p>
+        </details>
+        <details>
+          <summary>Is our content mixed with another firm's?</summary>
+          <p>No. Each firm runs in its own cell with its own database, network and identity. There is no shared content plane, no cross-firm retrieval, and no training on firm content.</p>
+        </details>
+        <details>
+          <summary>Do you only work with law firms?</summary>
+          <p>No. The system is built around documents, versions and evidence rather than around one profession. Legal work is where it started. Insurance is the other line it runs in.</p>
         </details>
         <details>
           <!-- DRAFT: confirm this pricing posture before deploy -->
           <summary>What does an engagement cost?</summary>
-          <p>
-            Every engagement starts with a fixed-price one-week prototype,
-            quoted before we begin. You'll never see an open-ended hourly bill
-            for exploratory work. If the prototype earns it, we scope the full
-            build the same way: fixed price, defined deliverables.
-            <a href="/how-we-work">See the engagement model</a>.
-          </p>
-        </details>
-        <details>
-          <summary>How is this different from Harvey, CoCounsel, or the other platforms?</summary>
-          <p>
-            Those are subscriptions to someone else's product; your firm adapts
-            to them. We build one system around your documents, your local
-            rules, and your workflow, and the engineers who built it answer
-            your phone calls. For many firms the platforms are the right call;
-            a first conversation will tell you honestly which you need.
-            <a href="/custom-ai-for-law-firms">Compare the three paths</a>.
-          </p>
-        </details>
-        <details>
-          <summary>What happens when a citation can't be verified?</summary>
-          <p>
-            It is flagged and held for attorney review, never asserted. A
-            citation appears in output only when its exact quote is found in
-            the source document. That rule is architectural, not a setting.
-            <a href="/build/verified-drafting">How verification works</a>.
-          </p>
-        </details>
-        <details>
-          <!-- DRAFT: confirm ownership/licensing language before deploy -->
-          <summary>Do we own the software?</summary>
-          <p>
-            Your firm owns its data, its documents, and its deployment
-            outright. Code ownership and licensing are set in the engagement
-            agreement. We'll put the options in front of you before anything is
-            built.
-          </p>
+          <p>It starts with a fixed-price prototype running on your own documents, quoted before we begin. If that earns the rest, the build is scoped the same way. <a href="/how-we-work">The engagement model</a>.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- ================================================== the brief ====== -->
   <section id="brief" class="band band-tight">
     <div class="wrap head-split reveal" style="margin-bottom:0">
       <div>
-        <p class="eyebrow">The Brief · Weekly newsletter</p>
+        <p class="eyebrow">The Brief &middot; Weekly newsletter</p>
         <h2 class="head">The week in legal, in four minutes.</h2>
         <p class="lede" style="font-size:1.05rem">
           Free, national to Orange County, every Wednesday.
@@ -819,15 +652,14 @@
     </div>
   </section>
 
-  <!-- ==================================================== contact ====== -->
   <section id="contact" class="cta-band band-ink">
     <div class="wrap cta-split">
       <div class="reveal">
         <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us about your practice.</h2>
+        <h2>Tell us what your people spend the day reading.</h2>
         <p class="lede">
-          Thirty minutes, no obligation. We'll tell you honestly whether custom
-          software is worth it for your firm, and if it isn't, we'll say so.
+          Thirty minutes, no obligation. If a knowledge system is not worth it
+          for you, we will say so on the call.
         </p>
         <div class="actions">
           <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
@@ -867,6 +699,7 @@
     </div>
   </section>
 
+
 </main>
 
 <footer class="site-footer">
@@ -875,18 +708,18 @@
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
         <p>
-          Whittle and Ye Engineering Associates. Custom software for law firms,
+          Whittle and Ye Engineering Associates. Document knowledge systems,
           built in Newport Beach.
         </p>
       </div>
       <div class="footer-col">
-        <h4>What we build</h4>
+        <h4>Platform</h4>
         <ul>
-          <li><a href="/what-we-build">Overview</a></li>
-          <li><a href="/build/verified-drafting">Verified drafting</a></li>
-          <li><a href="/build/discovery">Discovery and review</a></li>
-          <li><a href="/build/matter-workflow">Matter workflow</a></li>
-          <li><a href="/build/deployment">Deployment and control</a></li>
+          <li><a href="/platform">Overview</a></li>
+          <li><a href="/platform/sources">Connected sources</a></li>
+          <li><a href="/platform/verification">Grounding and verification</a></li>
+          <li><a href="/platform/evidence">Evidence and the record</a></li>
+          <li><a href="/platform/isolation">Isolation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -894,7 +727,7 @@
         <ul>
           <li><a href="/how-we-work">Engagement model</a></li>
           <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/custom-ai-for-law-firms">Comparing your options</a></li>
+          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
         </ul>
       </div>
       <div class="footer-col">

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy | WYEA</title>
-  <meta name="description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox work.">
+  <title>Isolation | WYEA</title>
+  <meta name="description" content="One firm, one cell, with its own database, network and identity. No shared content plane, no cross-firm retrieval, no training on your content.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Privacy | WYEA">
-  <meta property="og:description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox work.">
-  <meta property="og:url" content="https://wyea.ai/privacy">
+  <meta property="og:title" content="Isolation | WYEA">
+  <meta property="og:description" content="One firm, one cell, with its own database, network and identity. No shared content plane, no cross-firm retrieval, no training on your content.">
+  <meta property="og:url" content="https://wyea.ai/platform/isolation">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://wyea.ai/privacy">
+  <link rel="canonical" href="https://wyea.ai/platform/isolation">
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
@@ -34,7 +34,7 @@
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
           <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
           <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
@@ -47,7 +47,7 @@
       <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company" aria-current="page">Company <i class="nav-caret" aria-hidden="true"></i></button>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-company" hidden>
           <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
           <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for Orange County firms.</span></a>
@@ -63,128 +63,131 @@
 
 <main id="main">
 
-  <section class="page-head">
-    <div class="wrap wrap-text">
-      <p class="crumb"><a href="/">WYEA</a> / Privacy</p>
-      <p class="eyebrow">Privacy policy</p>
-      <h1 style="font-size:clamp(2rem,3.8vw,3rem)">How WYEA handles information</h1>
-      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective August 11, 2026 · Whittle and Ye Engineering Associates LLC, Newport Beach, California</p>
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="crumb"><a href="/">WYEA</a> / <a href="/platform">Platform</a> / Isolation</p>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Platform</p>
+          <h1>One firm, one cell, and no shared content plane</h1>
+        </div>
+        <div>
+          <p class="lede">Each firm runs in its own project with its own database, network and identity. The boundary between firms is infrastructure, not a column in a shared table. The boundary between you and us is narrower, and we say so.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
+            <a class="btn btn-ghost" href="/security">Read the security page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="wrap wrap-wide">
+        <figure class="app reveal" role="img" aria-label="Diagram of one cell per firm: configuration, credentials and derived data inside a single firm's boundary, with no shared content plane between firms and the firm's own document system remaining authoritative.">
+          <div class="app-bar">
+            <span class="dot"></span> One cell, one firm
+            <span class="app-meta">No shared content plane</span>
+          </div>
+          <div class="fig-deploy">
+            <div class="boundary">
+              <span class="boundary-label">Your cell</span>
+              <div class="node-row">
+                <div class="node"><b>Your credentials</b><span>Scoped to what you grant</span></div>
+                <div class="node"><b>Workflow state</b><span>Yours alone</span></div>
+                <div class="node"><b>Evidence records</b><span>Append only</span></div>
+              </div>
+              <div class="egress">
+                <span class="pill pill-flag">None</span>
+                Shared corpus, cross-firm retrieval, or training on your content
+              </div>
+            </div>
+            <p class="src-note" style="margin-top:14px">
+              Your document system sits outside this boundary and stays
+              authoritative. The cell reads from it and writes back only where
+              you turn that on.
+            </p>
+          </div>
+          <div class="app-foot">
+            Instances share code, <b>never data.</b> WYEA operates the cell;
+            see the limits we publish on the security page.
+          </div>
+        </figure>
+      </div>
     </div>
   </section>
 
-  <section class="prose">
-    <div class="wrap wrap-text">
-      <p>
-        This page covers two things: what this website collects, and how the
-        WYEA platform (the software we run for client law firms) treats the
-        information that passes through it, including accounts a firm connects
-        to it such as Dropbox.
-      </p>
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">What isolation means here</p>
+          <h2 class="head">And what it does not</h2>
+        </div>
+        <p class="lede">
+          The honest version, because the version that oversells it is the one that gets found out in diligence.
+        </p>
+      </div>
 
-      <h2>This website</h2>
-      <p>
-        The website itself keeps almost nothing. There is no advertising, no
-        analytics script following you between sites, and nothing is sold or
-        shared for marketing.
-      </p>
-      <ul>
-        <li>
-          <strong>The contact form</strong> stores what you type (name, firm,
-          email, message) so we can reply, and sends it to us by email. The
-          form is protected by Cloudflare Turnstile, which checks that you are
-          a person and not a script.
-        </li>
-        <li>
-          <strong>The Brief</strong>, our email publication, keeps the email
-          addresses of people who asked to receive it. Every issue includes a
-          way to stop receiving it, and stopping removes you from the list.
-        </li>
-        <li>
-          <strong>Hosting</strong> is on Cloudflare, which processes visitor
-          IP addresses as part of serving the site and defending it, as every
-          host does.
-        </li>
-      </ul>
+      <div class="vprops reveal">
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>What holds today</h3>
+            <p>These are properties of the running system, not of a roadmap.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>No shared content plane</h4>
+                <p>There is no cross-firm corpus to retrieve from, because there is no shared store of firm content at all.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>No training on your content</h4>
+                <p>Not by us, not by a provider underneath us. Instances share code and never data.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Your store stays authoritative</h4>
+                <p>The platform reads from your document system and does not become a competing copy of it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>What we are not claiming</h3>
+            <p>Some of what a security questionnaire asks for is not finished, and the site will not pretend otherwise.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>The cell is operated by us</h4>
+                <p>It runs in WYEA infrastructure. It is not a deployment inside your own cloud account or on your own hardware.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Export and deletion are not built</h4>
+                <p>Offboarding is designed and not yet implemented. Ask, and we will show you the current state honestly.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Support access is not client-visible</h4>
+                <p>It is scoped, but you cannot yet watch it in a log of your own. That gap is real and we are closing it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <h2>The WYEA platform</h2>
-      <p>
-        The platform is software we build and operate for law firms. A firm's
-        matters, documents, and client information belong to the firm; we
-        process them only to run the firm's own workspace, on the firm's
-        instructions. We do not use a firm's content to train AI models, we do
-        not sell it, and we do not share it with anyone except the service
-        providers needed to run that firm's own system.
-      </p>
-      <p>
-        Each firm's system runs in its own isolated environment. One firm's
-        information is never visible to another firm.
-      </p>
+    </div>
+  </section>
 
-      <h2>Connected accounts, including Dropbox</h2>
-      <p>
-        A firm can connect accounts it already uses, for example Dropbox,
-        where its documents live, so the platform can work with documents in
-        place. When someone at a firm connects Dropbox:
-      </p>
-      <ul>
-        <li>
-          They approve the connection themselves, on Dropbox's own consent
-          screen, signed in to their own Dropbox account. We never see or ask
-          for their Dropbox password.
-        </li>
-        <li>
-          The connection lets the platform read account and file information,
-          read document contents, save documents back, and read sharing
-          settings: the things a document workspace needs. It is used for
-          nothing else.
-        </li>
-        <li>
-          The firm's Dropbox remains the system of record. The platform reads
-          documents and files finished work back into it; it does not maintain
-          a competing copy of the firm's library. Where the platform retains a
-          copy of specific document versions, it does so to preserve the
-          evidence behind work the firm has already relied on, for that firm
-          alone.
-        </li>
-        <li>
-          The credential Dropbox issues us for the connection is stored
-          encrypted, and is never shown to anyone, including the person who
-          connected.
-        </li>
-        <li>
-          A connection can be removed at any time, either inside the platform
-          or from the security settings of the person's own Dropbox account.
-          Removing it stops the platform's access.
-        </li>
-      </ul>
-
-      <h2>Service providers</h2>
-      <p>
-        We use a small number of infrastructure providers to run our systems:
-        cloud hosting, email delivery, payment processing where a firm has
-        turned billing on. Each receives only what it needs to do its job.
-        We do not sell personal information, and we have not sold it in the
-        preceding twelve months.
-      </p>
-
-      <h2>California rights</h2>
-      <p>
-        We are a California company and our clients are California firms. If
-        California privacy law gives you rights over information we hold:
-        access, correction, deletion. Write to us and we will honor them.
-        Note that for a firm's matter content, your request usually belongs
-        with the firm: they are the ones who decide what their system keeps.
-      </p>
-
-      <h2>Questions</h2>
-      <p>
-        Write to <a href="mailto:contact@wyea.ai">contact@wyea.ai</a>. A
-        person reads it, usually one of the two of us.
-      </p>
-      <p>
-        If this policy changes in a way that matters, we will change this page
-        and its effective date, and tell affected clients directly.
-      </p>
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="head-stack reveal" style="margin-bottom:32px">
+        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
+      </div>
+      <div class="explore reveal">
+        <a href="/security"><small>Security</small><b>The full picture, including what is unfinished</b></a>
+        <a href="/platform/evidence"><small>Back</small><b>Evidence and the record</b></a>
+        <a href="/how-we-work"><small>Engagement</small><b>How an engagement runs</b></a>
+      </div>
     </div>
   </section>
 

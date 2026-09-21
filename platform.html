@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platform | WYEA</title>
+  <meta name="description" content="A knowledge system over your own documents: connected sources, verbatim grounding, version-bound evidence, and one isolated cell per firm.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Platform | WYEA">
+  <meta property="og:description" content="A knowledge system over your own documents: connected sources, verbatim grounding, version-bound evidence, and one isolated cell per firm.">
+  <meta property="og:url" content="https://wyea.ai/platform">
+  <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://wyea.ai/platform">
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.className += " js";</script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="announce">
+  <a href="/brief">
+    <strong>The Brief</strong> · What changed in legal technology this week<span class="announce-long">, written for Orange County firms</span>.<span class="arrow">Read the latest</span>
+  </a>
+</div>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">WYEA</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-build" hidden>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
+          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/security">Security</a>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-company" hidden>
+          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
+          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for Orange County firms.</span></a>
+          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>Fixed price, one week to a prototype, defined deliverables.</span></a>
+          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/brief">The Brief</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="crumb"><a href="/">WYEA</a> / Platform</p>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Platform</p>
+          <h1>A knowledge system that can show you where every answer came from</h1>
+        </div>
+        <div>
+          <p class="lede">The system reads the documents your firm already keeps, answers questions against them, and binds each answer to the exact version of the exact file it was found in. Where it cannot find something, it says so.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
+            <a class="btn btn-ghost" href="/how-we-work">How we work</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="wrap wrap-wide">
+        <figure class="app reveal" role="img" aria-label="Connector table listing the document systems, mailboxes, and public record sources the platform reads from, with the version identity each one supplies.">
+          <div class="app-bar">
+            <span class="dot"></span> Connected sources
+            <span class="app-meta">Read only unless write-back is enabled</span>
+          </div>
+          <div class="fig-scroll">
+            <table class="fig-table">
+              <thead>
+                <tr><th>Source</th><th>Reads</th><th>Version identity</th><th>Authority</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Dropbox</b><small>first adapter</small></td>
+                  <td>Documents</td>
+                  <td><small>rev</small></td>
+                  <td><span class="pill pill-mute">Yours</span></td>
+                </tr>
+                <tr>
+                  <td><b>SharePoint, OneDrive</b><small>Microsoft Graph</small></td>
+                  <td>Documents</td>
+                  <td><small>driveItemVersion.id</small></td>
+                  <td><span class="pill pill-mute">Yours</span></td>
+                </tr>
+                <tr>
+                  <td><b>Google Drive</b><small></small></td>
+                  <td>Documents</td>
+                  <td><small>revisionId</small></td>
+                  <td><span class="pill pill-mute">Yours</span></td>
+                </tr>
+                <tr>
+                  <td><b>iManage, NetDocuments</b><small></small></td>
+                  <td>Documents</td>
+                  <td><small>version / subversion</small></td>
+                  <td><span class="pill pill-mute">Yours</span></td>
+                </tr>
+                <tr>
+                  <td><b>Outlook</b><small>inbound mail</small></td>
+                  <td>Mail and attachments</td>
+                  <td><small>message id</small></td>
+                  <td><span class="pill pill-mute">Yours</span></td>
+                </tr>
+                <tr>
+                  <td><b>Public court record</b><small>shared corpus</small></td>
+                  <td>Dockets, opinions</td>
+                  <td><small>corpus revision</small></td>
+                  <td><span class="pill pill-ok">Public</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="app-foot">
+            Your system stays the system of record. <b>We mirror it and never
+            contradict it,</b> and we do not keep a competing library.
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">The shape of it</p>
+          <h2 class="head">Four parts</h2>
+        </div>
+        <p class="lede">
+          Each one exists because of a specific way document systems behave, not because it rounded out a diagram.
+        </p>
+      </div>
+
+      <div class="vprops reveal">
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>Connected sources</h3>
+            <p>Your document store, your mail, and the public record. Your store stays the system of record.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>We mirror, we do not own</h4>
+                <p>The platform never becomes a second library your people have to keep in sync. Your store remains the thing that is true.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Providers differ, and it matters</h4>
+                <p>Version durability, digest algorithm, change-feed shape and access control all vary. The connector declares what it can actually promise.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Filenames are not identity</h4>
+                <p>A filename at a firm is often the sensitive part. Path and title never participate in identity or authorization.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>Grounding and verification</h3>
+            <p>A quote is located in the source or it does not become an answer.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>Exact span, or nothing</h4>
+                <p>The quote is searched for in the source text. Found, it carries its character offsets. Not found, it is flagged.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>No confidence score</h4>
+                <p>There is no number between right and wrong for a reviewer to interpret generously at 6pm.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Unreadable is its own answer</h4>
+                <p>If the source could not be opened, the result is not checked. That is different from checked and false.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>Evidence and the record</h3>
+            <p>Answers bind to a version identity that comes from your platform, not from us.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>There is no WYEA seal</h4>
+                <p>The integrity anchor is your platform's own immutable version identity plus a content hash. We do not ask you to trust a stamp we invented.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Records supersede, never change</h4>
+                <p>A new version, a permission change or a fresh read writes a new record. Nothing is edited in place.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>The cache holds only what was claimed</h4>
+                <p>Providers expire old versions. We retain the exact bytes behind claims already made, so an old answer stays checkable.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vprop">
+          <div class="vprop-head">
+            <h3>Isolation</h3>
+            <p>One firm, one cell. There is no shared content plane to leak across.</p>
+          </div>
+          <div class="vprop-body is-plain">
+            <div class="vprop-parts">
+              <div class="vprop-part">
+                <h4>Own database, network, identity</h4>
+                <p>The per-firm boundary is a real infrastructure boundary, not a tenant column in a shared table.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>Nothing pooled</h4>
+                <p>No shared corpus, no cross-firm retrieval, no training on your content. Instances share code and never data.</p>
+              </div>
+              <div class="vprop-part">
+                <h4>We publish the limits</h4>
+                <p>WYEA operates the cell. The security page states what that does and does not mean today.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band band-paper band-rule">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Where it is used</p>
+          <h2 class="head">Two lines of work</h2>
+        </div>
+        <p class="lede">
+          The system is built around documents, versions and evidence, so the profession sitting on top of it is configuration rather than architecture.
+        </p>
+      </div>
+
+      <div class="grid-2 reveal">
+        <div class="tile">
+          <h3>Legal</h3>
+          <p>
+            Matters, served paper, discovery, motions and deadlines, with the
+            public court record and case law connected alongside the firm's own
+            files. This is where the platform started and where most of the
+            domain work sits today.
+          </p>
+        </div>
+        <div class="tile">
+          <h3>Insurance</h3>
+          <p>
+            The same reading problem with different paper. Submissions, policies,
+            endorsements and correspondence, where the question is usually what a
+            specific document actually says rather than what someone remembers it
+            saying.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band band-tight">
+    <div class="wrap">
+      <div class="head-stack reveal" style="margin-bottom:32px">
+        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
+      </div>
+      <div class="explore reveal">
+        <a href="/platform/sources"><small>Sources</small><b>What it reads from, and what stays authoritative</b></a>
+        <a href="/platform/verification"><small>Verification</small><b>The rule that stops an unlocatable quote becoming an answer</b></a>
+        <a href="/security"><small>Security</small><b>What we can claim today, and what we cannot</b></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band band-ink">
+    <div class="wrap cta-split">
+      <div class="reveal">
+        <p class="eyebrow">Start a conversation</p>
+        <h2>Tell us about your practice.</h2>
+        <p class="lede">
+          Thirty minutes, no obligation. We'll tell you honestly whether custom
+          software is worth it for your firm, and if it isn't, we'll say so.
+        </p>
+        <div class="actions">
+          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a>
+          <a class="btn btn-outline-light" href="/#contact">Send a message</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">The Brief</p>
+        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">The week in legal, in four minutes.</h2>
+        <p class="lede" style="font-size:1.02rem">Free, national to Orange County, every Wednesday.</p>
+        <form id="brief-form" class="brief-form" data-source="page">
+          <div class="brief-row">
+            <label class="hp" for="brief-email">Email</label>
+            <input id="brief-email" type="email" name="email" autocomplete="email"
+                   maxlength="254" placeholder="you@example.com" required>
+            <button type="submit" class="btn btn-light">Subscribe</button>
+          </div>
+          <label class="hp" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+          <p class="brief-micro">No spam. Unsubscribe anytime.
+            <a href="/brief">See the format and past issues</a>.</p>
+          <p class="brief-status" role="status" aria-live="polite"></p>
+          <p class="brief-success" hidden>Check your inbox to confirm.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="/">WYEA</a>
+        <p>
+          Whittle and Ye Engineering Associates. Document knowledge systems,
+          built in Newport Beach.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="/platform">Overview</a></li>
+          <li><a href="/platform/sources">Connected sources</a></li>
+          <li><a href="/platform/verification">Grounding and verification</a></li>
+          <li><a href="/platform/evidence">Evidence and the record</a></li>
+          <li><a href="/platform/isolation">Isolation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>How we work</h4>
+        <ul>
+          <li><a href="/how-we-work">Engagement model</a></li>
+          <li><a href="/security">Security and confidentiality</a></li>
+          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About the firm</a></li>
+          <li><a href="/brief">The Brief</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a 30-minute call</a></li>
+          <li><a href="/#contact">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 WYEA</span>
+      <span>Newport Beach · Orange County, California</span>
+      <a href="/privacy">Privacy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js" defer></script>
+</body>
+</html>

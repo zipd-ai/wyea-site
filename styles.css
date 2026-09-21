@@ -1429,6 +1429,31 @@ button[disabled] { opacity: 0.55; cursor: default; }
 
 .quote-chip.is-missing { background: var(--flag-wash); border-left-color: var(--flag); }
 
+/* key/value block used inside a figure to show a pinned source identity */
+.kv {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.kv span { color: var(--ink-faint); }
+.kv b { color: var(--ink); font-weight: 500; word-break: break-all; }
+
+.src-note {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
+
+.cite-mute { border-left-color: var(--line-strong); }
+.cite-mute .cite-badge { color: var(--ink-muted); }
+
 .src-meta {
   font-size: 0.78rem;
   color: var(--ink-faint);

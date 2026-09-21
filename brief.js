@@ -787,13 +787,13 @@ const SITE_HEADER = `<a class="skip-link" href="#main">Skip to content</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">What we build <i class="nav-caret" aria-hidden="true"></i></button>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/what-we-build"><b>Overview</b><span>The four systems a firm can have built, and how they fit together.</span></a>
-          <a class="mega-link" href="/build/verified-drafting"><b>Verified drafting</b><span>First drafts in your format, with every citation matched to the source.</span></a>
-          <a class="mega-link" href="/build/discovery"><b>Discovery and review</b><span>Production sets read and ranked against the requests actually served.</span></a>
-          <a class="mega-link" href="/build/matter-workflow"><b>Matter workflow</b><span>Deadlines computed from the governing rules and shown with authority.</span></a>
-          <a class="mega-link" href="/build/deployment"><b>Deployment and control</b><span>Your environment, your infrastructure, your audit trail.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
@@ -819,16 +819,16 @@ const SITE_FOOTER = `<footer class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
-        <p>Whittle and Ye Engineering Associates. Custom software for law firms, built in Newport Beach.</p>
+        <p>Whittle and Ye Engineering Associates. Document knowledge systems, built in Newport Beach.</p>
       </div>
       <div class="footer-col">
-        <h4>What we build</h4>
+        <h4>Platform</h4>
         <ul>
-          <li><a href="/what-we-build">Overview</a></li>
-          <li><a href="/build/verified-drafting">Verified drafting</a></li>
-          <li><a href="/build/discovery">Discovery and review</a></li>
-          <li><a href="/build/matter-workflow">Matter workflow</a></li>
-          <li><a href="/build/deployment">Deployment and control</a></li>
+          <li><a href="/platform">Overview</a></li>
+          <li><a href="/platform/sources">Connected sources</a></li>
+          <li><a href="/platform/verification">Grounding and verification</a></li>
+          <li><a href="/platform/evidence">Evidence and the record</a></li>
+          <li><a href="/platform/isolation">Isolation</a></li>
         </ul>
       </div>
       <div class="footer-col">

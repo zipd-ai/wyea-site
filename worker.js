@@ -15,6 +15,17 @@ import { handleBrief } from "./brief.js";
 const MAX_FIELD = { name: 200, firm: 200, email: 254, message: 5000 };
 const RATE_LIMIT_PER_HOUR = 5;
 
+// The capability pages published on 2026-09-21 were renamed the next day when
+// the site was rebuilt around the platform rather than around a list of
+// services. They were live long enough to be linked, so they redirect.
+const MOVED = {
+  "/what-we-build": "/platform",
+  "/build/verified-drafting": "/platform/verification",
+  "/build/discovery": "/platform/sources",
+  "/build/matter-workflow": "/platform/evidence",
+  "/build/deployment": "/platform/isolation",
+};
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -31,6 +42,10 @@ export default {
     }
     if (url.pathname === "/sitemap.xml") {
       return sitemap(env, url.origin);
+    }
+    const moved = MOVED[url.pathname.replace(/\/$/, "")];
+    if (moved) {
+      return Response.redirect(new URL(moved, url.origin).toString(), 301);
     }
     const brief = await handleBrief(request, env, ctx, url);
     if (brief) return brief;
@@ -54,11 +69,11 @@ async function sitemap(env, origin) {
   }
   const urls = [
     { loc: `${base}/`, priority: "1.0" },
-    { loc: `${base}/what-we-build`, priority: "0.9" },
-    { loc: `${base}/build/verified-drafting`, priority: "0.8" },
-    { loc: `${base}/build/discovery`, priority: "0.8" },
-    { loc: `${base}/build/matter-workflow`, priority: "0.8" },
-    { loc: `${base}/build/deployment`, priority: "0.8" },
+    { loc: `${base}/platform`, priority: "0.9" },
+    { loc: `${base}/platform/sources`, priority: "0.8" },
+    { loc: `${base}/platform/verification`, priority: "0.8" },
+    { loc: `${base}/platform/evidence`, priority: "0.8" },
+    { loc: `${base}/platform/isolation`, priority: "0.8" },
     { loc: `${base}/how-we-work`, priority: "0.9" },
     { loc: `${base}/security`, priority: "0.8" },
     { loc: `${base}/custom-ai-for-law-firms`, priority: "0.8" },
