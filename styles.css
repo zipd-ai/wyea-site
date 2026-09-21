@@ -1719,7 +1719,7 @@ button[disabled] { opacity: 0.55; cursor: default; }
   margin-bottom: 22px;
 }
 
-.person h3 { font-size: 1.5rem; }
+.person h2 { font-size: 1.5rem; line-height: 1.2; }
 
 .person .role {
   font-size: 0.86rem;
