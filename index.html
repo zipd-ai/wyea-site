@@ -51,7 +51,7 @@
       {
         "@type": "Question",
         "name": "What stops the system from making something up?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A claim only stands if its quote is located in the source document character for character. If the quote cannot be found, the claim is flagged rather than asserted. If the source could not be read at all, it is recorded as not checked, which is a separate state from false." }
+        "acceptedAnswer": { "@type": "Answer", "text": "A passage has to actually be in one of your documents before it is written as an answer. If it is not there, it is flagged rather than asserted. If a document could not be read at all, that is handed to a person rather than filled in." }
       },
       {
         "@type": "Question",
@@ -61,7 +61,7 @@
       {
         "@type": "Question",
         "name": "What happens when a source document is edited?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Every answer binds to a specific version identity supplied by the source platform, never to the current state of the file. An edit produces a new evidence record rather than changing the old one, and earlier answers still resolve against the version they were made from." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Nothing changes about the answer you were already given. It points at the document as it read on the day, not at the current file, so an edit months later does not rewrite what you were told and you can still open what you relied on." }
       },
       {
         "@type": "Question",
@@ -152,49 +152,47 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="A grounded read showing three outcomes: one claim verified with the located character span in a pinned document version, one flagged because its quote was not found in the source, and one marked not checked because the source could not be read.">
+        <figure class="app reveal" role="img" aria-label="A question asked across 47 vendor agreements. Three agreements are returned, each with the clause quoted and the document and section it came from. A fourth is flagged because its assignment clause sits in a scanned exhibit the system could not read, and is handed to a person instead of guessed at.">
           <div class="app-bar">
-            <span class="dot"></span> Grounded read
-            <span class="app-meta">3 claims &middot; 2 sources</span>
+            <span class="dot"></span> Which vendor agreements let the other side assign without our consent?
+            <span class="app-meta">47 read &middot; 3 matched &middot; 1 for you</span>
           </div>
-          <div class="fig-draft">
-            <div class="fig-draft-main">
-              <p class="fig-label">Claims</p>
-              <div class="cite cite-ok">
-                <span class="cite-badge">Verified</span>
-                <b>&ldquo;the vendor retained the onboarding log&rdquo;</b>
-                <small>Located at characters 4,181&ndash;4,226.</small>
-              </div>
-              <div class="cite cite-flag">
-                <span class="cite-badge">Flagged</span>
-                <b>&ldquo;the log was retained for seven years&rdquo;</b>
-                <small>Quote not found in the source. Not asserted.</small>
-              </div>
-              <div class="cite cite-mute">
-                <span class="cite-badge">Not checked</span>
-                <b>&ldquo;the addendum superseded clause 9&rdquo;</b>
-                <small>Source unreadable at read time. State is recorded, not guessed.</small>
+          <div class="ans">
+            <div class="ans-row">
+              <span class="ans-mark ans-ok">Found</span>
+              <div class="ans-body">
+                <b>Northwind Master Services Agreement</b>
+                <q>may assign this Agreement to any successor in interest without the prior written consent of the other party</q>
+                <span class="ans-src">Section 14.2, Assignment &middot; signed 12 Mar 2024</span>
               </div>
             </div>
-            <div class="fig-draft-side">
-              <p class="fig-label">Pinned source</p>
-              <div class="kv">
-                <span>connector</span><b>sharepoint</b>
-                <span>object</span><b>01JZQ4&hellip;K7</b>
-                <span>version</span><b>3.14</b>
-                <span>sha256</span><b>9f2c1a&hellip;7e40</b>
-                <span>read</span><b>2026-09-21 14:02Z</b>
+            <div class="ans-row">
+              <span class="ans-mark ans-ok">Found</span>
+              <div class="ans-body">
+                <b>Calloway Services Agreement</b>
+                <q>assignment to an affiliate shall not require consent</q>
+                <span class="ans-src">Section 9, Assignment &middot; signed 4 Aug 2023</span>
               </div>
-              <p class="src-note">
-                The claim binds to this version, never to &ldquo;current&rdquo;.
-                Editing the file in SharePoint produces a new record rather than
-                changing this one.
-              </p>
+            </div>
+            <div class="ans-row">
+              <span class="ans-mark ans-ok">Found</span>
+              <div class="ans-body">
+                <b>Pemberton Supply Agreement</b>
+                <q>upon thirty days notice, no consent required</q>
+                <span class="ans-src">Section 11.4, Assignment &middot; signed 19 Jan 2025</span>
+              </div>
+            </div>
+            <div class="ans-row">
+              <span class="ans-mark ans-flag">For you</span>
+              <div class="ans-body">
+                <b>Harlow Master Agreement</b>
+                <p class="ans-note">The assignment clause is in a scanned exhibit that could not be read. Nobody guessed at it. It is on your list.</p>
+              </div>
             </div>
           </div>
           <div class="app-foot">
-            A quote that cannot be located <b>does not become an answer.</b> It
-            is flagged, and the run records why.
+            Somebody would have read all forty-seven.
+            <b>Every line here opens the page it came from.</b>
           </div>
         </figure>
       </div>
@@ -277,15 +275,15 @@
         <div class="explorer-list">
         <div class="explorer-item is-open">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="true" aria-controls="ex-1">Connected sources</button>
+            <button class="explorer-trigger" type="button" aria-expanded="true" aria-controls="ex-1">It reads what you already have</button>
           </h3>
           <div class="explorer-body" id="ex-1">
             <div class="explorer-body-inner">
-              <p>The system reads your document store, your mail, and the public court record. Your store stays authoritative; we mirror it and keep no competing library.</p>
+              <p>Contracts, correspondence, mail, filings. Wherever your people already put them. Nobody uploads anything into a new system and nothing is copied out of the one you have.</p>
               <ul class="explorer-meta">
-                <li>Dropbox today. SharePoint, OneDrive, Google Drive, iManage and NetDocuments are what the connector layer is built against</li>
-                <li>Outlook mail arrives as a proposal, not as a second mailbox</li>
-                <li>Filenames never participate in identity or access, because at a firm the filename is often the sensitive part</li>
+                <li>Your document store, your mailboxes, and the public record on your matters</li>
+                <li>Files stay where they are and your store stays the one that is true</li>
+                <li>Connecting it takes an afternoon, not a migration</li>
               </ul>
               <a class="arrow" href="/platform/sources">Read the detail</a>
             </div>
@@ -293,15 +291,15 @@
         </div>
         <div class="explorer-item">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-2">How a claim is checked</button>
+            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-2">It answers, and shows you where from</button>
           </h3>
           <div class="explorer-body" id="ex-2">
             <div class="explorer-body-inner">
-              <p>A quote has to be found in the source, character for character, before it is allowed to stand as an answer. There is no confidence score and no second opinion.</p>
+              <p>Ask a question across everything at once. What comes back is the passage that answers it and the document it sits in, so checking a line takes a click instead of an afternoon.</p>
               <ul class="explorer-meta">
-                <li>Located: the answer carries the character span it was found at</li>
-                <li>Not located: flagged, and the run records that it was flagged</li>
-                <li>Source unreadable: recorded as not checked, which is different from false</li>
+                <li>Every line opens the page it came from</li>
+                <li>A passage it cannot find in your documents is never written as though it could</li>
+                <li>What it could not read is handed to you rather than filled in</li>
               </ul>
               <a class="arrow" href="/platform/verification">Read the detail</a>
             </div>
@@ -309,15 +307,15 @@
         </div>
         <div class="explorer-item">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-3">Evidence that survives an edit</button>
+            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-3">It still holds up months later</button>
           </h3>
           <div class="explorer-body" id="ex-3">
             <div class="explorer-body-inner">
-              <p>Every answer binds to one version of one document, never to whatever the file says today. Editing the file writes a new record instead of changing the old one.</p>
+              <p>Advice gets questioned long after it was given, usually once the underlying document has changed. The answer keeps pointing at the version it was actually based on.</p>
               <ul class="explorer-meta">
-                <li>Version identity comes from your platform, not from us. There is no WYEA seal</li>
-                <li>Dropbox drops version history after 30 days on some plans; matters outlive that</li>
-                <li>We keep the bytes we made a claim about, and only those</li>
+                <li>An edit to the file does not quietly rewrite what you were told</li>
+                <li>You can show a client exactly what you relied on, on the day you relied on it</li>
+                <li>Work stays checkable after the provider has dropped its own version history</li>
               </ul>
               <a class="arrow" href="/platform/evidence">Read the detail</a>
             </div>
@@ -325,15 +323,15 @@
         </div>
         <div class="explorer-item">
           <h3>
-            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-4">One cell per firm</button>
+            <button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ex-4">It is yours, not everybody's</button>
           </h3>
           <div class="explorer-body" id="ex-4">
             <div class="explorer-body-inner">
-              <p>Each firm gets its own runtime with its own database, network and identity. There is no shared content plane, so there is nothing to leak between firms.</p>
+              <p>Your system holds your people, your files and your history. There is no shared pool underneath it, so there is nothing for another firm to be in.</p>
               <ul class="explorer-meta">
-                <li>No shared corpus and no cross-firm retrieval</li>
-                <li>Nothing you upload trains a model, ours or anyone's</li>
-                <li>WYEA operates the cell. The security page says what that means and what it does not</li>
+                <li>No other client can search it and no other client is in it</li>
+                <li>Nothing you put in trains a model, ours or anyone else's</li>
+                <li>We run it, and the security page says plainly what that does and does not mean</li>
               </ul>
               <a class="arrow" href="/platform/isolation">Read the detail</a>
             </div>
@@ -342,167 +340,147 @@
         </div>
         <div class="explorer-panels">
         <div class="explorer-panel is-shown">
-          <figure class="app reveal" role="img" aria-label="Connector table listing the document systems, mailboxes, and public record sources the platform reads from, with the version identity each one supplies.">
+          <figure class="app reveal" role="img" aria-label="Table of connected sources: SharePoint contracts and correspondence, Outlook matter mail, Dropbox closing binders, and the public court record. Each one stays in the system it already lives in.">
                     <div class="app-bar">
-                      <span class="dot"></span> Connected sources
-                      <span class="app-meta">Read only unless write-back is enabled</span>
+                      <span class="dot"></span> What it reads
+                      <span class="app-meta">Nothing moves house</span>
                     </div>
                     <div class="fig-scroll">
                       <table class="fig-table">
                         <thead>
-                          <tr><th>Source</th><th>Reads</th><th>Version identity</th><th>Authority</th></tr>
+                          <tr><th>Where your work already lives</th><th>What it reads</th><th>How much</th><th>Stays put</th></tr>
                         </thead>
                         <tbody>
                           <tr>
-                            <td><b>Dropbox</b><small>first adapter</small></td>
-                            <td data-label="Reads">Documents</td>
-                            <td data-label="Version identity"><small>rev</small></td>
-                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                            <td><b>SharePoint</b><small>also OneDrive, iManage, NetDocuments, Google Drive</small></td>
+                            <td data-label="What it reads">Contracts and correspondence</td>
+                            <td data-label="How much"><small>12,400 documents</small></td>
+                            <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                           </tr>
                           <tr>
-                            <td><b>SharePoint, OneDrive</b><small>Microsoft Graph</small></td>
-                            <td data-label="Reads">Documents</td>
-                            <td data-label="Version identity"><small>driveItemVersion.id</small></td>
-                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                            <td><b>Dropbox</b><small>connected first</small></td>
+                            <td data-label="What it reads">Closing binders and exhibits</td>
+                            <td data-label="How much"><small>1,890 documents</small></td>
+                            <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                           </tr>
                           <tr>
-                            <td><b>Google Drive</b><small></small></td>
-                            <td data-label="Reads">Documents</td>
-                            <td data-label="Version identity"><small>revisionId</small></td>
-                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                            <td><b>Outlook</b><small>shared mailboxes</small></td>
+                            <td data-label="What it reads">Mail and attachments</td>
+                            <td data-label="How much"><small>3 mailboxes</small></td>
+                            <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                           </tr>
                           <tr>
-                            <td><b>iManage, NetDocuments</b><small></small></td>
-                            <td data-label="Reads">Documents</td>
-                            <td data-label="Version identity"><small>version / subversion</small></td>
-                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
-                          </tr>
-                          <tr>
-                            <td><b>Outlook</b><small>inbound mail</small></td>
-                            <td data-label="Reads">Mail and attachments</td>
-                            <td data-label="Version identity"><small>message id</small></td>
-                            <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
-                          </tr>
-                          <tr>
-                            <td><b>Public court record</b><small>shared corpus</small></td>
-                            <td data-label="Reads">Dockets, opinions</td>
-                            <td data-label="Version identity"><small>corpus revision</small></td>
-                            <td data-label="Authority"><span class="pill pill-ok">Public</span></td>
+                            <td><b>The public record</b><small>dockets and opinions</small></td>
+                            <td data-label="What it reads">Filings in your matters</td>
+                            <td data-label="How much"><small>Updated daily</small></td>
+                            <td data-label="Stays put"><span class="pill pill-mute">Public</span></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                     <div class="app-foot">
-                      Your system stays the system of record. <b>We mirror it and never
-                      contradict it,</b> and we do not keep a competing library.
+                      Nobody uploads anything into a new system.
+                      <b>Your files stay where your people already put them.</b>
                     </div>
                   </figure>
         </div>
         <div class="explorer-panel">
-          <figure class="app reveal" role="img" aria-label="A grounded read showing three outcomes: one claim verified with the located character span in a pinned document version, one flagged because its quote was not found in the source, and one marked not checked because the source could not be read.">
+          <figure class="app reveal" role="img" aria-label="A question asked across 47 vendor agreements. Three agreements are returned, each with the clause quoted and the document and section it came from. A fourth is flagged because its assignment clause sits in a scanned exhibit the system could not read, and is handed to a person instead of guessed at.">
                     <div class="app-bar">
-                      <span class="dot"></span> Grounded read
-                      <span class="app-meta">3 claims &middot; 2 sources</span>
+                      <span class="dot"></span> Which vendor agreements let the other side assign without our consent?
+                      <span class="app-meta">47 read &middot; 3 matched &middot; 1 for you</span>
                     </div>
-                    <div class="fig-draft">
-                      <div class="fig-draft-main">
-                        <p class="fig-label">Claims</p>
-                        <div class="cite cite-ok">
-                          <span class="cite-badge">Verified</span>
-                          <b>&ldquo;the vendor retained the onboarding log&rdquo;</b>
-                          <small>Located at characters 4,181&ndash;4,226.</small>
-                        </div>
-                        <div class="cite cite-flag">
-                          <span class="cite-badge">Flagged</span>
-                          <b>&ldquo;the log was retained for seven years&rdquo;</b>
-                          <small>Quote not found in the source. Not asserted.</small>
-                        </div>
-                        <div class="cite cite-mute">
-                          <span class="cite-badge">Not checked</span>
-                          <b>&ldquo;the addendum superseded clause 9&rdquo;</b>
-                          <small>Source unreadable at read time. State is recorded, not guessed.</small>
+                    <div class="ans">
+                      <div class="ans-row">
+                        <span class="ans-mark ans-ok">Found</span>
+                        <div class="ans-body">
+                          <b>Northwind Master Services Agreement</b>
+                          <q>may assign this Agreement to any successor in interest without the prior written consent of the other party</q>
+                          <span class="ans-src">Section 14.2, Assignment &middot; signed 12 Mar 2024</span>
                         </div>
                       </div>
-                      <div class="fig-draft-side">
-                        <p class="fig-label">Pinned source</p>
-                        <div class="kv">
-                          <span>connector</span><b>sharepoint</b>
-                          <span>object</span><b>01JZQ4&hellip;K7</b>
-                          <span>version</span><b>3.14</b>
-                          <span>sha256</span><b>9f2c1a&hellip;7e40</b>
-                          <span>read</span><b>2026-09-21 14:02Z</b>
+                      <div class="ans-row">
+                        <span class="ans-mark ans-ok">Found</span>
+                        <div class="ans-body">
+                          <b>Calloway Services Agreement</b>
+                          <q>assignment to an affiliate shall not require consent</q>
+                          <span class="ans-src">Section 9, Assignment &middot; signed 4 Aug 2023</span>
                         </div>
-                        <p class="src-note">
-                          The claim binds to this version, never to &ldquo;current&rdquo;.
-                          Editing the file in SharePoint produces a new record rather than
-                          changing this one.
-                        </p>
+                      </div>
+                      <div class="ans-row">
+                        <span class="ans-mark ans-ok">Found</span>
+                        <div class="ans-body">
+                          <b>Pemberton Supply Agreement</b>
+                          <q>upon thirty days notice, no consent required</q>
+                          <span class="ans-src">Section 11.4, Assignment &middot; signed 19 Jan 2025</span>
+                        </div>
+                      </div>
+                      <div class="ans-row">
+                        <span class="ans-mark ans-flag">For you</span>
+                        <div class="ans-body">
+                          <b>Harlow Master Agreement</b>
+                          <p class="ans-note">The assignment clause is in a scanned exhibit that could not be read. Nobody guessed at it. It is on your list.</p>
+                        </div>
                       </div>
                     </div>
                     <div class="app-foot">
-                      A quote that cannot be located <b>does not become an answer.</b> It
-                      is flagged, and the run records why.
+                      Somebody would have read all forty-seven.
+                      <b>Every line here opens the page it came from.</b>
                     </div>
                   </figure>
         </div>
         <div class="explorer-panel">
-          <figure class="app reveal" role="img" aria-label="An evidence record showing that a new version of a document produces a new immutable record rather than editing the old one, with the superseded record retained.">
+          <figure class="app reveal" role="img" aria-label="Timeline showing an answer given in March, the underlying contract edited in June, and the March answer still opening the March version today so the advice can be shown exactly as it was relied on.">
                     <div class="app-bar">
-                      <span class="dot"></span> Evidence records for one document
-                      <span class="app-meta">Immutable, superseding</span>
+                      <span class="dot"></span> Advice given in March, questioned in September
+                      <span class="app-meta">Still opens</span>
                     </div>
                     <div class="fig-dates">
                       <div class="date-row">
-                        <span class="date-when">v3.14</span>
-                        <span class="date-what"><b>Read for a grounded answer</b><small>sha256 9f2c1a&hellip;7e40 &middot; 3 claims bound to this version</small></span>
-                        <span class="pill pill-ok">Current</span>
+                        <span class="date-when">4 March</span>
+                        <span class="date-what"><b>You told the client the indemnity was capped</b><small>The answer pointed at Northwind MSA, section 12.1</small></span>
+                        <span class="pill pill-ok">Answered</span>
                       </div>
                       <div class="date-row">
-                        <span class="date-when">v3.9</span>
-                        <span class="date-what"><b>Superseded by an edit in SharePoint</b><small>Earlier answers still point here, and still resolve</small></span>
-                        <span class="pill pill-mute">Retained</span>
+                        <span class="date-when">18 June</span>
+                        <span class="date-what"><b>Somebody edited that contract</b><small>A new version replaced it in SharePoint. Normal, and nobody told you</small></span>
+                        <span class="pill pill-mute">Changed</span>
                       </div>
                       <div class="date-row is-near">
-                        <span class="date-when">v2.1</span>
-                        <span class="date-what"><b>Aged out of the provider's version history</b><small>Bytes held in the evidentiary cache so the old answer can still be checked</small></span>
-                        <span class="pill pill-flag">Cached</span>
+                        <span class="date-when">Today</span>
+                        <span class="date-what"><b>The client asks what you relied on</b><small>March's answer still opens March's contract, on the page it came from</small></span>
+                        <span class="pill pill-flag">Shown</span>
                       </div>
                     </div>
                     <div class="app-foot">
-                      Dropbox keeps versions for 30 days on some plans. Matters run for
-                      years. <b>The cache holds exactly the bytes we made a claim about,</b>
-                      and nothing else.
+                      The usual answer is a search through mailboxes.
+                      <b>Here it is one click, six months later.</b>
                     </div>
                   </figure>
         </div>
         <div class="explorer-panel">
-          <figure class="app reveal" role="img" aria-label="Diagram of one cell per firm: configuration, credentials and derived data inside a single firm's boundary, with no shared content plane between firms and the firm's own document system remaining authoritative.">
+          <figure class="app reveal" role="img" aria-label="Diagram of one firm's own system, holding its people, its files and its history, with nothing pooled into a shared product and no other client able to reach it.">
                     <div class="app-bar">
-                      <span class="dot"></span> One cell, one firm
-                      <span class="app-meta">No shared content plane</span>
+                      <span class="dot"></span> Your system
+                      <span class="app-meta">Nobody else is in it</span>
                     </div>
                     <div class="fig-deploy">
                       <div class="boundary">
-                        <span class="boundary-label">Your cell</span>
+                        <span class="boundary-label">Yours</span>
                         <div class="node-row">
-                          <div class="node"><b>Your credentials</b><span>Scoped to what you grant</span></div>
-                          <div class="node"><b>Workflow state</b><span>Yours alone</span></div>
-                          <div class="node"><b>Evidence records</b><span>Append only</span></div>
+                          <div class="node"><b>Your people</b><span>Signed in the way they already sign in</span></div>
+                          <div class="node"><b>Your files</b><span>Read where they live, not copied out</span></div>
+                          <div class="node"><b>Your history</b><span>Every answer, and what it rested on</span></div>
                         </div>
                         <div class="egress">
-                          <span class="pill pill-flag">None</span>
-                          Shared corpus, cross-firm retrieval, or training on your content
+                          <span class="pill pill-flag">Never</span>
+                          Pooled with another client, searchable by them, or used to train a model
                         </div>
                       </div>
-                      <p class="src-note" style="margin-top:14px">
-                        Your document system sits outside this boundary and stays
-                        authoritative. The cell reads from it and writes back only where
-                        you turn that on.
-                      </p>
                     </div>
                     <div class="app-foot">
-                      Instances share code, <b>never data.</b> WYEA operates the cell;
-                      see the limits we publish on the security page.
+                      <b>No other firm is in your system,</b> because no other firm is in
+                      your system. There is no shared pool to be in.
                     </div>
                   </figure>
         </div>
@@ -647,7 +625,7 @@
       <div class="faq reveal">
         <details open>
           <summary>What stops it making something up?</summary>
-          <p>A claim only stands if its quote is located in the source document, character for character. If the quote is not there, the claim is flagged instead of asserted. If the source could not be read at all, that is recorded as not checked, which is a different state from false. <a href="/platform/verification">How the check works</a>.</p>
+          <p>A passage has to actually be in one of your documents before it is written down as an answer. If it is not there, you see it flagged rather than stated. If a document could not be read at all, a scanned exhibit for instance, that goes on your list instead of being filled in from context. <a href="/platform/verification">How the check works</a>.</p>
         </details>
         <details>
           <summary>Which systems does it read from?</summary>
@@ -655,7 +633,7 @@
         </details>
         <details>
           <summary>What happens when someone edits the source document?</summary>
-          <p>Every answer binds to one version identity supplied by your own platform, never to whatever the file says now. An edit writes a new evidence record rather than changing the old one, so an answer given in March still resolves against the March version. <a href="/platform/evidence">How evidence is recorded</a>.</p>
+          <p>Nothing. An answer points at the document as it read on the day you got the answer, not at whatever it says now. Somebody editing the contract in June does not quietly change what you were told in March, and in September you can still open exactly what you relied on. <a href="/platform/evidence">How that works</a>.</p>
         </details>
         <details>
           <summary>Why not just buy a shared platform?</summary>

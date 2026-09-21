@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Evidence and the Record | WYEA</title>
-  <meta name="description" content="Every answer binds to a version identity supplied by your own platform. Records supersede rather than change, and expired versions stay checkable.">
+  <meta name="description" content="An answer points at the document as it read on the day. A later edit does not rewrite it, and it stays openable after your provider has dropped its own history.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Evidence and the Record | WYEA">
-  <meta property="og:description" content="Every answer binds to a version identity supplied by your own platform. Records supersede rather than change, and expired versions stay checkable.">
+  <meta property="og:description" content="An answer points at the document as it read on the day. A later edit does not rewrite it, and it stays openable after your provider has dropped its own history.">
   <meta property="og:url" content="https://wyea.ai/platform/evidence">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -83,32 +83,31 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="An evidence record showing that a new version of a document produces a new immutable record rather than editing the old one, with the superseded record retained.">
+        <figure class="app reveal" role="img" aria-label="Timeline showing an answer given in March, the underlying contract edited in June, and the March answer still opening the March version today so the advice can be shown exactly as it was relied on.">
           <div class="app-bar">
-            <span class="dot"></span> Evidence records for one document
-            <span class="app-meta">Immutable, superseding</span>
+            <span class="dot"></span> Advice given in March, questioned in September
+            <span class="app-meta">Still opens</span>
           </div>
           <div class="fig-dates">
             <div class="date-row">
-              <span class="date-when">v3.14</span>
-              <span class="date-what"><b>Read for a grounded answer</b><small>sha256 9f2c1a&hellip;7e40 &middot; 3 claims bound to this version</small></span>
-              <span class="pill pill-ok">Current</span>
+              <span class="date-when">4 March</span>
+              <span class="date-what"><b>You told the client the indemnity was capped</b><small>The answer pointed at Northwind MSA, section 12.1</small></span>
+              <span class="pill pill-ok">Answered</span>
             </div>
             <div class="date-row">
-              <span class="date-when">v3.9</span>
-              <span class="date-what"><b>Superseded by an edit in SharePoint</b><small>Earlier answers still point here, and still resolve</small></span>
-              <span class="pill pill-mute">Retained</span>
+              <span class="date-when">18 June</span>
+              <span class="date-what"><b>Somebody edited that contract</b><small>A new version replaced it in SharePoint. Normal, and nobody told you</small></span>
+              <span class="pill pill-mute">Changed</span>
             </div>
             <div class="date-row is-near">
-              <span class="date-when">v2.1</span>
-              <span class="date-what"><b>Aged out of the provider's version history</b><small>Bytes held in the evidentiary cache so the old answer can still be checked</small></span>
-              <span class="pill pill-flag">Cached</span>
+              <span class="date-when">Today</span>
+              <span class="date-what"><b>The client asks what you relied on</b><small>March's answer still opens March's contract, on the page it came from</small></span>
+              <span class="pill pill-flag">Shown</span>
             </div>
           </div>
           <div class="app-foot">
-            Dropbox keeps versions for 30 days on some plans. Matters run for
-            years. <b>The cache holds exactly the bytes we made a claim about,</b>
-            and nothing else.
+            The usual answer is a search through mailboxes.
+            <b>Here it is one click, six months later.</b>
           </div>
         </figure>
       </div>
@@ -119,23 +118,23 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">What a record holds</p>
-          <h2 class="head">Eight fields, and none of them is a seal</h2>
+          <p class="eyebrow">What gets kept</p>
+          <h2 class="head">Enough to answer the question six months later</h2>
         </div>
         <p class="lede">
-          The integrity anchor is your own platform's version identity. We do not ask you to trust something we stamped.
+          Not a certificate we issued. Your own system's account of that document, on that day.
         </p>
       </div>
 
       <div class="rulelist reveal">
-        <div><b>connector</b><span>Which system it came from</span></div>
-        <div><b>repository</b><span>Which store inside it</span></div>
-        <div><b>object id</b><span>Stable across rename and move</span></div>
-        <div><b>version id</b><span>Your platform's own immutable handle</span></div>
-        <div><b>content hash</b><span>sha256, when the provider gives one</span></div>
-        <div><b>authorization scope</b><span>A content-free hash of who could see it</span></div>
-        <div><b>locator</b><span>Page or character position</span></div>
-        <div><b>retrieved at</b><span>When the read happened</span></div>
+        <div><b>Which document</b><span>Named, and openable</span></div>
+        <div><b>Which version of it</b><span>The one that was actually read</span></div>
+        <div><b>Which passage</b><span>The page it sits on</span></div>
+        <div><b>When it was read</b><span>To the minute</span></div>
+        <div><b>Who was able to see it</b><span>Recorded without recording the content</span></div>
+        <div><b>What was concluded</b><span>The answer as it was given</span></div>
+        <div><b>Whether it was checked</b><span>Or handed to a person, and why</span></div>
+        <div><b>Who asked</b><span>So a question has somewhere to go</span></div>
       </div>
 
     </div>

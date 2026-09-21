@@ -83,59 +83,47 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Connector table listing the document systems, mailboxes, and public record sources the platform reads from, with the version identity each one supplies.">
+        <figure class="app reveal" role="img" aria-label="Table of connected sources: SharePoint contracts and correspondence, Outlook matter mail, Dropbox closing binders, and the public court record. Each one stays in the system it already lives in.">
           <div class="app-bar">
-            <span class="dot"></span> Connected sources
-            <span class="app-meta">Read only unless write-back is enabled</span>
+            <span class="dot"></span> What it reads
+            <span class="app-meta">Nothing moves house</span>
           </div>
           <div class="fig-scroll">
             <table class="fig-table">
               <thead>
-                <tr><th>Source</th><th>Reads</th><th>Version identity</th><th>Authority</th></tr>
+                <tr><th>Where your work already lives</th><th>What it reads</th><th>How much</th><th>Stays put</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><b>Dropbox</b><small>first adapter</small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>rev</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                  <td><b>SharePoint</b><small>also OneDrive, iManage, NetDocuments, Google Drive</small></td>
+                  <td data-label="What it reads">Contracts and correspondence</td>
+                  <td data-label="How much"><small>12,400 documents</small></td>
+                  <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
-                  <td><b>SharePoint, OneDrive</b><small>Microsoft Graph</small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>driveItemVersion.id</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                  <td><b>Dropbox</b><small>connected first</small></td>
+                  <td data-label="What it reads">Closing binders and exhibits</td>
+                  <td data-label="How much"><small>1,890 documents</small></td>
+                  <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
-                  <td><b>Google Drive</b><small></small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>revisionId</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                  <td><b>Outlook</b><small>shared mailboxes</small></td>
+                  <td data-label="What it reads">Mail and attachments</td>
+                  <td data-label="How much"><small>3 mailboxes</small></td>
+                  <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
-                  <td><b>iManage, NetDocuments</b><small></small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>version / subversion</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
-                </tr>
-                <tr>
-                  <td><b>Outlook</b><small>inbound mail</small></td>
-                  <td data-label="Reads">Mail and attachments</td>
-                  <td data-label="Version identity"><small>message id</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
-                </tr>
-                <tr>
-                  <td><b>Public court record</b><small>shared corpus</small></td>
-                  <td data-label="Reads">Dockets, opinions</td>
-                  <td data-label="Version identity"><small>corpus revision</small></td>
-                  <td data-label="Authority"><span class="pill pill-ok">Public</span></td>
+                  <td><b>The public record</b><small>dockets and opinions</small></td>
+                  <td data-label="What it reads">Filings in your matters</td>
+                  <td data-label="How much"><small>Updated daily</small></td>
+                  <td data-label="Stays put"><span class="pill pill-mute">Public</span></td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="app-foot">
-            Your system stays the system of record. <b>We mirror it and never
-            contradict it,</b> and we do not keep a competing library.
+            Nobody uploads anything into a new system.
+            <b>Your files stay where your people already put them.</b>
           </div>
         </figure>
       </div>
@@ -185,12 +173,12 @@
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Exact span, or nothing</h4>
-                <p>The quote is searched for in the source text. Found, it carries its character offsets. Not found, it is flagged.</p>
+                <h4>It is there, or it is flagged</h4>
+                <p>A passage has to be in one of your documents before it is written as an answer. Not found means you see it flagged, not stated.</p>
               </div>
               <div class="vprop-part">
                 <h4>No confidence score</h4>
-                <p>There is no number between right and wrong for a reviewer to interpret generously at 6pm.</p>
+                <p>There is no number between right and wrong for somebody to read generously at six in the evening.</p>
               </div>
               <div class="vprop-part">
                 <h4>Unreadable is its own answer</h4>
@@ -202,21 +190,21 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>Evidence and the record</h3>
-            <p>Answers bind to a version identity that comes from your platform, not from us.</p>
+            <p>An answer points at the document as your own system had it that day, not as we would like to remember it.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>There is no WYEA seal</h4>
-                <p>The integrity anchor is your platform's own immutable version identity plus a content hash. We do not ask you to trust a stamp we invented.</p>
+                <h4>You are not asked to trust our word</h4>
+                <p>What an answer points at is your own system's record of that document, not a certificate we issued ourselves.</p>
               </div>
               <div class="vprop-part">
-                <h4>Records supersede, never change</h4>
-                <p>A new version, a permission change or a fresh read writes a new record. Nothing is edited in place.</p>
+                <h4>Old answers are never rewritten</h4>
+                <p>When a document changes, the answer you were already given keeps pointing at what it was actually based on.</p>
               </div>
               <div class="vprop-part">
-                <h4>The cache holds only what was claimed</h4>
-                <p>Providers expire old versions. We retain the exact bytes behind claims already made, so an old answer stays checkable.</p>
+                <h4>It outlives your provider's memory</h4>
+                <p>Dropbox and the rest drop old versions on a schedule of their own. Work you have already relied on stays openable anyway.</p>
               </div>
             </div>
           </div>

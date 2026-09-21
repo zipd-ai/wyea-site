@@ -83,59 +83,47 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Connector table listing the document systems, mailboxes, and public record sources the platform reads from, with the version identity each one supplies.">
+        <figure class="app reveal" role="img" aria-label="Table of connected sources: SharePoint contracts and correspondence, Outlook matter mail, Dropbox closing binders, and the public court record. Each one stays in the system it already lives in.">
           <div class="app-bar">
-            <span class="dot"></span> Connected sources
-            <span class="app-meta">Read only unless write-back is enabled</span>
+            <span class="dot"></span> What it reads
+            <span class="app-meta">Nothing moves house</span>
           </div>
           <div class="fig-scroll">
             <table class="fig-table">
               <thead>
-                <tr><th>Source</th><th>Reads</th><th>Version identity</th><th>Authority</th></tr>
+                <tr><th>Where your work already lives</th><th>What it reads</th><th>How much</th><th>Stays put</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><b>Dropbox</b><small>first adapter</small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>rev</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                  <td><b>SharePoint</b><small>also OneDrive, iManage, NetDocuments, Google Drive</small></td>
+                  <td data-label="What it reads">Contracts and correspondence</td>
+                  <td data-label="How much"><small>12,400 documents</small></td>
+                  <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
-                  <td><b>SharePoint, OneDrive</b><small>Microsoft Graph</small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>driveItemVersion.id</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                  <td><b>Dropbox</b><small>connected first</small></td>
+                  <td data-label="What it reads">Closing binders and exhibits</td>
+                  <td data-label="How much"><small>1,890 documents</small></td>
+                  <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
-                  <td><b>Google Drive</b><small></small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>revisionId</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
+                  <td><b>Outlook</b><small>shared mailboxes</small></td>
+                  <td data-label="What it reads">Mail and attachments</td>
+                  <td data-label="How much"><small>3 mailboxes</small></td>
+                  <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
-                  <td><b>iManage, NetDocuments</b><small></small></td>
-                  <td data-label="Reads">Documents</td>
-                  <td data-label="Version identity"><small>version / subversion</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
-                </tr>
-                <tr>
-                  <td><b>Outlook</b><small>inbound mail</small></td>
-                  <td data-label="Reads">Mail and attachments</td>
-                  <td data-label="Version identity"><small>message id</small></td>
-                  <td data-label="Authority"><span class="pill pill-mute">Yours</span></td>
-                </tr>
-                <tr>
-                  <td><b>Public court record</b><small>shared corpus</small></td>
-                  <td data-label="Reads">Dockets, opinions</td>
-                  <td data-label="Version identity"><small>corpus revision</small></td>
-                  <td data-label="Authority"><span class="pill pill-ok">Public</span></td>
+                  <td><b>The public record</b><small>dockets and opinions</small></td>
+                  <td data-label="What it reads">Filings in your matters</td>
+                  <td data-label="How much"><small>Updated daily</small></td>
+                  <td data-label="Stays put"><span class="pill pill-mute">Public</span></td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="app-foot">
-            Your system stays the system of record. <b>We mirror it and never
-            contradict it,</b> and we do not keep a competing library.
+            Nobody uploads anything into a new system.
+            <b>Your files stay where your people already put them.</b>
           </div>
         </figure>
       </div>
@@ -150,17 +138,19 @@
           <h2 class="head">Built against five stores, not one</h2>
         </div>
         <p class="lede">
-          Dropbox is the first adapter. The port exists so the next four do not require rewriting the platform.
+          Dropbox is connected first. The rest are what the connector layer was written for, so adding one is a week of work rather than a rebuild.
         </p>
       </div>
 
       <div class="rulelist reveal">
-        <div><b>Dropbox</b><span>rev</span></div>
-        <div><b>SharePoint and OneDrive</b><span>driveItemVersion.id</span></div>
-        <div><b>Google Drive</b><span>revisionId</span></div>
-        <div><b>iManage</b><span>version / subversion</span></div>
-        <div><b>NetDocuments</b><span>version / subversion</span></div>
-        <div><b>Outlook</b><span>inbound mail, as a proposal</span></div>
+        <div><b>Dropbox</b><span>Connected first</span></div>
+        <div><b>SharePoint and OneDrive</b><span>Built for</span></div>
+        <div><b>Google Drive</b><span>Built for</span></div>
+        <div><b>iManage</b><span>Built for</span></div>
+        <div><b>NetDocuments</b><span>Built for</span></div>
+        <div><b>Outlook</b><span>Mail and attachments</span></div>
+        <div><b>The public record</b><span>Dockets and opinions</span></div>
+        <div><b>Your own store</b><span>Stays the one that is true</span></div>
       </div>
 
     </div>
@@ -191,8 +181,8 @@
                 <p>Dropbox keeps history for 30 days on some plans and ten years on others, and upgrading is not retroactive.</p>
               </div>
               <div class="vprop-part">
-                <h4>Whether there is a digest at all</h4>
-                <p>Some platforms hand back a content hash. Others do not, and the connector has to declare that rather than invent one.</p>
+                <h4>Whether it can prove a file is unchanged</h4>
+                <p>Some platforms can. Others cannot, and we say which yours is instead of implying it can.</p>
               </div>
               <div class="vprop-part">
                 <h4>Whether the provider models matters</h4>
@@ -209,8 +199,8 @@
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Substitute a timestamp for a version</h4>
-                <p>A modification time or a path is not a version identity. A connector that cannot supply one says so instead.</p>
+                <h4>Pass off a guess as a record</h4>
+                <p>If your platform cannot say which version was read, we tell you that, rather than quietly using the file date and hoping.</p>
               </div>
               <div class="vprop-part">
                 <h4>Bind a claim to current</h4>

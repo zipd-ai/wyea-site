@@ -1429,20 +1429,64 @@ button[disabled] { opacity: 0.55; cursor: default; }
 
 .quote-chip.is-missing { background: var(--flag-wash); border-left-color: var(--flag); }
 
-/* key/value block used inside a figure to show a pinned source identity */
-.kv {
+/* The answer list: what somebody actually gets back from a question. Each
+   row is a result with the passage that supports it and where it sits. */
+.ans { padding: 4px 0; }
+
+.ans-row {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 6px 14px;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  line-height: 1.5;
-  border-top: 1px solid var(--line);
-  padding-top: 12px;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--line);
 }
 
-.kv span { color: var(--ink-faint); }
-.kv b { color: var(--ink); font-weight: 500; word-break: break-all; }
+.ans-row:last-child { border-bottom: 0; }
+
+.ans-mark {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 3px;
+  white-space: nowrap;
+}
+
+.ans-ok { color: var(--verify); }
+.ans-flag { color: var(--flag); }
+
+.ans-body b { display: block; font-size: 0.92rem; font-weight: 600; }
+
+.ans-body q {
+  display: block;
+  margin-top: 5px;
+  font-family: var(--font-display);
+  font-size: 0.97rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--verify);
+  padding-left: 11px;
+}
+
+.ans-src {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.ans-note {
+  margin-top: 5px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--ink-muted);
+  border-left: 2px solid var(--flag);
+  padding-left: 11px;
+}
+
+@media (max-width: 560px) {
+  .ans-row { grid-template-columns: 1fr; gap: 7px; }
+}
 
 .src-note {
   margin-top: 14px;
@@ -1491,7 +1535,7 @@ button[disabled] { opacity: 0.55; cursor: default; }
 
 .fig-table tr:last-child td { border-bottom: 0; }
 .fig-table td b { font-weight: 600; display: block; }
-.fig-table td small { color: var(--ink-faint); font-size: 0.76rem; font-family: var(--font-mono); }
+.fig-table td small { display: block; color: var(--ink-faint); font-size: 0.79rem; line-height: 1.4; }
 
 .pill {
   display: inline-block;

@@ -83,49 +83,47 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="A grounded read showing three outcomes: one claim verified with the located character span in a pinned document version, one flagged because its quote was not found in the source, and one marked not checked because the source could not be read.">
+        <figure class="app reveal" role="img" aria-label="A question asked across 47 vendor agreements. Three agreements are returned, each with the clause quoted and the document and section it came from. A fourth is flagged because its assignment clause sits in a scanned exhibit the system could not read, and is handed to a person instead of guessed at.">
           <div class="app-bar">
-            <span class="dot"></span> Grounded read
-            <span class="app-meta">3 claims &middot; 2 sources</span>
+            <span class="dot"></span> Which vendor agreements let the other side assign without our consent?
+            <span class="app-meta">47 read &middot; 3 matched &middot; 1 for you</span>
           </div>
-          <div class="fig-draft">
-            <div class="fig-draft-main">
-              <p class="fig-label">Claims</p>
-              <div class="cite cite-ok">
-                <span class="cite-badge">Verified</span>
-                <b>&ldquo;the vendor retained the onboarding log&rdquo;</b>
-                <small>Located at characters 4,181&ndash;4,226.</small>
-              </div>
-              <div class="cite cite-flag">
-                <span class="cite-badge">Flagged</span>
-                <b>&ldquo;the log was retained for seven years&rdquo;</b>
-                <small>Quote not found in the source. Not asserted.</small>
-              </div>
-              <div class="cite cite-mute">
-                <span class="cite-badge">Not checked</span>
-                <b>&ldquo;the addendum superseded clause 9&rdquo;</b>
-                <small>Source unreadable at read time. State is recorded, not guessed.</small>
+          <div class="ans">
+            <div class="ans-row">
+              <span class="ans-mark ans-ok">Found</span>
+              <div class="ans-body">
+                <b>Northwind Master Services Agreement</b>
+                <q>may assign this Agreement to any successor in interest without the prior written consent of the other party</q>
+                <span class="ans-src">Section 14.2, Assignment &middot; signed 12 Mar 2024</span>
               </div>
             </div>
-            <div class="fig-draft-side">
-              <p class="fig-label">Pinned source</p>
-              <div class="kv">
-                <span>connector</span><b>sharepoint</b>
-                <span>object</span><b>01JZQ4&hellip;K7</b>
-                <span>version</span><b>3.14</b>
-                <span>sha256</span><b>9f2c1a&hellip;7e40</b>
-                <span>read</span><b>2026-09-21 14:02Z</b>
+            <div class="ans-row">
+              <span class="ans-mark ans-ok">Found</span>
+              <div class="ans-body">
+                <b>Calloway Services Agreement</b>
+                <q>assignment to an affiliate shall not require consent</q>
+                <span class="ans-src">Section 9, Assignment &middot; signed 4 Aug 2023</span>
               </div>
-              <p class="src-note">
-                The claim binds to this version, never to &ldquo;current&rdquo;.
-                Editing the file in SharePoint produces a new record rather than
-                changing this one.
-              </p>
+            </div>
+            <div class="ans-row">
+              <span class="ans-mark ans-ok">Found</span>
+              <div class="ans-body">
+                <b>Pemberton Supply Agreement</b>
+                <q>upon thirty days notice, no consent required</q>
+                <span class="ans-src">Section 11.4, Assignment &middot; signed 19 Jan 2025</span>
+              </div>
+            </div>
+            <div class="ans-row">
+              <span class="ans-mark ans-flag">For you</span>
+              <div class="ans-body">
+                <b>Harlow Master Agreement</b>
+                <p class="ans-note">The assignment clause is in a scanned exhibit that could not be read. Nobody guessed at it. It is on your list.</p>
+              </div>
             </div>
           </div>
           <div class="app-foot">
-            A quote that cannot be located <b>does not become an answer.</b> It
-            is flagged, and the run records why.
+            Somebody would have read all forty-seven.
+            <b>Every line here opens the page it came from.</b>
           </div>
         </figure>
       </div>
