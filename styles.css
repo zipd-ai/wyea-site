@@ -1784,3 +1784,7 @@ button[disabled] { opacity: 0.55; cursor: default; }
 .person .arrow { margin-top: 1.3em; }
 
 @media (max-width: 800px) { .people { grid-template-columns: 1fr; } }
+
+/* the named principals on the homepage and /insurance: no photos, one line each */
+.people-compact { max-width: 880px; margin: 44px auto 40px; }
+.person h3 { font-size: 1.35rem; line-height: 1.2; }

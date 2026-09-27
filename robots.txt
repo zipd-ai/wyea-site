@@ -1,4 +1,4 @@
-# wyea.ai — all crawlers welcome, including AI assistants.
+# wyea.ai: all crawlers welcome, including AI assistants.
 # AI crawlers are listed explicitly so a future default-deny never
 # silently drops us out of ChatGPT/Claude/Perplexity retrieval.
 
@@ -20,7 +20,13 @@ Allow: /
 User-agent: Claude-SearchBot
 Allow: /
 
+User-agent: Claude-User
+Allow: /
+
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: Google-Extended

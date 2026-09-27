@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document Engines for Specialty Insurers and MGAs | WYEA</title>
-  <meta name="description" content="WYEA builds document engines for specialty insurers and MGAs. The engine knows every policy and endorsement you have issued and every decision your team has made on them, and drafts the next deal from your own precedents.">
+  <meta name="description" content="WYEA builds document engines for specialty insurers and MGAs: answers across every wording you have issued, and drafts from your own precedents.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Document Engines for Specialty Insurers and MGAs | WYEA">
-  <meta property="og:description" content="Answers across every wording and endorsement you have issued, and the next deal drafted from your own precedents. Every line opens the document it came from.">
+  <meta property="og:description" content="WYEA builds document engines for specialty insurers and MGAs: answers across every wording you have issued, and drafts from your own precedents.">
   <meta property="og:url" content="https://wyea.ai/insurance">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,19 +20,25 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Document engines for specialty insurers",
-    "serviceType": "Insurance wording and document automation",
-    "provider": {
-      "@type": "ProfessionalService",
-      "name": "WYEA",
-      "legalName": "Whittle and Ye Engineering Associates LLC",
-      "url": "https://wyea.ai/",
-      "address": { "@type": "PostalAddress", "addressLocality": "Newport Beach", "addressRegion": "CA", "addressCountry": "US" }
-    },
-    "audience": { "@type": "BusinessAudience", "audienceType": "Specialty insurers, MGAs and reinsurers" },
-    "url": "https://wyea.ai/insurance",
-    "description": "WYEA builds document engines for specialty insurers and MGAs. The engine knows every policy and endorsement you have issued and every decision your team has made on them, and drafts the next deal from your own precedents."
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://wyea.ai/insurance#service",
+        "name": "Document engines for specialty insurers and MGAs",
+        "serviceType": "Insurance wording and document drafting",
+        "provider": { "@type": "ProfessionalService", "@id": "https://wyea.ai/#org", "name": "WYEA", "url": "https://wyea.ai/" },
+        "audience": { "@type": "BusinessAudience", "audienceType": "Specialty insurers, MGAs, program administrators and reinsurers" },
+        "url": "https://wyea.ai/insurance",
+        "description": "A system over an insurer's own forms, clause library and executed deals that drafts from its precedents and quotes every passage from its source document."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://wyea.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "Specialty insurance", "item": "https://wyea.ai/insurance" }
+        ]
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -54,6 +60,11 @@
         "@type": "Question",
         "name": "What will a vendor review ask that WYEA cannot answer yet?",
         "acceptedAnswer": { "@type": "Answer", "text": "A SOC 2 report or ISO certificate, a third-party penetration test, hosting inside your own cloud account, and keys you hold yourself. WYEA has none of those today, and its security page keeps that list current." }
+      },
+      {
+        "@type": "Question",
+        "name": "We have our own engineers. Should we build this ourselves?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sometimes that is the right call. If you work with us, what the system learns from your documents belongs to you, and the terms for taking it with you are written into the agreement before the build starts. Today we run each system on our own infrastructure. Hosting it inside your own cloud account is not built yet." }
       },
       {
         "@type": "Question",
@@ -83,18 +94,19 @@
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
+      <a class="nav-link" href="/insurance" aria-current="page">Insurers</a>
+      <a class="nav-link" href="/custom-ai-for-law-firms">Law firms</a>
       <div class="nav-item">
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
           <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
           <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
           <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/insurance" aria-current="page">Insurers</a>
       <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
       <div class="nav-item">
@@ -119,7 +131,7 @@
       <p class="crumb"><a href="/">WYEA</a> / Specialty insurance</p>
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Specialty insurance</p>
+          <p class="eyebrow">Document engines for specialty insurers</p>
           <h1>Paper more deals <em>with the team you have.</em></h1>
         </div>
         <div>
@@ -192,17 +204,51 @@
   </section>
 
   <section class="band band-tight">
-    <div class="wrap credo reveal">
-      <p>Two engineers build it, run it, and answer the phone when it breaks.</p>
-      <div class="credo-row">
-        <span>Amazon</span>
-        <span>Fortune 100 bank, corporate risk</span>
-        <span>Georgia Tech</span>
-        <span>UC San Diego</span>
+    <div class="wrap">
+      <div class="credo reveal">
+        <p>Two engineers build it, run it, and answer the phone when it breaks.</p>
       </div>
-      <p class="credo-note">
-        Newport Beach, California. &nbsp;<a class="arrow" href="/about">Meet the principals</a>
-      </p>
+      <div class="people people-compact reveal">
+        <div class="person">
+          <h3>Anderson Whittle</h3>
+          <p class="role">Principal Engineer and Founder</p>
+          <p>Machine learning since 2017, including corporate-risk machine learning inside a Fortune 100 bank.</p>
+        </div>
+        <div class="person">
+          <h3>Johnson Ye</h3>
+          <p class="role">Principal Engineer and Co-Founder</p>
+          <p>Eight-plus years in software, from UC San Diego to Senior Engineer at Amazon.</p>
+        </div>
+      </div>
+      <div class="credo reveal">
+        <p class="credo-note">
+          Newport Beach, California. &nbsp;<a class="arrow" href="/about">Meet the principals</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">The paper it reads</p>
+          <h2 class="head">Documents it works with</h2>
+        </div>
+        <p class="lede">
+          Paper that is written for the deal, in the forms and markets you
+          already write through.
+        </p>
+      </div>
+      <div class="rulelist reveal">
+        <div><b>Policy wordings</b><span>Manuscript and house wordings, and the clause library behind them</span></div>
+        <div><b>Endorsements</b><span>Read with the policy they amend</span></div>
+        <div><b>Slips and MRCs</b><span>Tied to the wording and the deal they belong to</span></div>
+        <div><b>Binding authority and program agreements</b><span>Coverholder and program administrator agreements, across fronting carriers</span></div>
+        <div><b>Reinsurance wordings</b><span>Treaty and facultative, from your own clause library</span></div>
+        <div><b>Executed deals</b><span>The full set for each deal, on each entity's paper</span></div>
+        <div><b>Legacy and run-off</b><span>Older wordings that still govern open business</span></div>
+      </div>
     </div>
   </section>
 
@@ -371,6 +417,15 @@
           <a class="arrow" href="/platform/sources">Connected sources</a>
         </div>
       </div>
+
+      <div class="grid-2 reveal" style="margin-top:48px">
+        <div class="callout">
+          <p>Insurers expect their use of AI in underwriting to go &ldquo;from 14% today to 70% in the next three years&rdquo; (<a href="https://www.accenture.com/se-en/insights/insurance/underwriting-rewritten" rel="noopener">Accenture survey of 430 underwriting executives, August 2025</a>).</p>
+        </div>
+        <div class="callout">
+          <p>Among 200 US insurance executives, &ldquo;the lack of business line support was deemed the most important factor that made implementation unsuccessful&rdquo; (<a href="https://www.deloitte.com/us/en/insights/industry/financial-services/scaling-gen-ai-insurance.html" rel="noopener">Deloitte, April 2025</a>).</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -432,6 +487,10 @@
           <p>A SOC 2 report or ISO certificate, a third-party penetration test, hosting inside your own cloud account, and keys you hold yourself. We have none of those today. <a href="/security">The security page</a> keeps that list current.</p>
         </details>
         <details>
+          <summary>We have our own engineers. Should we build this ourselves?</summary>
+          <p>Sometimes that is the right call. If you work with us, what the system learns from your documents belongs to you, and the terms for taking it with you are written into the agreement before the build starts. Today we run each system on our own infrastructure. Hosting it inside your own cloud account is not built yet. <a href="/insurance/build-or-buy">Build or buy, in more detail</a>.</p>
+        </details>
+        <details>
           <summary>Who owns what gets built?</summary>
           <p>What the system learns from your documents belongs to you. The terms for taking it with you are written into the agreement before the build starts.</p>
         </details>
@@ -453,9 +512,14 @@
         <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
       </div>
       <div class="explore reveal">
-        <a href="/platform/verification"><small>Verification</small><b>The rule that stops an unlocatable quote becoming an answer</b></a>
+        <a href="/insurance/policy-wordings"><small>Policy wordings</small><b>Drafting policy wordings from your own precedents</b></a>
+        <a href="/insurance/endorsements"><small>Endorsements</small><b>Reading policies with the endorsements that amend them</b></a>
+        <a href="/insurance/binding-authority-and-program-agreements"><small>Binding authority</small><b>Binding authority and program agreements across carriers</b></a>
+        <a href="/insurance/reinsurance-treaty-wordings"><small>Treaty wordings</small><b>Treaty and facultative wordings from your clause library</b></a>
+        <a href="/insurance/build-or-buy"><small>Build or buy</small><b>Should an MGA build its own AI document tools?</b></a>
+        <a href="/insurance/contract-certainty"><small>Contract certainty</small><b>Contract certainty when the same deal is papered on several forms</b></a>
+        <a href="/insurance/cost"><small>Cost</small><b>What a document engine costs</b></a>
         <a href="/security"><small>Security</small><b>What we can claim today, and what we cannot</b></a>
-        <a href="/how-we-work"><small>Engagement</small><b>One week to a prototype, then a fixed price for the build</b></a>
       </div>
     </div>
   </section>
@@ -516,7 +580,7 @@
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
         <p>
-          Whittle and Ye Engineering Associates. Document knowledge systems,
+          Whittle and Ye Engineering Associates. Firm-owned document engines,
           built in Newport Beach.
         </p>
       </div>
@@ -556,7 +620,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <span>&copy; 2026 WYEA</span>
+      <span>&copy; 2026 WYEA LLC</span>
       <span>Newport Beach · Orange County, California</span>
       <a href="/privacy">Privacy</a>
     </div>

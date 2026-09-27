@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About WYEA | The Engineers Who Answer Your Calls</title>
-  <meta name="description" content="WYEA is two principal engineers in Newport Beach. Every engagement is led personally by both founders, from the first meeting to the last release.">
+  <meta name="description" content="WYEA is a principal-led engineering firm in Newport Beach building firm-owned document engines for specialty insurers and law firms.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="About WYEA | The Engineers Who Answer Your Calls">
-  <meta property="og:description" content="WYEA is two principal engineers in Newport Beach. Every engagement is led personally by both founders, from the first meeting to the last release.">
+  <meta property="og:description" content="WYEA is a principal-led engineering firm in Newport Beach building firm-owned document engines for specialty insurers and law firms.">
   <meta property="og:url" content="https://wyea.ai/about">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,28 +20,36 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "url": "https://wyea.ai/about",
-    "mainEntity": {
-      "@type": "ProfessionalService",
-      "name": "WYEA",
-      "legalName": "Whittle and Ye Engineering Associates LLC",
-      "url": "https://wyea.ai/",
-      "founder": [
-        {
-          "@type": "Person",
-          "name": "Anderson Whittle",
-          "jobTitle": "Principal Engineer & Founder",
-          "sameAs": "https://www.linkedin.com/in/anderson-whittle/"
-        },
-        {
-          "@type": "Person",
-          "name": "Johnson Ye",
-          "jobTitle": "Principal Engineer & Co-Founder",
-          "sameAs": "https://www.linkedin.com/in/johnsonye0303/"
-        }
-      ]
-    }
+    "@graph": [
+      { "@type": "AboutPage", "url": "https://wyea.ai/about", "mainEntity": { "@id": "https://wyea.ai/#org" } },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://wyea.ai/#org",
+        "name": "WYEA",
+        "legalName": "WYEA LLC",
+        "alternateName": "Whittle and Ye Engineering Associates",
+        "url": "https://wyea.ai/",
+        "founder": [ { "@id": "https://wyea.ai/about#anderson-whittle" }, { "@id": "https://wyea.ai/about#johnson-ye" } ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://wyea.ai/about#anderson-whittle",
+        "name": "Anderson Whittle",
+        "jobTitle": "Principal Engineer and Founder",
+        "worksFor": { "@id": "https://wyea.ai/#org" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Georgia Institute of Technology" },
+        "sameAs": [ "https://www.linkedin.com/in/anderson-whittle/" ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://wyea.ai/about#johnson-ye",
+        "name": "Johnson Ye",
+        "jobTitle": "Principal Engineer and Co-Founder",
+        "worksFor": { "@id": "https://wyea.ai/#org" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California San Diego" },
+        "sameAs": [ "https://www.linkedin.com/in/johnsonye0303/" ]
+      }
+    ]
   }
   </script>
 </head>
@@ -60,18 +68,19 @@
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
+      <a class="nav-link" href="/insurance">Insurers</a>
+      <a class="nav-link" href="/custom-ai-for-law-firms">Law firms</a>
       <div class="nav-item">
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
           <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
           <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
           <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/insurance">Insurers</a>
       <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
       <div class="nav-item">
@@ -102,8 +111,9 @@
         <div>
           <p class="lede">
             WYEA, Whittle and Ye Engineering Associates, is a principal-led
-            engineering firm in Newport Beach. Both founders work every
-            engagement, from the first meeting to the last release.
+            engineering firm in Newport Beach that builds firm-owned document
+            engines for specialty insurers and law firms. Both founders work
+            every engagement, from the first meeting to the last release.
           </p>
           <div class="actions">
             <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
@@ -117,7 +127,7 @@
   <section class="band band-tight">
     <div class="wrap">
       <div class="people reveal">
-        <div class="person">
+        <div class="person" id="anderson-whittle">
           <img src="/assets/anderson.jpg" alt="Anderson Whittle" width="104" height="104">
           <h2>Anderson Whittle</h2>
           <p class="role">Principal Engineer and Founder</p>
@@ -131,7 +141,7 @@
           </p>
           <a class="arrow" href="https://www.linkedin.com/in/anderson-whittle/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-        <div class="person">
+        <div class="person" id="johnson-ye">
           <img src="/assets/johnson.jpg" alt="Johnson Ye" width="104" height="104">
           <h2>Johnson Ye</h2>
           <p class="role">Principal Engineer and Co-Founder</p>
@@ -144,6 +154,27 @@
           </p>
           <a class="arrow" href="https://www.linkedin.com/in/johnsonye0303/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing" class="band band-tight">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Writing</p>
+          <h2 class="head">What we have published</h2>
+        </div>
+      </div>
+      <div class="rulelist reveal">
+        <div><b><a href="/insurance/policy-wordings">Drafting policy wordings from your own precedents</a></b><span>September 27, 2026</span></div>
+        <div><b><a href="/insurance/endorsements">Reading policies with the endorsements that amend them</a></b><span>September 27, 2026</span></div>
+        <div><b><a href="/insurance/binding-authority-and-program-agreements">Binding authority and program agreements across carriers</a></b><span>September 27, 2026</span></div>
+        <div><b><a href="/insurance/reinsurance-treaty-wordings">Treaty and facultative wordings from your clause library</a></b><span>September 27, 2026</span></div>
+        <div><b><a href="/insurance/build-or-buy">Should an MGA build its own AI document tools?</a></b><span>September 27, 2026</span></div>
+        <div><b><a href="/insurance/contract-certainty">Contract certainty when the same deal is papered on several forms</a></b><span>September 27, 2026</span></div>
+        <div><b><a href="/insurance/cost">What a document engine costs</a></b><span>September 27, 2026</span></div>
+        <div><b><a href="/brief">The Brief</a></b><span>Weekly, since July 2026</span></div>
       </div>
     </div>
   </section>
@@ -192,9 +223,9 @@
         <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
       </div>
       <div class="explore reveal">
-        <a href="/platform"><small>Platform</small><b>How the knowledge system is put together</b></a>
+        <a href="/platform"><small>Platform</small><b>How the document engine is put together</b></a>
         <a href="/how-we-work"><small>Engagement</small><b>How an engagement runs, week by week</b></a>
-        <a href="/brief"><small>The Brief</small><b>A weekly note on legal technology</b></a>
+        <a href="/insurance"><small>Specialty insurance</small><b>Document engines for specialty insurers and MGAs</b></a>
       </div>
     </div>
   </section>
@@ -245,7 +276,7 @@
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
         <p>
-          Whittle and Ye Engineering Associates. Document knowledge systems,
+          Whittle and Ye Engineering Associates. Firm-owned document engines,
           built in Newport Beach.
         </p>
       </div>
@@ -285,7 +316,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <span>&copy; 2026 WYEA</span>
+      <span>&copy; 2026 WYEA LLC</span>
       <span>Newport Beach · Orange County, California</span>
       <a href="/privacy">Privacy</a>
     </div>

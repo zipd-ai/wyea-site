@@ -67,20 +67,31 @@ async function sitemap(env, origin) {
   } catch (err) {
     console.error("sitemap manifest unreadable:", err);
   }
+  // lastmod is the date each page last changed. Update it in the same commit
+  // as the page; the Brief index takes the newest issue's date.
+  const updated = "2026-09-27";
+  const newestIssue = issues.map((i) => String(i.date)).filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().pop();
   const urls = [
-    { loc: `${base}/`, priority: "1.0" },
-    { loc: `${base}/platform`, priority: "0.9" },
-    { loc: `${base}/platform/sources`, priority: "0.8" },
-    { loc: `${base}/platform/verification`, priority: "0.8" },
-    { loc: `${base}/platform/evidence`, priority: "0.8" },
-    { loc: `${base}/platform/isolation`, priority: "0.8" },
-    { loc: `${base}/insurance`, priority: "0.9" },
-    { loc: `${base}/how-we-work`, priority: "0.9" },
-    { loc: `${base}/security`, priority: "0.8" },
-    { loc: `${base}/custom-ai-for-law-firms`, priority: "0.8" },
-    { loc: `${base}/about`, priority: "0.7" },
-    { loc: `${base}/brief`, priority: "0.8" },
-    { loc: `${base}/privacy`, priority: "0.3" },
+    { loc: `${base}/`, lastmod: updated, priority: "1.0" },
+    { loc: `${base}/insurance`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/insurance/policy-wordings`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/insurance/endorsements`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/insurance/binding-authority-and-program-agreements`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/insurance/reinsurance-treaty-wordings`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/insurance/build-or-buy`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/insurance/contract-certainty`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/insurance/cost`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/custom-ai-for-law-firms`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/platform`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/platform/sources`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/platform/verification`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/platform/evidence`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/platform/isolation`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/how-we-work`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
+    { loc: `${base}/privacy`, lastmod: updated, priority: "0.3" },
+    { loc: `${base}/brief`, lastmod: newestIssue, priority: "0.8" },
     ...issues
       .filter((i) => /^\d{4}-\d{2}-\d{2}$/.test(String(i.date)))
       .map((i) => ({ loc: `${base}/brief/${i.date}`, lastmod: i.date, priority: "0.6" })),

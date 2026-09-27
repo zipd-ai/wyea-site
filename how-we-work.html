@@ -33,18 +33,19 @@
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
+      <a class="nav-link" href="/insurance">Insurers</a>
+      <a class="nav-link" href="/custom-ai-for-law-firms">Law firms</a>
       <div class="nav-item">
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
           <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
           <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
           <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/insurance">Insurers</a>
       <a class="nav-link" href="/how-we-work" aria-current="page">How we work</a>
       <a class="nav-link" href="/security">Security</a>
       <div class="nav-item">
@@ -73,7 +74,7 @@
           <h1>One week to a working prototype, then a fixed price for the build</h1>
         </div>
         <div>
-          <p class="lede">Every engagement starts the same way. A call, which is either a consultation or a demo on your own documents, then an NDA, then something your people can try on live work inside the first week. Nothing larger is quoted until your firm has used something real.</p>
+          <p class="lede">We build document engines for specialty insurers, MGAs and law firms, and every engagement starts the same way. A call, which is either a consultation or a demo on your own documents, then an NDA, then something your people can try on live work inside the first week. Nothing larger is quoted until your firm has used something real.</p>
           <div class="actions">
             <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
             <a class="btn btn-ghost" href="/platform">See the platform</a>
@@ -411,14 +412,14 @@
         <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
       </div>
       <div class="explore reveal">
-        <a href="/platform"><small>Platform</small><b>How the knowledge system is put together</b></a>
+        <a href="/platform"><small>Platform</small><b>How the document engine is put together</b></a>
         <a href="/security"><small>Security</small><b>How your documents are handled</b></a>
         <a href="/about"><small>Company</small><b>The engineers who answer your calls</b></a>
       </div>
     </div>
   </section>
 
-  <section class="cta-band band-ink">
+  <section id="contact" class="cta-band band-ink">
     <div class="wrap cta-split">
       <div class="reveal">
         <p class="eyebrow">Start a conversation</p>
@@ -430,28 +431,37 @@
         </p>
         <div class="actions">
           <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
-          <a class="btn btn-outline-light" href="/#contact">Send a message</a>
         </div>
       </div>
       <div class="reveal">
-        <p class="eyebrow">The Brief</p>
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">The week in legal, in four minutes.</h2>
-        <p class="lede" style="font-size:1.02rem">Free, national to Orange County, every Wednesday.</p>
-        <form id="brief-form" class="brief-form" data-source="page">
-          <div class="brief-row">
-            <label class="hp" for="brief-email">Email</label>
-            <input id="brief-email" type="email" name="email" autocomplete="email"
-                   maxlength="254" placeholder="you@example.com" required>
-            <button type="submit" class="btn btn-light">Subscribe</button>
+        <form id="contact-form">
+          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
+            Prefer to write? We reply within one business day.
+          </p>
+          <div class="field-row">
+            <label class="field"><span>Your name</span>
+              <input type="text" name="name" autocomplete="name" maxlength="200" required>
+            </label>
+            <label class="field"><span>Company <span class="optional">(optional)</span></span>
+              <input type="text" name="firm" autocomplete="organization" maxlength="200">
+            </label>
           </div>
+          <label class="field"><span>Email</span>
+            <input type="email" name="email" autocomplete="email" maxlength="254" required>
+          </label>
+          <label class="field"><span>How can we help?</span>
+            <textarea name="message" rows="5" maxlength="5000" required></textarea>
+          </label>
           <label class="hp" aria-hidden="true">Website
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
-          <p class="brief-micro">No spam. Unsubscribe anytime.
-            <a href="/brief">See the format and past issues</a>.</p>
-          <p class="brief-status" role="status" aria-live="polite"></p>
-          <p class="brief-success" hidden>Check your inbox to confirm.</p>
+          <div class="cf-turnstile" hidden></div>
+          <button type="submit" class="btn btn-light">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
+        <p id="contact-success" class="contact-success" hidden>
+          Thanks. Your message is on its way. We'll reply within one business day.
+        </p>
       </div>
     </div>
   </section>
@@ -464,7 +474,7 @@
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
         <p>
-          Whittle and Ye Engineering Associates. Document knowledge systems,
+          Whittle and Ye Engineering Associates. Firm-owned document engines,
           built in Newport Beach.
         </p>
       </div>
@@ -504,7 +514,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <span>&copy; 2026 WYEA</span>
+      <span>&copy; 2026 WYEA LLC</span>
       <span>Newport Beach · Orange County, California</span>
       <a href="/privacy">Privacy</a>
     </div>

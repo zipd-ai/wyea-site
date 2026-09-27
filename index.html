@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WYEA | Document Knowledge Systems, Grounded in Your Own Sources</title>
-  <meta name="description" content="WYEA builds document knowledge systems over a firm's own document store, mail and the public record. An answer stands only when its quote is located in the source, character for character.">
+  <title>WYEA | Document Engines for Specialty Insurers & Law Firms</title>
+  <meta name="description" content="WYEA builds firm-owned document engines for specialty insurers, MGAs and law firms. Drafts from your own precedents; every line opens its source.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WYEA | Document Knowledge Systems, Grounded in Your Own Sources">
-  <meta property="og:description" content="A knowledge system over the documents you already keep. Nothing is asserted that cannot be located in a source document.">
+  <meta property="og:title" content="WYEA | Document Engines for Specialty Insurers & Law Firms">
+  <meta property="og:description" content="WYEA builds firm-owned document engines for specialty insurers, MGAs and law firms. Drafts from your own precedents; every line opens its source.">
   <meta name="twitter:card" content="summary_large_image">
   <meta property="og:url" content="https://wyea.ai/">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
@@ -22,24 +22,34 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "WYEA",
-    "legalName": "Whittle and Ye Engineering Associates LLC",
-    "url": "https://wyea.ai/",
-    "description": "WYEA builds document knowledge systems. The system reads a firm's own document store, mail, and the public record, and will not state anything it cannot locate in a source document.",
-    "areaServed": { "@type": "Country", "name": "United States" },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Newport Beach",
-      "addressRegion": "CA",
-      "addressCountry": "US"
-    },
-    "knowsAbout": [
-      "document knowledge systems",
-      "retrieval grounded in source documents",
-      "verbatim citation verification",
-      "document management system integration",
-      "single tenant deployment"
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://wyea.ai/#org",
+        "name": "WYEA",
+        "legalName": "WYEA LLC",
+        "alternateName": "Whittle and Ye Engineering Associates",
+        "url": "https://wyea.ai/",
+        "description": "WYEA builds firm-owned document engines for specialty insurers, MGAs and law firms.",
+        "foundingDate": "2026",
+        "address": { "@type": "PostalAddress", "addressLocality": "Newport Beach", "addressRegion": "CA", "addressCountry": "US" },
+        "founder": [ { "@id": "https://wyea.ai/about#anderson-whittle" }, { "@id": "https://wyea.ai/about#johnson-ye" } ],
+        "knowsAbout": [
+          "policy wordings",
+          "endorsements",
+          "binding authority agreements",
+          "reinsurance treaty wordings",
+          "legal document review",
+          "retrieval with source verification"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://wyea.ai/#website",
+        "url": "https://wyea.ai/",
+        "name": "WYEA",
+        "publisher": { "@id": "https://wyea.ai/#org" }
+      }
     ]
   }
   </script>
@@ -65,7 +75,7 @@
       },
       {
         "@type": "Question",
-        "name": "Why not just buy a shared legal software platform?",
+        "name": "Why not just buy a shared software platform?",
         "acceptedAnswer": { "@type": "Answer", "text": "For many firms a shared platform is the right call. It has to work the same way for everyone who buys it, which is what makes it affordable. The trade is that the parts of a practice that are genuinely distinctive become settings to work around, and a change one firm needs waits behind every other customer. WYEA builds one system per firm instead." }
       },
       {
@@ -97,18 +107,19 @@
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
+      <a class="nav-link" href="/insurance">Insurers</a>
+      <a class="nav-link" href="/custom-ai-for-law-firms">Law firms</a>
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
           <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
           <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
           <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/insurance">Insurers</a>
       <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
       <div class="nav-item">
@@ -131,14 +142,15 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Document knowledge systems</p>
+        <p class="eyebrow">Firm-owned document engines</p>
         <h1>Take on more work <em>with the team you have.</em></h1>
       </div>
       <div>
         <p class="lede">
-          WYEA builds a knowledge system over the documents your firm already
-          keeps. It remembers what your team has decided on them, and it will
-          not tell you anything it cannot show you in a source.
+          WYEA builds firm-owned document engines for specialty insurers, MGAs
+          and law firms. Each one drafts from your own precedents and remembers
+          what your team has decided. It will not tell you anything it cannot
+          show you in a source.
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation</a>
@@ -154,66 +166,76 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="A question asked across 47 vendor agreements. Three agreements are returned, each with the clause quoted and the document and section it came from. A fourth is flagged because its assignment clause sits in a scanned exhibit the system could not read, and is handed to a person instead of guessed at.">
+        <figure class="app reveal" role="img" aria-label="A question asked across 212 in-force policies and their endorsements. Three are returned, each with the cancellation wording quoted and the policy, condition or endorsement it came from. A fourth is flagged because its cancellation clause sits in a scanned endorsement the system could not read, and is handed to a person instead of guessed at.">
           <div class="app-bar">
-            <span class="dot"></span> Which vendor agreements let the other side assign without our consent?
-            <span class="app-meta">47 read &middot; 3 matched &middot; 1 for you</span>
+            <span class="dot"></span> Which in-force policies let us cancel on less than sixty days' notice?
+            <span class="app-meta">212 read &middot; 3 matched &middot; 1 for you</span>
           </div>
           <div class="ans">
             <div class="ans-row">
               <span class="ans-mark ans-ok">Found</span>
               <div class="ans-body">
-                <b>Northwind Master Services Agreement</b>
-                <q>may assign this Agreement to any successor in interest without the prior written consent of the other party</q>
-                <span class="ans-src">Section 14.2, Assignment &middot; signed 12 Mar 2024</span>
+                <b>Northwind Logistics, Cyber Policy</b>
+                <q>may cancel this Policy by giving thirty (30) days' written notice to the Insured</q>
+                <span class="ans-src">Condition 7, Cancellation &middot; incepted 1 Apr 2026</span>
               </div>
             </div>
             <div class="ans-row">
               <span class="ans-mark ans-ok">Found</span>
               <div class="ans-body">
-                <b>Calloway Services Agreement</b>
-                <q>assignment to an affiliate shall not require consent</q>
-                <span class="ans-src">Section 9, Assignment &middot; signed 4 Aug 2023</span>
+                <b>Calloway Holdings, Directors and Officers Policy</b>
+                <q>the period of notice in Condition 11 is amended to forty-five (45) days</q>
+                <span class="ans-src">Endorsement 3, amending Condition 11 &middot; effective 14 Jun 2025</span>
               </div>
             </div>
             <div class="ans-row">
               <span class="ans-mark ans-ok">Found</span>
               <div class="ans-body">
-                <b>Pemberton Supply Agreement</b>
-                <q>upon thirty days notice, no consent required</q>
-                <span class="ans-src">Section 11.4, Assignment &middot; signed 19 Jan 2025</span>
+                <b>Pemberton Supply, Marine Cargo Open Cover</b>
+                <q>cancellation by either party upon thirty days' notice in writing</q>
+                <span class="ans-src">Clause 19, Cancellation &middot; incepted 1 Jan 2026</span>
               </div>
             </div>
             <div class="ans-row">
               <span class="ans-mark ans-flag">For you</span>
               <div class="ans-body">
-                <b>Harlow Master Agreement</b>
-                <p class="ans-note">The assignment clause is in a scanned exhibit that could not be read. Nobody guessed at it. It is on your list.</p>
+                <b>Harlow Foods, Property Policy</b>
+                <p class="ans-note">The cancellation clause is in a scanned endorsement that could not be read. Nobody guessed at it. It is on your list.</p>
               </div>
             </div>
           </div>
           <div class="app-foot">
-            Somebody would have read all forty-seven.
+            Somebody would have read all two hundred and twelve.
             <b>Every line here opens the page it came from.</b>
           </div>
         </figure>
-        <p class="app-caption reveal">The firms, clauses and dates in this example are invented. No client material appears anywhere on this site.</p>
+        <p class="app-caption reveal">The insureds, clauses and dates in this example are invented. No client material appears anywhere on this site.</p>
       </div>
     </div>
   </section>
 
   <section class="band band-tight">
-    <div class="wrap credo reveal">
-      <p>Two engineers build it, run it, and answer the phone when it breaks.</p>
-      <div class="credo-row">
-        <span>Amazon</span>
-        <span>Fortune 100 bank, corporate risk</span>
-        <span>Georgia Tech</span>
-        <span>UC San Diego</span>
+    <div class="wrap">
+      <div class="credo reveal">
+        <p>Two engineers build it, run it, and answer the phone when it breaks.</p>
       </div>
-      <p class="credo-note">
-        Newport Beach, California. &nbsp;<a class="arrow" href="/about">Meet the principals</a>
-      </p>
+      <div class="people people-compact reveal">
+        <div class="person">
+          <h3>Anderson Whittle</h3>
+          <p class="role">Principal Engineer and Founder</p>
+          <p>Machine learning since 2017, including corporate-risk machine learning inside a Fortune 100 bank.</p>
+        </div>
+        <div class="person">
+          <h3>Johnson Ye</h3>
+          <p class="role">Principal Engineer and Co-Founder</p>
+          <p>Eight-plus years in software, from UC San Diego to Senior Engineer at Amazon.</p>
+        </div>
+      </div>
+      <div class="credo reveal">
+        <p class="credo-note">
+          Newport Beach, California. &nbsp;<a class="arrow" href="/about">Meet the principals</a>
+        </p>
+      </div>
     </div>
   </section>
 
@@ -235,8 +257,8 @@
         <div class="tile">
           <h3>Your conventions are the configuration</h3>
           <p>
-            The way you open a matter, the format your partners insist on, the
-            checks you run before anything goes out. On a shared product those
+            The way you open a file, the house wording your team insists on,
+            the checks you run before anything goes out. On a shared product those
             are settings you bend to fit. Here they are what the system is
             shaped from.
           </p>
@@ -244,17 +266,17 @@
         <div class="tile">
           <h3>What you know stays in the system</h3>
           <p>
-            The courts you appear in, the officers you use, the parties across
-            your matters. Reviewed once with you, then held. Nobody retypes them
+            The parties across your deals and matters, the entities you write
+            through, the courts you appear in. Reviewed once with you, then held. Nobody retypes them
             and nobody guesses at them later.
           </p>
         </div>
         <div class="tile">
           <h3>Changes do not queue behind a roadmap</h3>
           <p>
-            When the work changes, two engineers who already know your practice
+            When the work changes, two engineers who already know your business
             change the software. There is no ticket sitting behind three hundred
-            other firms asking for the opposite thing.
+            other customers asking for the opposite thing.
           </p>
         </div>
       </div>
@@ -269,19 +291,11 @@
           <h2 class="head">Two lines of work</h2>
         </div>
         <p class="lede">
-          The system is built around documents, versions and evidence, so the
-          same engine serves a litigation practice and a wordings team.
+          The engine is built around documents, versions and evidence, so the
+          same engine serves a wordings team and a litigation practice.
         </p>
       </div>
       <div class="grid-2 reveal">
-        <div class="tile">
-          <h3>Law firms</h3>
-          <p>
-            Matters, served paper, discovery, motions and deadlines, with the
-            public court record connected alongside the firm's own files.
-          </p>
-          <a class="arrow" href="/platform">How the platform works</a>
-        </div>
         <div class="tile">
           <h3>Specialty insurers and MGAs</h3>
           <p>
@@ -290,6 +304,14 @@
             your own precedents.
           </p>
           <a class="arrow" href="/insurance">For specialty insurers</a>
+        </div>
+        <div class="tile">
+          <h3>Law firms</h3>
+          <p>
+            Matters, served paper, discovery, motions and deadlines, with the
+            public court record connected alongside the firm's own files.
+          </p>
+          <a class="arrow" href="/platform">How the platform works</a>
         </div>
       </div>
     </div>
@@ -633,7 +655,7 @@
           <h2 class="head">Instances share code. They never share data.</h2>
         </div>
         <p class="lede">
-          One firm, one cell. What we can honestly claim today is on the
+          One client, one system. What we can honestly claim today is on the
           security page, including the parts that are not finished.
         </p>
       </div>
@@ -730,7 +752,7 @@
         <p class="eyebrow">Start a conversation</p>
         <h2>Tell us what your people spend the day reading.</h2>
         <p class="lede">
-          Thirty minutes, no obligation. If a knowledge system is not worth it
+          Thirty minutes, no obligation. If a document engine is not worth it
           for you, we will say so on the call.
         </p>
         <div class="actions">
@@ -780,7 +802,7 @@
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
         <p>
-          Whittle and Ye Engineering Associates. Document knowledge systems,
+          Whittle and Ye Engineering Associates. Firm-owned document engines,
           built in Newport Beach.
         </p>
       </div>
@@ -820,7 +842,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <span>&copy; 2026 WYEA</span>
+      <span>&copy; 2026 WYEA LLC</span>
       <span>Newport Beach · Orange County, California</span>
       <a href="/privacy">Privacy</a>
     </div>

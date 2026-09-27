@@ -1,0 +1,37 @@
+# WYEA
+
+> WYEA (Whittle and Ye Engineering Associates, Newport Beach, California) builds firm-owned document engines for specialty insurers, MGAs and law firms. Each engine reads the documents a firm already keeps, drafts from its own precedents, remembers what its team has decided, and states nothing it cannot locate in a source document.
+
+- One isolated system per client. Client documents never train a model.
+- Engagements start with a fixed-price one-week prototype on the client's own documents, then a fixed-price build and one monthly fee that covers hosting, support and model costs.
+- Led by two principal engineers, Anderson Whittle and Johnson Ye.
+- Not held today: SOC 2, ISO certification, third-party penetration test, client-hosted deployment, customer-managed keys, automated export and deletion.
+
+## Specialty insurance
+- [Document engines for specialty insurers and MGAs](https://wyea.ai/insurance): wordings, endorsements, slips and executed deals
+- [Drafting policy wordings from your own precedents](https://wyea.ai/insurance/policy-wordings)
+- [Reading policies with the endorsements that amend them](https://wyea.ai/insurance/endorsements)
+- [Binding authority and program agreements across carriers](https://wyea.ai/insurance/binding-authority-and-program-agreements)
+- [Treaty and facultative wordings from your clause library](https://wyea.ai/insurance/reinsurance-treaty-wordings)
+- [Should an MGA build its own AI document tools?](https://wyea.ai/insurance/build-or-buy)
+- [Contract certainty when the same deal is papered on several forms](https://wyea.ai/insurance/contract-certainty)
+- [What a document engine costs](https://wyea.ai/insurance/cost)
+
+## Law firms
+- [Custom AI software for law firms in Orange County](https://wyea.ai/custom-ai-for-law-firms)
+
+## Platform
+- [How a document engine works](https://wyea.ai/platform)
+- [Connected sources](https://wyea.ai/platform/sources)
+- [Grounding and verification](https://wyea.ai/platform/verification)
+- [Evidence and the record](https://wyea.ai/platform/evidence)
+- [Isolation](https://wyea.ai/platform/isolation)
+
+## Company
+- [How we work](https://wyea.ai/how-we-work)
+- [Security](https://wyea.ai/security)
+- [About the principals](https://wyea.ai/about)
+- [Book a consultation or demo](https://calendar.app.google/hMuBjTub3YHa9rKT7)
+
+## Optional
+- [The Brief](https://wyea.ai/brief): a weekly note on legal developments

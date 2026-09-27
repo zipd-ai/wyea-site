@@ -572,7 +572,7 @@ async function issuePage(env, url, date) {
   const body = `
   <section class="brief-hero">
     <div class="container narrow">
-      <p class="eyebrow"><a href="/brief" class="quiet-link">The Brief</a> · ${prettyDate(date)}</p>
+      <p class="eyebrow"><a href="/brief" class="quiet-link">The Brief</a> · ${prettyDate(date)} · By WYEA</p>
       <article class="issue">${renderMarkdown(md)}</article>
       <div class="issue-cta">
         <p class="lede">Get the next issue in your inbox. One email a week,
@@ -592,8 +592,11 @@ async function issuePage(env, url, date) {
       headline: `The Brief, ${prettyDate(date)}`,
       datePublished: date,
       url: `https://wyea.ai/brief/${date}`,
+      mainEntityOfPage: `https://wyea.ai/brief/${date}`,
+      author: { "@type": "Organization", "@id": "https://wyea.ai/#org", name: "WYEA", url: "https://wyea.ai/" },
       publisher: {
         "@type": "Organization",
+        "@id": "https://wyea.ai/#org",
         name: "WYEA",
         url: "https://wyea.ai/",
       },
@@ -786,18 +789,19 @@ const SITE_HEADER = `<a class="skip-link" href="#main">Skip to content</a>
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
+      <a class="nav-link" href="/insurance">Insurers</a>
+      <a class="nav-link" href="/custom-ai-for-law-firms">Law firms</a>
       <div class="nav-item">
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the knowledge system is put together.</span></a>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
           <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
           <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
           <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One cell per firm, and the limits we publish.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/insurance">Insurers</a>
       <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
       <div class="nav-item">
@@ -820,7 +824,7 @@ const SITE_FOOTER = `<footer class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
-        <p>Whittle and Ye Engineering Associates. Document knowledge systems, built in Newport Beach.</p>
+        <p>Whittle and Ye Engineering Associates. Firm-owned document engines, built in Newport Beach.</p>
       </div>
       <div class="footer-col">
         <h4>Platform</h4>
@@ -858,7 +862,7 @@ const SITE_FOOTER = `<footer class="site-footer">
       </div>
     </div>
     <div class="footer-legal">
-      <span>&copy; 2026 WYEA</span>
+      <span>&copy; 2026 WYEA LLC</span>
       <span>Newport Beach &middot; Orange County, California</span>
       <a href="/privacy">Privacy</a>
     </div>
