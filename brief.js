@@ -797,6 +797,7 @@ const SITE_HEADER = `<a class="skip-link" href="#main">Skip to content</a>
           <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
         </div>
       </div>
+      <a class="nav-link" href="/insurance">Insurers</a>
       <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
       <div class="nav-item">
@@ -836,6 +837,7 @@ const SITE_FOOTER = `<footer class="site-footer">
         <ul>
           <li><a href="/how-we-work">Engagement model</a></li>
           <li><a href="/security">Security and confidentiality</a></li>
+          <li><a href="/insurance">For specialty insurers</a></li>
           <li><a href="/custom-ai-for-law-firms">Comparing your options</a></li>
         </ul>
       </div>

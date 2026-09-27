@@ -74,6 +74,7 @@ async function sitemap(env, origin) {
     { loc: `${base}/platform/verification`, priority: "0.8" },
     { loc: `${base}/platform/evidence`, priority: "0.8" },
     { loc: `${base}/platform/isolation`, priority: "0.8" },
+    { loc: `${base}/insurance`, priority: "0.9" },
     { loc: `${base}/how-we-work`, priority: "0.9" },
     { loc: `${base}/security`, priority: "0.8" },
     { loc: `${base}/custom-ai-for-law-firms`, priority: "0.8" },

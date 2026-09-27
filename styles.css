@@ -1360,6 +1360,14 @@ button[disabled] { opacity: 0.55; cursor: default; }
 
 .app-foot b { color: var(--ink); }
 
+/* the line under a figure saying its contents are invented */
+.app-caption {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  max-width: 62ch;
+}
+
 /* skeleton rules that stand in for body prose inside a figure */
 .ln { height: 8px; background: var(--paper-deep); }
 .ln + .ln { margin-top: 7px; }
