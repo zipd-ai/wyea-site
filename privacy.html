@@ -22,12 +22,6 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="announce">
-  <a href="/brief">
-    <strong>The Brief</strong> · What changed in legal technology this week<span class="announce-long">, written for Orange County firms</span>.<span class="arrow">Read the latest</span>
-  </a>
-</div>
-
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="wordmark" href="/">WYEA</a>
@@ -52,12 +46,10 @@
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company" aria-current="page">Company <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-company" hidden>
           <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for Orange County firms.</span></a>
           <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>Fixed price, one week to a prototype, defined deliverables.</span></a>
           <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/brief">The Brief</a>
       <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
     </nav>
   </div>
@@ -70,7 +62,7 @@
       <p class="crumb"><a href="/">WYEA</a> / Privacy</p>
       <p class="eyebrow">Privacy policy</p>
       <h1 style="font-size:clamp(2rem,3.8vw,3rem)">How WYEA handles information</h1>
-      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective August 11, 2026 · Whittle and Ye Engineering Associates LLC, Newport Beach, California</p>
+      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective August 11, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
     </div>
   </section>
 
@@ -190,7 +182,7 @@
     </div>
   </section>
 
-  <section class="cta-band band-ink">
+  <section id="contact" class="cta-band band-ink">
     <div class="wrap cta-split">
       <div class="reveal">
         <p class="eyebrow">Start a conversation</p>
@@ -202,28 +194,37 @@
         </p>
         <div class="actions">
           <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
-          <a class="btn btn-outline-light" href="/#contact">Send a message</a>
         </div>
       </div>
       <div class="reveal">
-        <p class="eyebrow">The Brief</p>
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">The week in legal, in four minutes.</h2>
-        <p class="lede" style="font-size:1.02rem">Free, national to Orange County, every Wednesday.</p>
-        <form id="brief-form" class="brief-form" data-source="page">
-          <div class="brief-row">
-            <label class="hp" for="brief-email">Email</label>
-            <input id="brief-email" type="email" name="email" autocomplete="email"
-                   maxlength="254" placeholder="you@example.com" required>
-            <button type="submit" class="btn btn-light">Subscribe</button>
+        <form id="contact-form">
+          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
+            Prefer to write? We reply within one business day.
+          </p>
+          <div class="field-row">
+            <label class="field"><span>Your name</span>
+              <input type="text" name="name" autocomplete="name" maxlength="200" required>
+            </label>
+            <label class="field"><span>Company <span class="optional">(optional)</span></span>
+              <input type="text" name="firm" autocomplete="organization" maxlength="200">
+            </label>
           </div>
+          <label class="field"><span>Email</span>
+            <input type="email" name="email" autocomplete="email" maxlength="254" required>
+          </label>
+          <label class="field"><span>How can we help?</span>
+            <textarea name="message" rows="5" maxlength="5000" required></textarea>
+          </label>
           <label class="hp" aria-hidden="true">Website
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
-          <p class="brief-micro">No spam. Unsubscribe anytime.
-            <a href="/brief">See the format and past issues</a>.</p>
-          <p class="brief-status" role="status" aria-live="polite"></p>
-          <p class="brief-success" hidden>Check your inbox to confirm.</p>
+          <div class="cf-turnstile" hidden></div>
+          <button type="submit" class="btn btn-light">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
+        <p id="contact-success" class="contact-success" hidden>
+          Thanks. Your message is on its way. We'll reply within one business day.
+        </p>
       </div>
     </div>
   </section>
@@ -263,7 +264,6 @@
         <h4>Company</h4>
         <ul>
           <li><a href="/about">About the firm</a></li>
-          <li><a href="/brief">The Brief</a></li>
           <li><a href="/privacy">Privacy</a></li>
         </ul>
       </div>
@@ -271,7 +271,7 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="/#contact">Send a message</a></li>
+          <li><a href="#contact">Send a message</a></li>
         </ul>
       </div>
     </div>

@@ -32,6 +32,3 @@
 - [Security](https://wyea.ai/security)
 - [About the principals](https://wyea.ai/about)
 - [Book a consultation or demo](https://calendar.app.google/hMuBjTub3YHa9rKT7)
-
-## Optional
-- [The Brief](https://wyea.ai/brief): a weekly note on legal developments

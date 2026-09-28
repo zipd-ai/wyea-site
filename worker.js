@@ -57,20 +57,9 @@ export default {
 // from the same manifest brief.js renders from, so it can never go stale.
 async function sitemap(env, origin) {
   const base = "https://wyea.ai";
-  let issues = [];
-  try {
-    const res = await env.ASSETS.fetch(new Request(new URL("/brief/issues/index.json", origin)));
-    if (res.ok && !(res.headers.get("Content-Type") || "").includes("text/html")) {
-      const data = JSON.parse(await res.text());
-      if (Array.isArray(data.issues)) issues = data.issues;
-    }
-  } catch (err) {
-    console.error("sitemap manifest unreadable:", err);
-  }
   // lastmod is the date each page last changed. Update it in the same commit
-  // as the page; the Brief index takes the newest issue's date.
+  // as the page.
   const updated = "2026-09-27";
-  const newestIssue = issues.map((i) => String(i.date)).filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort().pop();
   const urls = [
     { loc: `${base}/`, lastmod: updated, priority: "1.0" },
     { loc: `${base}/insurance`, lastmod: updated, priority: "0.9" },
@@ -91,10 +80,6 @@ async function sitemap(env, origin) {
     { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
     { loc: `${base}/privacy`, lastmod: updated, priority: "0.3" },
-    { loc: `${base}/brief`, lastmod: newestIssue, priority: "0.8" },
-    ...issues
-      .filter((i) => /^\d{4}-\d{2}-\d{2}$/.test(String(i.date)))
-      .map((i) => ({ loc: `${base}/brief/${i.date}`, lastmod: i.date, priority: "0.6" })),
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +

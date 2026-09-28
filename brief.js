@@ -28,8 +28,12 @@ const DEFAULT_FROM = "The Brief by WYEA <brief@wyea.ai>";
 export async function handleBrief(request, env, ctx, url) {
   const path = url.pathname.replace(/\/+$/, "") || "/";
 
+  // The Brief is no longer published (2026-09-27). New signups are closed and
+  // its pages redirect home; confirm and unsubscribe links in emails already
+  // sent keep working so every existing subscriber can still opt out.
   if (path === "/api/subscribe") {
     if (request.method !== "POST") return json({ error: "method not allowed" }, 405);
+    return json({ error: "The Brief is no longer published." }, 410);
     try {
       return await handleSubscribe(request, env, url);
     } catch (err) {
@@ -58,13 +62,14 @@ export async function handleBrief(request, env, ctx, url) {
     }
   }
 
-  if (path === "/brief" && request.method === "GET") return briefPage(env, url);
-  if (path === "/brief/share" && request.method === "GET") return sharePage(env, url);
+  if ((path === "/brief" || path === "/brief/share") && request.method === "GET") {
+    return Response.redirect(`${url.origin}/`, 301);
+  }
   if (path === "/brief/confirm") return confirmPage(env, url);
   if (path === "/brief/unsubscribe") return unsubscribePage(request, env, url);
 
   const issue = path.match(/^\/brief\/(\d{4}-\d{2}-\d{2})$/);
-  if (issue && request.method === "GET") return issuePage(env, url, issue[1]);
+  if (issue && request.method === "GET") return Response.redirect(`${url.origin}/`, 301);
 
   return null; // not a Brief route — worker.js falls through to assets
 }
@@ -755,6 +760,7 @@ function page(title, body, status = 200, meta = {}) {
   <title>${escapeHtml(title)}</title>
   ${meta.description ? `<meta name="description" content="${escapeHtml(meta.description)}">` : ""}
   ${meta.canonical ? `<link rel="canonical" href="${escapeHtml(meta.canonical)}">` : ""}
+  <meta name="robots" content="noindex">
   ${meta.jsonLd ? `<script type="application/ld+json">${JSON.stringify(meta.jsonLd)}</script>` : ""}
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -808,12 +814,10 @@ const SITE_HEADER = `<a class="skip-link" href="#main">Skip to content</a>
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-company" hidden>
           <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/brief"><b>The Brief</b><span>A weekly note on legal technology, written for practicing lawyers.</span></a>
           <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>Fixed price, one week to a prototype, defined deliverables.</span></a>
           <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/brief" aria-current="page">The Brief</a>
       <a class="btn btn-primary btn-sm nav-cta" href="${CAL_URL}" target="_blank" rel="noopener">Book a call</a>
     </nav>
   </div>
@@ -849,7 +853,6 @@ const SITE_FOOTER = `<footer class="site-footer">
         <h4>Company</h4>
         <ul>
           <li><a href="/about">About the firm</a></li>
-          <li><a href="/brief">The Brief</a></li>
           <li><a href="/privacy">Privacy</a></li>
         </ul>
       </div>
