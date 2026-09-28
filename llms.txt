@@ -3,7 +3,7 @@
 > WYEA (Whittle and Ye Engineering Associates, Newport Beach, California) builds firm-owned document engines for specialty insurers, MGAs and law firms. Each engine reads the documents a firm already keeps, drafts from its own precedents, remembers what its team has decided, and states nothing it cannot locate in a source document.
 
 - One isolated system per client. Client documents never train a model.
-- Engagements start with a fixed-price one-week prototype on the client's own documents, then a fixed-price build and one monthly fee that covers hosting, support and model costs.
+- Engagements start with a one-week prototype on the client's own documents at no charge, then a fixed-price build (from $25,000) and one monthly fee (from $5,500) that covers hosting, support and every model provider cost.
 - Led by two principal engineers, Anderson Whittle and Johnson Ye.
 - Not held today: SOC 2, ISO certification, third-party penetration test, client-hosted deployment, customer-managed keys, automated export and deletion.
 
