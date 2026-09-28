@@ -796,7 +796,6 @@ const SITE_HEADER = `<a class="skip-link" href="#main">Skip to content</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
       <a class="nav-link" href="/insurance">Insurers</a>
-      <a class="nav-link" href="/custom-ai-for-law-firms">Law firms</a>
       <div class="nav-item">
         <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
         <div class="mega" id="mega-build" hidden>
