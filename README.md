@@ -31,6 +31,7 @@ Every page loads two shared files, so a brand or navigation change lands once:
 /about                     about.html                 the principals
 /custom-ai-for-law-firms   custom-ai-for-law-firms.html   answer-first commercial page
 /privacy                   privacy.html
+/terms                     terms.html
 /brief, /brief/YYYY-MM-DD  Worker-rendered (brief.js)
 ```
 

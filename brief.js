@@ -867,6 +867,7 @@ const SITE_FOOTER = `<footer class="site-footer">
       <span>&copy; 2026 WYEA LLC</span>
       <span>Newport Beach &middot; Orange County, California</span>
       <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
     </div>
   </div>
 </footer>`;
