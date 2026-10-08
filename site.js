@@ -72,11 +72,17 @@
     });
 
     if (item) {
+      // A short delay before closing forgives a pointer that cuts a corner
+      // on its way from the button to a link in the panel.
+      var closing;
       item.addEventListener("mouseenter", function () {
-        if (hoverable.matches) open(trigger, true);
+        if (!hoverable.matches) return;
+        clearTimeout(closing);
+        open(trigger, true);
       });
       item.addEventListener("mouseleave", function () {
-        if (hoverable.matches) open(trigger, false);
+        if (!hoverable.matches) return;
+        closing = setTimeout(function () { open(trigger, false); }, 250);
       });
     }
   });
