@@ -24,8 +24,10 @@
 
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative, sep } from "node:path";
+import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const CHECK_ONLY = process.argv.includes("--check");
 const BOOKING = "https://calendar.app.google/hMuBjTub3YHa9rKT7";
 
@@ -108,9 +110,12 @@ if (!CHECK_ONLY) {
   const briefPath = join(ROOT, "brief.js");
   const before = readFileSync(briefPath, "utf8");
   const footer = partials.footer.replace(/\n*<script src="\/site\.js" defer><\/script>\s*$/, "");
+  // Escaped for a template literal: a backtick, backslash or ${ in a partial
+  // would otherwise end the string or interpolate.
+  const literal = (text) => "`" + text.replace(/[`\\]/g, "\\$&").replace(/\$\{/g, "\\${") + "`";
   const after = before
-    .replace(/const SITE_HEADER = `[\s\S]*?`;/, () => "const SITE_HEADER = `" + partials.header + "`;")
-    .replace(/const SITE_FOOTER = `[\s\S]*?`;/, () => "const SITE_FOOTER = `" + footer + "`;");
+    .replace(/const SITE_HEADER = `(?:[^`\\]|\\.)*`;/, () => "const SITE_HEADER = " + literal(partials.header) + ";")
+    .replace(/const SITE_FOOTER = `(?:[^`\\]|\\.)*`;/, () => "const SITE_FOOTER = " + literal(footer) + ";");
   if (after !== before) {
     writeFileSync(briefPath, after);
     synced++;
@@ -144,11 +149,13 @@ const worker = readFileSync(join(ROOT, "worker.js"), "utf8");
 const sitemap = new Set([...worker.matchAll(/loc: `\$\{base\}([^`]*)`/g)].map((m) => m[1] || "/"));
 const moved = new Set([...worker.matchAll(/^\s*"(\/[^"]+)": "\/[^"]*",?$/gm)].map((m) => m[1]));
 
+// Each page read once, after the sync above.
+const htmlOf = new Map(pages.map((f) => [f, readFileSync(f, "utf8")]));
+const isNoindex = (html) => /<meta name="robots" content="[^"]*noindex/.test(html);
+
 // Which pages are noindex, so an indexable page can be stopped from
 // linking to one (the law firm page and /design-system stay unlinked).
-const noindexPaths = new Set(pages
-  .filter((f) => /<meta name="robots" content="[^"]*noindex/.test(readFileSync(f, "utf8")))
-  .map(urlPath));
+const noindexPaths = new Set(pages.filter((f) => isNoindex(htmlOf.get(f))).map(urlPath));
 
 const titles = new Map();
 const descs = new Map();
@@ -162,9 +169,9 @@ function resolves(href) {
 }
 
 for (const file of pages) {
-  const html = readFileSync(file, "utf8");
+  const html = htmlOf.get(file);
   const path = urlPath(file);
-  const noindex = /<meta name="robots" content="[^"]*noindex/.test(html);
+  const noindex = isNoindex(html);
   const isErrorPage = path === "/404";
 
   const h1s = html.match(/<h1[\s>]/g) || [];
@@ -212,6 +219,10 @@ for (const file of pages) {
     if (href.includes("calendar.app.google") && href !== BOOKING) fail(file, `booking link changed: ${href}`);
   }
 }
+
+// brief.js carries synced chrome; make sure it still parses.
+const parsed = spawnSync(process.execPath, ["--check", join(ROOT, "brief.js")], { encoding: "utf8" });
+if (parsed.status !== 0) fail("brief.js", `does not parse after the partial sync: ${parsed.stderr.trim().split("\n").pop()}`);
 
 for (const path of sitemap) {
   if (!known.has(path)) fail("worker.js", `sitemap lists ${path}, which has no page`);

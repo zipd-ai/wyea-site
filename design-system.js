@@ -34,6 +34,8 @@
   paint();
   measure();
   document.addEventListener("themechange", paint);
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
+  var scheme = window.matchMedia("(prefers-color-scheme: dark)");
+  if (scheme.addEventListener) scheme.addEventListener("change", paint);
+  else if (scheme.addListener) scheme.addListener(paint);
   window.addEventListener("resize", measure);
 })();

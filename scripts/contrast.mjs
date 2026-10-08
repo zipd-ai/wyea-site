@@ -7,8 +7,9 @@
 // if any pair fails.
 
 import { readFileSync, writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const css = readFileSync(ROOT + "styles.css", "utf8");
 
 function block(re) {

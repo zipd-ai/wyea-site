@@ -10,6 +10,13 @@
 
   /* ------------------------------------------------------------- nav ---- */
 
+  // MediaQueryList.addEventListener is missing before Safari 14; addListener
+  // is its older name. Throwing here would stop every handler below.
+  function onMediaChange(mql, fn) {
+    if (mql.addEventListener) mql.addEventListener("change", fn);
+    else if (mql.addListener) mql.addListener(fn);
+  }
+
   var nav = document.getElementById("nav");
   var toggle = document.getElementById("nav-toggle");
 
@@ -26,7 +33,7 @@
     });
     // The mobile menu only exists below 1024px. If the window grows past
     // that with it open, close it so the page can scroll again.
-    window.matchMedia("(min-width: 1024px)").addEventListener("change", function (e) {
+    onMediaChange(window.matchMedia("(min-width: 1024px)"), function (e) {
       if (e.matches) setMenu(false);
     });
   }
@@ -137,6 +144,10 @@
 
     targets.forEach(function (el) { io.observe(el); });
   }
+
+  // Tells the inline head script that reveal is wired up, so it does not
+  // remove .js and fall back to showing everything.
+  window.wyeaReady = true;
 
   /* ----------------------------------------------------------- forms ---- */
 

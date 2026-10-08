@@ -1703,7 +1703,10 @@ button[disabled] { opacity: 0.55; cursor: default; }
 @media (max-width: 767px) { .explore { grid-template-columns: 1fr; } }
 
 /* ------------------------------------------------------- reveal -------- */
-/* Scoped to .js so that without scripting every section is visible. */
+/* Scoped to .js so that without scripting every section is visible. The
+   inline head script that sets .js removes it again after four seconds if
+   site.js has not reported in, so a blocked or failed site.js leaves the
+   page readable rather than transparent. */
 
 .js .reveal { opacity: 0; transform: translateY(14px); }
 
