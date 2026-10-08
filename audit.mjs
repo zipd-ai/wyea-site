@@ -2,7 +2,7 @@
 // Audit-log tooling for The Brief's subscriber_events chain.
 //
 //   node audit.mjs verify [--local]     recompute the hash chain; exit 1 on
-//                                       any break. Prints the head hash , 
+//                                       any break. Prints the head hash: 
 //                                       note it somewhere external (a git
 //                                       commit, an email) as an anchor.
 //   node audit.mjs backfill [--local]   one-time: seed the chain from the

@@ -123,7 +123,7 @@ const problems = [];
 const fail = (file, msg) => problems.push(`${file.startsWith("/") ? relative(ROOT, file) : file}: ${msg}`);
 
 // Dashes, across every deployed text file and the docs that feed them.
-const TEXT_EXT = /\.(html|css|js|mjs|txt|xml|json|md)$/;
+const TEXT_EXT = /\.(html|css|js|mjs|txt|xml|json|jsonc|md)$/;
 function walkAll(dir, out = []) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -143,6 +143,12 @@ for (const file of walkAll(ROOT)) {
 const worker = readFileSync(join(ROOT, "worker.js"), "utf8");
 const sitemap = new Set([...worker.matchAll(/loc: `\$\{base\}([^`]*)`/g)].map((m) => m[1] || "/"));
 const moved = new Set([...worker.matchAll(/^\s*"(\/[^"]+)": "\/[^"]*",?$/gm)].map((m) => m[1]));
+
+// Which pages are noindex, so an indexable page can be stopped from
+// linking to one (the law firm page and /design-system stay unlinked).
+const noindexPaths = new Set(pages
+  .filter((f) => /<meta name="robots" content="[^"]*noindex/.test(readFileSync(f, "utf8")))
+  .map(urlPath));
 
 const titles = new Map();
 const descs = new Map();
@@ -187,6 +193,10 @@ for (const file of pages) {
     fail(file, "noindex page is listed in the sitemap");
   }
 
+  for (const name of ["header", "footer"]) {
+    if (!html.includes(`<!-- @partial ${name} -->`)) fail(file, `missing the ${name} partial markers`);
+  }
+
   if (!UNTOUCHED.has(path) && /\sstyle="/.test(html)) fail(file, "style attribute; use a component or utility class");
   if (/<style[\s>]/.test(html)) fail(file, "<style> block; styles belong in styles.css");
 
@@ -197,6 +207,8 @@ for (const file of pages) {
   for (const m of html.matchAll(/href="([^"]+)"/g)) {
     const href = m[1];
     if (href.startsWith("/") && !href.startsWith("//") && !resolves(href)) fail(file, `broken internal link ${href}`);
+    const target = href.split("#")[0].replace(/\/$/, "");
+    if (!noindex && href.startsWith("/") && noindexPaths.has(target)) fail(file, `links to noindex page ${target}`);
     if (href.includes("calendar.app.google") && href !== BOOKING) fail(file, `booking link changed: ${href}`);
   }
 }

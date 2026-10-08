@@ -23,7 +23,7 @@ The header, footer and contact form are partials in `partials/`, synced into eve
 | URL | Action | Purpose | Sections, in order |
 |---|---|---|---|
 | / | Rewrite | Say what WYEA builds and for whom, and get a demo booked | Hero with the category words; source-answer card; principals band; trust pillars; process timeline; vendor-review teaser; FAQ; call to action |
-| /insurance | Rewrite | What the engine does for an insurer | Hero; source-answer card; segment links; documents it works with; what the engine does; barriers insurers name, with linked statistics; the terms; FAQ; further reading; call to action |
+| /insurance | Rewrite | What the engine does for an insurer | Hero; source-answer card; segment links; documents it works with; what the engine does; barriers insurers name, with a linked statistic and a linked quotation; principals band; the terms; FAQ; further reading; call to action |
 | /insurance/carriers | New | Fronting, E&S and specialty carriers | Hero; the paper; what the engine does; stat band; FAQ; call to action |
 | /insurance/mgas | New | MGAs and program administrators | Same as carriers |
 | /insurance/reinsurers | New | Reinsurers, intermediaries, legacy and run-off | Same as carriers |
@@ -37,6 +37,7 @@ The header, footer and contact form are partials in `partials/`, synced into eve
 | /custom-ai-for-law-firms | Per decision | Kept live for old links | Unlinked, noindex, out of the sitemap and llms.txt |
 | /brief | Per decision | Retired | Already 301 to home |
 | /privacy | Keep | | Content untouched; header and footer synced |
+| /terms | Keep | Added on main on 2026-09-30 and merged in | Content untouched; header and footer synced |
 | /404 | Edit | | Chrome synced; links point at insurance pages |
 | /design-system | New | Internal reference | Every token and component, light and dark toggle; noindex, out of nav and sitemap |
 
@@ -104,7 +105,9 @@ As in docs/brief/vendor-review.md. Rows not confirmed in writing read "Ask us".
 
 - The website brief file is missing. Sections 6, 7 and 9 were applied from the runbook's summary.
 - Four vendor-review rows wait on written confirmation.
-- The privacy page names the old legal entity; it is out of scope while /privacy stays untouched.
+- The privacy page names the old legal entity and still describes The Brief and law firm documents. It is the one linked page exempt from check 5 while /privacy stays untouched; Anderson to decide on an edit.
+- AM Best's survey page sits behind a bot check, so the /insurance citation could not be verified automatically. Open it in a browser before launch.
+- `.explorer` and `.feature` are kept as documented components with no page using them yet.
 
 ## End-to-end check
 
@@ -114,7 +117,7 @@ The site is done when all of these hold:
 2. `npm run contrast` reports every token pair passing AA in both themes.
 3. Every page in the table renders at 375, 768 and 1280 px with no horizontal scroll, in light and dark.
 4. axe reports no serious or critical violations on any page.
-5. No linked page mentions law firms, attorneys, matters, dockets or The Brief.
+5. No linked page mentions law firms, attorneys, matters, dockets or The Brief, except /privacy (see Open decisions).
 6. Every statistic link returns 200.
 7. brand-guardian reports nothing on the changed files.
 8. An unknown URL returns 404, and /llms.txt is served as text.

@@ -432,7 +432,7 @@ export function issueEmailText(markdown, issueDate, unsubUrl) {
 
 export function issueEmailHtml(rendered, issueDate) {
   // TLDR-style layout: centered header (links row, wordmark, issue title),
-  // left-aligned items below. Table-based with align="center" cells , 
+  // left-aligned items below. Table-based with align="center" cells:
   // margin:0 auto centering is ignored by enough mobile clients (Gmail
   // app included) that tables remain the only reliable way to center in
   // email. Font stack repeated per cell for the same reason.
@@ -995,7 +995,7 @@ async function sha256Hex(text) {
    email: delivered / bounced / complained / opened / clicked. Signature
    verified (Svix scheme: HMAC-SHA256 over "id.timestamp.body" with the
    whsec_ secret, 5-minute replay window). Hard bounces and spam
-   complaints auto-suppress the subscriber exactly like an unsubscribe , 
+   complaints auto-suppress the subscriber exactly like an unsubscribe: 
    they stop receiving and the suppression is never forgotten; a genuine
    re-opt-in through the normal double-confirm flow clears it. Everything
    lands in the audit chain, which makes opens-per-issue a query.

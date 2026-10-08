@@ -13,11 +13,21 @@
   var nav = document.getElementById("nav");
   var toggle = document.getElementById("nav-toggle");
 
+  function setMenu(state) {
+    if (!toggle || !nav) return;
+    nav.classList.toggle("is-open", state);
+    toggle.setAttribute("aria-expanded", String(state));
+    document.body.style.overflow = state ? "hidden" : "";
+  }
+
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", String(open));
-      document.body.style.overflow = open ? "hidden" : "";
+      setMenu(!nav.classList.contains("is-open"));
+    });
+    // The mobile menu only exists below 1024px. If the window grows past
+    // that with it open, close it so the page can scroll again.
+    window.matchMedia("(min-width: 1024px)").addEventListener("change", function (e) {
+      if (e.matches) setMenu(false);
     });
   }
 
@@ -48,7 +58,10 @@
 
     trigger.addEventListener("click", function (e) {
       e.preventDefault();
-      open(trigger, trigger.getAttribute("aria-expanded") !== "true");
+      // With a pointer hovering, mouseenter has already opened the panel, so
+      // a click keeps it open instead of toggling it shut.
+      if (hoverable.matches && item && item.matches(":hover")) open(trigger, true);
+      else open(trigger, trigger.getAttribute("aria-expanded") !== "true");
     });
 
     if (item) {
@@ -62,7 +75,9 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeAll();
+    if (e.key !== "Escape") return;
+    closeAll();
+    if (nav && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
   });
 
   document.addEventListener("click", function (e) {

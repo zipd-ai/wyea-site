@@ -7,7 +7,7 @@
 //
 // Bindings (wrangler.jsonc): DB (D1), ASSETS (static assets).
 // Secrets (wrangler secret put): CONTACT_EMAIL, where leads are delivered;
-// RESEND_API_KEY, Resend (shared with The Brief); TURNSTILE_SECRET , 
+// RESEND_API_KEY, Resend (shared with The Brief); TURNSTILE_SECRET:
 // optional, enables Turnstile verification when set.
 
 import { handleBrief } from "./brief.js";
