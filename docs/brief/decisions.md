@@ -22,3 +22,9 @@ Recorded 2026-10-07. Where Anderson took the runbook default, the row says so.
 - Add `WYEA_Website_Brief_2026-09-27.md` from the Go-To-Market project to this folder. Sections 6, 7 and 9 were applied from the runbook's summary of them, not the brief itself.
 - Confirm the four "Ask us" rows in vendor-review.md in writing.
 - The privacy page still names the old legal entity. It is out of scope here because /privacy is untouched.
+
+## 2026-10-08
+
+- Positioning (Anderson): insights and drafting, focused on policy and claims workflow optimization and automation. Homepage, /insurance and llms.txt updated. New lines to confirm: "Claims, checked against cover: find the wording that applies to a claim, with its source" and "Routine steps, automated: drafts and checks run on their own; your reviewer signs off."
+- Billing removed from the privacy policy: the platform has no billing system.
+- Open: the "one week" prototype promise is under review; Anderson finds it not fast enough. No change made yet.
