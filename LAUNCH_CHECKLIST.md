@@ -1,4 +1,4 @@
-# The Brief — pre-launch trial log
+# The Brief, pre-launch trial log
 
 Everything verified against PRODUCTION (wyea.ai) before the subscribe link
 goes anywhere public. "Public" = the moment wyea.ai/brief?src=... links go
@@ -23,20 +23,20 @@ is checked, the page stays unannounced.
       unlogged so reruns retry them (local, 2026-07-16)
 - [x] Homepage footer band + /brief page forms both submit end to end
 
-## Remaining gates — DO NOT go public until all checked
+## Remaining gates, DO NOT go public until all checked
 
 - [x] One-click unsubscribe from a real issue email footer (production),
-      then resubscribe + reconfirm — full round trip verified 2026-07-16:
+      then resubscribe + reconfirm, full round trip verified 2026-07-16:
       unsubscribed_at set, fresh confirm email inboxed, re-confirm cleared
       suppression, and the issue was NOT re-sent afterward
 - [x] Desktop trigger script path (make send: dry-run, count, y/N
-      confirm, worker send) exercised end to end 2026-07-16 — "nothing to
+      confirm, worker send) exercised end to end 2026-07-16, "nothing to
       send" with all subscribers current. (Physical double-click of the
       .command file still worth doing once for feel.)
 - [ ] Deliverability beyond Gmail: subscribe an Outlook/firm-domain address,
       confirm the blast lands in its INBOX (lawyer audience = Outlook heavy)
 - [x] PHYSICAL POSTAL ADDRESS set in brief.js (2026-07-17, the LLC's
-      registered address; swappable for a PO box anytime) — CAN-SPAM gate
+      registered address; swappable for a PO box anytime), CAN-SPAM gate
       cleared, external recipients are legal
 - [x] First real issue dress rehearsal DONE 2026-07-16: The-Brief-2026-07-16
       (9 items, every one verified against a fetched source; slip opinions

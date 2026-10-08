@@ -2,7 +2,7 @@
 // Audit-log tooling for The Brief's subscriber_events chain.
 //
 //   node audit.mjs verify [--local]     recompute the hash chain; exit 1 on
-//                                       any break. Prints the head hash —
+//                                       any break. Prints the head hash , 
 //                                       note it somewhere external (a git
 //                                       commit, an email) as an anchor.
 //   node audit.mjs backfill [--local]   one-time: seed the chain from the
@@ -14,7 +14,7 @@
 // The chain gives tamper EVIDENCE, not tamper proofing: every row's hash
 // covers the previous row's hash, so any edit, insertion, or deletion
 // inside the log breaks verification. Truncating the tail is detectable
-// only against an externally noted head hash — hence the anchor habit.
+// only against an externally noted head hash, hence the anchor habit.
 
 import { execFileSync } from "node:child_process";
 import { eventHash } from "./brief.js";
@@ -32,7 +32,7 @@ else {
 async function verify() {
   const rows = d1("SELECT id, email, event, detail, ip, created_at, prev_hash, event_hash FROM subscriber_events ORDER BY id");
   if (!rows.length) {
-    console.log("audit log is empty — nothing to verify.");
+    console.log("audit log is empty, nothing to verify.");
     return;
   }
   let prev = "genesis";

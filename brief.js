@@ -1,16 +1,16 @@
-// The Brief — WYEA's weekly legal newsletter (free, double opt-in).
+// The Brief, WYEA's weekly legal newsletter (free, double opt-in).
 //
 // Routes (dispatched from worker.js):
-//   POST /api/subscribe        — store a pending subscriber, email a confirm link
-//   GET  /brief                — subscribe page + format sample + issue archive
-//   GET  /brief/confirm        — double opt-in landing (?t=confirm_token)
-//   GET  /brief/unsubscribe    — one-click unsubscribe (?t=unsubscribe_token);
+//   POST /api/subscribe        : store a pending subscriber, email a confirm link
+//   GET  /brief                : subscribe page + format sample + issue archive
+//   GET  /brief/confirm        : double opt-in landing (?t=confirm_token)
+//   GET  /brief/unsubscribe    : one-click unsubscribe (?t=unsubscribe_token);
 //        POST accepted too, for RFC 8058 List-Unsubscribe one-click
-//   GET  /brief/YYYY-MM-DD     — an archived issue, rendered from the committed
+//   GET  /brief/YYYY-MM-DD     : an archived issue, rendered from the committed
 //        markdown at brief/issues/The-Brief-YYYY-MM-DD.md
 //
 // The list is owned: subscribers live in the same D1 database as the
-// contact-form leads (schema.sql). Rows are never deleted — an unsubscribe
+// contact-form leads (schema.sql). Rows are never deleted, an unsubscribe
 // sets unsubscribed_at, so the suppression is never forgotten.
 //
 // Secrets/vars: RESEND_API_KEY (shared with the contact form). BRIEF_FROM_EMAIL
@@ -71,7 +71,7 @@ export async function handleBrief(request, env, ctx, url) {
   const issue = path.match(/^\/brief\/(\d{4}-\d{2}-\d{2})$/);
   if (issue && request.method === "GET") return Response.redirect(`${url.origin}/`, 301);
 
-  return null; // not a Brief route — worker.js falls through to assets
+  return null; // not a Brief route, worker.js falls through to assets
 }
 
 /* ---------- subscribe ---------- */
@@ -167,7 +167,7 @@ async function handleSubscribe(request, env, url) {
    Sends an issue to every confirmed subscriber using the Worker's own
    Resend key, so the key never leaves the secret store. Authorized by a
    single-use token whose SHA-256 was written to operator_tokens through
-   wrangler — i.e. by someone already authenticated to the Cloudflare
+   wrangler, i.e. by someone already authenticated to the Cloudflare
    account; the token is consumed on use and expires in 15 minutes.
    Idempotent per issue via the same issue_sends log as the direct send
    path. Capped per invocation to respect Worker subrequest limits; the
@@ -280,7 +280,7 @@ async function confirmPage(env, url) {
   if (!row.confirmed_at || row.unsubscribed_at) {
     await creditReferral(env, url, row.email);
   }
-  // Tell the operator the list grew — same channel as contact-form leads.
+  // Tell the operator the list grew, same channel as contact-form leads.
   // Only on a real state change: repeat clicks of the same link stay quiet.
   if (env.CONTACT_EMAIL && (!row.confirmed_at || row.unsubscribed_at)) {
     try {
@@ -387,9 +387,9 @@ async function sendAlreadySubscribed(env, origin, row) {
 
 async function sendEmail(env, { to, subject, text, html, emailHeaders, idempotencyKey }) {
   if (!env.RESEND_API_KEY) {
-    // Local dev: no key configured — log instead of send so the flow still
+    // Local dev: no key configured, log instead of send so the flow still
     // works end to end (the link is in the console).
-    console.log(`[brief] email skipped (no RESEND_API_KEY). To: ${to} — ${subject}\n${text}`);
+    console.log(`[brief] email skipped (no RESEND_API_KEY). To: ${to}, ${subject}\n${text}`);
     return true;
   }
   const res = await fetch("https://api.resend.com/emails", {
@@ -419,7 +419,7 @@ async function sendEmail(env, { to, subject, text, html, emailHeaders, idempoten
 
 export const SIGNATURE = "Curated by WYEA, Newport Beach - firm-owned drafting and review tools.";
 // CAN-SPAM postal address. The real street/PO-box line lives in the
-// POSTAL_ADDRESS Worker secret (this repo is public — a mailing address
+// POSTAL_ADDRESS Worker secret (this repo is public, a mailing address
 // belongs in outgoing email, not in source). Issue templates carry a
 // {{postal_address}} merge field filled at send time; this fallback keeps
 // dev rendering sane but is NOT compliant on its own.
@@ -432,7 +432,7 @@ export function issueEmailText(markdown, issueDate, unsubUrl) {
 
 export function issueEmailHtml(rendered, issueDate) {
   // TLDR-style layout: centered header (links row, wordmark, issue title),
-  // left-aligned items below. Table-based with align="center" cells —
+  // left-aligned items below. Table-based with align="center" cells , 
   // margin:0 auto centering is ignored by enough mobile clients (Gmail
   // app included) that tables remain the only reliable way to center in
   // email. Font stack repeated per cell for the same reason.
@@ -699,7 +699,7 @@ async function loadManifest(env, origin) {
 async function loadAsset(env, origin, path) {
   const res = await env.ASSETS.fetch(new Request(new URL(path, origin)));
   // With single-page-application fallback a missing asset comes back as the
-  // homepage (200, text/html) — treat that as not found.
+  // homepage (200, text/html), treat that as not found.
   if (!res.ok || (res.headers.get("Content-Type") || "").includes("text/html")) return null;
   return res.text();
 }
@@ -875,10 +875,10 @@ const SITE_FOOTER = `<footer class="site-footer">
 // header, footer, and buttons all come from the stylesheet the rest of the
 // site loads, so a brand change lands here without a second edit.
 const PAGE_CSS = `
-.container{width:100%;max-width:var(--w-page);margin:0 auto;padding:0 var(--gutter)}
-.container.narrow{max-width:calc(800px + var(--gutter) * 2)}
-.band{border-top:1px solid var(--line)}
-.band-alt{background:var(--paper-deep)}
+.container{width:100%;max-width:var(--width-page);margin:0 auto;padding:0 var(--space-gutter)}
+.container.narrow{max-width:calc(800px + var(--space-gutter) * 2)}
+.band{border-top:1px solid var(--color-border)}
+.band-alt{background:var(--color-surface)}
 .brief-hero{padding:clamp(56px,7vw,96px) 0 clamp(40px,5vw,64px)}
 .quiet-link{color:inherit;text-decoration:none}
 .quiet-link:hover{text-decoration:underline}
@@ -886,43 +886,43 @@ const PAGE_CSS = `
 .subscribe-form{margin-top:1.8em;max-width:480px}
 .subscribe-row{display:flex;gap:10px}
 .subscribe-form input[type=email]{flex:1;min-width:0;height:46px;padding:0 14px}
-.micro{font-size:.86rem;color:var(--ink-muted);margin-top:.8em}
-.form-status{font-size:.9rem;color:var(--bronze-deep);min-height:1.4em;margin-top:.5em}
-.subscribe-success{font-size:1.05rem;color:var(--bronze-deep);font-weight:600;margin-top:.6em}
-.sample{border:1px solid var(--line);background:var(--paper);padding:28px 30px;margin-top:1.8em}
-.band-alt .sample{background:var(--white)}
+.micro{font-size:.86rem;color:var(--color-text-muted);margin-top:.8em}
+.form-status{font-size:.9rem;color:var(--color-accent-strong);min-height:1.4em;margin-top:.5em}
+.subscribe-success{font-size:1.05rem;color:var(--color-accent-strong);font-weight:600;margin-top:.6em}
+.sample{border:1px solid var(--color-border);background:var(--color-bg);padding:28px 30px;margin-top:1.8em}
+.band-alt .sample{background:var(--color-raised)}
 .sample-section{font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-color:var(--bronze);margin:1.6em 0 .7em}
+color:var(--color-accent);margin:1.6em 0 .7em}
 .sample-section:first-child{margin-top:0}
 .item h3{font-size:1.06rem}
 .item p{font-size:.95rem;margin-top:.3em}
-.sample-headline{color:var(--bronze-deep);text-decoration:none;border-bottom:1px solid var(--bronze)}
-.sample-headline:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.sample-headline{color:var(--color-accent-strong);text-decoration:none;border-bottom:1px solid var(--color-accent)}
+.sample-headline:hover{color:var(--color-text);border-bottom-color:var(--color-text)}
 .fine{font-size:.88rem;margin-top:1.6em}
 .empty-note{font-size:1rem}
-.archive-list{list-style:none;margin-top:1em;border-top:1px solid var(--line)}
+.archive-list{list-style:none;margin-top:1em;border-top:1px solid var(--color-border)}
 .archive-list li{display:flex;justify-content:space-between;gap:16px;align-items:baseline;
-padding:18px 2px;border-bottom:1px solid var(--line)}
+padding:18px 2px;border-bottom:1px solid var(--color-border)}
 .archive-list a{font-family:var(--font-display);font-size:1.18rem;font-weight:450;
-letter-spacing:-.01em;color:var(--ink);text-decoration:none}
-.archive-list a:hover{color:var(--bronze-deep)}
-.archive-date{font-size:.85rem;color:var(--ink-muted);white-space:nowrap}
+letter-spacing:-.01em;color:var(--color-text);text-decoration:none}
+.archive-list a:hover{color:var(--color-accent-strong)}
+.archive-date{font-size:.85rem;color:var(--color-text-muted);white-space:nowrap}
 .issue{margin-top:.5em}
 .issue h1{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.5em}
 .issue h2{font-size:.82rem;font-weight:700;font-family:var(--font-body);letter-spacing:.13em;
-text-transform:uppercase;color:var(--bronze);margin:2.4em 0 .8em}
+text-transform:uppercase;color:var(--color-accent);margin:2.4em 0 .8em}
 .issue h3{font-size:1.14rem;margin-top:1.5em}
 .issue p{margin:.55em 0;font-size:1.02rem;line-height:1.65}
 .issue ul{margin:.6em 0 .6em 1.2em}
-.issue li{color:var(--ink-soft);margin-bottom:.4em}
-.issue hr{border:0;border-top:1px solid var(--line);margin:2.4em 0}
-.issue a{color:var(--bronze-deep);word-break:break-word}
-.issue-cta{margin-top:64px;padding-top:36px;border-top:1px solid var(--line)}
-.share-box{border:1px solid var(--line);background:var(--white);padding:24px 26px;margin-top:1.8em}
+.issue li{color:var(--color-text-soft);margin-bottom:.4em}
+.issue hr{border:0;border-top:1px solid var(--color-border);margin:2.4em 0}
+.issue a{color:var(--color-accent-strong);word-break:break-word}
+.issue-cta{margin-top:64px;padding-top:36px;border-top:1px solid var(--color-border)}
+.share-box{border:1px solid var(--color-border);background:var(--color-raised);padding:24px 26px;margin-top:1.8em}
 .share-link a{font-family:var(--font-display);font-size:1.18rem;word-break:break-all}
-.tier-list{list-style:none;margin-top:1.4em;border-top:1px solid var(--line)}
-.tier-list li{padding:14px 2px;border-bottom:1px solid var(--line);color:var(--ink-muted)}
-.tier-list li.tier-done{color:var(--bronze-deep);font-weight:600}
+.tier-list{list-style:none;margin-top:1.4em;border-top:1px solid var(--color-border)}
+.tier-list li{padding:14px 2px;border-bottom:1px solid var(--color-border);color:var(--color-text-muted)}
+.tier-list li.tier-done{color:var(--color-accent-strong);font-weight:600}
 @media(max-width:640px){.subscribe-row{flex-direction:column}}
 `;
 
@@ -988,7 +988,7 @@ async function sha256Hex(text) {
    email: delivered / bounced / complained / opened / clicked. Signature
    verified (Svix scheme: HMAC-SHA256 over "id.timestamp.body" with the
    whsec_ secret, 5-minute replay window). Hard bounces and spam
-   complaints auto-suppress the subscriber exactly like an unsubscribe —
+   complaints auto-suppress the subscriber exactly like an unsubscribe , 
    they stop receiving and the suppression is never forgotten; a genuine
    re-opt-in through the normal double-confirm flow clears it. Everything
    lands in the audit chain, which makes opens-per-issue a query.
@@ -1083,7 +1083,7 @@ async function referralCount(env, code) {
 }
 
 // Called when a referee completes double opt-in: stamp the credit, then
-// grant any tier the referrer just crossed. Everything best-effort — a
+// grant any tier the referrer just crossed. Everything best-effort, a
 // referral hiccup must never break the confirm page.
 async function creditReferral(env, url, refereeEmail) {
   try {

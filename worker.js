@@ -1,13 +1,13 @@
 // Cloudflare Worker: serves the static site, handles the contact form, and
-// runs The Brief (newsletter subscribe + archive — brief.js).
+// runs The Brief (newsletter subscribe + archive, brief.js).
 //
-// POST /api/contact — validate, de-duplicate against D1, store the lead,
+// POST /api/contact, validate, de-duplicate against D1, store the lead,
 // notify by email through Resend. /api/subscribe and /brief* are handled in
 // brief.js. Everything else falls through to the static assets.
 //
 // Bindings (wrangler.jsonc): DB (D1), ASSETS (static assets).
-// Secrets (wrangler secret put): CONTACT_EMAIL — where leads are delivered;
-// RESEND_API_KEY — Resend (shared with The Brief); TURNSTILE_SECRET —
+// Secrets (wrangler secret put): CONTACT_EMAIL, where leads are delivered;
+// RESEND_API_KEY, Resend (shared with The Brief); TURNSTILE_SECRET , 
 // optional, enables Turnstile verification when set.
 
 import { handleBrief } from "./brief.js";
@@ -124,7 +124,7 @@ async function handleContact(request, env, ctx) {
   // before the widget exists and can be enabled without a code change.
   if (env.TURNSTILE_SECRET) {
     const ok = await verifyTurnstile(env.TURNSTILE_SECRET, body.turnstile, request);
-    if (!ok) return json({ error: "verification failed — please try again" }, 403);
+    if (!ok) return json({ error: "verification failed, please try again" }, 403);
   }
 
   const ip = request.headers.get("CF-Connecting-IP") || "";
@@ -132,12 +132,12 @@ async function handleContact(request, env, ctx) {
     "SELECT COUNT(*) AS n FROM submissions WHERE ip = ?1 AND created_at > datetime('now', '-1 hour')"
   ).bind(ip).first();
   if (recent && recent.n >= RATE_LIMIT_PER_HOUR) {
-    return json({ error: "too many messages — please try again later" }, 429);
+    return json({ error: "too many messages, please try again later" }, 429);
   }
 
   // Dedup: the token catches mechanical resubmits (double-click, retry);
   // the content hash catches the same person sending the same inquiry
-  // again. Either duplicate reads as success — idempotent to the visitor.
+  // again. Either duplicate reads as success, idempotent to the visitor.
   const dedupHash = await sha256(`${email}\n${normalize(message)}`);
   let inserted;
   try {
@@ -184,7 +184,7 @@ async function notify(env, lead) {
       from: env.FROM_EMAIL || "WYEA Site <onboarding@resend.dev>",
       to: [env.CONTACT_EMAIL],
       reply_to: [lead.email],
-      subject: `New inquiry from wyea.ai — ${lead.name}`,
+      subject: `New inquiry from wyea.ai: ${lead.name}`,
       text,
     }),
   });
