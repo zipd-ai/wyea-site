@@ -52,7 +52,7 @@ The research article for the 551-insurer data is a template only, kept at `docs/
 | Source-answer card | `.app` + `.ans` | Home, /insurance | The invented cancellation-notice example: query, matched passages with source lines, the unreadable item flagged, and an "Invented example" label |
 | Principals band | `.people` + `.person-photo` | Home, /insurance, /about | Names, roles, one-line credentials, photos. Stands where customer logos would |
 | Trust pillars | `.pillars` | Home, /security | Every line opens its source; answers keep their version; one system per insurer; a reviewer signs off |
-| Process timeline | `.timeline` | Home, /how-we-work | Call, NDA, one-week prototype, fixed-price scope, build, support |
+| Process timeline | `.timeline` | Home, /how-we-work | Call, NDA, prototype, fixed-price scope, build, support. No timeframe is promised |
 | Stat band | `.stats` + `cite` | Segment pages, /insurance | Sourced industry statistics only, each linked. Never customer metrics |
 | Vendor-review table | `.dtable` | /security/vendor-review | Requirement, source, WYEA today, status |
 | Not-held list | `.notheld` | /security, /security/vendor-review | The items /security lists as not claimed yet |

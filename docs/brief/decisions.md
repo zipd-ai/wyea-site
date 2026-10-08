@@ -26,4 +26,4 @@ Recorded 2026-10-07. Where Anderson took the runbook default, the row says so.
 
 - Positioning (Anderson): insights and drafting, focused on policy and claims workflow optimization and automation. Homepage, /insurance and llms.txt updated. New lines to confirm: "Claims, checked against cover: find the wording that applies to a claim, with its source" and "Routine steps, automated: drafts and checks run on their own; your reviewer signs off."
 - Billing removed from the privacy policy: the platform has no billing system.
-- Open: the "one week" prototype promise is under review; Anderson finds it not fast enough. No change made yet.
+- The "one week" prototype timeframe is dropped everywhere (Anderson, 2026-10-08). No delivery time is promised; the prototype stays fixed price, quoted before work starts.
