@@ -80,6 +80,7 @@ async function sitemap(env, origin) {
     { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
     { loc: `${base}/privacy`, lastmod: updated, priority: "0.3" },
+    { loc: `${base}/terms`, lastmod: updated, priority: "0.3" },
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +

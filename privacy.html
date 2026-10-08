@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy | WYEA</title>
-  <meta name="description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox work.">
+  <meta name="description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox and SharePoint work.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Privacy | WYEA">
-  <meta property="og:description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox work.">
+  <meta property="og:description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox and SharePoint work.">
   <meta property="og:url" content="https://wyea.ai/privacy">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@
       <p class="crumb"><a href="/">WYEA</a> / Privacy</p>
       <p class="eyebrow">Privacy policy</p>
       <h1 style="font-size:clamp(2rem,3.8vw,3rem)">How WYEA handles information</h1>
-      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective August 11, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
+      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective September 30, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
     </div>
   </section>
 
@@ -117,6 +117,40 @@
           A connection can be removed at any time, either inside the platform
           or from the security settings of the person's own Dropbox account.
           Removing it stops the platform's access.
+        </li>
+      </ul>
+
+      <h2>Microsoft SharePoint</h2>
+      <p>
+        A client can connect the SharePoint sites where its documents live.
+        The connection is deliberately narrow:
+      </p>
+      <ul>
+        <li>
+          The platform asks Microsoft only for access to sites the client
+          names (Microsoft's <code>Sites.Selected</code> permission), never
+          for the client's whole tenant. Until the client's own administrator
+          assigns a site, that permission reaches nothing.
+        </li>
+        <li>
+          Access is read-only. The platform cannot change, move, or delete a
+          document in SharePoint.
+        </li>
+        <li>
+          When a person connects their own Microsoft account, the platform
+          sees only what that person could already see on the named sites. It
+          also reads their basic profile (name and email) to know who
+          connected.
+        </li>
+        <li>
+          The credential Microsoft issues for the connection is stored
+          encrypted and is never shown to anyone. We never see or ask for a
+          Microsoft password.
+        </li>
+        <li>
+          A person can disconnect inside the platform at any time, and the
+          client's administrator can withdraw the site assignment or the
+          application's consent in Microsoft Entra, which ends all access.
         </li>
       </ul>
 

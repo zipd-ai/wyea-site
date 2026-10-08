@@ -31,6 +31,7 @@ Every page loads two shared files, so a brand or navigation change lands once:
 /about                     about.html                 the principals
 /custom-ai-for-law-firms   custom-ai-for-law-firms.html   answer-first commercial page
 /privacy                   privacy.html
+/terms                     terms.html
 /brief, /brief/YYYY-MM-DD  Worker-rendered (brief.js)
 ```
 
@@ -49,6 +50,14 @@ inquiries); both are `UNIQUE` columns, and a duplicate reads as success.
 Spam: honeypot field always; Turnstile once `TURNSTILE_SITEKEY` (site.js)
 and the `TURNSTILE_SECRET` secret are set, the Worker skips verification
 until then.
+
+## Microsoft publisher domain
+
+`.well-known/microsoft-identity-association.json` lists the client IDs of
+WYEA's Microsoft Entra app registrations. Microsoft fetches it to verify
+wyea.ai as each app's publisher domain, so consent screens show "wyea.ai"
+instead of an onmicrosoft.com name. A new app registration goes in this list
+before its publisher domain can be set to wyea.ai.
 
 ## The Brief (newsletter)
 

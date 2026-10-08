@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms | WYEA</title>
+  <meta name="description" content="Terms of service for the WYEA website and the WYEA platform.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Terms | WYEA">
+  <meta property="og:description" content="Terms of service for the WYEA website and the WYEA platform.">
+  <meta property="og:url" content="https://wyea.ai/terms">
+  <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://wyea.ai/terms">
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.className += " js";</script>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- @partial header -->
+<!-- @end header -->
+
+<main id="main">
+
+  <section class="page-head">
+    <div class="wrap wrap-text">
+      <p class="crumb"><a href="/">WYEA</a> / Terms</p>
+      <p class="eyebrow">Terms of service</p>
+      <h1 style="font-size:clamp(2rem,3.8vw,3rem)">Terms of service</h1>
+      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective September 30, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="wrap wrap-text">
+      <p>
+        These terms cover this website and the WYEA platform, the software we
+        build and operate for client organizations. Using either means you
+        accept them.
+      </p>
+
+      <h2>Your organization's agreement comes first</h2>
+      <p>
+        The platform is provided only to organizations that have signed an
+        agreement with WYEA. Where that agreement and these terms differ, the
+        agreement governs. People who use the platform do so on behalf of
+        their organization, under that agreement.
+      </p>
+
+      <h2>Your content</h2>
+      <p>
+        Documents and information an organization brings to the platform,
+        including anything read from a connected system such as SharePoint or
+        Dropbox, belong to that organization. We process them only to run
+        that organization's own system, on its instructions, as described in
+        our <a href="/privacy">privacy policy</a>. We do not use them to train
+        AI models, and we do not sell them.
+      </p>
+
+      <h2>Accounts and access</h2>
+      <p>
+        Access is granted by your organization. Keep your sign-in to yourself
+        and tell your administrator or us promptly if you think someone else
+        has used it. Your organization can remove access at any time.
+      </p>
+
+      <h2>Acceptable use</h2>
+      <p>
+        Do not use the platform to break the law, to reach information your
+        organization has not authorized you to see, to probe or disrupt the
+        service, or to try to reach another organization's system.
+      </p>
+
+      <h2>Output needs a person's judgment</h2>
+      <p>
+        The platform helps people read and work with documents. Its output is
+        a starting point for a qualified person's review, not professional
+        advice, and it is your organization's responsibility to decide what
+        to rely on.
+      </p>
+
+      <h2>This website</h2>
+      <p>
+        The content of this website is provided for general information. It
+        is not legal advice and does not create any relationship with WYEA.
+      </p>
+
+      <h2>Law</h2>
+      <p>
+        These terms are governed by California law, unless your
+        organization's agreement says otherwise.
+      </p>
+
+      <h2>Changes and questions</h2>
+      <p>
+        If these terms change in a way that matters, we will update this page
+        and its effective date, and tell affected clients directly. Questions
+        go to <a href="mailto:contact@wyea.ai">contact@wyea.ai</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="cta-band band-ink">
+    <div class="wrap cta-split">
+      <div class="reveal">
+        <p class="eyebrow">Start a conversation</p>
+        <h2>Tell us what your people spend the day reading.</h2>
+        <p class="lede">
+          Thirty minutes. Book it as a consultation on whether any of this is
+          worth doing, or as a demo on your own documents. Say which when you
+          book, or decide on the call.
+        </p>
+        <div class="actions">
+          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <form id="contact-form">
+          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
+            Prefer to write? We reply within one business day.
+          </p>
+          <div class="field-row">
+            <label class="field"><span>Your name</span>
+              <input type="text" name="name" autocomplete="name" maxlength="200" required>
+            </label>
+            <label class="field"><span>Company <span class="optional">(optional)</span></span>
+              <input type="text" name="firm" autocomplete="organization" maxlength="200">
+            </label>
+          </div>
+          <label class="field"><span>Email</span>
+            <input type="email" name="email" autocomplete="email" maxlength="254" required>
+          </label>
+          <label class="field"><span>How can we help?</span>
+            <textarea name="message" rows="5" maxlength="5000" required></textarea>
+          </label>
+          <label class="hp" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+          <div class="cf-turnstile" hidden></div>
+          <button type="submit" class="btn btn-light">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <p id="contact-success" class="contact-success" hidden>
+          Thanks. Your message is on its way. We'll reply within one business day.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- @partial footer -->
+<!-- @end footer -->
+</body>
+</html>
