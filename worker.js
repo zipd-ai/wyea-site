@@ -1,13 +1,13 @@
 // Cloudflare Worker: serves the static site, handles the contact form, and
-// runs The Brief (newsletter subscribe + archive — brief.js).
+// runs The Brief (newsletter subscribe + archive, brief.js).
 //
-// POST /api/contact — validate, de-duplicate against D1, store the lead,
+// POST /api/contact, validate, de-duplicate against D1, store the lead,
 // notify by email through Resend. /api/subscribe and /brief* are handled in
 // brief.js. Everything else falls through to the static assets.
 //
 // Bindings (wrangler.jsonc): DB (D1), ASSETS (static assets).
-// Secrets (wrangler secret put): CONTACT_EMAIL — where leads are delivered;
-// RESEND_API_KEY — Resend (shared with The Brief); TURNSTILE_SECRET —
+// Secrets (wrangler secret put): CONTACT_EMAIL, where leads are delivered;
+// RESEND_API_KEY, Resend (shared with The Brief); TURNSTILE_SECRET:
 // optional, enables Turnstile verification when set.
 
 import { handleBrief } from "./brief.js";
@@ -53,16 +53,19 @@ export default {
   },
 };
 
-// Sitemap: homepage + The Brief index + every published issue, generated
-// from the same manifest brief.js renders from, so it can never go stale.
+// Sitemap: every indexable page. scripts/build.mjs fails if a page is
+// missing from this list or a noindex page is on it.
 async function sitemap(env, origin) {
   const base = "https://wyea.ai";
   // lastmod is the date each page last changed. Update it in the same commit
   // as the page.
-  const updated = "2026-09-27";
+  const updated = "2026-10-07";
   const urls = [
     { loc: `${base}/`, lastmod: updated, priority: "1.0" },
     { loc: `${base}/insurance`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/insurance/carriers`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/insurance/mgas`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/insurance/reinsurers`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/insurance/policy-wordings`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/endorsements`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/binding-authority-and-program-agreements`, lastmod: updated, priority: "0.8" },
@@ -70,17 +73,18 @@ async function sitemap(env, origin) {
     { loc: `${base}/insurance/build-or-buy`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/contract-certainty`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/cost`, lastmod: updated, priority: "0.8" },
-    { loc: `${base}/custom-ai-for-law-firms`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/platform/sources`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/verification`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/evidence`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/isolation`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/compare`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/how-we-work`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/security/vendor-review`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
-    { loc: `${base}/privacy`, lastmod: updated, priority: "0.3" },
-    { loc: `${base}/terms`, lastmod: updated, priority: "0.3" },
+    { loc: `${base}/privacy`, lastmod: "2026-09-30", priority: "0.3" },
+    { loc: `${base}/terms`, lastmod: "2026-09-30", priority: "0.3" },
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
@@ -125,7 +129,7 @@ async function handleContact(request, env, ctx) {
   // before the widget exists and can be enabled without a code change.
   if (env.TURNSTILE_SECRET) {
     const ok = await verifyTurnstile(env.TURNSTILE_SECRET, body.turnstile, request);
-    if (!ok) return json({ error: "verification failed — please try again" }, 403);
+    if (!ok) return json({ error: "verification failed, please try again" }, 403);
   }
 
   const ip = request.headers.get("CF-Connecting-IP") || "";
@@ -133,12 +137,12 @@ async function handleContact(request, env, ctx) {
     "SELECT COUNT(*) AS n FROM submissions WHERE ip = ?1 AND created_at > datetime('now', '-1 hour')"
   ).bind(ip).first();
   if (recent && recent.n >= RATE_LIMIT_PER_HOUR) {
-    return json({ error: "too many messages — please try again later" }, 429);
+    return json({ error: "too many messages, please try again later" }, 429);
   }
 
   // Dedup: the token catches mechanical resubmits (double-click, retry);
   // the content hash catches the same person sending the same inquiry
-  // again. Either duplicate reads as success — idempotent to the visitor.
+  // again. Either duplicate reads as success, idempotent to the visitor.
   const dedupHash = await sha256(`${email}\n${normalize(message)}`);
   let inserted;
   try {
@@ -185,7 +189,7 @@ async function notify(env, lead) {
       from: env.FROM_EMAIL || "WYEA Site <onboarding@resend.dev>",
       to: [env.CONTACT_EMAIL],
       reply_to: [lead.email],
-      subject: `New inquiry from wyea.ai — ${lead.name}`,
+      subject: `New inquiry from wyea.ai: ${lead.name}`,
       text,
     }),
   });

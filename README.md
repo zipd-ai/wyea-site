@@ -1,4 +1,4 @@
-# WYEA — Company Site
+# WYEA, Company Site
 
 Marketing site for **Whittle and Ye Engineering Associates LLC** (WYEA):
 catered software for Orange County law firms, cutting-edge tech, white-glove
@@ -12,10 +12,10 @@ dependencies.
 
 Every page loads two shared files, so a brand or navigation change lands once:
 
-- **`styles.css`** — the whole design system: tokens, type scale, section
+- **`styles.css`**, the whole design system: tokens, type scale, section
   bands, tiles, and the interface figures (the "screenshots" are drawn in
   HTML, not captured, so they stay legible at any width).
-- **`site.js`** — the navigation dropdowns, the mobile menu, the
+- **`site.js`**, the navigation dropdowns, the mobile menu, the
   reveal-on-scroll, and both forms. Everything degrades: with scripting off
   the nav is a plain list of links and every section is visible.
 
@@ -43,12 +43,12 @@ in `brief.js` for the Worker-rendered pages. Change one, change them all;
 
 `POST /api/contact` (worker.js) validates, de-duplicates, stores the lead in
 D1 (`wyea-leads`, schema in `schema.sql`), and emails it via Resend. The
-recipient address lives only in the `CONTACT_EMAIL` secret — never in the
+recipient address lives only in the `CONTACT_EMAIL` secret, never in the
 page or the repo. De-duplication is two-layer: a per-page-load idempotency
 token (double-clicks/retries) and a hash of email + message (repeat
 inquiries); both are `UNIQUE` columns, and a duplicate reads as success.
 Spam: honeypot field always; Turnstile once `TURNSTILE_SITEKEY` (site.js)
-and the `TURNSTILE_SECRET` secret are set — the Worker skips verification
+and the `TURNSTILE_SECRET` secret are set, the Worker skips verification
 until then.
 
 ## Microsoft publisher domain
@@ -63,7 +63,7 @@ before its publisher domain can be set to wyea.ai.
 
 Free weekly legal newsletter, self-hosted: the list lives in our D1 database
 (`subscribers` in `schema.sql`), sends go through Resend from
-`brief@wyea.ai`. Never pitch in it — The Brief is a give, the product sells
+`brief@wyea.ai`. Never pitch in it, The Brief is a give, the product sells
 through the prototype path.
 
 - **Subscribe** (`POST /api/subscribe`, brief.js) is double opt-in: the row is
@@ -71,7 +71,7 @@ through the prototype path.
   Honeypot + per-IP rate limit + a 10-minute per-address email cooldown.
   Placements: `/brief` and the homepage footer band; each records a `source`.
 - **Unsubscribe** is one click (`/brief/unsubscribe?t=…`, also RFC 8058
-  one-click POST). Rows are never deleted — `unsubscribed_at` is the
+  one-click POST). Rows are never deleted, `unsubscribed_at` is the
   suppression list.
 - **Pages** are Worker-rendered: `/brief` (subscribe + format sample +
   archive) and `/brief/YYYY-MM-DD` (an issue, rendered from its markdown).
@@ -87,7 +87,7 @@ through the prototype path.
    desktop). No credentials needed on the machine: the script mints a
    single-use operator token into D1 through your wrangler login and the
    deployed Worker does the sending with the Resend key in its secret
-   store (`POST /api/brief/blast`, brief.js) — personalized unsubscribe
+   store (`POST /api/brief/blast`, brief.js), personalized unsubscribe
    link, one-click unsubscribe headers, and the CAN-SPAM footer included.
    The CAN-SPAM postal address lives in the `POSTAL_ADDRESS` Worker secret
    (`npx wrangler secret put POSTAL_ADDRESS`), never in this public repo;
@@ -97,13 +97,13 @@ through the prototype path.
 
    The send is idempotent per issue: accepted sends are logged to
    `issue_sends` and logged recipients are skipped, so rerunning the same
-   command is always safe — it retries failures and catches late confirms,
+   command is always safe, it retries failures and catches late confirms,
    and never sends the same issue to the same person twice (Resend
    idempotency keys back this up for anything a crash leaves unlogged).
 
 **Delivery telemetry** (`POST /api/resend-events`, brief.js): Resend
-webhooks feed back what happened after the send — delivered, bounced,
-complained, opened, clicked — into the audit chain. Hard bounces and spam
+webhooks feed back what happened after the send, delivered, bounced,
+complained, opened, clicked, into the audit chain. Hard bounces and spam
 complaints auto-suppress the subscriber (like an unsubscribe; a real
 re-opt-in clears it). One-time setup in the Resend dashboard:
 
@@ -145,7 +145,7 @@ npx wrangler d1 execute wyea-leads --file schema.sql   # once, local DB
 ```
 
 Then open http://localhost:8080. Without secrets configured, submissions
-store locally and skip the email — the contact form still works end to end,
+store locally and skip the email, the contact form still works end to end,
 and newsletter confirm links print to the wrangler console instead of
 sending.
 
@@ -171,5 +171,5 @@ npx wrangler d1 execute wyea-leads --remote \
 
 ## Before going live
 
-The case study intentionally does not name the client firm — get the firm's
+The case study intentionally does not name the client firm, get the firm's
 written OK before naming them.

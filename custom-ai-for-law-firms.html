@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom AI Software for Law Firms in Orange County | WYEA</title>
   <meta name="description" content="Custom AI software for law firms in Orange County: verified citations, document review and drafting, and a working prototype in one week.">
@@ -11,12 +12,11 @@
   <meta property="og:url" content="https://wyea.ai/custom-ai-for-law-firms">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://wyea.ai/custom-ai-for-law-firms">
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
-  <script>document.documentElement.className += " js";</script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <script>document.documentElement.className += " js"; setTimeout(function () { if (!window.wyeaReady) document.documentElement.classList.remove("js"); }, 4000);</script>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -41,6 +41,7 @@
 </head>
 <body>
 
+<!-- @partial header -->
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -48,32 +49,34 @@
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a class="nav-link" href="/insurance">Insurers</a>
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-build" hidden>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-insurers">Insurers <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-insurers" hidden>
+          <a class="mega-link" href="/insurance"><b>Overview</b><span>What the engine does with wordings, endorsements and executed deals.</span></a>
+          <a class="mega-link" href="/insurance/carriers"><b>Carriers</b><span>Fronting, E&amp;S and specialty carriers writing on several entities' paper.</span></a>
+          <a class="mega-link" href="/insurance/mgas"><b>MGAs and program administrators</b><span>Program forms across carriers, and re-papering when capacity moves.</span></a>
+          <a class="mega-link" href="/insurance/reinsurers"><b>Reinsurers and run-off</b><span>Treaty and facultative wordings, clause libraries, legacy business.</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-platform">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-platform" hidden>
           <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
-          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
-          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
-          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
-          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system and your mail, read where they live.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>Why a passage it cannot find never becomes an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers that keep the version they were based on.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per insurer, and the limits we publish.</span></a>
+          <a class="mega-link" href="/compare"><b>Shared product or your own engine</b><span>When each one fits, including when ours does not.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-company" hidden>
-          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>A one-week prototype at no charge, then a fixed-price build.</span></a>
-          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
     </nav>
   </div>
 </header>
+<!-- @end header -->
 
 <main id="main">
 
@@ -81,14 +84,14 @@
     <div class="wrap wrap-text">
       <p class="crumb"><a href="/">WYEA</a> / Law firms</p>
       <p class="eyebrow">Orange County · Legal AI</p>
-      <h1 style="font-size:clamp(2rem,3.8vw,3rem)">Custom AI software for law firms in Orange County</h1>
-      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Published August 9, 2026 · Reviewed September 2026</p>
+      <h1>Custom AI software for law firms in Orange County</h1>
+      <p class="article-meta"><span>Published <time datetime="2026-08-09">August 9, 2026</time></span></p>
     </div>
   </section>
 
   <section class="prose">
     <div class="wrap wrap-text">
-      <p class="lede" style="max-width:none;margin-bottom:1.6em">
+      <p class="lede">
         <strong>WYEA builds custom AI software for law firms in Orange County,
         California.</strong> Instead of subscribing to a platform and adapting
         your practice to it, your firm gets one system built around your
@@ -156,8 +159,8 @@
 
       <h2>What does custom legal AI software cost?</h2>
       <p>
-        <strong>Every WYEA engagement starts with a one-week prototype, at no
-        charge,</strong> built on your firm's real documents. If the prototype
+        <strong>Every WYEA engagement starts with a one-week prototype, at a
+        fixed price quoted before work starts,</strong> built on your firm's real documents. If the prototype
         earns it, the full build is quoted at a fixed price with defined
         deliverables. Builds start at $25,000. The monthly fee starts at
         $5,500 and covers hosting, support and every model provider cost. Your firm owns its documents and what the system learns
@@ -190,15 +193,14 @@
         </div>
       </div>
       <div class="reveal">
+        <!-- @partial contact-form -->
         <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
+          <p class="form-intro">Prefer to write? We reply within one business day.</p>
           <div class="field-row">
             <label class="field"><span>Your name</span>
               <input type="text" name="name" autocomplete="name" maxlength="200" required>
             </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
+            <label class="field"><span>Firm <span class="optional">(optional)</span></span>
               <input type="text" name="firm" autocomplete="organization" maxlength="200">
             </label>
           </div>
@@ -218,59 +220,63 @@
         <p id="contact-success" class="contact-success" hidden>
           Thanks. Your message is on its way. We'll reply within one business day.
         </p>
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>
 
 </main>
 
+<!-- @partial footer -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
-        <p>
-          Whittle and Ye Engineering Associates. Firm-owned document engines,
-          built in Newport Beach.
-        </p>
+        <p>Firm-owned document engines for specialty insurers, MGAs and program administrators.</p>
       </div>
       <div class="footer-col">
-        <h4>Platform</h4>
+        <h2>Insurers</h2>
+        <ul>
+          <li><a href="/insurance">Overview</a></li>
+          <li><a href="/insurance/carriers">Carriers</a></li>
+          <li><a href="/insurance/mgas">MGAs and program administrators</a></li>
+          <li><a href="/insurance/reinsurers">Reinsurers and run-off</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Platform</h2>
         <ul>
           <li><a href="/platform">Overview</a></li>
           <li><a href="/platform/sources">Connected sources</a></li>
           <li><a href="/platform/verification">Grounding and verification</a></li>
           <li><a href="/platform/evidence">Evidence and the record</a></li>
           <li><a href="/platform/isolation">Isolation</a></li>
+          <li><a href="/compare">Shared product or your own engine</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>How we work</h4>
+        <h2>Trust</h2>
         <ul>
-          <li><a href="/how-we-work">Engagement model</a></li>
-          <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/insurance">For specialty insurers</a></li>
-          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About the firm</a></li>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/security/vendor-review">Vendor review</a></li>
           <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h2>Company</h2>
         <ul>
-          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="#contact">Send a message</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/how-we-work">How we work</a></li>
+          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a></li>
+          <li><a href="/#contact">Send a message</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-legal">
       <span>&copy; 2026 WYEA LLC</span>
-      <span>Newport Beach · Orange County, California</span>
+      <span>Newport Beach, California</span>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
     </div>
@@ -278,5 +284,6 @@
 </footer>
 
 <script src="/site.js" defer></script>
+<!-- @end footer -->
 </body>
 </html>

@@ -15,11 +15,12 @@
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
-  <script>document.documentElement.className += " js";</script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <script>document.documentElement.className += " js"; setTimeout(function () { if (!window.wyeaReady) document.documentElement.classList.remove("js"); }, 4000);</script>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
+<!-- @partial header -->
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -27,32 +28,34 @@
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a class="nav-link" href="/insurance">Insurers</a>
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-build" hidden>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-insurers">Insurers <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-insurers" hidden>
+          <a class="mega-link" href="/insurance"><b>Overview</b><span>What the engine does with wordings, endorsements and executed deals.</span></a>
+          <a class="mega-link" href="/insurance/carriers"><b>Carriers</b><span>Fronting, E&amp;S and specialty carriers writing on several entities' paper.</span></a>
+          <a class="mega-link" href="/insurance/mgas"><b>MGAs and program administrators</b><span>Program forms across carriers, and re-papering when capacity moves.</span></a>
+          <a class="mega-link" href="/insurance/reinsurers"><b>Reinsurers and run-off</b><span>Treaty and facultative wordings, clause libraries, legacy business.</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-platform">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-platform" hidden>
           <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
-          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
-          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
-          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
-          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system and your mail, read where they live.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>Why a passage it cannot find never becomes an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers that keep the version they were based on.</span></a>
+          <a class="mega-link" href="/platform/isolation" aria-current="page"><b>Isolation</b><span>One system per insurer, and the limits we publish.</span></a>
+          <a class="mega-link" href="/compare"><b>Shared product or your own engine</b><span>When each one fits, including when ours does not.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-company" hidden>
-          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>A one-week prototype at no charge, then a fixed-price build.</span></a>
-          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
     </nav>
   </div>
 </header>
+<!-- @end header -->
 
 <main id="main">
 
@@ -65,9 +68,9 @@
           <h1>One system per client, with nothing shared underneath</h1>
         </div>
         <div>
-          <p class="lede">Each client runs in its own project with its own database, network and sign-in. The boundary between clients is separate infrastructure for each one. The boundary between you and us is narrower, and we say so.</p>
+          <p class="lede">WYEA builds firm-owned document engines for specialty insurers, MGAs and program administrators. Each client runs in its own project with its own database, network and sign-in. The boundary between clients is separate infrastructure for each one. The boundary between you and us is narrower, and we say so.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
             <a class="btn btn-ghost" href="/security">Read the security page</a>
           </div>
         </div>
@@ -76,7 +79,7 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Diagram of one firm's own system, holding its people, its files and its history, with nothing pooled into a shared product and no other client able to reach it.">
+        <figure class="app reveal" role="img" aria-label="Diagram of one insurer's own system, holding its people, its files and its history, with nothing pooled into a shared product and no other client able to reach it.">
           <div class="app-bar">
             <span class="dot"></span> Your system
             <span class="app-meta">Nobody else is in it</span>
@@ -86,7 +89,7 @@
               <span class="boundary-label">Yours</span>
               <div class="node-row">
                 <div class="node"><b>Your people</b><span>Signed in the way they already sign in</span></div>
-                <div class="node"><b>Your files</b><span>Read where they live, not copied out</span></div>
+                <div class="node"><b>Your files</b><span>Read where they live</span></div>
                 <div class="node"><b>Your history</b><span>Every answer, and what it rested on</span></div>
               </div>
               <div class="egress">
@@ -96,8 +99,8 @@
             </div>
           </div>
           <div class="app-foot">
-            <b>No other firm is in your system,</b> because no other firm is in
-            your system. There is no shared pool to be in.
+            <b>No other insurer is in your system.</b>
+            There is no shared pool to be in.
           </div>
         </figure>
       </div>
@@ -112,7 +115,7 @@
           <h2 class="head">And what it does not</h2>
         </div>
         <p class="lede">
-          The honest version, because the version that oversells it is the one that gets found out in diligence.
+          What holds today, and what does not.
         </p>
       </div>
 
@@ -120,7 +123,7 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>What holds today</h3>
-            <p>These are properties of the running system, not of a roadmap.</p>
+            <p>These are properties of the running system today.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
@@ -130,7 +133,7 @@
               </div>
               <div class="vprop-part">
                 <h4>No training on your content</h4>
-                <p>Not by us, not by a provider underneath us. Instances share code and never data.</p>
+                <p>Not by us and not by a provider underneath us. Instances share code and no data.</p>
               </div>
               <div class="vprop-part">
                 <h4>Your store stays authoritative</h4>
@@ -142,13 +145,13 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>What we are not claiming</h3>
-            <p>Some of what a security questionnaire asks for is not finished, and the site will not pretend otherwise.</p>
+            <p>Some of what a security questionnaire asks for is not finished.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>We run it, not you</h4>
-                <p>It runs on our infrastructure rather than inside your own cloud account or on hardware in your building.</p>
+                <h4>We run it</h4>
+                <p>It runs on our infrastructure. It does not run inside your own cloud account or on hardware in your building.</p>
               </div>
               <div class="vprop-part">
                 <h4>Export and deletion are not built</h4>
@@ -168,8 +171,8 @@
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-stack reveal" style="margin-bottom:32px">
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
+      <div class="head-stack reveal mb-8">
+        <h2 class="h-sub">Keep reading</h2>
       </div>
       <div class="explore reveal">
         <a href="/security"><small>Security</small><b>The full picture, including what is unfinished</b></a>
@@ -190,19 +193,18 @@
           book, or decide on the call.
         </p>
         <div class="actions">
-          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
+        <!-- @partial contact-form -->
         <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
+          <p class="form-intro">Prefer to write? We reply within one business day.</p>
           <div class="field-row">
             <label class="field"><span>Your name</span>
               <input type="text" name="name" autocomplete="name" maxlength="200" required>
             </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
+            <label class="field"><span>Firm <span class="optional">(optional)</span></span>
               <input type="text" name="firm" autocomplete="organization" maxlength="200">
             </label>
           </div>
@@ -222,59 +224,63 @@
         <p id="contact-success" class="contact-success" hidden>
           Thanks. Your message is on its way. We'll reply within one business day.
         </p>
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>
 
 </main>
 
+<!-- @partial footer -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
-        <p>
-          Whittle and Ye Engineering Associates. Firm-owned document engines,
-          built in Newport Beach.
-        </p>
+        <p>Firm-owned document engines for specialty insurers, MGAs and program administrators.</p>
       </div>
       <div class="footer-col">
-        <h4>Platform</h4>
+        <h2>Insurers</h2>
+        <ul>
+          <li><a href="/insurance">Overview</a></li>
+          <li><a href="/insurance/carriers">Carriers</a></li>
+          <li><a href="/insurance/mgas">MGAs and program administrators</a></li>
+          <li><a href="/insurance/reinsurers">Reinsurers and run-off</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Platform</h2>
         <ul>
           <li><a href="/platform">Overview</a></li>
           <li><a href="/platform/sources">Connected sources</a></li>
           <li><a href="/platform/verification">Grounding and verification</a></li>
           <li><a href="/platform/evidence">Evidence and the record</a></li>
           <li><a href="/platform/isolation">Isolation</a></li>
+          <li><a href="/compare">Shared product or your own engine</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>How we work</h4>
+        <h2>Trust</h2>
         <ul>
-          <li><a href="/how-we-work">Engagement model</a></li>
-          <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/insurance">For specialty insurers</a></li>
-          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About the firm</a></li>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/security/vendor-review">Vendor review</a></li>
           <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h2>Company</h2>
         <ul>
-          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="#contact">Send a message</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/how-we-work">How we work</a></li>
+          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a></li>
+          <li><a href="/#contact">Send a message</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-legal">
       <span>&copy; 2026 WYEA LLC</span>
-      <span>Newport Beach · Orange County, California</span>
+      <span>Newport Beach, California</span>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
     </div>
@@ -282,5 +288,6 @@
 </footer>
 
 <script src="/site.js" defer></script>
+<!-- @end footer -->
 </body>
 </html>

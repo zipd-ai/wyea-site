@@ -15,11 +15,12 @@
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
-  <script>document.documentElement.className += " js";</script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <script>document.documentElement.className += " js"; setTimeout(function () { if (!window.wyeaReady) document.documentElement.classList.remove("js"); }, 4000);</script>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
+<!-- @partial header -->
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -27,32 +28,34 @@
     <a class="wordmark" href="/">WYEA</a>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main">
-      <a class="nav-link" href="/insurance">Insurers</a>
       <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-build" hidden>
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-insurers">Insurers <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-insurers" hidden>
+          <a class="mega-link" href="/insurance"><b>Overview</b><span>What the engine does with wordings, endorsements and executed deals.</span></a>
+          <a class="mega-link" href="/insurance/carriers"><b>Carriers</b><span>Fronting, E&amp;S and specialty carriers writing on several entities' paper.</span></a>
+          <a class="mega-link" href="/insurance/mgas"><b>MGAs and program administrators</b><span>Program forms across carriers, and re-papering when capacity moves.</span></a>
+          <a class="mega-link" href="/insurance/reinsurers"><b>Reinsurers and run-off</b><span>Treaty and facultative wordings, clause libraries, legacy business.</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-platform">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-platform" hidden>
           <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
-          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
-          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
-          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
-          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system and your mail, read where they live.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>Why a passage it cannot find never becomes an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence" aria-current="page"><b>Evidence and the record</b><span>Answers that keep the version they were based on.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per insurer, and the limits we publish.</span></a>
+          <a class="mega-link" href="/compare"><b>Shared product or your own engine</b><span>When each one fits, including when ours does not.</span></a>
         </div>
       </div>
-      <a class="nav-link" href="/how-we-work">How we work</a>
       <a class="nav-link" href="/security">Security</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-company" hidden>
-          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>A one-week prototype at no charge, then a fixed-price build.</span></a>
-          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
     </nav>
   </div>
 </header>
+<!-- @end header -->
 
 <main id="main">
 
@@ -62,12 +65,12 @@
       <div class="hero-grid">
         <div>
           <p class="eyebrow">Platform</p>
-          <h1>Answers point at a version, not at a file</h1>
+          <h1>Every answer points at one version of a document</h1>
         </div>
         <div>
-          <p class="lede">A file changes. A version does not. Every answer records which version it was found in, which is what lets somebody check the work months later when the document has moved on.</p>
+          <p class="lede">WYEA builds firm-owned document engines for specialty insurers, MGAs and program administrators. Every answer records which version of a document it was found in. That lets somebody check the work months later, after the file has changed.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
             <a class="btn btn-ghost" href="/platform/isolation">Isolation</a>
           </div>
         </div>
@@ -76,34 +79,33 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Timeline showing an answer given in March, the underlying contract edited in June, and the March answer still opening the March version today so the advice can be shown exactly as it was relied on.">
+        <figure class="app reveal" role="img" aria-label="Timeline showing an answer given in March, the underlying endorsement replaced in June, and the March answer still opening the March version today so it can be shown exactly as it was relied on.">
           <div class="app-bar">
-            <span class="dot"></span> Advice given in March, questioned in September
+            <span class="dot"></span> An answer given in March, questioned in September
             <span class="app-meta">Still opens</span>
           </div>
           <div class="fig-dates">
             <div class="date-row">
               <span class="date-when">4 March</span>
-              <span class="date-what"><b>You told the client the indemnity was capped</b><small>The answer pointed at Northwind MSA, section 12.1</small></span>
+              <span class="date-what"><b>Your team confirmed the waiting period</b><small>The answer pointed at Northwind Cyber Policy, Endorsement 4</small></span>
               <span class="pill pill-ok">Answered</span>
             </div>
             <div class="date-row">
               <span class="date-when">18 June</span>
-              <span class="date-what"><b>Somebody edited that contract</b><small>A new version replaced it in SharePoint. Normal, and nobody told you</small></span>
+              <span class="date-what"><b>Somebody replaced that endorsement</b><small>A new version replaced it in SharePoint. Nobody told you</small></span>
               <span class="pill pill-mute">Changed</span>
             </div>
             <div class="date-row is-near">
               <span class="date-when">Today</span>
-              <span class="date-what"><b>The client asks what you relied on</b><small>March's answer still opens March's contract, on the page it came from</small></span>
+              <span class="date-what"><b>A reinsurer asks what you relied on</b><small>March's answer still opens March's endorsement, on the page it came from</small></span>
               <span class="pill pill-flag">Shown</span>
             </div>
           </div>
           <div class="app-foot">
-            The usual answer is a search through mailboxes.
-            <b>Here it is one click, six months later.</b>
+            <b>Six months later, checking it takes one click.</b>
           </div>
         </figure>
-        <p class="app-caption reveal">The firms, clauses and dates in this example are invented. No client material appears anywhere on this site.</p>
+        <p class="app-caption"><span class="tag-invented">Invented example</span> The policies, endorsements and dates in this example are invented. No client material appears anywhere on this site.</p>
       </div>
     </div>
   </section>
@@ -116,7 +118,7 @@
           <h2 class="head">Enough to answer the question six months later</h2>
         </div>
         <p class="lede">
-          Not a certificate we issued. Your own system's account of that document, on that day.
+          It is your own system's account of that document, on that day.
         </p>
       </div>
 
@@ -147,7 +149,7 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>The document changed</h3>
-            <p>Somebody edits the file after an answer was given. Without version binding, the answer now points at text that is no longer there.</p>
+            <p>Somebody edits the file after an answer was given. Without a version on record, the answer now points at text that is no longer there.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
@@ -169,21 +171,21 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>The version expired</h3>
-            <p>Providers age out version history on a schedule set by the plan the firm pays for. Matters outlive that schedule.</p>
+            <p>Providers age out version history on a schedule set by the plan the company pays for. Policies and treaties outlive that schedule.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
                 <h4>The cache is narrow on purpose</h4>
-                <p>It holds a copy of the pages you have already been given answers from, and nothing else. It is not a backup of your document store.</p>
+                <p>It holds a copy of the pages you have already been given answers from, and nothing else. It does not back up your document store.</p>
               </div>
               <div class="vprop-part">
-                <h4>Write once, content addressed</h4>
+                <h4>Stored once, never changed</h4>
                 <p>The same page is never stored twice, and what is stored cannot be quietly altered afterwards.</p>
               </div>
               <div class="vprop-part">
                 <h4>It is never authoritative</h4>
-                <p>Your store remains the system of record. The cache exists to prove what was read, not to tell you what is true now.</p>
+                <p>Your store remains the system of record. The cache exists to show what was read.</p>
               </div>
             </div>
           </div>
@@ -195,8 +197,8 @@
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-stack reveal" style="margin-bottom:32px">
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
+      <div class="head-stack reveal mb-8">
+        <h2 class="h-sub">Keep reading</h2>
       </div>
       <div class="explore reveal">
         <a href="/platform/isolation"><small>Next</small><b>Isolation</b></a>
@@ -217,19 +219,18 @@
           book, or decide on the call.
         </p>
         <div class="actions">
-          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
+        <!-- @partial contact-form -->
         <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
+          <p class="form-intro">Prefer to write? We reply within one business day.</p>
           <div class="field-row">
             <label class="field"><span>Your name</span>
               <input type="text" name="name" autocomplete="name" maxlength="200" required>
             </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
+            <label class="field"><span>Firm <span class="optional">(optional)</span></span>
               <input type="text" name="firm" autocomplete="organization" maxlength="200">
             </label>
           </div>
@@ -249,59 +250,63 @@
         <p id="contact-success" class="contact-success" hidden>
           Thanks. Your message is on its way. We'll reply within one business day.
         </p>
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>
 
 </main>
 
+<!-- @partial footer -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="wordmark" href="/">WYEA</a>
-        <p>
-          Whittle and Ye Engineering Associates. Firm-owned document engines,
-          built in Newport Beach.
-        </p>
+        <p>Firm-owned document engines for specialty insurers, MGAs and program administrators.</p>
       </div>
       <div class="footer-col">
-        <h4>Platform</h4>
+        <h2>Insurers</h2>
+        <ul>
+          <li><a href="/insurance">Overview</a></li>
+          <li><a href="/insurance/carriers">Carriers</a></li>
+          <li><a href="/insurance/mgas">MGAs and program administrators</a></li>
+          <li><a href="/insurance/reinsurers">Reinsurers and run-off</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Platform</h2>
         <ul>
           <li><a href="/platform">Overview</a></li>
           <li><a href="/platform/sources">Connected sources</a></li>
           <li><a href="/platform/verification">Grounding and verification</a></li>
           <li><a href="/platform/evidence">Evidence and the record</a></li>
           <li><a href="/platform/isolation">Isolation</a></li>
+          <li><a href="/compare">Shared product or your own engine</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>How we work</h4>
+        <h2>Trust</h2>
         <ul>
-          <li><a href="/how-we-work">Engagement model</a></li>
-          <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/insurance">For specialty insurers</a></li>
-          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About the firm</a></li>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/security/vendor-review">Vendor review</a></li>
           <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h2>Company</h2>
         <ul>
-          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="#contact">Send a message</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/how-we-work">How we work</a></li>
+          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a></li>
+          <li><a href="/#contact">Send a message</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-legal">
       <span>&copy; 2026 WYEA LLC</span>
-      <span>Newport Beach · Orange County, California</span>
+      <span>Newport Beach, California</span>
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
     </div>
@@ -309,5 +314,6 @@
 </footer>
 
 <script src="/site.js" defer></script>
+<!-- @end footer -->
 </body>
 </html>

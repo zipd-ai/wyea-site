@@ -16,7 +16,7 @@
 // twice. A rerun only retries failures and catches late confirms.
 //
 //   --dry-run   render + count only; writes a preview HTML next to the issue
-//   --test X    send only to address X through Resend directly — requires
+//   --test X    send only to address X through Resend directly, requires
 //               RESEND_API_KEY (env or gitignored .env); not logged
 //   --direct    send from this machine via RESEND_API_KEY instead of the
 //               Worker (the old path; kept as a fallback)
@@ -59,7 +59,7 @@ if (!issuePath || (testIdx >= 0 && !testAddress)) {
 }
 if ((direct || testAddress) && !dryRun && !process.env.RESEND_API_KEY) {
   console.error("--test/--direct send from this machine and need RESEND_API_KEY (env or .env).");
-  console.error("The default worker mode needs no key — drop the flag.");
+  console.error("The default worker mode needs no key, drop the flag.");
   process.exit(1);
 }
 
@@ -127,14 +127,14 @@ async function workerSend() {
     if (data.failed.length) console.error(`  failed: ${data.failed.join(", ")} (rerun to retry)`);
     if (!data.remaining) {
       if (round === 1 && total === 0 && !data.failed.length) {
-        console.log("nothing to send — every confirmed subscriber already received this issue.");
+        console.log("nothing to send, every confirmed subscriber already received this issue.");
       } else {
-        console.log(`done — ${total} email(s) sent by the Worker; the Resend key never left its vault.`);
+        console.log(`done, ${total} email(s) sent by the Worker; the Resend key never left its vault.`);
       }
       process.exit(data.failed.length ? 1 : 0);
     }
     if (data.sent === 0) {
-      console.error("no progress this round — stopping so a bad address can't loop forever. Rerun to retry.");
+      console.error("no progress this round, stopping so a bad address can't loop forever. Rerun to retry.");
       process.exit(1);
     }
   }
@@ -144,7 +144,7 @@ async function workerSend() {
 
 async function directSend(recipients, { log }) {
   if (!recipients.length) {
-    console.log("nothing to send — every confirmed subscriber already received this issue.");
+    console.log("nothing to send, every confirmed subscriber already received this issue.");
     return;
   }
   console.log(`sending "${subject}" to ${recipients.length} recipient(s)...`);
@@ -199,7 +199,7 @@ async function directSend(recipients, { log }) {
     for (const f of failures) console.error(`  ${f.email}: ${f.status} ${f.body}`);
     process.exit(1);
   }
-  console.log("done — all sends accepted by Resend.");
+  console.log("done, all sends accepted by Resend.");
 }
 
 /* ---------- shared ---------- */
@@ -243,7 +243,7 @@ function d1(sql) {
     ], { encoding: "utf8", maxBuffer: 32 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] });
   } catch (err) {
     console.error(String(err.stderr || err.message).trim());
-    console.error("\ncould not reach the subscriber database — check that `npx wrangler login`");
+    console.error("\ncould not reach the subscriber database, check that `npx wrangler login`");
     console.error("has run and that schema.sql was applied (--remote for the live database).");
     process.exit(1);
   }

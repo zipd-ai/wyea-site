@@ -1,4 +1,4 @@
-// Cloudflare Workers config — static site + the contact-form endpoint (worker.js).
+// Cloudflare Workers config: static site + the contact-form endpoint (worker.js).
 // Asset requests are served directly; only non-asset paths (POST /api/contact)
 // invoke the Worker.
 {

@@ -1,7 +1,8 @@
 /* ===========================================================================
-   WYEA site behaviour: navigation, reveal-on-scroll, and the two forms.
-   Progressive enhancement throughout: with this file blocked the nav is a
-   plain list of links, every section is visible, and both forms still post.
+   WYEA site behaviour: navigation, reveal-on-scroll, the theme toggle on
+   /design-system, and the contact form. Progressive enhancement throughout:
+   with this file blocked the nav is a plain list of links, every section is
+   visible, and the booking link still works.
    ========================================================================= */
 
 (function () {
@@ -9,21 +10,38 @@
 
   /* ------------------------------------------------------------- nav ---- */
 
+  // MediaQueryList.addEventListener is missing before Safari 14; addListener
+  // is its older name. Throwing here would stop every handler below.
+  function onMediaChange(mql, fn) {
+    if (mql.addEventListener) mql.addEventListener("change", fn);
+    else if (mql.addListener) mql.addListener(fn);
+  }
+
   var nav = document.getElementById("nav");
   var toggle = document.getElementById("nav-toggle");
 
+  function setMenu(state) {
+    if (!toggle || !nav) return;
+    nav.classList.toggle("is-open", state);
+    toggle.setAttribute("aria-expanded", String(state));
+    document.body.style.overflow = state ? "hidden" : "";
+  }
+
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", String(open));
-      document.body.style.overflow = open ? "hidden" : "";
+      setMenu(!nav.classList.contains("is-open"));
+    });
+    // The mobile menu only exists below 1024px. If the window grows past
+    // that with it open, close it so the page can scroll again.
+    onMediaChange(window.matchMedia("(min-width: 1024px)"), function (e) {
+      if (e.matches) setMenu(false);
     });
   }
 
   // Dropdown panels: click to open (works on touch), hover to preview on a
   // pointer, Escape to close. Only one panel is ever open.
   var triggers = [].slice.call(document.querySelectorAll("[data-mega]"));
-  var hoverable = window.matchMedia("(hover: hover) and (min-width: 1041px)");
+  var hoverable = window.matchMedia("(hover: hover) and (min-width: 1024px)");
 
   function closeAll(except) {
     triggers.forEach(function (t) {
@@ -47,7 +65,10 @@
 
     trigger.addEventListener("click", function (e) {
       e.preventDefault();
-      open(trigger, trigger.getAttribute("aria-expanded") !== "true");
+      // With a pointer hovering, mouseenter has already opened the panel, so
+      // a click keeps it open instead of toggling it shut.
+      if (hoverable.matches && item && item.matches(":hover")) open(trigger, true);
+      else open(trigger, trigger.getAttribute("aria-expanded") !== "true");
     });
 
     if (item) {
@@ -61,7 +82,9 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeAll();
+    if (e.key !== "Escape") return;
+    closeAll();
+    if (nav && nav.classList.contains("is-open")) { setMenu(false); toggle.focus(); }
   });
 
   document.addEventListener("click", function (e) {
@@ -121,6 +144,10 @@
 
     targets.forEach(function (el) { io.observe(el); });
   }
+
+  // Tells the inline head script that reveal is wired up, so it does not
+  // remove .js and fall back to showing everything.
+  window.wyeaReady = true;
 
   /* ----------------------------------------------------------- forms ---- */
 
@@ -195,47 +222,19 @@
     if (window.turnstile) turnstile.reset();
   }
 
-  var brief = document.getElementById("brief-form");
+  /* ------------------------------------------------------- theme ---- */
 
-  if (brief && window.fetch) {
-    var bButton = brief.querySelector("button[type=submit]");
-    var bStatus = brief.querySelector(".brief-status");
-
-    brief.addEventListener("submit", function (e) {
-      e.preventDefault();
-      bButton.disabled = true;
-      bButton.textContent = "Subscribing…";
-      bStatus.textContent = "";
-
-      fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: brief.email.value,
-          website: brief.website.value,
-          source: brief.getAttribute("data-source") || "site"
-        })
-      }).then(function (res) {
-        return res.json().then(function (data) {
-          if (res.ok && data.ok) {
-            brief.querySelector(".brief-row").hidden = true;
-            var micro = brief.querySelector(".brief-micro");
-            if (micro) micro.hidden = true;
-            brief.querySelector(".brief-success").hidden = false;
-          } else {
-            bFail(data && data.error);
-          }
-        });
-      }).catch(function () { bFail(); });
+  // Only /design-system carries a toggle. It sets data-theme on <html>,
+  // which the token layer reads; with no attribute the system setting wins.
+  [].slice.call(document.querySelectorAll("[data-theme-set]")).forEach(function (button) {
+    button.addEventListener("click", function () {
+      var theme = button.getAttribute("data-theme-set");
+      if (theme === "system") document.documentElement.removeAttribute("data-theme");
+      else document.documentElement.setAttribute("data-theme", theme);
+      [].slice.call(document.querySelectorAll("[data-theme-set]")).forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b === button));
+      });
+      document.dispatchEvent(new CustomEvent("themechange"));
     });
-  }
-
-  function bFail(message) {
-    var button = brief.querySelector("button[type=submit]");
-    var status = brief.querySelector(".brief-status");
-    button.disabled = false;
-    button.textContent = "Subscribe";
-    status.textContent = message ||
-      "Something went wrong on our end. Please try again in a minute.";
-  }
+  });
 })();

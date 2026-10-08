@@ -1,4 +1,4 @@
-# The Brief — referral loop (Stage 3 growth engine)
+# The Brief, referral loop (Stage 3 growth engine)
 
 TLDR-style referral mechanics on the owned stack: no beehiiv, the list and
 the referral graph live in our D1 database, and the same double-opt-in gate
@@ -28,14 +28,14 @@ that keeps the list clean is what makes referral credit fraud-resistant.
 | Credit | brief.js `creditReferral`, called from the confirm handler | stamps `referrals.confirmed_at`, logs `referral_confirmed`, checks tiers, grants + emails on crossing |
 | Footer merge fields | brief.js issue templates | `{{referral_url}}`, `{{referral_count}}`, `{{share_url}}` substituted per recipient in both worker and direct sends |
 | Share page | brief.js `sharePage` (`GET /brief/share?t=`) | personal link, count, tier list |
-| Audit | subscriber_events chain | `referred_signup`, `referral_confirmed`, `reward_granted` — all hash-chained like every other lifecycle event |
+| Audit | subscriber_events chain | `referred_signup`, `referral_confirmed`, `reward_granted`, all hash-chained like every other lifecycle event |
 
 ## Fraud posture
 
 - Credit requires the referee to CLICK a confirmation email: inventing
   addresses earns nothing, bots hitting the subscribe API earn nothing.
 - Self-referral blocked (code owner's email compared to subscriber email).
-- One referrer per referee, permanently (first link wins) — no credit
+- One referrer per referee, permanently (first link wins), no credit
   poaching by re-subscribing someone.
 - Referee signup IP is stored next to the attribution; before fulfilling a
   reward, eyeball it:
@@ -51,7 +51,7 @@ Defined in `REFERRAL_TIERS` (brief.js). Currently:
 - **3 confirmed referrals → the WYEA practice-area prompt pack.**
   Fulfillment is MANUAL by design: the referrer is told "reply and we will
   send it over" and the operator gets a notification email. Nothing is
-  promised that does not exist yet — build the prompt pack before the
+  promised that does not exist yet, build the prompt pack before the
   first subscriber gets close to 3.
 
 Adding a tier = one line in `REFERRAL_TIERS` (e.g. `{ count: 10, name:

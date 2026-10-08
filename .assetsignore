@@ -15,3 +15,12 @@ LAUNCH_CHECKLIST.md
 *.preview.html
 REFERRALS.md
 audit.mjs
+CLAUDE.md
+docs/
+.claude/
+node_modules/
+package.json
+package-lock.json
+scripts/
+.DS_Store
+partials/
