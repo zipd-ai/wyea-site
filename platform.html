@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How a Document Engine Works | WYEA</title>
-  <meta name="description" content="How a WYEA document engine works: connected sources, every passage checked against its source, answers tied to a version, one system per client.">
+  <meta name="description" content="How a WYEA document engine works: it reads your files, checks every quote, keeps each version, and runs one system per client.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="How a Document Engine Works | WYEA">
-  <meta property="og:description" content="How a WYEA document engine works: connected sources, every passage checked against its source, answers tied to a version, one system per client.">
+  <meta property="og:description" content="How a WYEA document engine works: it reads your files, checks every quote, keeps each version, and runs one system per client.">
   <meta property="og:url" content="https://wyea.ai/platform">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://wyea.ai/platform">
-  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js"; setTimeout(function () { if (!window.wyeaReady) document.documentElement.classList.remove("js"); }, 4000);</script>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -59,16 +58,15 @@
 
 <main id="main">
 
-  <section class="hero hero-sub">
+    <section class="hero hero-sub">
     <div class="wrap">
       <p class="crumb"><a href="/">WYEA</a> / Platform</p>
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Platform</p>
-          <h1>A document engine that can show you where every answer came from</h1>
+          <h1>How the engine works</h1>
         </div>
         <div>
-          <p class="lede">WYEA builds firm-owned document engines for specialty insurers, MGAs and program administrators. The system reads the documents your company already keeps, answers questions against them, and binds each answer to the exact version of the exact file it was found in. Where it cannot find something, it says so.</p>
+          <p class="lede">It reads the files you already keep. Every answer shows where it came from.</p>
           <div class="actions">
             <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
             <a class="btn btn-ghost" href="/how-we-work">How we work</a>
@@ -76,18 +74,17 @@
         </div>
       </div>
     </div>
-
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Table of connected sources: Dropbox slips and executed binders, SharePoint policy wordings and endorsements, and Outlook mail. Each one stays in the system it already lives in.">
+        <figure class="app reveal" role="img" aria-label="Invented example. Table of connected sources: Dropbox slips and binders, SharePoint wordings and endorsements, and Outlook mail. Each stays where it lives.">
           <div class="app-bar">
             <span class="dot"></span> What it reads
-            <span class="app-meta">Nothing moves house</span>
+            <span class="app-meta">Nothing moves</span>
           </div>
           <div class="fig-scroll">
             <table class="fig-table">
               <thead>
-                <tr><th>Where your work already lives</th><th>What it reads</th><th>How much</th><th>Stays put</th></tr>
+                <tr><th>Where your work lives</th><th>What it reads</th><th>How much</th><th>Stays put</th></tr>
               </thead>
               <tbody>
                 <tr>
@@ -112,166 +109,60 @@
             </table>
           </div>
           <div class="app-foot">
-            Nobody uploads anything into a new system.
-            <b>Your files stay where your people already put them.</b>
+            <b>Your files stay where your people put them.</b>
           </div>
         </figure>
-        <p class="app-caption"><span class="tag-invented">Invented example</span> The document counts in this example are invented.</p>
+        <p class="app-caption"><span class="tag-invented">Invented example</span></p>
       </div>
     </div>
   </section>
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">The shape of it</p>
-          <h2 class="head">Four parts</h2>
-        </div>
-        <p class="lede">
-          Each one exists because of a specific way document systems behave.
-        </p>
+      <div class="head-center reveal">
+        <h2>Four parts</h2>
       </div>
-
-      <div class="vprops reveal">
-        <div class="vprop">
-          <div class="vprop-head">
-            <h3>Connected sources</h3>
-            <p>Your document system and your Outlook mail. Your document system stays the system of record.</p>
-          </div>
-          <div class="vprop-body is-plain">
-            <div class="vprop-parts">
-              <div class="vprop-part">
-                <h4>Your store stays the record</h4>
-                <p>The platform does not become a second library your people have to keep in sync. Your document system remains the thing that is true.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Providers differ, and it matters</h4>
-                <p>Version durability, digest algorithm, change-feed shape and access control all vary. The connector declares what it can actually promise.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Filenames are treated as sensitive</h4>
-                <p>At an insurer the filename is often the sensitive part, so it is never used to decide what something is or who may see it.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="vprop">
-          <div class="vprop-head">
-            <h3>Grounding and verification</h3>
-            <p>A quote is located in the source or it does not become an answer.</p>
-          </div>
-          <div class="vprop-body is-plain">
-            <div class="vprop-parts">
-              <div class="vprop-part">
-                <h4>It is there, or it is flagged</h4>
-                <p>A passage has to be in one of your documents before it is written as an answer. A passage that is not found is flagged for you.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>No confidence score</h4>
-                <p>There is no number between right and wrong for somebody to read generously at the end of the day.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Unreadable is its own answer</h4>
-                <p>If the source could not be opened, the result is not checked. Checked and false is a separate result.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="vprop">
-          <div class="vprop-head">
-            <h3>Evidence and the record</h3>
-            <p>An answer points at the document as your own system had it that day.</p>
-          </div>
-          <div class="vprop-body is-plain">
-            <div class="vprop-parts">
-              <div class="vprop-part">
-                <h4>The proof is your own system's</h4>
-                <p>What an answer points at is your own system's record of that document.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Old answers are never rewritten</h4>
-                <p>When a document changes, the answer you were already given keeps pointing at what it was actually based on.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>It outlives your provider's memory</h4>
-                <p>Dropbox and the rest drop old versions on a schedule of their own. Work you have already relied on stays openable anyway.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="vprop">
-          <div class="vprop-head">
-            <h3>Isolation</h3>
-            <p>One client, one system, with nothing shared underneath.</p>
-          </div>
-          <div class="vprop-body is-plain">
-            <div class="vprop-parts">
-              <div class="vprop-part">
-                <h4>Own database, network, identity</h4>
-                <p>Each insurer's system has its own database, so no shared table holds two insurers' rows.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Nothing pooled</h4>
-                <p>No shared pile for anyone else to search, no reaching across insurers, and nothing of yours trains a model. Instances share software and no documents.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>We publish the limits</h4>
-                <p>We run it for you. The security page says plainly what that does and does not mean today.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="rulelist reveal">
+        <div><b>Connected sources</b><span>Your own system stays the record.</span></div>
+        <div><b>Checked quotes</b><span>A quote is found in the source or flagged.</span></div>
+        <div><b>Evidence</b><span>Each answer keeps the version it came from.</span></div>
+        <div><b>Isolation</b><span>One system per client. Nothing shared.</span></div>
       </div>
-
     </div>
   </section>
 
   <section class="band band-paper band-rule">
     <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">Where it is used</p>
-          <h2 class="head">Specialty insurance</h2>
-        </div>
-        <p class="lede">
-          Wordings, endorsements, slips, binding authority agreements and treaties. The question is usually what a specific document says, as amended, on the paper of a specific entity.
-        </p>
+      <div class="head-center reveal">
+        <h2>Made for specialty insurance</h2>
       </div>
-
       <div class="actions mt-8">
         <a class="arrow" href="/insurance">For specialty insurers</a>
         <a class="arrow" href="/compare">Shared product or your own engine</a>
       </div>
-
     </div>
   </section>
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-stack reveal mb-8">
-        <h2 class="h-sub">Keep reading</h2>
+      <div class="head-center reveal">
+        <h2>Keep reading</h2>
       </div>
       <div class="explore reveal">
-        <a href="/platform/sources"><small>Sources</small><b>What it reads from, and what stays authoritative</b></a>
-        <a href="/platform/verification"><small>Verification</small><b>The rule that stops an unlocatable quote becoming an answer</b></a>
-        <a href="/security"><small>Security</small><b>What we can claim today, and what we cannot</b></a>
+        <a href="/platform/sources"><small>Sources</small><b>What it reads from</b></a>
+        <a href="/platform/verification"><small>Verification</small><b>How a quote is checked</b></a>
+        <a href="/security"><small>Security</small><b>What we can claim today</b></a>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="cta-band band-ink">
+  <section id="contact" class="cta-band">
     <div class="wrap cta-split">
       <div class="reveal">
-        <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what your people spend the day reading.</h2>
-        <p class="lede">
-          Thirty minutes. Book it as a consultation on whether any of this is
-          worth doing, or as a demo on your own documents. Say which when you
-          book, or decide on the call.
-        </p>
+        <h2>See it on your documents</h2>
+        <p class="lede">Mostly standard forms? A shared product may suit you better. We will tell you on the first call.</p>
         <div class="actions">
-          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
+          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
@@ -296,7 +187,7 @@
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
           <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
+          <button type="submit" class="btn btn-primary">Send message</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <p id="contact-success" class="contact-success" hidden>

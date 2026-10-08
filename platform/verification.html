@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grounding and Verification | WYEA</title>
-  <meta name="description" content="A quote is located in the source character for character, or it is flagged. Three outcomes: located, not located, and not checked.">
+  <meta name="description" content="A quote is found in the source or it is flagged. Three results: located, not located and not checked.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Grounding and Verification | WYEA">
-  <meta property="og:description" content="A quote is located in the source character for character, or it is flagged. Three outcomes: located, not located, and not checked.">
+  <meta property="og:description" content="A quote is found in the source or it is flagged. Three results: located, not located and not checked.">
   <meta property="og:url" content="https://wyea.ai/platform/verification">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://wyea.ai/platform/verification">
-  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js"; setTimeout(function () { if (!window.wyeaReady) document.documentElement.classList.remove("js"); }, 4000);</script>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -59,16 +58,15 @@
 
 <main id="main">
 
-  <section class="hero hero-sub">
+    <section class="hero hero-sub">
     <div class="wrap">
       <p class="crumb"><a href="/">WYEA</a> / <a href="/platform">Platform</a> / Grounding and verification</p>
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Platform</p>
-          <h1>A quote is found in the source, or it does not become an answer</h1>
+          <h1>Found in the source, or flagged</h1>
         </div>
         <div>
-          <p class="lede">WYEA builds firm-owned document engines for specialty insurers, MGAs and program administrators, and this rule is the whole of how an answer is checked. There is no scoring model deciding whether a paraphrase is close enough, and no fallback that turns an unlocatable quote into a vaguer sentence that no longer needs one.</p>
+          <p class="lede">A quote must be found in your document. If it is not, we flag it.</p>
           <div class="actions">
             <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
             <a class="btn btn-ghost" href="/platform/evidence">Evidence and the record</a>
@@ -76,10 +74,9 @@
         </div>
       </div>
     </div>
-
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="A question asked across 47 program agreements. Three agreements are returned, each with the clause quoted and the document and section it came from. A fourth is flagged because its authority schedule sits in a scanned exhibit the system could not read, and is handed to a person instead of guessed at.">
+        <figure class="app reveal" role="img" aria-label="Invented example. A question asked across 47 program agreements. Three are returned with the clause quoted and its section. A fourth is flagged because its authority schedule is in a scanned exhibit that could not be read.">
           <div class="app-bar">
             <span class="dot"></span> Which program agreements let the administrator bind above $1 million without referral?
             <span class="app-meta">47 read &middot; 3 matched &middot; 1 for you</span>
@@ -113,51 +110,43 @@
               <span class="ans-mark ans-flag">For you</span>
               <div class="ans-body">
                 <b>Harlow Program Agreement</b>
-                <p class="ans-note">The authority schedule is in a scanned exhibit that could not be read. Nobody guessed at it. It is on your list.</p>
+                <p class="ans-note">The authority schedule is in a scanned exhibit that could not be read. It is on your list.</p>
               </div>
             </div>
           </div>
           <div class="app-foot">
-            Somebody would have read all forty-seven.
-            <b>Every line here opens the page it came from.</b>
+            <b>Every line opens the page it came from.</b>
           </div>
         </figure>
-        <p class="app-caption"><span class="tag-invented">Invented example</span> The agreements, clauses and dates in this example are invented. No client material appears anywhere on this site.</p>
+        <p class="app-caption"><span class="tag-invented">Invented example</span></p>
       </div>
     </div>
   </section>
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">The three outcomes</p>
-          <h2 class="head">Kept apart on purpose</h2>
-        </div>
-        <p class="lede">
-          Collapsing the third into the first is where confident nonsense comes from.
-        </p>
+      <div class="head-center reveal">
+        <h2>Three results</h2>
       </div>
-
       <div class="vprops reveal">
         <div class="vprop">
           <div class="vprop-head">
             <h3>Located</h3>
-            <p>The quote was found in the source text, character for character, after whitespace is normalised.</p>
+            <p>The quote was found in the source, word for word.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Its place travels with it</h4>
-                <p>The position of the quote in the document is recorded, so a reviewer opens the document and lands on the text.</p>
+                <h4>Its place is saved</h4>
+                <p>A reviewer opens the document and lands on the text.</p>
               </div>
               <div class="vprop-part">
-                <h4>So does the version</h4>
-                <p>A position means nothing without the version it refers to, so both are stored together.</p>
+                <h4>So is the version</h4>
+                <p>A place means little without the version it refers to.</p>
               </div>
               <div class="vprop-part">
-                <h4>It stays checkable later</h4>
-                <p>Because the answer points at the document as it read that day, it still opens after somebody edits the file.</p>
+                <h4>It can be checked later</h4>
+                <p>The answer still opens after the file is edited.</p>
               </div>
             </div>
           </div>
@@ -171,15 +160,15 @@
             <div class="vprop-parts">
               <div class="vprop-part">
                 <h4>Flagged and kept</h4>
-                <p>Removing it would hide that the system tried and failed, which a reviewer needs to see.</p>
+                <p>A reviewer needs to see that the engine tried and failed.</p>
               </div>
               <div class="vprop-part">
                 <h4>Never softened</h4>
-                <p>There is no path that rewrites an unsupported claim into something blander that escapes the check.</p>
+                <p>No path rewrites a bad claim into a vaguer one.</p>
               </div>
               <div class="vprop-part">
-                <h4>Counted, and shown to you</h4>
-                <p>The reviewer sees how many claims failed as well as the ones that passed.</p>
+                <h4>Counted</h4>
+                <p>The reviewer sees how many claims failed.</p>
               </div>
             </div>
           </div>
@@ -187,73 +176,55 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>Not checked</h3>
-            <p>The source could not be read when the answer was produced.</p>
+            <p>The source could not be read when the answer was made.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
                 <h4>Permissions move</h4>
-                <p>A document readable on Monday can be walled on Tuesday, and the honest result is that nobody checked.</p>
+                <p>A file open on Monday can be closed on Tuesday.</p>
               </div>
               <div class="vprop-part">
                 <h4>History expires</h4>
-                <p>When a version has aged out of the provider's retention window, the system says so and does not read a different version.</p>
+                <p>If a version has aged out, we say so. We do not read another one.</p>
               </div>
               <div class="vprop-part">
-                <h4>A limitation is a result</h4>
-                <p>Typed limitations come back attached to the document. They do not disappear into a confident answer.</p>
+                <h4>A limit is a result</h4>
+                <p>It comes back with the document.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
   <section class="band band-paper band-rule">
     <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">What this costs you</p>
-          <h2 class="head">Fewer answers, and that is the point</h2>
-        </div>
-        <p class="lede">
-          A system with this rule will decline to answer things a looser one would answer fluently. That is the trade.
-        </p>
+      <div class="head-center reveal">
+        <h2>A tradeoff</h2>
       </div>
-
       <div class="grid-3 reveal">
         <div class="tile">
-          <h3>It will say it does not know</h3>
-          <p>
-            When your documents do not contain the answer, nothing is produced.
-            You see a gap.
-          </p>
+          <h3>It may say it does not know</h3>
+          <p>When your documents lack the answer, you see a gap.</p>
         </div>
         <div class="tile">
-          <h3>It cannot summarise what it cannot read</h3>
-          <p>
-            A scanned page with no usable text is reported as a limitation.
-            The system does not guess at it.
-          </p>
+          <h3>It cannot read blank scans</h3>
+          <p>A scanned page with no text is reported, not guessed.</p>
         </div>
         <div class="tile">
-          <h3>It does not decide</h3>
-          <p>
-            The platform locates and assembles. Judgment and the
-            decision to bind or send anything stay with your people.
-          </p>
+          <h3>Your people decide</h3>
+          <p>The engine finds and assembles. People decide to bind or send.</p>
         </div>
       </div>
-
     </div>
   </section>
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-stack reveal mb-8">
-        <h2 class="h-sub">Keep reading</h2>
+      <div class="head-center reveal">
+        <h2>Keep reading</h2>
       </div>
       <div class="explore reveal">
         <a href="/platform/evidence"><small>Next</small><b>Evidence and the record</b></a>
@@ -263,18 +234,13 @@
     </div>
   </section>
 
-  <section id="contact" class="cta-band band-ink">
+  <section id="contact" class="cta-band">
     <div class="wrap cta-split">
       <div class="reveal">
-        <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what your people spend the day reading.</h2>
-        <p class="lede">
-          Thirty minutes. Book it as a consultation on whether any of this is
-          worth doing, or as a demo on your own documents. Say which when you
-          book, or decide on the call.
-        </p>
+        <h2>See it on your documents</h2>
+        <p class="lede">Mostly standard forms? A shared product may suit you better. We will tell you on the first call.</p>
         <div class="actions">
-          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
+          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
@@ -299,7 +265,7 @@
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
           <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
+          <button type="submit" class="btn btn-primary">Send message</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <p id="contact-success" class="contact-success" hidden>

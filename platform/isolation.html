@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isolation | WYEA</title>
-  <meta name="description" content="One system per client, with its own database, network and sign-in. Nothing is pooled across clients, and nothing you put in trains a model.">
+  <meta name="description" content="One system per client, with its own database, network and sign-in. Nothing is pooled, and nothing you add trains a model.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Isolation | WYEA">
-  <meta property="og:description" content="One system per client, with its own database, network and sign-in. Nothing is pooled across clients, and nothing you put in trains a model.">
+  <meta property="og:description" content="One system per client, with its own database, network and sign-in. Nothing is pooled, and nothing you add trains a model.">
   <meta property="og:url" content="https://wyea.ai/platform/isolation">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://wyea.ai/platform/isolation">
-  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js"; setTimeout(function () { if (!window.wyeaReady) document.documentElement.classList.remove("js"); }, 4000);</script>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -59,16 +58,15 @@
 
 <main id="main">
 
-  <section class="hero hero-sub">
+    <section class="hero hero-sub">
     <div class="wrap">
       <p class="crumb"><a href="/">WYEA</a> / <a href="/platform">Platform</a> / Isolation</p>
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">Platform</p>
-          <h1>One system per client, with nothing shared underneath</h1>
+          <h1>One system per client</h1>
         </div>
         <div>
-          <p class="lede">WYEA builds firm-owned document engines for specialty insurers, MGAs and program administrators. Each client runs in its own project with its own database, network and sign-in. The boundary between clients is separate infrastructure for each one. The boundary between you and us is narrower, and we say so.</p>
+          <p class="lede">Each client has its own database, network and sign-in. Nothing is shared underneath.</p>
           <div class="actions">
             <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
             <a class="btn btn-ghost" href="/security">Read the security page</a>
@@ -76,10 +74,9 @@
         </div>
       </div>
     </div>
-
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Diagram of one insurer's own system, holding its people, its files and its history, with nothing pooled into a shared product and no other client able to reach it.">
+        <figure class="app reveal" role="img" aria-label="Invented example. Diagram of one insurer's own system holding its people, files and history, with nothing pooled and no other client able to reach it.">
           <div class="app-bar">
             <span class="dot"></span> Your system
             <span class="app-meta">Nobody else is in it</span>
@@ -88,112 +85,99 @@
             <div class="boundary">
               <span class="boundary-label">Yours</span>
               <div class="node-row">
-                <div class="node"><b>Your people</b><span>Signed in the way they already sign in</span></div>
+                <div class="node"><b>Your people</b><span>Signed in as they already sign in</span></div>
                 <div class="node"><b>Your files</b><span>Read where they live</span></div>
-                <div class="node"><b>Your history</b><span>Every answer, and what it rested on</span></div>
+                <div class="node"><b>Your history</b><span>Every answer and its source</span></div>
               </div>
               <div class="egress">
                 <span class="pill pill-flag">Never</span>
-                Pooled with another client, searchable by them, or used to train a model
+                Pooled with another client, or used to train a model
               </div>
             </div>
           </div>
           <div class="app-foot">
             <b>No other insurer is in your system.</b>
-            There is no shared pool to be in.
           </div>
         </figure>
+        <p class="app-caption"><span class="tag-invented">Invented example</span></p>
       </div>
     </div>
   </section>
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">What isolation means here</p>
-          <h2 class="head">And what it does not</h2>
-        </div>
-        <p class="lede">
-          What holds today, and what does not.
-        </p>
+      <div class="head-center reveal">
+        <h2>What holds today</h2>
       </div>
-
       <div class="vprops reveal">
         <div class="vprop">
           <div class="vprop-head">
-            <h3>What holds today</h3>
-            <p>These are properties of the running system today.</p>
+            <h3>Holds today</h3>
+            <p>True of the running system now.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>No shared content plane</h4>
-                <p>There is no shared pile to search, because there is no shared store of anybody's documents at all.</p>
+                <h4>No shared pile</h4>
+                <p>No store of anyone's documents is shared.</p>
               </div>
               <div class="vprop-part">
                 <h4>No training on your content</h4>
-                <p>Not by us and not by a provider underneath us. Instances share code and no data.</p>
+                <p>Not by us. Not by a provider under us.</p>
               </div>
               <div class="vprop-part">
-                <h4>Your store stays authoritative</h4>
-                <p>The platform reads from your document system and does not become a competing copy of it.</p>
+                <h4>Your system stays the record</h4>
+                <p>We read from it and keep no rival copy.</p>
               </div>
             </div>
           </div>
         </div>
         <div class="vprop">
           <div class="vprop-head">
-            <h3>What we are not claiming</h3>
-            <p>Some of what a security questionnaire asks for is not finished.</p>
+            <h3>Not built yet</h3>
+            <p>Some security questionnaire items are unfinished.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>We run it</h4>
-                <p>It runs on our infrastructure. It does not run inside your own cloud account or on hardware in your building.</p>
+                <h4>Hosting</h4>
+                <p>We run it on our infrastructure. Not in your cloud account or building.</p>
               </div>
               <div class="vprop-part">
-                <h4>Export and deletion are not built</h4>
-                <p>Offboarding is designed and not yet implemented. Ask, and we will show you the current state honestly.</p>
+                <h4>Export and deletion</h4>
+                <p>Offboarding is designed and not yet built.</p>
               </div>
               <div class="vprop-part">
-                <h4>Support access is not client-visible</h4>
-                <p>It is scoped, but you cannot yet watch it in a log of your own. That gap is real and we are closing it.</p>
+                <h4>Support access</h4>
+                <p>It is scoped. You cannot yet see it in a log of your own.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-stack reveal mb-8">
-        <h2 class="h-sub">Keep reading</h2>
+      <div class="head-center reveal">
+        <h2>Keep reading</h2>
       </div>
       <div class="explore reveal">
-        <a href="/security"><small>Security</small><b>The full picture, including what is unfinished</b></a>
+        <a href="/security"><small>Security</small><b>The full picture</b></a>
         <a href="/platform/evidence"><small>Back</small><b>Evidence and the record</b></a>
         <a href="/how-we-work"><small>Engagement</small><b>How an engagement runs</b></a>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="cta-band band-ink">
+  <section id="contact" class="cta-band">
     <div class="wrap cta-split">
       <div class="reveal">
-        <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what your people spend the day reading.</h2>
-        <p class="lede">
-          Thirty minutes. Book it as a consultation on whether any of this is
-          worth doing, or as a demo on your own documents. Say which when you
-          book, or decide on the call.
-        </p>
+        <h2>See it on your documents</h2>
+        <p class="lede">Mostly standard forms? A shared product may suit you better. We will tell you on the first call.</p>
         <div class="actions">
-          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
+          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
@@ -218,7 +202,7 @@
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </label>
           <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
+          <button type="submit" class="btn btn-primary">Send message</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <p id="contact-success" class="contact-success" hidden>

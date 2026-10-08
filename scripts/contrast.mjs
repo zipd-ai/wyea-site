@@ -12,14 +12,6 @@ import { fileURLToPath } from "node:url";
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const css = readFileSync(ROOT + "styles.css", "utf8");
 
-function block(re) {
-  const m = css.match(re);
-  if (!m) throw new Error("token block not found: " + re);
-  const vars = {};
-  for (const d of m[1].matchAll(/(--[a-z0-9-]+):\s*([^;]+);/g)) vars[d[1]] = d[2].trim();
-  return vars;
-}
-
 // The primitive palette, then the light semantic layer, then the forced
 // dark layer (identical to the prefers-color-scheme one; the build checks
 // that they match).
@@ -27,17 +19,9 @@ const blocks = [...css.matchAll(/:root \{([\s\S]*?)\n\}/g)].map((m) => m[1]);
 const parse = (text) => Object.fromEntries([...text.matchAll(/(--[a-z0-9-]+):\s*([^;]+);/g)].map((d) => [d[1], d[2].trim()]));
 const primitives = parse(blocks[0]);
 const light = { ...primitives, ...parse(blocks[1]) };
-const darkForced = block(/:root\[data-theme="dark"\] \{([\s\S]*?)\n\}/);
-const darkSystem = block(/:root:not\(\[data-theme="light"\]\) \{([\s\S]*?)\n  \}/);
-const dark = { ...light, ...darkForced };
-
+// Light only since direction A (2026-10-08). If a dark theme returns, check it here too.
+const dark = light;
 const problems = [];
-for (const [k, v] of Object.entries(darkForced)) {
-  if (darkSystem[k] !== v) problems.push(`dark token ${k} differs between the system and forced blocks`);
-}
-for (const k of Object.keys(darkSystem)) {
-  if (!(k in darkForced)) problems.push(`dark token ${k} is missing from the forced block`);
-}
 
 function resolve(theme, name, depth = 0) {
   const v = theme[name];
@@ -87,6 +71,9 @@ pairs.push(["--color-warning", "--color-warning-wash", TEXT, "Pill: ask us, draf
 pairs.push(["--color-text", "--color-warning-wash", TEXT, "Draft banner text"]);
 pairs.push(["--color-text-soft", "--color-ok-wash", TEXT, "Quote chip"]);
 pairs.push(["--color-text-muted", "--color-surface", TEXT, "Pill: mute"]);
+pairs.push(["--color-flag", "--color-flag-ground", TEXT, "For-you row"]);
+pairs.push(["--color-text", "--color-accent-wash", TEXT, "Key step card"]);
+pairs.push(["--color-accent", "--color-accent-wash", TEXT, "Key step label"]);
 pairs.push(["--color-on-accent", "--color-accent", TEXT, "Button hover, selection"]);
 pairs.push(["--color-btn-text", "--color-btn-bg", TEXT, "Primary button"]);
 pairs.push(["--color-focus", "--color-bg", LARGE, "Focus ring (UI mark)"]);
@@ -97,6 +84,7 @@ for (const fg of ["--color-on-inverse", "--color-on-inverse-soft", "--color-on-i
 pairs.push(["--color-inverse-bg", "--color-on-inverse", TEXT, "Light button on ink"]);
 
 const rows = [];
+const same = (k) => true;
 for (const [fg, bg, min, use] of pairs) {
   const l = ratio(resolve(light, fg), resolve(light, bg));
   const d = ratio(resolve(dark, fg), resolve(dark, bg));
@@ -117,7 +105,7 @@ const next = doc.replace(/<!-- contrast:start -->[\s\S]*<!-- contrast:end -->/,
   `<!-- contrast:start -->\n${table}\n<!-- contrast:end -->`);
 if (next !== doc) writeFileSync(docPath, next);
 
-console.log(`${pairs.length} pairs checked in light and dark`);
+console.log(`${pairs.length} pairs checked (light theme)`);
 if (problems.length) {
   console.error(problems.map((p) => "  " + p).join("\n"));
   process.exit(1);
