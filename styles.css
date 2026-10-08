@@ -652,6 +652,17 @@ strong, b { font-weight: var(--weight-semibold); color: var(--color-text); }
 
 .mega[hidden] { display: none; }
 
+/* An invisible strip over the gap between the nav item and its panel, so
+   the pointer stays inside the item on its way down to a link. */
+.mega::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: var(--space-4);
+}
+
 .mega-link {
   display: block;
   padding: var(--space-3) var(--space-4);
@@ -719,6 +730,7 @@ strong, b { font-weight: var(--weight-semibold); color: var(--color-text); }
 
 @media (max-width: 1023px) {
   .nav-toggle { display: block; }
+  .mega::before { display: none; }
 
   .nav {
     display: none;
