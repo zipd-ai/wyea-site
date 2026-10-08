@@ -30,4 +30,4 @@ Adapted from the website brief, section 3, with law firms removed.
 - What the system learns from your documents belongs to you, and the terms for taking it with you are written into the agreement before the build starts.
 - If your documents are mostly standard forms, a shared product will usually serve you better, and we will say so on the first call.
 - Send us your vendor questionnaire. We answer it in writing, including what we do not have yet.
-- Builds start at $25,000. The monthly fee starts at $5,500 and covers hosting, support and every model provider cost. Multi-entity groups are quoted at a fixed price after the prototype.
+- Builds start at $30,000. The monthly fee starts at $7,500 and covers hosting, support and every model provider cost. Multi-entity groups are quoted at a fixed price after the prototype.

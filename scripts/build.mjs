@@ -42,9 +42,9 @@ const SKIP_FILES = new Set(["google9c6033754ec9d367.html"]);
 // Paths the Worker answers itself, so a link to them is not a missing file.
 const WORKER_ROUTES = ["/sitemap.xml", "/api/contact"];
 
-// Content left untouched on purpose (decisions.md): only their header and
-// footer are synced, so their own inline styles are not reported.
-const UNTOUCHED = new Set(["/privacy", "/terms"]);
+// Pages exempt from the style and description checks. None since the
+// legal pages were brought onto the design system (2026-10-08).
+const UNTOUCHED = new Set([]);
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {

@@ -127,7 +127,7 @@ Home, /insurance and /about. Needs both principals with photo, name, role and on
 Home and /security. Exactly four: every line opens its source; answers keep their version; one system per insurer; a reviewer signs off. Each needs one or two sentences and a link to the page that backs it. Never a certification claim.
 
 ### Process timeline (`.timeline`)
-Home and /how-we-work. Six steps in order: call, NDA, one-week prototype, fixed-price scope, build, support. Mark the prototype step `.is-key`. Never a date promise beyond the one week.
+Home and /how-we-work. Six steps in order: call, NDA, prototype, fixed-price scope, build, support. Mark the prototype step `.is-key`. Never a date promise beyond the one week.
 
 ### Stat band (`.stats`, `.stat`, `cite`)
 Segment pages and /insurance. Each stat needs a number, one sentence and a `cite` with a link to a source page that opens. Never a customer metric, never an unsourced figure. Commitments (one week, two engineers) go in a rule list, not here.
