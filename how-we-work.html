@@ -3,56 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How We Work | WYEA Engagement Model</title>
-  <meta name="description" content="One week to a working prototype on your own documents, then a fixed price for the build, with both principal engineers on every engagement.">
+  <title>How We Work | WYEA</title>
+  <meta name="description" content="A call, an NDA, then a working prototype on your own documents in one week at a fixed price. The build is quoted in writing before work starts.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="How We Work | WYEA Engagement Model">
-  <meta property="og:description" content="One week to a working prototype on your own documents, then a fixed price for the build, with both principal engineers on every engagement.">
+  <meta property="og:title" content="How We Work | WYEA">
+  <meta property="og:description" content="A call, an NDA, then a working prototype on your own documents in one week at a fixed price. The build is quoted in writing before work starts.">
   <meta property="og:url" content="https://wyea.ai/how-we-work">
-  <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
+  <meta property="og:image" content="https://wyea.ai/assets/og/home.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://wyea.ai/how-we-work">
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js";</script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "WYEA", "item": "https://wyea.ai/" },
+          { "@type": "ListItem", "position": 2, "name": "How we work", "item": "https://wyea.ai/how-we-work" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How long does it take?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A working prototype is in your team's hands in the first week. The full build is scoped from there, and the scope is written down with dates before work starts." }
+          },
+          {
+            "@type": "Question",
+            "name": "What if the prototype does not convince us?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Then the engagement ends there. You have paid the prototype's fixed price and nothing more, and your documents are returned or destroyed on your instruction." }
+          },
+          {
+            "@type": "Question",
+            "name": "Who trains our staff?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The two engineers who wrote the software. Training is part of the engagement and is repeated for new staff without a separate charge." }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens when something breaks?",
+            "acceptedAnswer": { "@type": "Answer", "text": "You call or write to the people who built it. There is no support queue in between." }
+          },
+          {
+            "@type": "Question",
+            "name": "How are multi-entity groups priced?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Multi-entity groups are quoted at a fixed price after the prototype, once we have seen how many entities, forms and markets the build has to cover." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="wordmark" href="/">WYEA</a>
-    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <a class="nav-link" href="/insurance">Insurers</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
-          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
-          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
-          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
-          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
-        </div>
-      </div>
-      <a class="nav-link" href="/how-we-work" aria-current="page">How we work</a>
-      <a class="nav-link" href="/security">Security</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-company" hidden>
-          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>A one-week prototype at no charge, then a fixed-price build.</span></a>
-          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
-    </nav>
-  </div>
-</header>
+<!-- @partial header -->
+<!-- @end header -->
 
 <main id="main">
 
@@ -65,93 +78,60 @@
           <h1>One week to a working prototype, then a fixed price for the build</h1>
         </div>
         <div>
-          <p class="lede">We build document engines for specialty insurers, MGAs and law firms, and every engagement starts the same way. A call, which is either a consultation or a demo on your own documents, then an NDA, then something your people can try on live work inside the first week. Nothing larger is quoted until your firm has used something real.</p>
+          <p class="lede">We build firm-owned document engines for specialty insurers, MGAs and program administrators, and every engagement starts the same way: a call, an NDA, then something your team can try on live work inside the first week.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
-            <a class="btn btn-ghost" href="/platform">See the platform</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
+            <a class="btn btn-ghost" href="/platform">See how it works</a>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="stage">
-      <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Illustration of an engagement schedule: a thirty-minute consultation or demo at no charge on day zero, an NDA on day one, a working prototype at no charge in week one, a written scope in week two, and ongoing support from the engineers who built it.">
-          <div class="app-bar">
-            <span class="dot"></span> Engagement schedule
-            <span class="app-meta">Priced before it starts</span>
-          </div>
-          <div class="fig-dates">
-            <div class="date-row">
-              <span class="date-when">Day 0</span>
-              <span class="date-what"><b>Consultation, or a demo</b><small>What your people spend the day reading, and whether any of this is worth doing</small></span>
-              <span class="pill pill-mute">No charge</span>
-            </div>
-            <div class="date-row">
-              <span class="date-when">Day 1</span>
-              <span class="date-what"><b>NDA signed</b><small>Before we are sent a single document</small></span>
-              <span class="pill pill-mute">Yours or ours</span>
-            </div>
-            <div class="date-row is-near">
-              <span class="date-when">Week 1</span>
-              <span class="date-what"><b>Working prototype delivered</b><small>Running on your own documents</small></span>
-              <span class="pill pill-flag">No charge</span>
-            </div>
-            <div class="date-row">
-              <span class="date-when">Week 2</span>
-              <span class="date-what"><b>Build scoped in writing</b><small>Deliverables, price, and dates, before work starts</small></span>
-              <span class="pill pill-ok">Quoted</span>
-            </div>
-            <div class="date-row">
-              <span class="date-when">After</span>
-              <span class="date-what"><b>Support from the builders</b><small>The engineers who wrote it answer the phone</small></span>
-              <span class="pill pill-ok">Included</span>
-            </div>
-          </div>
-          <div class="app-foot">
-            <b>No open-ended hourly bill for exploratory work.</b> Every stage is
-            quoted before it begins.
-          </div>
-        </figure>
       </div>
     </div>
   </section>
 
-  <section class="band band-tight">
+  <section class="band">
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">The first month</p>
-          <h2 class="head">Both principals, from the first meeting to every update</h2>
+          <p class="eyebrow">The engagement</p>
+          <h2 class="head">Six steps, each priced before it starts</h2>
         </div>
         <p class="lede">
-          Both principals are in the room for all of it, and they are the ones writing the code.
+          Nothing larger is quoted until your team has used a prototype on
+          live work.
         </p>
       </div>
-
-      <ol class="steps reveal">
+      <ol class="timeline reveal">
         <li>
-          <span class="step-num">01</span>
-          <h3>We sit with your team</h3>
-          <p>In your office, following one piece of work end to end: who touches what, and where the hours go.</p>
+          <span class="timeline-when">Day 0</span>
+          <h3>Call</h3>
+          <p>Thirty minutes, booked as a consultation or a demo, at no charge. We ask which documents take your team the longest.</p>
         </li>
         <li>
-          <span class="step-num">02</span>
-          <h3>Prototype in one week</h3>
-          <p>Built on your real documents, under NDA, and put in front of the people who will use it.</p>
+          <span class="timeline-when">Day 1</span>
+          <h3>NDA</h3>
+          <p>Signed before we are sent a single document. Yours or ours.</p>
+        </li>
+        <li class="is-key">
+          <span class="timeline-when">Week 1</span>
+          <h3>Prototype</h3>
+          <p>Built on your real documents and put in front of the people who will use it. Fixed price, quoted before work starts.</p>
         </li>
         <li>
-          <span class="step-num">03</span>
-          <h3>Scoped in writing</h3>
-          <p>If the prototype earns it, the full build is quoted at a fixed price with the deliverables and dates written down first.</p>
+          <span class="timeline-when">Week 2</span>
+          <h3>Fixed-price scope</h3>
+          <p>If the prototype earns it, the build is quoted at a fixed price, with deliverables and dates in writing.</p>
         </li>
         <li>
-          <span class="step-num">04</span>
-          <h3>Run by the people who built it</h3>
-          <p>One system for you alone, hosted and maintained by the two engineers who wrote it.</p>
+          <span class="timeline-when">Build</span>
+          <h3>Build</h3>
+          <p>Both principals build it, and they are the ones writing the code.</p>
+        </li>
+        <li>
+          <span class="timeline-when">After</span>
+          <h3>Support</h3>
+          <p>One system for you alone, run and maintained by the two engineers who wrote it.</p>
         </li>
       </ol>
-
     </div>
   </section>
 
@@ -160,18 +140,18 @@
       <div class="head-split reveal">
         <div>
           <p class="eyebrow">How the engagement is shaped</p>
-          <h2 class="head">Three commitments that decide everything else</h2>
+          <h2 class="head">Priced, staffed and owned</h2>
         </div>
         <p class="lede">
-          The way the work is priced and staffed is the reason the rest of it holds.
+          The way the work is priced and staffed is the reason the rest of it
+          holds.
         </p>
       </div>
-
       <div class="vprops reveal">
         <div class="vprop">
           <div class="vprop-head">
             <h3>Priced before it starts</h3>
-            <p>Your firm knows the number before any work begins, at every stage, including the first one.</p>
+            <p>You know the number before any work begins, at every stage, including the first one.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
@@ -181,7 +161,7 @@
               </div>
               <div class="vprop-part">
                 <h4>Per engagement</h4>
-                <p>One price for the system you asked for. Hiring three more people does not change it.</p>
+                <p>One price for the system you asked for. Hiring three more underwriters does not change it.</p>
               </div>
               <div class="vprop-part">
                 <h4>Scoped in writing</h4>
@@ -198,16 +178,16 @@
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>No handoffs</h4>
-                <p>Nobody who was not in the room when your workflow was explained will be the one writing the code for it.</p>
+                <h4>The same two people</h4>
+                <p>The engineers who hear how your wordings team works are the ones who write the code for it.</p>
               </div>
               <div class="vprop-part">
-                <h4>No support tier</h4>
+                <h4>Direct support</h4>
                 <p>When something breaks you write to the person who wrote it.</p>
               </div>
               <div class="vprop-part">
                 <h4>Training by the builders</h4>
-                <p>Sessions run in your office by the engineers, repeated for new staff without a separate charge.</p>
+                <p>Sessions are run by the engineers and repeated for new staff without a separate charge.</p>
               </div>
             </div>
           </div>
@@ -215,7 +195,7 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>Owned by you</h3>
-            <p>What is delivered is a system you hold, and the exit terms are settled before anything is built.</p>
+            <p>What the system learns from your documents belongs to you, and the terms are settled before anything is built.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
@@ -224,117 +204,17 @@
                 <p>Your documents, and what the system has learned from them, belong to you. Today we return or destroy them on your instruction and confirm it in writing.</p>
               </div>
               <div class="vprop-part">
-                <h4>Nobody else in it</h4>
-                <p>Your system has its own database, network and sign-in. Nothing is pooled with another client.</p>
+                <h4>Your own system</h4>
+                <p>It has its own database, network and sign-in. Nothing is pooled with another client.</p>
               </div>
               <div class="vprop-part">
                 <h4>Terms up front</h4>
-                <p>Code ownership and licensing are set in the engagement agreement, with the options in front of you first.</p>
+                <p>The terms for taking it with you are written into the agreement before the build starts.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <section class="band">
-    <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">What each stage produces</p>
-          <h2 class="head">Every stage ends with something you can hold</h2>
-        </div>
-        <p class="lede">
-          A document or working software, every time.
-        </p>
-      </div>
-
-      <div class="rulelist reveal">
-        <div><b>Consultation or demo</b><span>A straight answer on whether to build</span></div>
-        <div><b>Discovery visit</b><span>A written account of the workflow</span></div>
-        <div><b>Week one</b><span>Software running on your documents</span></div>
-        <div><b>Scope</b><span>Fixed price, deliverables, dates</span></div>
-        <div><b>Build</b><span>Releases your team reviews as they land</span></div>
-        <div><b>Launch</b><span>The system live for your team, documented</span></div>
-        <div><b>Training</b><span>Sessions run by the people who built it</span></div>
-        <div><b>Support</b><span>A direct line to both engineers</span></div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="band band-ink">
-    <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">The terms</p>
-          <h2 class="head">What every engagement holds to</h2>
-        </div>
-        <p class="lede">
-          Each one is written into the engagement agreement.
-        </p>
-      </div>
-      <div class="stats reveal">
-        <div class="stat">
-          <b>1 week</b>
-          <span>To a working prototype on your own documents, at no charge</span>
-        </div>
-        <div class="stat">
-          <b>2</b>
-          <span>Principal engineers on your engagement, from first meeting to last release</span>
-        </div>
-        <div class="stat">
-          <b>0</b>
-          <span>Of your documents used to train a model, by us or by anyone</span>
-        </div>
-        <div class="stat">
-          <b>Fixed</b>
-          <span>Price, quoted before work begins, with deliverables defined in writing</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band band-tight">
-    <div class="wrap">
-      <div class="head-split reveal">
-        <div>
-          <p class="eyebrow">What we ask of you</p>
-          <h2 class="head">Three things, and not much of anyone's time</h2>
-        </div>
-        <p class="lede">
-          Your people have their own work to do while we build.
-        </p>
-      </div>
-
-      <div class="grid-3 reveal">
-        <div class="tile">
-          <span class="tile-num">01</span>
-          <h3>A half day in your office</h3>
-          <p>
-            Once, at the start. We watch a piece of work move through the office
-            and ask questions.
-          </p>
-        </div>
-        <div class="tile">
-          <span class="tile-num">02</span>
-          <h3>Real documents, under NDA</h3>
-          <p>
-            The prototype is built on the files you actually handle.
-          </p>
-        </div>
-        <div class="tile">
-          <span class="tile-num">03</span>
-          <h3>One person who will try it</h3>
-          <p>
-            Someone who uses the prototype on live work and tells us where it
-            gets in the way.
-          </p>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -349,15 +229,13 @@
           Pricing is per engagement, so it does not change when you hire.
         </p>
       </div>
-      <div class="callout reveal" style="max-width:780px">
-        <p>
-          Every engagement starts with a one-week prototype on your own
-          documents, at no charge. If the prototype earns it, we quote the full
-          build at a fixed price, with deliverables and dates in writing.
-          Builds start at $25,000. Once the system is live, the monthly fee
-          starts at $5,500 and covers hosting, support and every model
-          provider cost.
-        </p>
+      <div class="rulelist reveal">
+        <div><b>First call</b><span>No charge</span></div>
+        <div><b>One-week prototype</b><span>Fixed price, quoted before work starts</span></div>
+        <div><b>Build</b><span>From $25,000, fixed price, quoted in writing</span></div>
+        <div><b>Monthly fee</b><span>From $5,500: hosting, support and every model provider cost</span></div>
+        <div><b>Multi-entity groups</b><span>Quoted at a fixed price after the prototype</span></div>
+        <div><b>Passed-through costs</b><span>None</span></div>
       </div>
     </div>
   </section>
@@ -366,45 +244,72 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Questions clients ask</p>
+          <p class="eyebrow">What we ask of you</p>
+          <h2 class="head">Not much of anyone's time</h2>
+        </div>
+        <p class="lede">
+          Your team has its own work to do while we build.
+        </p>
+      </div>
+      <div class="grid-3 reveal">
+        <div class="tile">
+          <span class="tile-num">01</span>
+          <h3>A half day with your team</h3>
+          <p>Once, at the start. We follow one deal or one wording through your team and ask questions.</p>
+        </div>
+        <div class="tile">
+          <span class="tile-num">02</span>
+          <h3>Real documents, under NDA</h3>
+          <p>The prototype is built on the wordings and files you actually handle.</p>
+        </div>
+        <div class="tile">
+          <span class="tile-num">03</span>
+          <h3>One person who will try it</h3>
+          <p>Someone who uses the prototype on live work and tells us where it gets in the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Questions</p>
           <h2 class="head">Before the first call</h2>
         </div>
       </div>
-
       <div class="faq reveal">
         <details open>
-          <summary>How long does the whole thing take?</summary>
-          <p>A working prototype is in your team's hands in the first week. A full build is scoped from there, and the scope is written down with dates before work starts, so the answer stops being an estimate.</p>
+          <summary>How long does it take?</summary>
+          <p>A working prototype is in your team's hands in the first week. The full build is scoped from there, and the scope is written down with dates before work starts.</p>
         </details>
         <details>
           <summary>What if the prototype does not convince us?</summary>
-          <p>Then the engagement ends there, at no cost to you, and your documents are returned or destroyed on your instruction. That is why the prototype comes first.</p>
+          <p>Then the engagement ends there. You have paid the prototype's fixed price and nothing more, and your documents are returned or destroyed on your instruction.</p>
         </details>
         <details>
           <summary>Who trains our staff?</summary>
-          <p>The two engineers who wrote the software. Training is part of the engagement, run in your office, and repeated for new staff without a separate charge.</p>
+          <p>The two engineers who wrote the software. Training is part of the engagement and is repeated for new staff without a separate charge.</p>
         </details>
         <details>
           <summary>What happens when something breaks?</summary>
           <p>You call or write to the people who built it. There is no support queue in between. <a href="/about">Meet the principals</a>.</p>
         </details>
         <details>
-          <summary>Do you work outside legal?</summary>
-          <p>Yes. The platform is built around documents, versions and evidence, and it runs in insurance as well as legal. <a href="/insurance">For specialty insurers</a>.</p>
+          <summary>How are multi-entity groups priced?</summary>
+          <p>Multi-entity groups are quoted at a fixed price after the prototype, once we have seen how many entities, forms and markets the build has to cover.</p>
         </details>
       </div>
-
     </div>
   </section>
 
-  <section class="band band-tight">
+  <section class="band band-tight band-rule">
     <div class="wrap">
-      <div class="head-stack reveal" style="margin-bottom:32px">
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
-      </div>
+      <h2 class="h-sub mb-8 reveal">Keep reading</h2>
       <div class="explore reveal">
         <a href="/platform"><small>Platform</small><b>How the document engine is put together</b></a>
-        <a href="/security"><small>Security</small><b>How your documents are handled</b></a>
+        <a href="/security/vendor-review"><small>Vendor review</small><b>Where we stand on each control</b></a>
         <a href="/about"><small>Company</small><b>The engineers who answer your calls</b></a>
       </div>
     </div>
@@ -414,103 +319,24 @@
     <div class="wrap cta-split">
       <div class="reveal">
         <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what your people spend the day reading.</h2>
+        <h2>Tell us which documents take your team the longest.</h2>
         <p class="lede">
-          Thirty minutes. Book it as a consultation on whether any of this is
-          worth doing, or as a demo on your own documents. Say which when you
-          book, or decide on the call.
+          Thirty minutes, as a consultation or a demo on your own documents.
         </p>
         <div class="actions">
-          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
-        <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
-          <div class="field-row">
-            <label class="field"><span>Your name</span>
-              <input type="text" name="name" autocomplete="name" maxlength="200" required>
-            </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
-              <input type="text" name="firm" autocomplete="organization" maxlength="200">
-            </label>
-          </div>
-          <label class="field"><span>Email</span>
-            <input type="email" name="email" autocomplete="email" maxlength="254" required>
-          </label>
-          <label class="field"><span>How can we help?</span>
-            <textarea name="message" rows="5" maxlength="5000" required></textarea>
-          </label>
-          <label class="hp" aria-hidden="true">Website
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </label>
-          <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-        <p id="contact-success" class="contact-success" hidden>
-          Thanks. Your message is on its way. We'll reply within one business day.
-        </p>
+        <!-- @partial contact-form -->
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="wordmark" href="/">WYEA</a>
-        <p>
-          Whittle and Ye Engineering Associates. Firm-owned document engines,
-          built in Newport Beach.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <ul>
-          <li><a href="/platform">Overview</a></li>
-          <li><a href="/platform/sources">Connected sources</a></li>
-          <li><a href="/platform/verification">Grounding and verification</a></li>
-          <li><a href="/platform/evidence">Evidence and the record</a></li>
-          <li><a href="/platform/isolation">Isolation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>How we work</h4>
-        <ul>
-          <li><a href="/how-we-work">Engagement model</a></li>
-          <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/insurance">For specialty insurers</a></li>
-          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About the firm</a></li>
-          <li><a href="/privacy">Privacy</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="/#contact">Send a message</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <span>&copy; 2026 WYEA LLC</span>
-      <span>Newport Beach · Orange County, California</span>
-      <a href="/privacy">Privacy</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/site.js" defer></script>
+<!-- @partial footer -->
+<!-- @end footer -->
 </body>
 </html>

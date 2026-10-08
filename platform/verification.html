@@ -16,43 +16,12 @@
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js";</script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="wordmark" href="/">WYEA</a>
-    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <a class="nav-link" href="/insurance">Insurers</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
-          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
-          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
-          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
-          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
-        </div>
-      </div>
-      <a class="nav-link" href="/how-we-work">How we work</a>
-      <a class="nav-link" href="/security">Security</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-company" hidden>
-          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>A one-week prototype at no charge, then a fixed-price build.</span></a>
-          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
-    </nav>
-  </div>
-</header>
+<!-- @partial header -->
+<!-- @end header -->
 
 <main id="main">
 
@@ -76,41 +45,41 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="A question asked across 47 vendor agreements. Three agreements are returned, each with the clause quoted and the document and section it came from. A fourth is flagged because its assignment clause sits in a scanned exhibit the system could not read, and is handed to a person instead of guessed at.">
+        <figure class="app reveal" role="img" aria-label="A question asked across 47 program agreements. Three agreements are returned, each with the clause quoted and the document and section it came from. A fourth is flagged because its authority schedule sits in a scanned exhibit the system could not read, and is handed to a person instead of guessed at.">
           <div class="app-bar">
-            <span class="dot"></span> Which vendor agreements let the other side assign without our consent?
+            <span class="dot"></span> Which program agreements let the administrator bind above $1 million without referral?
             <span class="app-meta">47 read &middot; 3 matched &middot; 1 for you</span>
           </div>
           <div class="ans">
             <div class="ans-row">
               <span class="ans-mark ans-ok">Found</span>
               <div class="ans-body">
-                <b>Northwind Master Services Agreement</b>
-                <q>may assign this Agreement to any successor in interest without the prior written consent of the other party</q>
-                <span class="ans-src">Section 14.2, Assignment &middot; signed 12 Mar 2024</span>
+                <b>Northwind Program Agreement</b>
+                <q>may bind risks up to $2,000,000 per occurrence without prior referral to the Company</q>
+                <span class="ans-src">Section 4.2, Binding Authority &middot; signed 12 Mar 2024</span>
               </div>
             </div>
             <div class="ans-row">
               <span class="ans-mark ans-ok">Found</span>
               <div class="ans-body">
-                <b>Calloway Services Agreement</b>
-                <q>assignment to an affiliate shall not require consent</q>
-                <span class="ans-src">Section 9, Assignment &middot; signed 4 Aug 2023</span>
+                <b>Calloway Binding Authority Agreement</b>
+                <q>authority above $1,000,000 shall not require referral on renewals</q>
+                <span class="ans-src">Section 9, Authority &middot; signed 4 Aug 2023</span>
               </div>
             </div>
             <div class="ans-row">
               <span class="ans-mark ans-ok">Found</span>
               <div class="ans-body">
-                <b>Pemberton Supply Agreement</b>
-                <q>upon thirty days notice, no consent required</q>
-                <span class="ans-src">Section 11.4, Assignment &middot; signed 19 Jan 2025</span>
+                <b>Pemberton MGA Agreement</b>
+                <q>up to $1,500,000 on any one risk, no referral required</q>
+                <span class="ans-src">Section 11.4, Limits of Authority &middot; signed 19 Jan 2025</span>
               </div>
             </div>
             <div class="ans-row">
               <span class="ans-mark ans-flag">For you</span>
               <div class="ans-body">
-                <b>Harlow Master Agreement</b>
-                <p class="ans-note">The assignment clause is in a scanned exhibit that could not be read. Nobody guessed at it. It is on your list.</p>
+                <b>Harlow Program Agreement</b>
+                <p class="ans-note">The authority schedule is in a scanned exhibit that could not be read. Nobody guessed at it. It is on your list.</p>
               </div>
             </div>
           </div>
@@ -119,7 +88,7 @@
             <b>Every line here opens the page it came from.</b>
           </div>
         </figure>
-        <p class="app-caption reveal">The firms, clauses and dates in this example are invented. No client material appears anywhere on this site.</p>
+        <p class="app-caption"><span class="tag-invented">Invented example</span> The agreements, clauses and dates in this example are invented. No client material appears anywhere on this site.</p>
       </div>
     </div>
   </section>
@@ -145,12 +114,12 @@
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>The span travels with it</h4>
-                <p>Character offsets are recorded, so a reviewer opens the document and lands on the text.</p>
+                <h4>Its place travels with it</h4>
+                <p>The position of the quote in the document is recorded, so a reviewer opens the document and lands on the text.</p>
               </div>
               <div class="vprop-part">
                 <h4>So does the version</h4>
-                <p>Offsets are meaningless without the version they refer to, so both are stored together.</p>
+                <p>A position means nothing without the version it refers to, so both are stored together.</p>
               </div>
               <div class="vprop-part">
                 <h4>It stays checkable later</h4>
@@ -167,8 +136,8 @@
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
-                <h4>Flagged, not deleted</h4>
-                <p>Removing it would hide that the system tried and failed, which is the thing a reviewer most needs to see.</p>
+                <h4>Flagged and kept</h4>
+                <p>Removing it would hide that the system tried and failed, which a reviewer needs to see.</p>
               </div>
               <div class="vprop-part">
                 <h4>Never softened</h4>
@@ -176,7 +145,7 @@
               </div>
               <div class="vprop-part">
                 <h4>Counted, and shown to you</h4>
-                <p>The reviewer sees how many claims failed, not only the ones that passed.</p>
+                <p>The reviewer sees how many claims failed as well as the ones that passed.</p>
               </div>
             </div>
           </div>
@@ -194,11 +163,11 @@
               </div>
               <div class="vprop-part">
                 <h4>History expires</h4>
-                <p>When a version has aged out of the provider's retention window, the system says so rather than reading a different version.</p>
+                <p>When a version has aged out of the provider's retention window, the system says so and does not read a different version.</p>
               </div>
               <div class="vprop-part">
                 <h4>A limitation is a result</h4>
-                <p>Typed limitations come back attached to the document, instead of disappearing into a confident answer.</p>
+                <p>Typed limitations come back attached to the document. They do not disappear into a confident answer.</p>
               </div>
             </div>
           </div>
@@ -216,7 +185,7 @@
           <h2 class="head">Fewer answers, and that is the point</h2>
         </div>
         <p class="lede">
-          A system with this rule will decline to answer things a looser one would answer fluently. That is the trade, stated plainly rather than buried.
+          A system with this rule will decline to answer things a looser one would answer fluently. That is the trade.
         </p>
       </div>
 
@@ -224,22 +193,22 @@
         <div class="tile">
           <h3>It will say it does not know</h3>
           <p>
-            When the record does not contain the answer, nothing is produced.
-            You get a gap rather than a plausible paragraph.
+            When your documents do not contain the answer, nothing is produced.
+            You see a gap.
           </p>
         </div>
         <div class="tile">
           <h3>It cannot summarise what it cannot read</h3>
           <p>
-            A scanned page with no usable text is a limitation the system
-            reports, not a document it guesses at.
+            A scanned page with no usable text is reported as a limitation.
+            The system does not guess at it.
           </p>
         </div>
         <div class="tile">
-          <h3>It does not argue</h3>
+          <h3>It does not decide</h3>
           <p>
-            The platform locates and assembles. Judgment, strategy and the
-            decision to send anything stay with your people.
+            The platform locates and assembles. Judgment and the
+            decision to bind or send anything stay with your people.
           </p>
         </div>
       </div>
@@ -249,8 +218,8 @@
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-stack reveal" style="margin-bottom:32px">
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
+      <div class="head-stack reveal mb-8">
+        <h2 class="h-sub">Keep reading</h2>
       </div>
       <div class="explore reveal">
         <a href="/platform/evidence"><small>Next</small><b>Evidence and the record</b></a>
@@ -275,92 +244,15 @@
         </div>
       </div>
       <div class="reveal">
-        <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
-          <div class="field-row">
-            <label class="field"><span>Your name</span>
-              <input type="text" name="name" autocomplete="name" maxlength="200" required>
-            </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
-              <input type="text" name="firm" autocomplete="organization" maxlength="200">
-            </label>
-          </div>
-          <label class="field"><span>Email</span>
-            <input type="email" name="email" autocomplete="email" maxlength="254" required>
-          </label>
-          <label class="field"><span>How can we help?</span>
-            <textarea name="message" rows="5" maxlength="5000" required></textarea>
-          </label>
-          <label class="hp" aria-hidden="true">Website
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </label>
-          <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-        <p id="contact-success" class="contact-success" hidden>
-          Thanks. Your message is on its way. We'll reply within one business day.
-        </p>
+        <!-- @partial contact-form -->
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="wordmark" href="/">WYEA</a>
-        <p>
-          Whittle and Ye Engineering Associates. Firm-owned document engines,
-          built in Newport Beach.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <ul>
-          <li><a href="/platform">Overview</a></li>
-          <li><a href="/platform/sources">Connected sources</a></li>
-          <li><a href="/platform/verification">Grounding and verification</a></li>
-          <li><a href="/platform/evidence">Evidence and the record</a></li>
-          <li><a href="/platform/isolation">Isolation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>How we work</h4>
-        <ul>
-          <li><a href="/how-we-work">Engagement model</a></li>
-          <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/insurance">For specialty insurers</a></li>
-          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About the firm</a></li>
-          <li><a href="/privacy">Privacy</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="#contact">Send a message</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <span>&copy; 2026 WYEA LLC</span>
-      <span>Newport Beach · Orange County, California</span>
-      <a href="/privacy">Privacy</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/site.js" defer></script>
+<!-- @partial footer -->
+<!-- @end footer -->
 </body>
 </html>

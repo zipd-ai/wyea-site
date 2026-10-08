@@ -16,43 +16,12 @@
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js";</script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="wordmark" href="/">WYEA</a>
-    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <a class="nav-link" href="/insurance">Insurers</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build" aria-current="page">Platform <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
-          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
-          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
-          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
-          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
-        </div>
-      </div>
-      <a class="nav-link" href="/how-we-work">How we work</a>
-      <a class="nav-link" href="/security">Security</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-company" hidden>
-          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>A one-week prototype at no charge, then a fixed-price build.</span></a>
-          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
-    </nav>
-  </div>
-</header>
+<!-- @partial header -->
+<!-- @end header -->
 
 <main id="main">
 
@@ -65,7 +34,7 @@
           <h1>It reads your systems. It does not replace them.</h1>
         </div>
         <div>
-          <p class="lede">Documents stay where your people already put them. The platform connects to the store, reads versions from it, and writes back only where you turn that on. Nothing about your filing has to change first.</p>
+          <p class="lede">Documents stay where your people already put them. The platform connects to the document system, reads versions from it, and writes back only where you turn that on. Nothing about your filing has to change first.</p>
           <div class="actions">
             <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
             <a class="btn btn-ghost" href="/platform/verification">How a claim is checked</a>
@@ -76,7 +45,7 @@
 
     <div class="stage">
       <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Table of connected sources: SharePoint contracts and correspondence, Outlook matter mail, Dropbox closing binders, and the public court record. Each one stays in the system it already lives in.">
+        <figure class="app reveal" role="img" aria-label="Table of connected sources: Dropbox slips and executed binders, SharePoint policy wordings and endorsements, and Outlook mail. Each one stays in the system it already lives in.">
           <div class="app-bar">
             <span class="dot"></span> What it reads
             <span class="app-meta">Nothing moves house</span>
@@ -88,15 +57,15 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><b>SharePoint</b><small>also OneDrive, iManage, NetDocuments, Google Drive</small></td>
-                  <td data-label="What it reads">Contracts and correspondence</td>
-                  <td data-label="How much"><small>12,400 documents</small></td>
+                  <td><b>Dropbox</b><small>connected first</small></td>
+                  <td data-label="What it reads">Slips and executed binders</td>
+                  <td data-label="How much"><small>1,890 documents</small></td>
                   <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
-                  <td><b>Dropbox</b><small>connected first</small></td>
-                  <td data-label="What it reads">Closing binders and exhibits</td>
-                  <td data-label="How much"><small>1,890 documents</small></td>
+                  <td><b>SharePoint</b><small>also OneDrive, Google Drive, iManage, NetDocuments</small></td>
+                  <td data-label="What it reads">Policy wordings and endorsements</td>
+                  <td data-label="How much"><small>12,400 documents</small></td>
                   <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
                 </tr>
                 <tr>
@@ -104,12 +73,6 @@
                   <td data-label="What it reads">Mail and attachments</td>
                   <td data-label="How much"><small>3 mailboxes</small></td>
                   <td data-label="Stays put"><span class="pill pill-ok">Yes</span></td>
-                </tr>
-                <tr>
-                  <td><b>The public record</b><small>dockets and opinions</small></td>
-                  <td data-label="What it reads">Filings in your matters</td>
-                  <td data-label="How much"><small>Updated daily</small></td>
-                  <td data-label="Stays put"><span class="pill pill-mute">Public</span></td>
                 </tr>
               </tbody>
             </table>
@@ -119,6 +82,7 @@
             <b>Your files stay where your people already put them.</b>
           </div>
         </figure>
+        <p class="app-caption"><span class="tag-invented">Invented example</span> The document counts in this example are invented.</p>
       </div>
     </div>
   </section>
@@ -128,10 +92,10 @@
       <div class="head-split reveal">
         <div>
           <p class="eyebrow">How it connects</p>
-          <h2 class="head">Built for five stores, not one</h2>
+          <h2 class="head">Built for five document systems</h2>
         </div>
         <p class="lede">
-          Dropbox is connected first. The rest are what the connecting work was written for, so adding one is a week rather than a rebuild.
+          Dropbox is connected first. SharePoint, OneDrive, Google Drive, iManage and NetDocuments are what the connecting work was written for.
         </p>
       </div>
 
@@ -142,8 +106,7 @@
         <div><b>iManage</b><span>Built for</span></div>
         <div><b>NetDocuments</b><span>Built for</span></div>
         <div><b>Outlook</b><span>Mail and attachments</span></div>
-        <div><b>The public record</b><span>Dockets and opinions</span></div>
-        <div><b>Your own store</b><span>Stays the one that is true</span></div>
+        <div><b>Your own document system</b><span>Stays the one that is true</span></div>
       </div>
 
     </div>
@@ -153,7 +116,7 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Why it is not one interface</p>
+          <p class="eyebrow">Why each system has its own connector</p>
           <h2 class="head">Providers vary in ways you cannot paper over</h2>
         </div>
         <p class="lede">
@@ -175,11 +138,11 @@
               </div>
               <div class="vprop-part">
                 <h4>Whether it can prove a file is unchanged</h4>
-                <p>Some platforms can. Others cannot, and we say which yours is instead of implying it can.</p>
+                <p>Some platforms can. Others cannot, and we tell you which yours is.</p>
               </div>
               <div class="vprop-part">
-                <h4>Whether the provider models matters</h4>
-                <p>Some do. Most do not, and the mapping from folders to matters becomes per-firm configuration.</p>
+                <h4>Whether the system knows your deals</h4>
+                <p>Some do. Most do not, and the mapping from folders to programs and accounts becomes configuration for each insurer.</p>
               </div>
             </div>
           </div>
@@ -187,13 +150,13 @@
         <div class="vprop">
           <div class="vprop-head">
             <h3>What the platform refuses to do</h3>
-            <p>The failure mode here is quiet, and it invalidates evidence in bulk rather than one document at a time.</p>
+            <p>The failure mode here is quiet, and it invalidates evidence in bulk, many documents at once.</p>
           </div>
           <div class="vprop-body is-plain">
             <div class="vprop-parts">
               <div class="vprop-part">
                 <h4>Pass off a guess as a record</h4>
-                <p>If your platform cannot say which version was read, we tell you that, rather than quietly using the file date and hoping.</p>
+                <p>If your platform cannot say which version was read, we tell you that. We do not quietly use the file date.</p>
               </div>
               <div class="vprop-part">
                 <h4>Bind a claim to current</h4>
@@ -213,8 +176,8 @@
 
   <section class="band band-tight">
     <div class="wrap">
-      <div class="head-stack reveal" style="margin-bottom:32px">
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
+      <div class="head-stack reveal mb-8">
+        <h2 class="h-sub">Keep reading</h2>
       </div>
       <div class="explore reveal">
         <a href="/platform/verification"><small>Next</small><b>How a claim is checked</b></a>
@@ -239,92 +202,15 @@
         </div>
       </div>
       <div class="reveal">
-        <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
-          <div class="field-row">
-            <label class="field"><span>Your name</span>
-              <input type="text" name="name" autocomplete="name" maxlength="200" required>
-            </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
-              <input type="text" name="firm" autocomplete="organization" maxlength="200">
-            </label>
-          </div>
-          <label class="field"><span>Email</span>
-            <input type="email" name="email" autocomplete="email" maxlength="254" required>
-          </label>
-          <label class="field"><span>How can we help?</span>
-            <textarea name="message" rows="5" maxlength="5000" required></textarea>
-          </label>
-          <label class="hp" aria-hidden="true">Website
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </label>
-          <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-        <p id="contact-success" class="contact-success" hidden>
-          Thanks. Your message is on its way. We'll reply within one business day.
-        </p>
+        <!-- @partial contact-form -->
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="wordmark" href="/">WYEA</a>
-        <p>
-          Whittle and Ye Engineering Associates. Firm-owned document engines,
-          built in Newport Beach.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <ul>
-          <li><a href="/platform">Overview</a></li>
-          <li><a href="/platform/sources">Connected sources</a></li>
-          <li><a href="/platform/verification">Grounding and verification</a></li>
-          <li><a href="/platform/evidence">Evidence and the record</a></li>
-          <li><a href="/platform/isolation">Isolation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>How we work</h4>
-        <ul>
-          <li><a href="/how-we-work">Engagement model</a></li>
-          <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/insurance">For specialty insurers</a></li>
-          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About the firm</a></li>
-          <li><a href="/privacy">Privacy</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="#contact">Send a message</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <span>&copy; 2026 WYEA LLC</span>
-      <span>Newport Beach · Orange County, California</span>
-      <a href="/privacy">Privacy</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/site.js" defer></script>
+<!-- @partial footer -->
+<!-- @end footer -->
 </body>
 </html>

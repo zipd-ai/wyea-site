@@ -4,78 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Security | WYEA</title>
-  <meta name="description" content="What holds today and what is not finished: no training on client content, one isolated system per client, and a plain list of what WYEA does not claim.">
+  <meta name="description" content="What holds today and what is not finished: no training on your content, one isolated system per insurer, and a plain list of what WYEA does not claim.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Security | WYEA">
-  <meta property="og:description" content="What holds today and what is not finished: no training on client content, one isolated system per client, and a plain list of what WYEA does not claim.">
+  <meta property="og:description" content="What holds today and what is not finished: no training on your content, one isolated system per insurer, and a plain list of what WYEA does not claim.">
   <meta property="og:url" content="https://wyea.ai/security">
-  <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
+  <meta property="og:image" content="https://wyea.ai/assets/og/home.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://wyea.ai/security">
   <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js";</script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Does WYEA train models on client content?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. There is no shared pile to search, nothing reaches across firms, and no client content trains a model. Instances share code and never data." }
-      },
-      {
-        "@type": "Question",
-        "name": "Where does a firm's content live?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The firm's own document system remains the system of record. The platform runs one isolated system per client, in WYEA-operated infrastructure, with its own database, network and identity. It is not currently deployed into a client's own cloud account or on client hardware." }
-      },
-      {
-        "@type": "Question",
-        "name": "What is not finished yet?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Export, deletion and offboarding are designed and not yet implemented, and support access is not yet recorded as a client-visible event. WYEA states the current position in writing during diligence rather than describing the target as though it already shipped." }
-      }
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "WYEA", "item": "https://wyea.ai/" },
+      { "@type": "ListItem", "position": 2, "name": "Security", "item": "https://wyea.ai/security" }
     ]
   }
   </script>
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="wordmark" href="/">WYEA</a>
-    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
-    <nav class="nav" id="nav" aria-label="Main">
-      <a class="nav-link" href="/insurance">Insurers</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-build">Platform <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-build" hidden>
-          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
-          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system, your mail, and the public record.</span></a>
-          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>The rule that stops an unlocatable quote becoming an answer.</span></a>
-          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers pinned to a document version, and what happens when it changes.</span></a>
-          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per client, and the limits we publish.</span></a>
-          <a class="mega-link" href="/custom-ai-for-law-firms"><b>Comparing your options</b><span>What the options are, what each costs, and which one fits.</span></a>
-        </div>
-      </div>
-      <a class="nav-link" href="/how-we-work">How we work</a>
-      <a class="nav-link" href="/security" aria-current="page">Security</a>
-      <div class="nav-item">
-        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-company">Company <i class="nav-caret" aria-hidden="true"></i></button>
-        <div class="mega" id="mega-company" hidden>
-          <a class="mega-link" href="/about"><b>About the firm</b><span>Two principal engineers in Newport Beach, and how they work.</span></a>
-          <a class="mega-link" href="/how-we-work"><b>Engagement model</b><span>A one-week prototype at no charge, then a fixed-price build.</span></a>
-          <a class="mega-link" href="/privacy"><b>Privacy</b><span>What this site collects, and what it does not.</span></a>
-        </div>
-      </div>
-      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a call</a>
-    </nav>
-  </div>
-</header>
+<!-- @partial header -->
+<!-- @end header -->
 
 <main id="main">
 
@@ -88,127 +44,72 @@
           <h1>What is true today, and what is not finished</h1>
         </div>
         <div>
-          <p class="lede">A security page is only useful if it distinguishes the two. Everything below is a property of the running system. The section after it lists what we are not claiming yet, which is the part most vendors leave out.</p>
-          <p style="margin-top:1em;font-size:0.9rem;color:var(--ink-muted)">Last reviewed September 27, 2026</p>
+          <p class="lede">WYEA builds firm-owned document engines for specialty insurers, MGAs and program administrators. This page separates what the running system does today from what we have not built yet.</p>
+          <p class="hero-note">Last reviewed <time datetime="2026-10-07">October 7, 2026</time></p>
           <div class="actions">
-            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Talk to us about your obligations</a>
-            <a class="btn btn-ghost" href="/platform/isolation">How isolation works</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
+            <a class="btn btn-ghost" href="/security/vendor-review">See the vendor-review table</a>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="stage">
-      <div class="wrap wrap-wide">
-        <figure class="app reveal" role="img" aria-label="Diagram of one firm's own system, holding its people, its files and its history, with nothing pooled into a shared product and no other client able to reach it.">
-          <div class="app-bar">
-            <span class="dot"></span> Your system
-            <span class="app-meta">Nobody else is in it</span>
-          </div>
-          <div class="fig-deploy">
-            <div class="boundary">
-              <span class="boundary-label">Yours</span>
-              <div class="node-row">
-                <div class="node"><b>Your people</b><span>Signed in the way they already sign in</span></div>
-                <div class="node"><b>Your files</b><span>Read where they live, not copied out</span></div>
-                <div class="node"><b>Your history</b><span>Every answer, and what it rested on</span></div>
-              </div>
-              <div class="egress">
-                <span class="pill pill-flag">Never</span>
-                Pooled with another client, searchable by them, or used to train a model
-              </div>
-            </div>
-          </div>
-          <div class="app-foot">
-            <b>No other firm is in your system,</b> because no other firm is in
-            your system. There is no shared pool to be in.
-          </div>
-        </figure>
       </div>
     </div>
   </section>
 
-  <section class="band band-tight">
+  <section class="band">
     <div class="wrap">
       <div class="head-split reveal">
         <div>
           <p class="eyebrow">Holds today</p>
-          <h2 class="head">Properties of the running system</h2>
+          <h2 class="head">Four things hold for every answer</h2>
         </div>
         <p class="lede">
-          These are enforced by how the platform is built, and we will put each of them in an engagement agreement.
+          Each is enforced by how the platform is built, and we put each of
+          them in the engagement agreement.
         </p>
       </div>
-
-      <div class="vprops reveal">
-        <div class="vprop">
-          <div class="vprop-head">
-            <h3>Your content stays yours</h3>
-            <p>The commitment most questionnaires open with, and the one we can answer without qualification.</p>
-          </div>
-          <div class="vprop-body is-plain">
-            <div class="vprop-parts">
-              <div class="vprop-part">
-                <h4>No training on firm content</h4>
-                <p>Not by us and not by a model provider underneath us. This is a contractual term as well as an architectural one.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>No shared pile</h4>
-                <p>There is no cross-firm store to retrieve from. The isolation is structural rather than a filter applied at query time.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>No secondary use</h4>
-                <p>Your documents are read to answer your questions. They are not mined for product analytics or benchmarking.</p>
-              </div>
-            </div>
-          </div>
+      <div class="pillars reveal">
+        <div class="pillar">
+          <h3>Every line opens its source</h3>
+          <p>A passage is found in your document word for word, or the answer is flagged. A source that could not be read comes back as not checked.</p>
+          <a class="arrow" href="/platform/verification">Grounding and verification</a>
         </div>
-        <div class="vprop">
-          <div class="vprop-head">
-            <h3>Answers are evidence-bound</h3>
-            <p>The grounding rule is a security property as much as a quality one, because an unsourced claim is an unauditable one.</p>
-          </div>
-          <div class="vprop-body is-plain">
-            <div class="vprop-parts">
-              <div class="vprop-part">
-                <h4>Verbatim or flagged</h4>
-                <p>A quote is located in the source character for character or the claim is flagged. Nothing unlocatable is asserted.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Bound to a version</h4>
-                <p>An answer points at the document as it read on the day, so it can still be checked after somebody edits the file.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Unreadable is recorded</h4>
-                <p>A source that could not be read comes back as not checked rather than as a confident answer.</p>
-              </div>
-            </div>
-          </div>
+        <div class="pillar">
+          <h3>Answers keep their version</h3>
+          <p>An answer points at the document as it read on the day, so it can still be checked after somebody edits the form.</p>
+          <a class="arrow" href="/platform/evidence">Evidence and the record</a>
         </div>
-        <div class="vprop">
-          <div class="vprop-head">
-            <h3>The platform does not act alone</h3>
-            <p>It drafts, locates and flags. It does not send, file or decide.</p>
-          </div>
-          <div class="vprop-body is-plain">
-            <div class="vprop-parts">
-              <div class="vprop-part">
-                <h4>Nothing is filed</h4>
-                <p>No output leaves your firm without a person releasing it.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>No clearance is rendered</h4>
-                <p>Where a conflict or a privilege question arises, the platform can surface a signal. Your own systems and people remain authoritative.</p>
-              </div>
-              <div class="vprop-part">
-                <h4>Your access rules govern</h4>
-                <p>Reads run under credentials you grant, scoped to what those credentials can already see.</p>
-              </div>
-            </div>
-          </div>
+        <div class="pillar">
+          <h3>One system per insurer</h3>
+          <p>Its own database, network and sign-in. Nothing is retrieved across clients, and nothing you put in trains a model.</p>
+          <a class="arrow" href="/platform/isolation">Isolation</a>
+        </div>
+        <div class="pillar">
+          <h3>A reviewer signs off</h3>
+          <p>It drafts, finds and flags. It does not issue, bind or send anything. Nothing leaves your team without a person releasing it.</p>
+          <a class="arrow" href="/insurance">What the engine does</a>
         </div>
       </div>
+    </div>
+  </section>
 
+  <section class="band band-paper band-rule">
+    <div class="wrap">
+      <div class="head-split reveal">
+        <div>
+          <p class="eyebrow">Your content</p>
+          <h2 class="head">What happens to your documents</h2>
+        </div>
+      </div>
+      <div class="rulelist reveal">
+        <div><b>Training on your content</b><span>Never, by us or by a model provider underneath us</span></div>
+        <div><b>Secondary use</b><span>None. Read to answer your questions only</span></div>
+        <div><b>Database and network</b><span>Per insurer, not shared</span></div>
+        <div><b>Sign-in</b><span>Per insurer, connected to your identity provider</span></div>
+        <div><b>Access to your files</b><span>Under credentials you grant, scoped to what they can already see</span></div>
+        <div><b>Encryption at rest</b><span>Yes, by the platform</span></div>
+        <div><b>Your document system</b><span>Stays the system of record</span></div>
+        <div><b>Operator</b><span>WYEA runs it on our infrastructure</span></div>
+      </div>
     </div>
   </section>
 
@@ -216,22 +117,24 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Isolation</p>
-          <h2 class="head">One client, one system</h2>
+          <p class="eyebrow">Vendor review</p>
+          <h2 class="head">Send us your vendor questionnaire.</h2>
         </div>
+        <p class="lede">
+          We answer it in writing, including what we do not have yet. The
+          vendor-review table maps the controls insurers are asked to require
+          of service providers to where we stand on each.
+        </p>
       </div>
-
       <div class="rulelist reveal">
-        <div><b>Who else is in it</b><span>One firm per system</span></div>
-        <div><b>Database and network</b><span>Per client, not shared</span></div>
-        <div><b>Sign-in</b><span>Per client, connected to yours</span></div>
-        <div><b>Shared pile</b><span>None</span></div>
-        <div><b>Cross-firm retrieval</b><span>None</span></div>
-        <div><b>Training on your content</b><span>Never</span></div>
-        <div><b>Your document system</b><span>Stays authoritative</span></div>
-        <div><b>Operator</b><span>WYEA</span></div>
+        <div><b>Access controls and MFA</b><span>Ask us</span></div>
+        <div><b>Encryption in transit and at rest</b><span>Ask us</span></div>
+        <div><b>Notice of a cybersecurity event</b><span>Ask us</span></div>
+        <div><b>Security representations and warranties</b><span>Ask us</span></div>
+        <div><b>No training on client content</b><span>Holds today</span></div>
+        <div><b>Data isolation</b><span>Holds today</span></div>
       </div>
-
+      <p class="mt-10"><a class="arrow" href="/security/vendor-review">The full vendor-review table, with sources</a></p>
     </div>
   </section>
 
@@ -240,63 +143,39 @@
       <div class="head-split reveal">
         <div>
           <p class="eyebrow">Not claimed yet</p>
-          <h2 class="head">The unfinished list</h2>
+          <h2 class="head">What we do not have today</h2>
         </div>
         <p class="lede">
-          We would rather lose a deal on this page than win one and be corrected in diligence. Ask for the current position in writing and you will get it.
+          Each item below is something a vendor review may ask for. Ask for the
+          current position in writing and you will get it.
         </p>
       </div>
-
-      <div class="grid-3 reveal">
-        <div class="tile">
-          <h3>Client-controlled hosting</h3>
-          <p>
-            It runs on our infrastructure. Putting it inside your own cloud account,
-            or on hardware in your building, is something we have designed for
-            and have not built.
-          </p>
-        </div>
-        <div class="tile">
-          <h3>Export and deletion</h3>
-          <p>
-            Retention, legal hold, export, deletion and offboarding are
-            specified and not yet implemented. Until they are, offboarding is a
-            manual process we run with you.
-          </p>
-        </div>
-        <div class="tile">
-          <h3>Client-visible operator access</h3>
-          <p>
-            Our support access is scoped and limited, but you cannot yet watch
-            it in a log of your own. Closing that gap is on the build, and it is
-            not closed.
-          </p>
-        </div>
-        <div class="tile">
-          <h3>Customer-managed keys</h3>
-          <p>
-            Content is encrypted at rest by the platform. Keys you hold and can
-            revoke independently of us are not something we offer today.
-          </p>
-        </div>
-        <div class="tile">
-          <h3>Independent audit</h3>
-          <p>
-            There is no SOC 2 report, no ISO certificate and no third-party
-            penetration test to hand you. When that changes this page will say
-            so and name the firm.
-          </p>
-        </div>
-        <div class="tile">
-          <h3>Production history</h3>
-          <p>
-            The platform is early. Anyone who tells you their first deployment
-            is battle-tested is telling you something else. Ask us where we are
-            and we will tell you.
-          </p>
-        </div>
-      </div>
-
+      <ul class="notheld reveal">
+        <li>
+          <div><b>SOC 2 report, ISO 27001 certificate</b><p>There is no report or certificate to hand you. When that changes, this page will say so and name the auditor.</p></div>
+          <span class="pill pill-flag">Not held</span>
+        </li>
+        <li>
+          <div><b>Independent penetration test</b><p>No third-party test has been run.</p></div>
+          <span class="pill pill-flag">Not held</span>
+        </li>
+        <li>
+          <div><b>Hosting in your own cloud or on premises</b><p>Each system runs on our infrastructure. Running it inside your cloud account or on your hardware is designed and not built.</p></div>
+          <span class="pill pill-flag">Not built</span>
+        </li>
+        <li>
+          <div><b>Customer-managed keys</b><p>Content is encrypted at rest by the platform. Keys you hold and can revoke independently of us are not offered.</p></div>
+          <span class="pill pill-flag">Not built</span>
+        </li>
+        <li>
+          <div><b>Automated export and deletion</b><p>Retention, export, deletion and offboarding are specified and not implemented. Until they are, we run offboarding with you by hand and confirm it in writing.</p></div>
+          <span class="pill pill-flag">Not built</span>
+        </li>
+        <li>
+          <div><b>A log of our support access that you can read</b><p>Our support access is scoped and limited. You cannot yet see it in a log of your own.</p></div>
+          <span class="pill pill-flag">Not built</span>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -304,19 +183,18 @@
     <div class="wrap">
       <div class="head-split reveal">
         <div>
-          <p class="eyebrow">Questions your counsel will ask</p>
-          <h2 class="head">Answered plainly</h2>
+          <p class="eyebrow">Questions</p>
+          <h2 class="head">What security teams ask</h2>
         </div>
       </div>
-
       <div class="faq reveal">
         <details open>
           <summary>Do you train on our documents?</summary>
-          <p>No. There is no shared pile to search, nothing reaches across firms, and no client content trains a model, ours or a provider's underneath us. We reuse the software and never the documents. This goes in the engagement agreement, not just on this page.</p>
+          <p>No. Nothing you put in trains a model, ours or a model provider's underneath us. This goes in the engagement agreement as well as on this page.</p>
         </details>
         <details>
-          <summary>Where does our content actually live?</summary>
-          <p>Your own document system stays the one that is true. We run one system for your firm, with its own database, network and sign-in, on our infrastructure. It does not sit inside your cloud account or on hardware in your building today.</p>
+          <summary>Where does our content live?</summary>
+          <p>Your own document system stays the system of record. We run one system for you, with its own database, network and sign-in, on our infrastructure. It does not run inside your cloud account or on your hardware today.</p>
         </details>
         <details>
           <summary>When do you sign an NDA?</summary>
@@ -324,34 +202,16 @@
         </details>
         <details>
           <summary>Can we see an audit trail?</summary>
-          <p>Events are written to an append-only chain that is protected against edit and deletion at the database level, and four flows produce entries today. What does not exist yet is a client-facing view of it, including of our own support access. We will show you the current state rather than describe the target.</p>
+          <p>Events are written to an append-only record that is protected against edit and deletion at the database level. A view of it that you can open yourself, including of our own support access, does not exist yet. We will show you the current state on a call.</p>
         </details>
         <details>
           <summary>What happens to our content if we stop working with you?</summary>
-          <p>Today, offboarding is manual: we return or destroy content on your instruction and confirm it in writing. The automated export and deletion path is specified and not built. If a contractual deadline for return matters to you, say so early and we will write the manual process into the agreement.</p>
+          <p>Today offboarding is manual: we return or destroy content on your instruction and confirm it in writing. If a contractual deadline for return matters to you, tell us early and we will write the manual process into the agreement.</p>
         </details>
         <details>
           <summary>Do you have SOC 2?</summary>
-          <p>No. There is no SOC 2 report, no ISO certificate and no third-party penetration test. If a certificate is a hard requirement for your firm, we are not the right vendor yet and we would rather say that on the first call.</p>
+          <p>No. There is no SOC 2 report, no ISO certificate and no third-party penetration test. If a certificate is a hard requirement for you, we are not the right vendor yet, and we will say so on the first call.</p>
         </details>
-        <details>
-          <summary>Why does this page list your gaps?</summary>
-          <p>Because the alternative is being caught out by a security questionnaire, and because a platform whose central claim is that it will not assert things it cannot support should hold its own marketing to the same rule.</p>
-        </details>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="band band-tight">
-    <div class="wrap">
-      <div class="head-stack reveal" style="margin-bottom:32px">
-        <h2 style="font-size:clamp(1.5rem,2.4vw,2rem)">Keep reading</h2>
-      </div>
-      <div class="explore reveal">
-        <a href="/platform/isolation"><small>Platform</small><b>How isolation is built</b></a>
-        <a href="/platform/verification"><small>Platform</small><b>How a claim is checked</b></a>
-        <a href="/how-we-work"><small>Engagement</small><b>How an engagement runs</b></a>
       </div>
     </div>
   </section>
@@ -360,103 +220,24 @@
     <div class="wrap cta-split">
       <div class="reveal">
         <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what your people spend the day reading.</h2>
+        <h2>Send us your questionnaire, or book a call about it.</h2>
         <p class="lede">
-          Thirty minutes. Book it as a consultation on whether any of this is
-          worth doing, or as a demo on your own documents. Say which when you
-          book, or decide on the call.
+          Thirty minutes, as a consultation or a demo on your own documents.
         </p>
         <div class="actions">
-          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+          <a class="btn btn-light" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
-        <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
-          <div class="field-row">
-            <label class="field"><span>Your name</span>
-              <input type="text" name="name" autocomplete="name" maxlength="200" required>
-            </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
-              <input type="text" name="firm" autocomplete="organization" maxlength="200">
-            </label>
-          </div>
-          <label class="field"><span>Email</span>
-            <input type="email" name="email" autocomplete="email" maxlength="254" required>
-          </label>
-          <label class="field"><span>How can we help?</span>
-            <textarea name="message" rows="5" maxlength="5000" required></textarea>
-          </label>
-          <label class="hp" aria-hidden="true">Website
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </label>
-          <div class="cf-turnstile" hidden></div>
-          <button type="submit" class="btn btn-light">Send message</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
-        <p id="contact-success" class="contact-success" hidden>
-          Thanks. Your message is on its way. We'll reply within one business day.
-        </p>
+        <!-- @partial contact-form -->
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a class="wordmark" href="/">WYEA</a>
-        <p>
-          Whittle and Ye Engineering Associates. Firm-owned document engines,
-          built in Newport Beach.
-        </p>
-      </div>
-      <div class="footer-col">
-        <h4>Platform</h4>
-        <ul>
-          <li><a href="/platform">Overview</a></li>
-          <li><a href="/platform/sources">Connected sources</a></li>
-          <li><a href="/platform/verification">Grounding and verification</a></li>
-          <li><a href="/platform/evidence">Evidence and the record</a></li>
-          <li><a href="/platform/isolation">Isolation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>How we work</h4>
-        <ul>
-          <li><a href="/how-we-work">Engagement model</a></li>
-          <li><a href="/security">Security and confidentiality</a></li>
-          <li><a href="/insurance">For specialty insurers</a></li>
-          <li><a href="/custom-ai-for-law-firms">For Orange County firms</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/about">About the firm</a></li>
-          <li><a href="/privacy">Privacy</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a></li>
-          <li><a href="#contact">Send a message</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-legal">
-      <span>&copy; 2026 WYEA LLC</span>
-      <span>Newport Beach · Orange County, California</span>
-      <a href="/privacy">Privacy</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/site.js" defer></script>
+<!-- @partial footer -->
+<!-- @end footer -->
 </body>
 </html>
