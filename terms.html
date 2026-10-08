@@ -63,8 +63,8 @@
     <div class="wrap wrap-text">
       <p class="crumb"><a href="/">WYEA</a> / Terms</p>
       <p class="eyebrow">Terms of service</p>
-      <h1 style="font-size:clamp(2rem,3.8vw,3rem)">Terms of service</h1>
-      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective September 30, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
+      <h1>Terms of service</h1>
+      <p class="hero-note">Effective September 30, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
     </div>
   </section>
 
@@ -140,27 +140,21 @@
   <section id="contact" class="cta-band">
     <div class="wrap cta-split">
       <div class="reveal">
-        <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what your people spend the day reading.</h2>
-        <p class="lede">
-          Thirty minutes. Book it as a consultation on whether any of this is
-          worth doing, or as a demo on your own documents. Say which when you
-          book, or decide on the call.
-        </p>
+        <h2>See it on your own wordings</h2>
+        <p class="lede">Mostly standard forms? A shared product may suit you better. We will tell you on the first call.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
+        <!-- @partial contact-form -->
         <form id="contact-form">
-          <p style="color:var(--on-ink-soft);font-size:0.92rem;margin-bottom:1.6em">
-            Prefer to write? We reply within one business day.
-          </p>
+          <p class="form-intro">Prefer to write? We reply within one business day.</p>
           <div class="field-row">
             <label class="field"><span>Your name</span>
               <input type="text" name="name" autocomplete="name" maxlength="200" required>
             </label>
-            <label class="field"><span>Company <span class="optional">(optional)</span></span>
+            <label class="field"><span>Firm <span class="optional">(optional)</span></span>
               <input type="text" name="firm" autocomplete="organization" maxlength="200">
             </label>
           </div>
@@ -180,6 +174,7 @@
         <p id="contact-success" class="contact-success" hidden>
           Thanks. Your message is on its way. We'll reply within one business day.
         </p>
+        <!-- @end contact-form -->
       </div>
     </div>
   </section>

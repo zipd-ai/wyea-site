@@ -1559,6 +1559,8 @@ button[disabled] { opacity: 0.55; cursor: default; }
 .crumb a { color: var(--color-accent-strong); }
 .crumb a:hover { color: var(--color-text); }
 
+.page-head h1 { font-size: var(--text-h1-sub); max-width: 20ch; }
+
 .prose { padding: clamp(var(--space-12), 6vw, var(--space-20)) 0; }
 
 .prose h2 { font-size: var(--text-xl); margin: var(--space-12) 0 var(--space-3); }

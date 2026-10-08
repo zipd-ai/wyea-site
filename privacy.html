@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy | WYEA</title>
-  <meta name="description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox and SharePoint work.">
+  <meta name="description" content="What this website collects, how the WYEA platform treats a client's documents, and how Dropbox and SharePoint connections work.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Privacy | WYEA">
-  <meta property="og:description" content="How WYEA handles information: what this website collects, how the platform treats a law firm's documents, and how connected accounts such as Dropbox and SharePoint work.">
+  <meta property="og:description" content="What this website collects, how the WYEA platform treats a client's documents, and how Dropbox and SharePoint connections work.">
   <meta property="og:url" content="https://wyea.ai/privacy">
   <meta property="og:image" content="https://wyea.ai/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -63,8 +63,8 @@
     <div class="wrap wrap-text">
       <p class="crumb"><a href="/">WYEA</a> / Privacy</p>
       <p class="eyebrow">Privacy policy</p>
-      <h1 style="font-size:clamp(2rem,3.8vw,3rem)">How WYEA handles information</h1>
-      <p style="margin-top:1.4em;font-size:0.9rem;color:var(--ink-muted)">Effective September 30, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
+      <h1>How WYEA handles information</h1>
+      <p class="hero-note">Effective October 8, 2026 · WYEA LLC (Whittle and Ye Engineering Associates), Newport Beach, California</p>
     </div>
   </section>
 
@@ -86,14 +86,21 @@
       <ul>
         <li>
           <strong>The contact form</strong> stores what you type (name, firm,
-          email, message) so we can reply, and sends it to us by email. The
-          form is protected by Cloudflare Turnstile, which checks that you are
-          a person and not a script.
+          email, message) and the IP address it was sent from, so we can reply
+          and limit spam, and sends it to us by email through our email
+          provider. We keep it until you ask us to delete it.
         </li>
         <li>
-          <strong>The Brief</strong>, our email publication, keeps the email
-          addresses of people who asked to receive it. Every issue includes a
-          way to stop receiving it, and stopping removes you from the list.
+          <strong>The Brief</strong>, an email publication we no longer send,
+          still holds the email addresses of people who signed up and the IP
+          address used. The unsubscribe link in any past issue still works. We
+          keep a record that you unsubscribed so you are never emailed again;
+          to have the address deleted entirely, write to us.
+        </li>
+        <li>
+          <strong>Booking a call</strong> takes you to Google Calendar's
+          booking page. What you enter there is handled by Google under its own
+          privacy policy, and we receive the booking.
         </li>
         <li>
           <strong>Hosting</strong> is on Cloudflare, which processes visitor
@@ -105,7 +112,7 @@
       <h2>The WYEA platform</h2>
       <p>
         The platform is software we build and operate for a client firm. That firm's
-        matters, documents, and client information belong to the firm; we
+        policies, documents, and client information belong to the firm; we
         process them only to run the firm's own workspace, on the firm's
         instructions. We do not use a firm's content to train AI models, we do
         not sell it, and we do not share it with anyone except the service
@@ -202,7 +209,7 @@
         We are a California company. If
         California privacy law gives you rights over information we hold:
         access, correction, deletion. Write to us and we will honor them.
-        Note that for a firm's matter content, your request usually belongs
+        Note that for a firm's own documents, your request usually belongs
         with the firm: they are the ones who decide what their system keeps.
       </p>
 
@@ -221,15 +228,10 @@
   <section id="contact" class="cta-band">
     <div class="wrap cta-split">
       <div class="reveal">
-        <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what your people spend the day reading.</h2>
-        <p class="lede">
-          Thirty minutes. Book it as a consultation on whether any of this is
-          worth doing, or as a demo on your own documents. Say which when you
-          book, or decide on the call.
-        </p>
+        <h2>See it on your own wordings</h2>
+        <p class="lede">Mostly standard forms? A shared product may suit you better. We will tell you on the first call.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a consultation or demo</a>
+          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
       <div class="reveal">
@@ -260,6 +262,7 @@
         <p id="contact-success" class="contact-success" hidden>
           Thanks. Your message is on its way. We'll reply within one business day.
         </p>
+        <!-- @end contact-form -->
         <!-- @end contact-form -->
       </div>
     </div>
