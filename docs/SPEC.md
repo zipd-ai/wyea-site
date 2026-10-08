@@ -84,7 +84,7 @@ CLAUDE.md's hard rules, plus:
 - The word "AI" stays out of visible copy except where a source is quoted.
 - No law firm language in any linked page.
 - Prototype: "Fixed price, quoted before work starts." The first call is at no charge.
-- Prices: "Builds start at $25,000. The monthly fee starts at $5,500 and covers hosting, support and every model provider cost. Multi-entity groups are quoted at a fixed price after the prototype."
+- Prices: "Builds start at $30,000. The monthly fee starts at $7,500 and covers hosting, support and every model provider cost. Multi-entity groups are quoted at a fixed price after the prototype."
 - Approved statements: docs/brief/vendor-review.md.
 - Banned from figures and copy: sha256, content hash, version identity, character offsets, connector ids.
 

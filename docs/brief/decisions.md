@@ -8,7 +8,7 @@ Recorded 2026-10-07. Where Anderson took the runbook default, the row says so.
 | Legal name in footer, copyright and schema | WYEA LLC, the name on contracts | Default |
 | Law firm material: /custom-ai-for-law-firms, the "Two lines of work" section, the law firm FAQ, The Brief banner | Remove from navigation and home. Keep the URLs live, unlinked and set to noindex | Default |
 | Prototype price | "Fixed price, quoted before work starts" everywhere. The prototype is no longer described as free. The first call stays at no charge | Anderson, 2026-10-07 |
-| Published starting prices | Keep "Builds start at $25,000. The monthly fee starts at $5,500 and covers hosting, support and every model provider cost." Add "Multi-entity groups are quoted at a fixed price after the prototype." | Default |
+| Published starting prices | Superseded 2026-10-08: builds from $30,000 and monthly from $7,500 (Anderson). Was "Builds start at $25,000. The monthly fee starts at $5,500 and covers hosting, support and every model provider cost." Add "Multi-entity groups are quoted at a fixed price after the prototype." | Default |
 | Vendor-review facts (MFA, encryption in transit, breach-notice window, security reps and warranties) | Each row reads "Ask us" until Anderson or Johnson confirms in writing | Default |
 | 551-insurer engineering data | Build the research template only. Publish nothing | Default |
 | Events page | None | Default |
@@ -27,3 +27,4 @@ Recorded 2026-10-07. Where Anderson took the runbook default, the row says so.
 - Positioning (Anderson): insights and drafting, focused on policy and claims workflow optimization and automation. Homepage, /insurance and llms.txt updated. New lines to confirm: "Claims, checked against cover: find the wording that applies to a claim, with its source" and "Routine steps, automated: drafts and checks run on their own; your reviewer signs off."
 - Billing removed from the privacy policy: the platform has no billing system.
 - The "one week" prototype timeframe is dropped everywhere (Anderson, 2026-10-08). No delivery time is promised; the prototype stays fixed price, quoted before work starts.
+- Prices raised (Anderson): builds from $30,000; monthly fee from $7,500. Applied across the site, llms.txt and the WYEA design system.
