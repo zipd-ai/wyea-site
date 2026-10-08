@@ -14,14 +14,13 @@ Recorded 2026-10-07. Where Anderson took the runbook default, the row says so.
 | Events page | None | Default |
 | Principal photos, LinkedIn URLs, logo file URL | Photos exist in assets/. Any missing item is a placeholder that blocks launch | Default |
 | Who merges to production | The agent opens the pull request. Anderson merges | Default |
-| Visual direction | Keep Direction A (white ground, ink, oxblood accent, Newsreader and Public Sans, square corners, hairline rules). Take Eudia's section order and Glean's generous spacing as structure only; do not take Glean's palette | Anderson, 2026-10-07 |
+| Visual direction | Direction A (2026-10-08): light, Geist, indigo accent, rounded cards, product-led. Replaces the August white, ink and oxblood look | Anderson, 2026-10-08 |
 | Website brief file | Not in the repo yet. Work from the runbook's approved statements, vendor-review table and search rows until Anderson adds it | Anderson, 2026-10-07 |
 
 ## Open items
 
 - Add `WYEA_Website_Brief_2026-09-27.md` from the Go-To-Market project to this folder. Sections 6, 7 and 9 were applied from the runbook's summary of them, not the brief itself.
 - Confirm the four "Ask us" rows in vendor-review.md in writing.
-- The privacy page still names the old legal entity. It is out of scope here because /privacy is untouched.
 
 ## 2026-10-08
 
