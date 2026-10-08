@@ -1696,7 +1696,18 @@ button[disabled] { opacity: 0.55; cursor: default; }
   color: var(--color-text);
 }
 
-.app-bar .dot { width: 10px; height: 10px; border-radius: var(--radius-pill); background: var(--color-accent); flex: none; }
+.app-bar .dot { width: 10px; height: 10px; border-radius: var(--radius-pill); background: var(--color-accent); flex: none; animation: dot-pulse 2.4s var(--ease-standard) infinite; }
+
+/* A slow pulse on the figure's status dot, so the product reads as live.
+   Off under prefers-reduced-motion. */
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgb(58 63 224 / 0.35); }
+  50% { opacity: 0.45; box-shadow: 0 0 0 6px rgb(58 63 224 / 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-bar .dot { animation: none; }
+}
 
 .app-meta {
   margin-left: auto;
