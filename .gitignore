@@ -2,3 +2,4 @@
 .wrangler/
 .env
 brief/issues/*.preview.html
+.claude/blocklist.local.txt
