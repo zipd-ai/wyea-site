@@ -374,6 +374,15 @@ p { color: var(--color-text-soft); max-width: 68ch; }
 
 a { color: inherit; }
 
+/* Links inside running text are underlined, so they never rely on color
+   alone. Standalone links (.arrow, nav, buttons, cards) are not.
+   Zero specificity, so a component that sets text-decoration wins. */
+:where(p, li, td, cite, small) a:where(:not(.arrow, .btn)) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
 strong, b { font-weight: var(--weight-semibold); color: var(--color-text); }
 
 ::selection { background: var(--color-accent); color: var(--color-on-accent); }
@@ -1209,19 +1218,20 @@ strong, b { font-weight: var(--weight-semibold); color: var(--color-text); }
   border-bottom: var(--border-hair) solid var(--color-border-strong);
 }
 
-.rulelist b { font-weight: var(--weight-semibold); color: var(--color-text); }
-.rulelist span { font-size: var(--text-sm); color: var(--color-text-muted); text-align: right; }
+.rulelist b { flex: 0 0 auto; max-width: 55%; font-weight: var(--weight-semibold); color: var(--color-text); }
+.rulelist > div > span { font-size: var(--text-sm); color: var(--color-text-muted); text-align: right; }
 
 .rulelist-1 { grid-template-columns: 1fr; }
 
 .band-ink .rulelist, .band-ink .rulelist > div { border-color: var(--color-inverse-border); }
 .band-ink .rulelist b { color: var(--color-on-inverse); }
-.band-ink .rulelist span { color: var(--color-on-inverse-faint); }
+.band-ink .rulelist > div > span { color: var(--color-on-inverse-faint); }
 
 @media (max-width: 767px) {
   .rulelist { grid-template-columns: 1fr; column-gap: 0; }
   .rulelist > div { flex-direction: column; gap: var(--space-1); }
-  .rulelist span { text-align: left; }
+  .rulelist > div > span { text-align: left; }
+  .rulelist b { max-width: none; }
 }
 
 /* ---------------------------------------------------- not-held list ---- */
@@ -1413,7 +1423,7 @@ strong, b { font-weight: var(--weight-semibold); color: var(--color-text); }
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-display);
   color: var(--color-text);
-  max-width: 26ch;
+  max-width: 36ch;
 }
 
 .principals-foot {
@@ -1489,6 +1499,8 @@ button[disabled] { opacity: 0.55; cursor: default; }
 
 .cta-band { background: var(--color-inverse-bg); color: var(--color-on-inverse); padding: var(--space-band) 0; }
 .cta-band h2 { color: var(--color-on-inverse); max-width: 20ch; }
+.cta-band p { color: var(--color-on-inverse-soft); }
+.cta-band .eyebrow, .cta-band em { color: var(--color-inverse-accent); }
 
 .cta-split {
   display: grid;
@@ -1545,7 +1557,6 @@ button[disabled] { opacity: 0.55; cursor: default; }
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-6);
-  justify-content: space-between;
   margin-top: var(--space-12);
   padding-top: var(--space-5);
   border-top: var(--border-hair) solid var(--color-inverse-border);
@@ -1553,6 +1564,7 @@ button[disabled] { opacity: 0.55; cursor: default; }
 }
 
 .footer-legal a { color: var(--color-on-inverse-faint); text-decoration: none; }
+.footer-legal a:first-of-type { margin-left: auto; }
 .footer-legal a:hover { color: var(--color-on-inverse); }
 
 @media (max-width: 1023px) {
@@ -1575,7 +1587,7 @@ button[disabled] { opacity: 0.55; cursor: default; }
   margin-bottom: var(--space-6);
 }
 
-.crumb a { color: var(--color-accent-strong); text-decoration: none; }
+.crumb a { color: var(--color-accent-strong); }
 .crumb a:hover { color: var(--color-text); }
 
 .prose { padding: clamp(var(--space-12), 6vw, var(--space-20)) 0; }

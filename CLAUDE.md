@@ -16,7 +16,9 @@ Decisions override the brief: @docs/brief/decisions.md
 - Do not change the booking link (https://calendar.app.google/hMuBjTub3YHa9rKT7), contact form fields, /privacy or /terms.
 
 ## How to work
-- Use design tokens and components from the design system (path set in Step 3). Never hard-code colors, sizes or spacing in a page.
+- Use design tokens and components from the design system: `styles.css` (tokens at the top), usage notes in `docs/design-system.md`, live reference at `/design-system`. Never hard-code colors, sizes or spacing in a page; a `style` attribute fails the build.
+- Header, footer and contact form are partials in `partials/`. Edit the partial, then run the build.
 - Before saying a change works, run the check and show the output.
-- Commands: (filled in by Step 1: install, dev, build, test, lint)
+- Commands: install: none (no dependencies). Dev: `npm run dev` (wrangler on :8080). Build: `npm run build` (syncs partials, then checks dashes, titles, canonicals, sitemap, links, JSON-LD, inline styles). Check only: `npm run check`. Contrast: `npm run contrast`. There is no test or lint step; the full gate list is docs/ship-checklist.md.
+- A new indexable page needs an entry in the sitemap list in worker.js and a line in llms.txt.
 - When compacting, keep the list of modified files and the open decisions.

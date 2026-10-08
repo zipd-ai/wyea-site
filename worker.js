@@ -53,16 +53,19 @@ export default {
   },
 };
 
-// Sitemap: homepage + The Brief index + every published issue, generated
-// from the same manifest brief.js renders from, so it can never go stale.
+// Sitemap: every indexable page. scripts/build.mjs fails if a page is
+// missing from this list or a noindex page is on it.
 async function sitemap(env, origin) {
   const base = "https://wyea.ai";
   // lastmod is the date each page last changed. Update it in the same commit
   // as the page.
-  const updated = "2026-09-27";
+  const updated = "2026-10-07";
   const urls = [
     { loc: `${base}/`, lastmod: updated, priority: "1.0" },
     { loc: `${base}/insurance`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/insurance/carriers`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/insurance/mgas`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/insurance/reinsurers`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/insurance/policy-wordings`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/endorsements`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/binding-authority-and-program-agreements`, lastmod: updated, priority: "0.8" },
@@ -70,14 +73,15 @@ async function sitemap(env, origin) {
     { loc: `${base}/insurance/build-or-buy`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/contract-certainty`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/cost`, lastmod: updated, priority: "0.8" },
-    { loc: `${base}/custom-ai-for-law-firms`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/platform/sources`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/verification`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/evidence`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/isolation`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/compare`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/how-we-work`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/security/vendor-review`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
     { loc: `${base}/privacy`, lastmod: updated, priority: "0.3" },
     { loc: `${base}/terms`, lastmod: updated, priority: "0.3" },

@@ -40,6 +40,10 @@ const SKIP_FILES = new Set(["google9c6033754ec9d367.html"]);
 // Paths the Worker answers itself, so a link to them is not a missing file.
 const WORKER_ROUTES = ["/sitemap.xml", "/api/contact"];
 
+// Content left untouched on purpose (decisions.md): only their header and
+// footer are synced, so their own inline styles are not reported.
+const UNTOUCHED = new Set(["/privacy", "/terms"]);
+
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -98,6 +102,21 @@ if (!CHECK_ONLY) {
   }
 }
 
+// brief.js renders the remaining Worker pages (confirm, unsubscribe) and
+// keeps its own copy of the chrome in two template literals. Sync those too.
+if (!CHECK_ONLY) {
+  const briefPath = join(ROOT, "brief.js");
+  const before = readFileSync(briefPath, "utf8");
+  const footer = partials.footer.replace(/\n*<script src="\/site\.js" defer><\/script>\s*$/, "");
+  const after = before
+    .replace(/const SITE_HEADER = `[\s\S]*?`;/, () => "const SITE_HEADER = `" + partials.header + "`;")
+    .replace(/const SITE_FOOTER = `[\s\S]*?`;/, () => "const SITE_FOOTER = `" + footer + "`;");
+  if (after !== before) {
+    writeFileSync(briefPath, after);
+    synced++;
+  }
+}
+
 // ----------------------------------------------------------- 2. check ---
 
 const problems = [];
@@ -152,7 +171,7 @@ for (const file of pages) {
   const desc = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1];
   if (!isErrorPage) {
     if (!desc) fail(file, "no meta description");
-    else if (desc.replace(/&amp;/g, "&").length > 160) fail(file, `description is ${desc.length} characters`);
+    else if (!UNTOUCHED.has(path) && desc.replace(/&amp;/g, "&").length > 160) fail(file, `description is ${desc.length} characters`);
   }
 
   if (!noindex && !isErrorPage) {
@@ -168,7 +187,7 @@ for (const file of pages) {
     fail(file, "noindex page is listed in the sitemap");
   }
 
-  if (/\sstyle="/.test(html)) fail(file, "style attribute; use a component or utility class");
+  if (!UNTOUCHED.has(path) && /\sstyle="/.test(html)) fail(file, "style attribute; use a component or utility class");
   if (/<style[\s>]/.test(html)) fail(file, "<style> block; styles belong in styles.css");
 
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {

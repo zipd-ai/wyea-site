@@ -67,6 +67,40 @@
 <body>
 
 <!-- @partial header -->
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">WYEA</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-insurers">Insurers <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-insurers" hidden>
+          <a class="mega-link" href="/insurance"><b>Overview</b><span>What the engine does with wordings, endorsements and executed deals.</span></a>
+          <a class="mega-link" href="/insurance/carriers"><b>Carriers</b><span>Fronting, E&amp;S and specialty carriers writing on several entities' paper.</span></a>
+          <a class="mega-link" href="/insurance/mgas"><b>MGAs and program administrators</b><span>Program forms across carriers, and re-papering when capacity moves.</span></a>
+          <a class="mega-link" href="/insurance/reinsurers"><b>Reinsurers and run-off</b><span>Treaty and facultative wordings, clause libraries, legacy business.</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-platform">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-platform" hidden>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system and your mail, read where they live.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>Why a passage it cannot find never becomes an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers that keep the version they were based on.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per insurer, and the limits we publish.</span></a>
+          <a class="mega-link" href="/compare"><b>Shared product or your own engine</b><span>When each one fits, including when ours does not.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/security">Security</a>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
+    </nav>
+  </div>
+</header>
 <!-- @end header -->
 
 <main id="main">
@@ -198,6 +232,32 @@
 
       <div class="reveal">
         <!-- @partial contact-form -->
+        <form id="contact-form">
+          <p class="form-intro">Prefer to write? We reply within one business day.</p>
+          <div class="field-row">
+            <label class="field"><span>Your name</span>
+              <input type="text" name="name" autocomplete="name" maxlength="200" required>
+            </label>
+            <label class="field"><span>Firm <span class="optional">(optional)</span></span>
+              <input type="text" name="firm" autocomplete="organization" maxlength="200">
+            </label>
+          </div>
+          <label class="field"><span>Email</span>
+            <input type="email" name="email" autocomplete="email" maxlength="254" required>
+          </label>
+          <label class="field"><span>How can we help?</span>
+            <textarea name="message" rows="5" maxlength="5000" required></textarea>
+          </label>
+          <label class="hp" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+          <div class="cf-turnstile" hidden></div>
+          <button type="submit" class="btn btn-light">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <p id="contact-success" class="contact-success" hidden>
+          Thanks. Your message is on its way. We'll reply within one business day.
+        </p>
         <!-- @end contact-form -->
       </div>
     </div>
@@ -206,6 +266,62 @@
 </main>
 
 <!-- @partial footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="/">WYEA</a>
+        <p>Firm-owned document engines for specialty insurers, MGAs and program administrators.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Insurers</h2>
+        <ul>
+          <li><a href="/insurance">Overview</a></li>
+          <li><a href="/insurance/carriers">Carriers</a></li>
+          <li><a href="/insurance/mgas">MGAs and program administrators</a></li>
+          <li><a href="/insurance/reinsurers">Reinsurers and run-off</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Platform</h2>
+        <ul>
+          <li><a href="/platform">Overview</a></li>
+          <li><a href="/platform/sources">Connected sources</a></li>
+          <li><a href="/platform/verification">Grounding and verification</a></li>
+          <li><a href="/platform/evidence">Evidence and the record</a></li>
+          <li><a href="/platform/isolation">Isolation</a></li>
+          <li><a href="/compare">Shared product or your own engine</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/security/vendor-review">Vendor review</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/how-we-work">How we work</a></li>
+          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a></li>
+          <li><a href="/#contact">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 WYEA LLC</span>
+      <span>Newport Beach, California</span>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js" defer></script>
 <!-- @end footer -->
 </body>
 </html>

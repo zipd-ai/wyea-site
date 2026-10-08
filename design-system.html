@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System | WYEA</title>
+  <meta name="description" content="Internal reference for the WYEA design system: every token and component, in light and dark.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/public-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/design-system.css">
+  <script>document.documentElement.className += " js";</script>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- @partial header -->
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="/">WYEA</a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-insurers">Insurers <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-insurers" hidden>
+          <a class="mega-link" href="/insurance"><b>Overview</b><span>What the engine does with wordings, endorsements and executed deals.</span></a>
+          <a class="mega-link" href="/insurance/carriers"><b>Carriers</b><span>Fronting, E&amp;S and specialty carriers writing on several entities' paper.</span></a>
+          <a class="mega-link" href="/insurance/mgas"><b>MGAs and program administrators</b><span>Program forms across carriers, and re-papering when capacity moves.</span></a>
+          <a class="mega-link" href="/insurance/reinsurers"><b>Reinsurers and run-off</b><span>Treaty and facultative wordings, clause libraries, legacy business.</span></a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" type="button" data-mega aria-expanded="false" aria-controls="mega-platform">Platform <i class="nav-caret" aria-hidden="true"></i></button>
+        <div class="mega" id="mega-platform" hidden>
+          <a class="mega-link" href="/platform"><b>Overview</b><span>How the document engine is put together.</span></a>
+          <a class="mega-link" href="/platform/sources"><b>Connected sources</b><span>Your document system and your mail, read where they live.</span></a>
+          <a class="mega-link" href="/platform/verification"><b>Grounding and verification</b><span>Why a passage it cannot find never becomes an answer.</span></a>
+          <a class="mega-link" href="/platform/evidence"><b>Evidence and the record</b><span>Answers that keep the version they were based on.</span></a>
+          <a class="mega-link" href="/platform/isolation"><b>Isolation</b><span>One system per insurer, and the limits we publish.</span></a>
+          <a class="mega-link" href="/compare"><b>Shared product or your own engine</b><span>When each one fits, including when ours does not.</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="/security">Security</a>
+      <a class="nav-link" href="/how-we-work">How we work</a>
+      <a class="nav-link" href="/about">About</a>
+      <a class="btn btn-primary btn-sm nav-cta" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a>
+    </nav>
+  </div>
+</header>
+<!-- @end header -->
+
+<div class="ds-bar">
+  <div class="wrap ds-bar-inner">
+    <nav aria-label="Design system sections">
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#space">Space</a>
+      <a href="#form">Borders</a>
+      <a href="#motion">Motion</a>
+      <a href="#breakpoints">Breakpoints</a>
+      <a href="#components">Components</a>
+    </nav>
+    <span class="ds-width" id="ds-width" aria-live="polite"></span>
+    <div class="ds-toggle" role="group" aria-label="Theme">
+      <button type="button" data-theme-set="system" aria-pressed="true">System</button>
+      <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="hero hero-sub">
+    <div class="wrap">
+      <p class="crumb"><a href="/">WYEA</a> / Design system</p>
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Internal reference</p>
+          <h1>WYEA design system</h1>
+        </div>
+        <div>
+          <p class="lede">Every token and component the site is built from, rendered live from /styles.css. Use the toggle to check both themes. Usage notes live in docs/design-system.md.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ tokens -->
+
+  <section class="ds-section" id="color">
+    <div class="wrap">
+      <h2>Color</h2>
+      <p>Semantic tokens. Components use only these. The value under each name is read from the page, so it follows the theme.</p>
+      <span class="ds-label">Grounds</span>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-chip sw-bg"></div><code>--color-bg</code><span data-token="--color-bg"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-surface"></div><code>--color-surface</code><span data-token="--color-surface"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-surface-subtle"></div><code>--color-surface-subtle</code><span data-token="--color-surface-subtle"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-raised"></div><code>--color-raised</code><span data-token="--color-raised"></span></div>
+      </div>
+      <span class="ds-label">Text</span>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-chip sw-text"></div><code>--color-text</code><span data-token="--color-text"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-text-soft"></div><code>--color-text-soft</code><span data-token="--color-text-soft"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-text-muted"></div><code>--color-text-muted</code><span data-token="--color-text-muted"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-text-faint"></div><code>--color-text-faint</code><span data-token="--color-text-faint"></span></div>
+      </div>
+      <span class="ds-label">Rules</span>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-chip sw-border"></div><code>--color-border</code><span data-token="--color-border"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-border-strong"></div><code>--color-border-strong</code><span data-token="--color-border-strong"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-rule"></div><code>--color-rule</code><span data-token="--color-rule"></span></div>
+      </div>
+      <span class="ds-label">Accent and focus</span>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-chip sw-accent"></div><code>--color-accent</code><span data-token="--color-accent"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-accent-strong"></div><code>--color-accent-strong</code><span data-token="--color-accent-strong"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-accent-wash"></div><code>--color-accent-wash</code><span data-token="--color-accent-wash"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-on-accent"></div><code>--color-on-accent</code><span data-token="--color-on-accent"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-focus"></div><code>--color-focus</code><span data-token="--color-focus"></span></div>
+      </div>
+      <span class="ds-label">Status</span>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-chip sw-ok"></div><code>--color-ok</code><span data-token="--color-ok"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-ok-wash"></div><code>--color-ok-wash</code><span data-token="--color-ok-wash"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-flag"></div><code>--color-flag</code><span data-token="--color-flag"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-flag-wash"></div><code>--color-flag-wash</code><span data-token="--color-flag-wash"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-warning"></div><code>--color-warning</code><span data-token="--color-warning"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-warning-wash"></div><code>--color-warning-wash</code><span data-token="--color-warning-wash"></span></div>
+      </div>
+      <span class="ds-label">Buttons and inverse bands</span>
+      <div class="ds-swatches">
+        <div class="ds-swatch"><div class="ds-chip sw-btn-bg"></div><code>--color-btn-bg</code><span data-token="--color-btn-bg"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-btn-text"></div><code>--color-btn-text</code><span data-token="--color-btn-text"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-inverse-bg"></div><code>--color-inverse-bg</code><span data-token="--color-inverse-bg"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-on-inverse"></div><code>--color-on-inverse</code><span data-token="--color-on-inverse"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-on-inverse-soft"></div><code>--color-on-inverse-soft</code><span data-token="--color-on-inverse-soft"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-on-inverse-faint"></div><code>--color-on-inverse-faint</code><span data-token="--color-on-inverse-faint"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-inverse-border"></div><code>--color-inverse-border</code><span data-token="--color-inverse-border"></span></div>
+        <div class="ds-swatch"><div class="ds-chip sw-inverse-accent"></div><code>--color-inverse-accent</code><span data-token="--color-inverse-accent"></span></div>
+      </div>
+      <p class="mt-8">Every text pair passes WCAG 2.2 AA in both themes. Ratios: docs/design-system.md, generated by <code>npm run contrast</code>.</p>
+    </div>
+  </section>
+
+  <section class="ds-section" id="type">
+    <div class="wrap">
+      <h2>Type</h2>
+      <p>Newsreader for display, Public Sans for text, the system mono for dates and excerpts. Body text never goes below <code>--text-base</code>.</p>
+      <div class="ds-rows">
+        <div class="ds-row"><code>--text-3xl</code><div class="ds-t-3xl">Paper more deals</div></div>
+        <div class="ds-row"><code>--text-2xl</code><div class="ds-t-2xl">Documents it works with</div></div>
+        <div class="ds-row"><code>--text-xl</code><div class="ds-t-xl">Answers across everything you have issued</div></div>
+        <div class="ds-row"><code>--text-lg</code><div class="ds-t-lg">Every line opens its source</div></div>
+        <div class="ds-row"><code>--text-md</code><div class="ds-t-md">Read with its endorsements</div></div>
+        <div class="ds-row"><code>--text-base</code><div class="ds-t-base">A policy is read with the endorsements that amend it, so the answer reflects the wording in force.</div></div>
+        <div class="ds-row"><code>--text-sm</code><div class="ds-t-sm">Meta, captions, navigation and buttons.</div></div>
+        <div class="ds-row"><code>--text-xs</code><div class="ds-t-xs">Detail inside interface figures.</div></div>
+        <div class="ds-row"><code>--text-2xs</code><div class="ds-t-2xs">UPPERCASE LABELS ONLY</div></div>
+      </div>
+      <span class="ds-label">Headings as rendered</span>
+      <div class="ds-frame">
+        <p class="eyebrow">Eyebrow</p>
+        <h2>Heading two with <em>an italic accent</em></h2>
+        <p class="lede">A lede paragraph sits under a section heading and says what the section is for in one or two sentences.</p>
+        <h3 class="mt-8">Heading three</h3>
+        <h4 class="mt-4">Heading four</h4>
+        <p class="mt-4">Body text in Public Sans, at the base step, with <a href="#type">a link</a> and <b>strong text</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section" id="space">
+    <div class="wrap">
+      <h2>Space</h2>
+      <p>One scale on a 4px base. Bands use <code>--space-band</code> and <code>--space-band-tight</code>; the gutter is <code>--space-gutter</code>.</p>
+      <div class="ds-rows">
+        <div class="ds-row"><code>--space-1 &middot; 4</code><div><div class="ds-bar-space ds-sp-1"></div></div></div>
+        <div class="ds-row"><code>--space-2 &middot; 8</code><div><div class="ds-bar-space ds-sp-2"></div></div></div>
+        <div class="ds-row"><code>--space-3 &middot; 12</code><div><div class="ds-bar-space ds-sp-3"></div></div></div>
+        <div class="ds-row"><code>--space-4 &middot; 16</code><div><div class="ds-bar-space ds-sp-4"></div></div></div>
+        <div class="ds-row"><code>--space-5 &middot; 20</code><div><div class="ds-bar-space ds-sp-5"></div></div></div>
+        <div class="ds-row"><code>--space-6 &middot; 24</code><div><div class="ds-bar-space ds-sp-6"></div></div></div>
+        <div class="ds-row"><code>--space-8 &middot; 32</code><div><div class="ds-bar-space ds-sp-8"></div></div></div>
+        <div class="ds-row"><code>--space-10 &middot; 40</code><div><div class="ds-bar-space ds-sp-10"></div></div></div>
+        <div class="ds-row"><code>--space-12 &middot; 48</code><div><div class="ds-bar-space ds-sp-12"></div></div></div>
+        <div class="ds-row"><code>--space-16 &middot; 64</code><div><div class="ds-bar-space ds-sp-16"></div></div></div>
+        <div class="ds-row"><code>--space-20 &middot; 80</code><div><div class="ds-bar-space ds-sp-20"></div></div></div>
+        <div class="ds-row"><code>--space-24 &middot; 96</code><div><div class="ds-bar-space ds-sp-24"></div></div></div>
+        <div class="ds-row"><code>--space-32 &middot; 128</code><div><div class="ds-bar-space ds-sp-32"></div></div></div>
+        <div class="ds-row"><code>--space-36 &middot; 144</code><div><div class="ds-bar-space ds-sp-36"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section" id="form">
+    <div class="wrap">
+      <h2>Radius, borders, shadow</h2>
+      <p>Square corners only (<code>--radius-0</code>). No shadows (<code>--shadow-0</code>). Three border widths, and the focus ring.</p>
+      <div class="ds-borders">
+        <div class="ds-b-hair"><code>--border-hair</code> 1px</div>
+        <div class="ds-b-rule"><code>--border-rule</code> 2px rule above an entry</div>
+        <div class="ds-b-mark"><code>--border-mark</code> 3px citation edge</div>
+        <div class="ds-b-focus"><code>--color-focus</code> focus ring</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section" id="motion">
+    <div class="wrap">
+      <h2>Motion</h2>
+      <p>Hover or focus each button. All four durations drop to zero under prefers-reduced-motion.</p>
+      <div class="ds-motion">
+        <button type="button" class="ds-m-fast"><code>--duration-fast</code> 160ms, hover<i></i></button>
+        <button type="button" class="ds-m-base"><code>--duration-base</code> 240ms, color<i></i></button>
+        <button type="button" class="ds-m-slow"><code>--duration-slow</code> 450ms, explorer<i></i></button>
+        <button type="button" class="ds-m-reveal"><code>--duration-reveal</code> 600ms, reveal<i></i></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-section" id="breakpoints">
+    <div class="wrap">
+      <h2>Breakpoints</h2>
+      <p>The current viewport width is shown in the bar above.</p>
+      <div class="rulelist rulelist-1">
+        <div><b>375px</b><span>Smallest supported width. No horizontal scroll</span></div>
+        <div><b>768px</b><span>Below: one column, 20px gutter, tables become blocks</span></div>
+        <div><b>1024px</b><span>Below: mobile menu, stacked heads and heroes, two-column grids</span></div>
+        <div><b>1280px</b><span>Full layout</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== components -->
+
+  <section class="ds-section" id="components">
+    <div class="wrap">
+      <h2>Components</h2>
+      <p>The navigation and footer on this page are the live partials. Everything below is a specimen with invented content.</p>
+
+      <span class="ds-label">Buttons and links</span>
+      <div class="actions">
+        <a class="btn btn-primary" href="#components">Book a demo</a>
+        <a class="btn btn-ghost" href="#components">See how it works</a>
+        <a class="btn btn-primary btn-sm" href="#components">Small</a>
+      </div>
+      <p class="mt-6"><a class="arrow" href="#components">Arrow link</a></p>
+
+      <span class="ds-label">Pills and labels</span>
+      <p class="actions">
+        <span class="pill pill-ok">Holds today</span>
+        <span class="pill pill-ask">Ask us</span>
+        <span class="pill pill-flag">Not held</span>
+        <span class="pill pill-mute">Changed</span>
+        <span class="tag-invented">Invented example</span>
+      </p>
+
+      <span class="ds-label">Source-answer card</span>
+      <figure class="app" role="img" aria-label="Invented example of a source-answer card: one found row and one flagged row.">
+        <div class="app-bar"><span class="dot"></span> Which in-force policies let us cancel on less than sixty days' notice? <span class="app-meta">212 read &middot; 1 matched &middot; 1 for you</span></div>
+        <div class="ans">
+          <div class="ans-row">
+            <span class="ans-mark ans-ok">Found</span>
+            <div class="ans-body"><b>Northwind Logistics, Cyber Policy</b><q>may cancel this Policy by giving thirty (30) days' written notice to the Insured</q><span class="ans-src">Condition 7, Cancellation &middot; incepted 1 Apr 2026</span></div>
+          </div>
+          <div class="ans-row">
+            <span class="ans-mark ans-flag">For you</span>
+            <div class="ans-body"><b>Harlow Foods, Property Policy</b><p class="ans-note">The cancellation clause is in a scanned endorsement that could not be read.</p></div>
+          </div>
+        </div>
+        <div class="app-foot"><b>Every line here opens the page it came from.</b></div>
+      </figure>
+      <p class="app-caption"><span class="tag-invented">Invented example</span> The insureds, clauses and dates are invented.</p>
+
+      <span class="ds-label">Principals band</span>
+      <div class="people">
+        <div class="person person-photo">
+          <img src="/assets/anderson.jpg" alt="Anderson Whittle" width="104" height="104" loading="lazy">
+          <div><h3>Anderson Whittle</h3><p class="role">Principal Engineer and Founder</p><p>One-line credential.</p></div>
+        </div>
+        <div class="person person-photo">
+          <img src="/assets/johnson.jpg" alt="Johnson Ye" width="104" height="104" loading="lazy">
+          <div><h3>Johnson Ye</h3><p class="role">Principal Engineer and Co-Founder</p><p>One-line credential.</p></div>
+        </div>
+      </div>
+
+      <span class="ds-label">Trust pillars</span>
+      <div class="pillars">
+        <div class="pillar"><h3>Every line opens its source</h3><p>One or two sentences.</p><a class="arrow" href="#components">Backing page</a></div>
+        <div class="pillar"><h3>Answers keep their version</h3><p>One or two sentences.</p><a class="arrow" href="#components">Backing page</a></div>
+        <div class="pillar"><h3>One system per insurer</h3><p>One or two sentences.</p><a class="arrow" href="#components">Backing page</a></div>
+        <div class="pillar"><h3>A reviewer signs off</h3><p>One or two sentences.</p><a class="arrow" href="#components">Backing page</a></div>
+      </div>
+
+      <span class="ds-label">Process timeline</span>
+      <ol class="timeline">
+        <li><span class="timeline-when">Day 0</span><h3>Call</h3><p>Short description.</p></li>
+        <li><span class="timeline-when">Day 1</span><h3>NDA</h3><p>Short description.</p></li>
+        <li class="is-key"><span class="timeline-when">Week 1</span><h3>Prototype</h3><p>The key step.</p></li>
+        <li><span class="timeline-when">Week 2</span><h3>Scope</h3><p>Short description.</p></li>
+        <li><span class="timeline-when">Build</span><h3>Build</h3><p>Short description.</p></li>
+        <li><span class="timeline-when">After</span><h3>Support</h3><p>Short description.</p></li>
+      </ol>
+
+      <span class="ds-label">Stat band</span>
+      <div class="stats stats-2">
+        <div class="stat"><b>$0.0B</b><span>Specimen figure. On a real page, a published industry figure.</span><cite><a href="#components">Source name, date</a></cite></div>
+        <div class="stat"><b>00%</b><span>Every stat carries a linked source. Never a customer metric.</span><cite><a href="#components">Source name, date</a></cite></div>
+      </div>
+
+      <span class="ds-label">Rule list</span>
+      <div class="rulelist">
+        <div><b>Label</b><span>Value</span></div>
+        <div><b>Training on your content</b><span>Never</span></div>
+      </div>
+
+      <span class="ds-label">Vendor-review table</span>
+      <div class="table-wrap">
+        <table class="dtable">
+          <thead><tr><th scope="col">Requirement</th><th scope="col">Source</th><th scope="col">WYEA today</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Access controls and MFA</th><td data-label="Source">Regulation section<small>Supporting statistic</small></td><td data-label="WYEA today">What is true today</td><td data-label="Status"><span class="pill pill-ask">Ask us</span></td></tr>
+            <tr><th scope="row">Data isolation</th><td data-label="Source">wyea.ai/security</td><td data-label="WYEA today">One system per insurer</td><td data-label="Status"><span class="pill pill-ok">Holds today</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="ds-label">Comparison table</span>
+      <div class="table-wrap">
+        <table class="dtable">
+          <thead><tr><th scope="col">Question</th><th scope="col">Shared product</th><th scope="col" class="is-ours">Firm-owned engine</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mostly standard forms</th><td data-label="Shared product">The better buy</td><td data-label="Firm-owned engine" class="is-ours">More than you need</td></tr>
+            <tr><th scope="row">A change you need</th><td data-label="Shared product">Vendor roadmap</td><td data-label="Firm-owned engine" class="is-ours">The engineers who built it</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="ds-label">Not-held list</span>
+      <ul class="notheld">
+        <li><div><b>SOC 2 report</b><p>One sentence on where it stands.</p></div><span class="pill pill-flag">Not held</span></li>
+        <li><div><b>Customer-managed keys</b><p>One sentence on where it stands.</p></div><span class="pill pill-flag">Not built</span></li>
+      </ul>
+
+      <span class="ds-label">FAQ</span>
+      <div class="faq">
+        <details open><summary>An open question</summary><p>The answer is in the HTML, so it reads without scripting.</p></details>
+        <details><summary>A closed question</summary><p>Answer.</p></details>
+      </div>
+
+      <span class="ds-label">Tiles</span>
+      <div class="grid-3">
+        <div class="tile"><span class="tile-num">01</span><h3>Tile heading</h3><p>A tile is an entry in a ruled grid.</p><a class="arrow" href="#components">Link</a></div>
+        <div class="tile"><span class="tile-num">02</span><h3>Tile heading</h3><p>Rule above, no box around.</p></div>
+        <div class="tile"><span class="tile-num">03</span><h3>Tile heading</h3><ul class="ticks"><li>A tick list</li><li>Inside a tile</li></ul></div>
+      </div>
+
+      <span class="ds-label">Value prop</span>
+      <div class="vprop">
+        <div class="vprop-head"><h3>Parent claim</h3><p>The claim, stated in one sentence.</p></div>
+        <div class="vprop-body is-plain">
+          <div class="vprop-parts">
+            <div class="vprop-part"><h4>Named part</h4><p>One sentence.</p></div>
+            <div class="vprop-part"><h4>Named part</h4><p>One sentence.</p></div>
+            <div class="vprop-part"><h4>Named part</h4><p>One sentence.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <span class="ds-label">Explorer</span>
+      <div class="explorer" data-explorer>
+        <div class="explorer-list">
+          <div class="explorer-item is-open">
+            <h3><button class="explorer-trigger" type="button" aria-expanded="true" aria-controls="ds-ex-1">First entry</button></h3>
+            <div class="explorer-body" id="ds-ex-1"><div class="explorer-body-inner"><p>One entry is open at a time; its figure shows beside it.</p></div></div>
+          </div>
+          <div class="explorer-item">
+            <h3><button class="explorer-trigger" type="button" aria-expanded="false" aria-controls="ds-ex-2">Second entry</button></h3>
+            <div class="explorer-body" id="ds-ex-2"><div class="explorer-body-inner"><p>Closed entries still show their name.</p></div></div>
+          </div>
+        </div>
+        <div class="explorer-panels">
+          <div class="explorer-panel is-shown">
+            <figure class="app" role="img" aria-label="Invented example of a dated timeline figure.">
+              <div class="app-bar"><span class="dot"></span> Dated figure <span class="app-meta">Still opens</span></div>
+              <div class="fig-dates">
+                <div class="date-row"><span class="date-when">4 March</span><span class="date-what"><b>Answer given</b><small>Pointed at the wording as it read</small></span><span class="pill pill-ok">Answered</span></div>
+                <div class="date-row is-near"><span class="date-when">Today</span><span class="date-what"><b>Asked what was relied on</b><small>March's answer opens March's wording</small></span><span class="pill pill-flag">Shown</span></div>
+              </div>
+            </figure>
+          </div>
+          <div class="explorer-panel">
+            <figure class="app" role="img" aria-label="Invented example of a one-system-per-client figure.">
+              <div class="app-bar"><span class="dot"></span> Your system <span class="app-meta">Nobody else is in it</span></div>
+              <div class="fig-deploy">
+                <div class="boundary"><span class="boundary-label">Yours</span>
+                  <div class="node-row">
+                    <div class="node"><b>Your people</b><span>Signed in as they already sign in</span></div>
+                    <div class="node"><b>Your files</b><span>Read where they live</span></div>
+                    <div class="node"><b>Your history</b><span>Every answer and its source</span></div>
+                  </div>
+                  <div class="egress"><span class="pill pill-flag">Never</span> Pooled with another client</div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <span class="ds-label">Sources table figure</span>
+      <figure class="app" role="img" aria-label="Invented example of a connected-sources table.">
+        <div class="app-bar"><span class="dot"></span> What it reads <span class="app-meta">Nothing moves house</span></div>
+        <div class="fig-scroll">
+          <table class="fig-table">
+            <thead><tr><th>Where it lives</th><th>What it reads</th><th>How much</th><th>Stays put</th></tr></thead>
+            <tbody>
+              <tr><td><b>SharePoint</b><small>also OneDrive</small></td><td data-label="What it reads">Wordings and endorsements</td><td data-label="How much"><small>12,400 documents</small></td><td data-label="Stays put"><span class="pill pill-ok">Yes</span></td></tr>
+              <tr><td><b>Outlook</b><small>shared mailboxes</small></td><td data-label="What it reads">Mail and attachments</td><td data-label="How much"><small>3 mailboxes</small></td><td data-label="Stays put"><span class="pill pill-ok">Yes</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </figure>
+
+      <span class="ds-label">Article layout</span>
+      <div class="ds-frame">
+        <p class="crumb"><a href="#components">Insurers</a> / Guide</p>
+        <h2>Article title</h2>
+        <p class="lede">The answer to the title's question, in the first sentence.</p>
+        <p class="article-meta"><span>By <b>WYEA</b></span><span>Published <time datetime="2026-09-27">September 27, 2026</time></span><span>Updated <time datetime="2026-10-07">October 7, 2026</time></span></p>
+        <div class="prose">
+          <p>Body text. A quoted source sits in a callout.</p>
+          <div class="callout"><p>&ldquo;A quoted sentence&rdquo; (<a href="#components">Source, date</a>).</p></div>
+        </div>
+        <section class="sources"><h2>Sources</h2><ol><li><a href="#components">Source title</a>, publisher, date.</li></ol></section>
+      </div>
+
+      <span class="ds-label">Draft banner</span>
+      <p class="draft-banner"><b>Draft.</b> Shown on unpublished templates only; the page carries noindex.</p>
+
+      <span class="ds-label">Related links</span>
+      <div class="explore">
+        <a href="#components"><small>Label</small><b>Related page title</b></a>
+        <a href="#components"><small>Label</small><b>Related page title</b></a>
+        <a href="#components"><small>Label</small><b>Related page title</b></a>
+      </div>
+
+      <span class="ds-label">Form fields</span>
+      <form class="ds-frame" action="#components" onsubmit="return false">
+        <div class="field-row">
+          <label class="field"><span>Your name</span><input type="text" name="ds-name"></label>
+          <label class="field"><span>Firm <span class="optional">(optional)</span></span><input type="text" name="ds-firm"></label>
+        </div>
+        <label class="field"><span>Message</span><textarea name="ds-message" rows="3"></textarea></label>
+      </form>
+    </div>
+  </section>
+
+  <section class="band band-ink">
+    <div class="wrap">
+      <div class="head-split">
+        <div>
+          <p class="eyebrow">Ink band</p>
+          <h2 class="head">Components on the inverse ground</h2>
+        </div>
+        <p class="lede">Every component has an ink-band variant.</p>
+      </div>
+      <div class="rulelist">
+        <div><b>Rule list</b><span>On ink</span></div>
+        <div><b>Pill</b><span><span class="pill pill-ok">Holds today</span></span></div>
+      </div>
+      <div class="stats stats-2 mt-12">
+        <div class="stat"><b>1 week</b><span>Stat on ink</span><cite><a href="#components">Source</a></cite></div>
+        <div class="stat"><b>2</b><span>Stat on ink</span></div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-light" href="#components">Light button</a>
+        <a class="btn btn-outline-light" href="#components">Outline light</a>
+        <a class="arrow" href="#components">Arrow on ink</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap cta-split">
+      <div>
+        <p class="eyebrow">Call to action band</p>
+        <h2>Tell us which documents take your team the longest.</h2>
+        <p class="lede">The live band carries the contact form partial on the right.</p>
+        <div class="actions"><a class="btn btn-light" href="#components">Book a demo</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- @partial footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="wordmark" href="/">WYEA</a>
+        <p>Firm-owned document engines for specialty insurers, MGAs and program administrators.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Insurers</h2>
+        <ul>
+          <li><a href="/insurance">Overview</a></li>
+          <li><a href="/insurance/carriers">Carriers</a></li>
+          <li><a href="/insurance/mgas">MGAs and program administrators</a></li>
+          <li><a href="/insurance/reinsurers">Reinsurers and run-off</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Platform</h2>
+        <ul>
+          <li><a href="/platform">Overview</a></li>
+          <li><a href="/platform/sources">Connected sources</a></li>
+          <li><a href="/platform/verification">Grounding and verification</a></li>
+          <li><a href="/platform/evidence">Evidence and the record</a></li>
+          <li><a href="/platform/isolation">Isolation</a></li>
+          <li><a href="/compare">Shared product or your own engine</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Trust</h2>
+        <ul>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/security/vendor-review">Vendor review</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/how-we-work">How we work</a></li>
+          <li><a href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Book a demo</a></li>
+          <li><a href="/#contact">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 WYEA LLC</span>
+      <span>Newport Beach, California</span>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js" defer></script>
+<!-- @end footer -->
+<script src="/design-system.js" defer></script>
+</body>
+</html>
