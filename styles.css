@@ -260,6 +260,9 @@ body {
 
 img, svg { max-width: 100%; display: block; }
 
+/* The hidden attribute always wins over a component's display value. */
+[hidden] { display: none !important; }
+
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: var(--weight-display);
@@ -1447,6 +1450,56 @@ button[disabled] { opacity: 0.55; cursor: default; }
 .band-ink .form-status { color: var(--color-inverse-accent); }
 
 .contact-success { font-size: var(--text-md); margin-top: var(--space-6); }
+
+/* ------------------------------------------------------- demo funnel --- */
+/* /demo: a short step-by-step form before booking. Without scripting every
+   step shows at once and the calendar link is offered directly. */
+.funnel-band { padding-top: clamp(var(--space-12), 6vw, var(--space-20)); }
+.funnel-wrap { max-width: calc(640px + var(--space-gutter) * 2); }
+.funnel-head { text-align: center; margin-bottom: var(--space-10); }
+.funnel-head h1 { font-size: var(--text-h1-sub); }
+.funnel-head .lede { margin: var(--space-4) auto 0; }
+
+.funnel {
+  background: var(--color-raised);
+  border: var(--border-hair) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(var(--space-6), 4vw, var(--space-10));
+}
+
+.funnel-progress { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-faint); margin-bottom: var(--space-2); }
+.funnel-bar { height: 4px; border-radius: var(--radius-pill); background: var(--color-surface-strong); margin-bottom: var(--space-8); overflow: hidden; }
+.funnel-bar span { display: block; height: 100%; width: 25%; background: var(--color-accent); border-radius: var(--radius-pill); transition: width var(--duration-base) var(--ease-out); }
+
+.funnel-step { border: 0; min-width: 0; }
+.funnel-step + .funnel-step { margin-top: var(--space-8); }
+.js .funnel-step { display: none; margin-top: 0; }
+.js .funnel-step.is-current { display: block; }
+.funnel-step legend { font-size: var(--text-xl); font-weight: var(--weight-medium); letter-spacing: var(--tracking-tight); margin-bottom: var(--space-5); padding: 0; }
+
+.choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.choice { position: relative; display: block; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.choice span {
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  border: var(--border-hair) solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-medium);
+  transition: border-color var(--duration-fast) var(--ease-standard), background var(--duration-fast) var(--ease-standard);
+}
+.choice:hover span { border-color: var(--color-accent-line); }
+.choice input:checked + span { border-color: var(--color-accent); background: var(--color-accent-wash); }
+.choice input:focus-visible + span { outline: var(--border-rule) solid var(--color-focus); outline-offset: 2px; }
+
+.funnel-nav { display: flex; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-8); }
+.funnel-nav [data-next], .funnel-nav [data-submit] { margin-left: auto; }
+.funnel-done { text-align: center; }
+.funnel-done .lede { margin: var(--space-3) auto 0; }
+.funnel-done .actions { justify-content: center; }
+
+@media (max-width: 767px) { .choices { grid-template-columns: 1fr; } }
 
 /* --------------------------------------------------- call to action ---- */
 /* The closing panel: the same soft gradient as the product stage. */

@@ -228,6 +228,94 @@
     if (window.turnstile) turnstile.reset();
   }
 
+  /* ------------------------------------------------------- demo funnel */
+
+  // /demo: one step at a time, then the answers go to /api/contact as one
+  // message and the calendar link is shown. Each step must be answered
+  // before Next moves on.
+  var demo = document.getElementById("demo-form");
+
+  if (demo && window.fetch) {
+    var steps = [].slice.call(demo.querySelectorAll(".funnel-step"));
+    var label = demo.querySelector("[data-step-label]");
+    var bar = demo.querySelector("[data-step-bar]");
+    var back = demo.querySelector("[data-back]");
+    var next = demo.querySelector("[data-next]");
+    var submit = demo.querySelector("[data-submit]");
+    var dStatus = demo.querySelector(".form-status");
+    var at = 0;
+
+    function showStep(i) {
+      at = i;
+      steps.forEach(function (s, n) { s.classList.toggle("is-current", n === i); });
+      label.textContent = "Step " + (i + 1) + " of " + steps.length;
+      bar.style.width = ((i + 1) / steps.length * 100) + "%";
+      back.hidden = i === 0;
+      next.hidden = i === steps.length - 1;
+      submit.hidden = i !== steps.length - 1;
+      dStatus.textContent = "";
+      var first = steps[i].querySelector("input:not([type=hidden]), textarea");
+      if (first && i > 0) first.focus();
+    }
+
+    function stepValid(i) {
+      var fields = [].slice.call(steps[i].querySelectorAll("input, textarea")).filter(function (f) { return f.name !== "website"; });
+      for (var n = 0; n < fields.length; n++) {
+        if (!fields[n].checkValidity()) {
+          dStatus.textContent = fields[n].type === "radio" ? "Pick one to continue." : "Please fill this in to continue.";
+          if (fields[n].type !== "radio") fields[n].focus();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    next.addEventListener("click", function () { if (stepValid(at)) showStep(at + 1); });
+    back.addEventListener("click", function () { showStep(at - 1); });
+
+    // Picking an answer on a choice step moves on by itself.
+    demo.addEventListener("change", function (e) {
+      if (e.target.type === "radio" && at < steps.length - 1) setTimeout(function () { showStep(at + 1); }, 180);
+    });
+
+    demo.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!stepValid(at)) return;
+      var f = demo.elements;
+      submit.disabled = true;
+      submit.textContent = "Sending\u2026";
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          token: token,
+          name: f.name.value,
+          firm: f.company.value,
+          email: f.email.value,
+          message: "Demo request\nRole: " + f.role.value + "\nCompany size: " + f.size.value + "\n\nWhat they want to fix:\n" + f.problem.value,
+          website: f.website.value
+        })
+      }).then(function (res) {
+        return res.json().then(function (data) {
+          if (res.ok && data.ok) {
+            demo.hidden = true;
+            document.getElementById("demo-done").hidden = false;
+          } else {
+            dFail(data && data.error);
+          }
+        });
+      }).catch(function () { dFail(); });
+    });
+
+    function dFail(message) {
+      submit.disabled = false;
+      submit.textContent = "Continue to booking";
+      dStatus.textContent = message || "Something went wrong on our end. Please try again in a minute.";
+    }
+
+    showStep(0);
+  }
+
   /* ------------------------------------------------------- theme ---- */
 
   // Only /design-system carries a toggle. It sets data-theme on <html>,
