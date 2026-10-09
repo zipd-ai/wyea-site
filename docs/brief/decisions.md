@@ -30,3 +30,4 @@ Recorded 2026-10-07. Where Anderson took the runbook default, the row says so.
 - Prices raised (Anderson): builds from $30,000; monthly fee from $7,500. Applied across the site, llms.txt and the WYEA design system.
 - Demo funnel (Anderson): every Book a demo goes to /demo first (role, company size, problem, then name, company and work email), submitted through /api/contact, then the calendar link.
 - Held (Anderson): SOC 2, ISO 27001, independent penetration test, MFA, encryption in transit and at rest, breach notice and security warranties in the MSA. No list of what is not held is published.
+- Investment framing (Anderson, 2026-10-09): WYEA's own figures are an investment, never a cost, price or fee. "Fixed investment, agreed before work starts"; "monthly investment"; "model usage included". Underwriting "pricing decisions" and third-party costs keep their words.
