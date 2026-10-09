@@ -4,10 +4,10 @@ The source for /security/vendor-review. Edit a row here when Anderson or Johnson
 
 | Requirement | Source | WYEA today | Status |
 |---|---|---|---|
-| Access controls and MFA | 23 NYCRR 500.11(b)(1); 62% of security teams require MFA from vendors, 73% in financial services (ISC2 2025) | Own sign-in per insurer, federated to the insurer's identity provider | Ask us, until MFA enforcement is confirmed |
-| Encryption in transit and at rest | 23 NYCRR 500.11(b)(2) | At rest: stated on /security. In transit: not stated | Ask us, until both are confirmed |
-| Notice of a cybersecurity event | 23 NYCRR 500.11(b)(3); 61% require incident response and breach notification, 75% in financial services (ISC2 2025) | Not stated | Ask us, until a notice window is set for the MSA |
-| Security representations and warranties | 23 NYCRR 500.11(b)(4) | Not stated | Ask us, until offered in the MSA |
+| Access controls and MFA | 23 NYCRR 500.11(b)(1); 62% of security teams require MFA from vendors, 73% in financial services (ISC2 2025) | Own sign-in per insurer, federated to the insurer's identity provider | Holds today: MFA enforced (Anderson, 2026-10-08) |
+| Encryption in transit and at rest | 23 NYCRR 500.11(b)(2) | Encrypted in transit and at rest | Holds today (Anderson, 2026-10-08) |
+| Notice of a cybersecurity event | 23 NYCRR 500.11(b)(3); 61% require incident response and breach notification, 75% in financial services (ISC2 2025) | Committed in the MSA | Holds today (Anderson, 2026-10-08) |
+| Security representations and warranties | 23 NYCRR 500.11(b)(4) | In the MSA | Holds today (Anderson, 2026-10-08) |
 | Standards compliance: SOC 2, ISO 27001, NIST | 77% name it their top vendor requirement, 84% in financial services (ISC2 2025) | None | Not held; stays on the not-claimed list |
 | Independent audit or penetration test | 71% require audits or attestations, 80% in financial services (ISC2 2025) | None | Not held; stays on the not-claimed list |
 | No training on client content | wyea.ai/security | Contractual and architectural | Publish as stated |
