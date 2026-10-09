@@ -3,7 +3,7 @@
 > WYEA (WYEA LLC, Newport Beach, California) builds firm-owned document engines for specialty insurers, MGAs and program administrators. Each engine works on policy and claims workflows: it answers questions and drafts from the policies, claims files and data an insurer already keeps, automates routine steps under a reviewer's sign-off, and states nothing it cannot show in a source document.
 
 - One isolated system per insurer, with its own database, network and sign-in. Client documents never train a model.
-- Engagements start with a prototype on the client's own documents at a fixed price quoted before work starts, then a fixed-price build (from $30,000) and one monthly fee (from $7,500) that covers hosting, support and every model provider cost. Multi-entity groups are quoted at a fixed price after the prototype.
+- Engagements start with a prototype on the client's own documents at a fixed investment agreed before work starts, then a fixed investment for the build (from $30,000) and one monthly investment (from $7,500) that covers hosting, support and model usage. Multi-entity groups are scoped as a fixed investment after the prototype.
 - Led by two principal engineers, Anderson Whittle and Johnson Ye.
 - Holds SOC 2 and ISO 27001, with an independent penetration test. MFA enforced; data encrypted in transit and at rest.
 
@@ -20,7 +20,7 @@
 - [Treaty and facultative wordings from your clause library](https://wyea.ai/insurance/reinsurance-treaty-wordings)
 - [Should an MGA build its own document tools?](https://wyea.ai/insurance/build-or-buy)
 - [Contract certainty when the same deal is papered on several forms](https://wyea.ai/insurance/contract-certainty)
-- [What a document engine costs](https://wyea.ai/insurance/cost)
+- [Investing in a document engine](https://wyea.ai/insurance/cost)
 
 ## Platform
 - [How a document engine works](https://wyea.ai/platform)
