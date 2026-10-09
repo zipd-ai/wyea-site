@@ -59,7 +59,7 @@ async function sitemap(env, origin) {
   const base = "https://wyea.ai";
   // lastmod is the date each page last changed. Update it in the same commit
   // as the page.
-  const updated = "2026-10-07";
+  const updated = "2026-10-08";
   const urls = [
     { loc: `${base}/`, lastmod: updated, priority: "1.0" },
     { loc: `${base}/insurance`, lastmod: updated, priority: "0.9" },
@@ -82,6 +82,7 @@ async function sitemap(env, origin) {
     { loc: `${base}/how-we-work`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/security/vendor-review`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/demo`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
     { loc: `${base}/privacy`, lastmod: "2026-09-30", priority: "0.3" },
     { loc: `${base}/terms`, lastmod: "2026-09-30", priority: "0.3" },

@@ -13,7 +13,7 @@ Decisions override the brief: @docs/brief/decisions.md
 - No customer logos, testimonials, customer metrics or case studies.
 - "Enterprise" names the audience only. Never "enterprise-grade".
 - No hype words: revolutionary, cutting-edge, AI-powered, seamless, unlock, leverage, robust, game-changer.
-- Do not change the booking link (https://calendar.app.google/hMuBjTub3YHa9rKT7), contact form fields, /privacy or /terms.
+- Every "Book a demo" links to /demo (the funnel: role, company size, problem, contact), which then offers the booking link (https://calendar.app.google/hMuBjTub3YHa9rKT7). Do not link the calendar directly or change it, or the contact form fields.
 
 ## How to work
 - Use design tokens and components from the design system: `styles.css` (tokens at the top), usage notes in `docs/design-system.md`, live reference at `/design-system`. Never hard-code colors, sizes or spacing in a page; a `style` attribute fails the build.

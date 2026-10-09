@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page not found | WYEA</title>
-  <meta name="robots" content="noindex">
+  <title>Book a Demo | WYEA</title>
+  <meta name="description" content="Tell us your role, company size and the problem you want to fix, then pick a time for a demo on your own documents.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Book a Demo | WYEA">
+  <meta property="og:description" content="Tell us your role, company size and the problem you want to fix, then pick a time for a demo on your own documents.">
+  <meta property="og:url" content="https://wyea.ai/demo">
+  <meta property="og:image" content="https://wyea.ai/assets/og/home.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://wyea.ai/demo">
   <link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script>document.documentElement.className += " js"; setTimeout(function () { if (!window.wyeaReady) document.documentElement.classList.remove("js"); }, 4000);</script>
@@ -52,35 +59,86 @@
 
 <main id="main">
 
-    <section class="hero hero-sub">
-    <div class="wrap">
-      <p class="crumb"><a href="/">WYEA</a> / Not found</p>
-      <div class="hero-grid">
-        <div>
-          <h1>That page is not here</h1>
-        </div>
-        <div>
-          <p class="lede">The link may be wrong. Try one of these.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="/">Home</a>
-            <a class="btn btn-ghost" href="/insurance">For specialty insurers</a>
+  <section class="band funnel-band">
+    <div class="wrap funnel-wrap">
+      <div class="funnel-head">
+        <h1>Book a demo</h1>
+        <p class="lede">Tell us a little about you. Then pick a time.</p>
+      </div>
+
+      <form id="demo-form" class="funnel" novalidate>
+        <p class="funnel-progress" aria-live="polite"><span data-step-label>Step 1 of 4</span></p>
+        <div class="funnel-bar" aria-hidden="true"><span data-step-bar></span></div>
+
+        <fieldset class="funnel-step is-current" data-step="1">
+          <legend>What is your role?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="role" value="Underwriting" required><span>Underwriting</span></label>
+            <label class="choice"><input type="radio" name="role" value="Claims"><span>Claims</span></label>
+            <label class="choice"><input type="radio" name="role" value="Operations"><span>Operations</span></label>
+            <label class="choice"><input type="radio" name="role" value="IT or security"><span>IT or security</span></label>
+            <label class="choice"><input type="radio" name="role" value="Leadership"><span>Leadership</span></label>
+            <label class="choice"><input type="radio" name="role" value="Other"><span>Other</span></label>
           </div>
+        </fieldset>
+
+        <fieldset class="funnel-step" data-step="2">
+          <legend>How big is your company?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="size" value="Under 50 people" required><span>Under 50 people</span></label>
+            <label class="choice"><input type="radio" name="size" value="50 to 250 people"><span>50 to 250</span></label>
+            <label class="choice"><input type="radio" name="size" value="250 to 1,000 people"><span>250 to 1,000</span></label>
+            <label class="choice"><input type="radio" name="size" value="Over 1,000 people"><span>Over 1,000</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="funnel-step" data-step="3">
+          <legend>What do you want to fix?</legend>
+          <label class="field"><span>A sentence or two is plenty.</span>
+            <textarea name="problem" rows="5" maxlength="4000" required placeholder="For example: our claims team spends hours checking cover against endorsements."></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset class="funnel-step" data-step="4">
+          <legend>Where should we reach you?</legend>
+          <div class="field-row">
+            <label class="field"><span>Your name</span>
+              <input type="text" name="name" autocomplete="name" maxlength="200" required>
+            </label>
+            <label class="field"><span>Company</span>
+              <input type="text" name="company" autocomplete="organization" maxlength="200" required>
+            </label>
+          </div>
+          <label class="field"><span>Work email</span>
+            <input type="email" name="email" autocomplete="email" maxlength="254" required>
+          </label>
+          <label class="hp" aria-hidden="true">Website
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </label>
+        </fieldset>
+
+        <p class="form-status" role="status" aria-live="polite"></p>
+
+        <div class="funnel-nav">
+          <button type="button" class="btn btn-ghost" data-back hidden>Back</button>
+          <button type="button" class="btn btn-primary" data-next>Next</button>
+          <button type="submit" class="btn btn-primary" data-submit hidden>Continue to booking</button>
+        </div>
+      </form>
+
+      <div id="demo-done" class="funnel funnel-done" hidden>
+        <h2>Thanks. Now pick a time.</h2>
+        <p class="lede">Thirty minutes, on your own documents.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://calendar.app.google/hMuBjTub3YHa9rKT7" target="_blank" rel="noopener">Pick a time</a>
         </div>
       </div>
+
+      <noscript>
+        <p class="lede">You can also <a href="https://calendar.app.google/hMuBjTub3YHa9rKT7">pick a time directly</a>.</p>
+      </noscript>
     </div>
   </section>
-
-  <section class="band band-tight">
-    <div class="wrap">
-      <div class="explore">
-        <a href="/platform"><small>Platform</small><b>How the engine works</b></a>
-        <a href="/security"><small>Security</small><b>What we can claim today</b></a>
-        <a href="/how-we-work"><small>Engagement</small><b>A prototype, then a fixed price</b></a>
-        <a href="/about"><small>About</small><b>The two engineers behind it</b></a>
-      </div>
-    </div>
-  </section>
-
 
 </main>
 
