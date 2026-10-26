@@ -545,6 +545,16 @@ strong, b { font-weight: var(--weight-medium); color: var(--color-text); }
   flex: none;
 }
 
+/* the source dot: the one mark the site uses for "this came from a document" */
+.wordmark::after {
+  content: "";
+  display: inline-block;
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+}
+
 .nav {
   display: flex;
   align-items: center;
