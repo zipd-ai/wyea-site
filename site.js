@@ -155,6 +155,120 @@
   // remove .js and fall back to showing everything.
   window.wyeaReady = true;
 
+  /* ---------------------------------------------------------- motion ---- */
+
+  // Everything in this block is decoration on top of content that is already
+  // in the page. Skipped entirely under prefers-reduced-motion.
+
+  var header = document.querySelector(".site-header");
+  function stuck() { if (header) header.classList.toggle("is-scrolled", window.scrollY > 24); }
+  stuck();
+
+  var fields = [].slice.call(document.querySelectorAll("[data-field]"));
+  var words = [].slice.call(document.querySelectorAll("[data-words]"));
+  var progress = [].slice.call(document.querySelectorAll("[data-progress]"));
+
+  // Split the statement into words so each can light up as it is read.
+  var lit = words.map(function (el) {
+    var spans = el.textContent.trim().split(/\s+/).map(function (word) {
+      var span = document.createElement("span");
+      span.className = "w";
+      span.textContent = word;
+      return span;
+    });
+    el.textContent = "";
+    spans.forEach(function (span, i) {
+      if (i) el.appendChild(document.createTextNode(" "));
+      el.appendChild(span);
+    });
+    return spans;
+  });
+
+  fields.forEach(function (field) {
+    [].slice.call(field.querySelectorAll("[data-depth]")).forEach(function (el) {
+      el.style.setProperty("--d", el.getAttribute("data-depth"));
+    });
+  });
+
+  // Ticker: a real pause control (WCAG 2.2.2).
+  var tick = document.querySelector(".ticker");
+  var tickBtn = document.querySelector(".ticker-pause");
+  if (tick && tickBtn) {
+    tickBtn.addEventListener("click", function () {
+      var on = tickBtn.getAttribute("aria-pressed") !== "true";
+      tickBtn.setAttribute("aria-pressed", String(on));
+      tickBtn.setAttribute("aria-label", on ? "Play scrolling list" : "Pause scrolling list");
+      tick.classList.toggle("is-paused", on);
+    });
+  }
+
+  // Off-screen light fields stop animating.
+  if (!reduced && "IntersectionObserver" in window) {
+    var pause = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        [].slice.call(e.target.querySelectorAll(".blob")).forEach(function (b) { b.style.animationPlayState = e.isIntersecting ? "running" : "paused"; });
+      });
+    });
+    [].slice.call(document.querySelectorAll(".lights")).forEach(function (l) { pause.observe(l); });
+  }
+
+  var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+  var ticking = false;
+
+  function frame() {
+    ticking = false;
+    var vh = window.innerHeight;
+
+    pointer.x += (pointer.tx - pointer.x) * 0.08;
+    pointer.y += (pointer.ty - pointer.y) * 0.08;
+
+    fields.forEach(function (field) {
+      var r = field.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      // -1 to 1 as the section crosses the viewport
+      var sy = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh));
+      field.style.setProperty("--px", pointer.x.toFixed(3));
+      field.style.setProperty("--py", pointer.y.toFixed(3));
+      field.style.setProperty("--sy", sy.toFixed(3));
+    });
+
+    words.forEach(function (el, k) {
+      var r = el.getBoundingClientRect();
+      var p = (vh * 0.82 - r.top) / (r.height + vh * 0.25);
+      var upto = Math.round(Math.max(0, Math.min(1, p)) * lit[k].length);
+      lit[k].forEach(function (span, i) { span.classList.toggle("is-lit", i < upto); });
+    });
+
+    progress.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var p = Math.max(0, Math.min(1, (vh * 0.85 - r.top) / (r.height + vh * 0.2)));
+      el.style.setProperty("--p", p.toFixed(3));
+      var items = [].slice.call(el.children);
+      items.forEach(function (li, i) { li.classList.toggle("is-on", p >= (i + 0.35) / items.length); });
+    });
+
+    if (Math.abs(pointer.tx - pointer.x) > 0.002 || Math.abs(pointer.ty - pointer.y) > 0.002) request();
+  }
+
+  function request() {
+    if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+  }
+
+  if (!reduced) {
+    window.addEventListener("scroll", function () { stuck(); request(); }, { passive: true });
+    window.addEventListener("resize", request);
+    if (window.matchMedia("(hover: hover)").matches) {
+      window.addEventListener("pointermove", function (e) {
+        pointer.tx = e.clientX / window.innerWidth * 2 - 1;
+        pointer.ty = e.clientY / window.innerHeight * 2 - 1;
+        request();
+      }, { passive: true });
+    }
+    request();
+  } else {
+    window.addEventListener("scroll", stuck, { passive: true });
+  }
+
   /* ----------------------------------------------------------- forms ---- */
 
   // One token per page load: the Worker treats a repeated token as the same
@@ -330,5 +444,345 @@
       });
       document.dispatchEvent(new CustomEvent("themechange"));
     });
+  });
+})();
+
+/* ------------------------------------------------------------------------
+   Firm memory explorer (/explore). Builds a clickable map from the plain
+   list of documents in the page, so the page reads the same with scripting
+   off. Nodes move between two arrangements; the lines follow them.
+   ------------------------------------------------------------------------ */
+(function () {
+  var root = document.querySelector("[data-memory]");
+  if (!root) return;
+  var SVG = "http://www.w3.org/2000/svg";
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var bar = root.querySelector(".mem-bar");
+  var canvas = root.querySelector(".mem-canvas");
+  var svg = root.querySelector(".mem-edges");
+  var nodesBox = root.querySelector(".mem-nodes");
+  var caption = root.querySelector(".mem-caption");
+  var view = root.querySelector(".mem-view");
+  var search = root.querySelector("[data-search]");
+  var modeButtons = [].slice.call(root.querySelectorAll("[data-mode]"));
+  var idle = view.innerHTML;
+
+  var captions = {
+    files: "Files and folders: where each file sits and what it is called. Nothing says what it means.",
+    meaning: "What it means: grouped by the work each document serves, linked by what amends or cites what."
+  };
+
+  // Drawn icons, one stroke weight, one per kind of document.
+  var ICONS = {
+    doc: '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9.5 12h5M9.5 15.5h5"/>',
+    amend: '<path d="M7 3h7l4 4v14H7z"/><path d="M12 11v6M9 14h6"/>',
+    claim: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    scan: '<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16"/>',
+    clause: '<path d="M10 7C7 7 6 9 6 11v6h5v-5H8c0-2 1-3 2-3zM19 7c-3 0-4 2-4 4v6h5v-5h-3c0-2 1-3 2-3z"/>',
+    draft: '<path d="M4 20l1-4L16 5l3 3L8 19zM14 7l3 3"/>',
+    list: '<path d="M5 6h14M5 12h14M5 18h9"/>',
+    inbox: '<path d="M4 13l3-8h10l3 8v6H4zM4 13h5l1 2h4l1-2h5"/>',
+    seal: '<path d="M7 3h7l4 4v14H7z"/><circle cx="12.5" cy="15" r="2.5"/>'
+  };
+  var ICON_FOR = { "Policy": "doc", "Endorsement": "amend", "Clause library": "clause", "Claim file": "claim", "Note": "list", "Scan": "scan", "Submission": "inbox", "Guideline": "list", "Draft": "draft", "Agreement": "seal", "Form": "seal", "Treaty": "seal" };
+
+  // ---- data, read from the document list
+  var nodes = {};
+  var order = [];
+  [].slice.call(root.querySelectorAll(".doc")).forEach(function (doc) {
+    var id = doc.getAttribute("data-id");
+    var f = doc.getAttribute("data-f").split(",").map(Number);
+    var m = doc.getAttribute("data-m").split(",").map(Number);
+    nodes[id] = {
+      id: id, doc: doc,
+      group: doc.getAttribute("data-group"),
+      kind: doc.getAttribute("data-kind"),
+      file: doc.getAttribute("data-file"),
+      title: doc.querySelector("h3").textContent,
+      text: doc.textContent.toLowerCase(),
+      pos: { files: f, meaning: m },
+      cur: f.slice(), from: f.slice(), neighbours: {}
+    };
+    order.push(id);
+  });
+
+  var pairs = {};
+  var edges = [];
+  function addEdge(a, b, folder) {
+    var key = a < b ? a + "|" + b : b + "|" + a;
+    if (pairs[key]) { if (!folder) pairs[key].folder = false; return; }
+    pairs[key] = { a: a, b: b, folder: !!folder };
+    edges.push(pairs[key]);
+  }
+  order.forEach(function (id) {
+    [].slice.call(nodes[id].doc.querySelectorAll("[data-link]")).forEach(function (a) {
+      var other = a.getAttribute("data-link");
+      if (!nodes[other]) return;
+      addEdge(id, other, false);
+      nodes[id].neighbours[other] = true;
+      nodes[other].neighbours[id] = true;
+    });
+  });
+  var lastInGroup = {};
+  order.forEach(function (id) {
+    var g = nodes[id].group;
+    if (lastInGroup[g]) addEdge(lastInGroup[g], id, true);
+    lastInGroup[g] = id;
+  });
+
+  // ---- build the map
+  edges.forEach(function (e) {
+    var line = document.createElementNS(SVG, "line");
+    line.setAttribute("class", "mem-edge" + (e.folder ? " is-folder" : ""));
+    svg.appendChild(line);
+    e.el = line;
+  });
+
+  order.forEach(function (id) {
+    var n = nodes[id];
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "mem-node";
+    b.setAttribute("aria-pressed", "false");
+    b.innerHTML = '<span class="mem-node-icon" aria-hidden="true"><svg viewBox="0 0 24 24">' + (ICONS[ICON_FOR[n.kind]] || ICONS.doc) + '</svg></span><span class="mem-node-text"><span class="mem-node-title"></span><span class="mem-node-sub"></span></span>';
+    b.addEventListener("click", function () { selectDoc(id, true); });
+    nodesBox.appendChild(b);
+    n.el = b;
+  });
+
+  var state = { mode: "files", doc: null, q: null, query: "", touched: false };
+  var raf = 0;
+
+  function place() {
+    order.forEach(function (id) {
+      var n = nodes[id];
+      n.el.style.setProperty("--x", n.cur[0].toFixed(2));
+      n.el.style.setProperty("--y", n.cur[1].toFixed(2));
+    });
+    edges.forEach(function (e) {
+      e.el.setAttribute("x1", nodes[e.a].cur[0].toFixed(2));
+      e.el.setAttribute("y1", nodes[e.a].cur[1].toFixed(2));
+      e.el.setAttribute("x2", nodes[e.b].cur[0].toFixed(2));
+      e.el.setAttribute("y2", nodes[e.b].cur[1].toFixed(2));
+    });
+  }
+
+  function setMode(mode, animate) {
+    state.mode = mode;
+    canvas.classList.toggle("is-files", mode === "files");
+    canvas.classList.toggle("is-meaning", mode === "meaning");
+    modeButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-mode") === mode)); });
+    caption.textContent = captions[mode];
+    order.forEach(function (id) {
+      var n = nodes[id];
+      n.el.querySelector(".mem-node-title").textContent = mode === "files" ? n.file : n.title;
+      n.el.querySelector(".mem-node-sub").textContent = mode === "files" ? "" : n.kind;
+      n.el.setAttribute("aria-label", n.title + ", " + n.kind);
+      n.from = n.cur.slice();
+    });
+    cancelAnimationFrame(raf);
+    if (!animate || reduced) {
+      order.forEach(function (id) { nodes[id].cur = nodes[id].pos[mode].slice(); });
+      place();
+      return;
+    }
+    var start = null, span = 900;
+    (function step(t) {
+      if (start === null) start = t;
+      var p = Math.min(1, (t - start) / span);
+      var e = 1 - Math.pow(1 - p, 4);
+      order.forEach(function (id) {
+        var n = nodes[id], to = n.pos[mode];
+        n.cur = [n.from[0] + (to[0] - n.from[0]) * e, n.from[1] + (to[1] - n.from[1]) * e];
+      });
+      place();
+      if (p < 1) raf = requestAnimationFrame(step);
+    })(performance.now());
+  }
+
+  // ---- focus: which documents are lit
+  function paint() {
+    var lit = null, hot = null, source = {};
+    var q = state.query.trim().toLowerCase();
+    if (q) {
+      lit = {};
+      order.forEach(function (id) { if (nodes[id].text.indexOf(q) !== -1 || nodes[id].file.toLowerCase().indexOf(q) !== -1) lit[id] = true; });
+      hot = {};
+    } else if (state.q) {
+      lit = {}; hot = {};
+      state.q.nodes.forEach(function (id) { lit[id] = true; hot[id] = true; source[id] = true; });
+    } else if (state.doc) {
+      lit = {}; hot = {};
+      lit[state.doc] = true; hot[state.doc] = true;
+      Object.keys(nodes[state.doc].neighbours).forEach(function (id) { lit[id] = true; });
+    }
+    order.forEach(function (id) {
+      var el = nodes[id].el;
+      el.classList.toggle("is-dim", !!lit && !lit[id]);
+      el.classList.toggle("is-source", !!source[id]);
+      el.classList.toggle("is-near", !!lit && !!lit[id] && !source[id] && state.doc !== id && !q);
+      el.setAttribute("aria-pressed", String(state.doc === id));
+    });
+    edges.forEach(function (e) {
+      var on = !!(hot && (state.q ? (hot[e.a] && hot[e.b]) : (e.a === state.doc || e.b === state.doc)));
+      e.el.classList.toggle("is-hot", on && !q);
+      e.el.classList.toggle("is-dim", !!lit && !on);
+    });
+  }
+
+  function wireLinks() {
+    [].slice.call(view.querySelectorAll("[data-link]")).forEach(function (a) {
+      a.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        selectDoc(a.getAttribute("data-link"), true);
+      });
+    });
+  }
+
+  function showIdle() {
+    state.doc = null; state.q = null;
+    view.innerHTML = idle;
+    wireQuestions();
+    paint();
+  }
+
+  function backButton(label) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "mem-back";
+    b.textContent = label;
+    b.addEventListener("click", function () {
+      showIdle();
+      var first = view.querySelector(".q-btn");
+      if (first) first.focus();
+    });
+    return b;
+  }
+
+  function reveal() {
+    if (window.matchMedia("(max-width: 1023px)").matches) view.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" });
+  }
+
+  function selectDoc(id, scroll) {
+    state.touched = true;
+    if (state.mode !== "meaning") setMode("meaning", true);
+    state.doc = id; state.q = null;
+    view.innerHTML = "";
+    view.appendChild(backButton("Back to questions"));
+    var body = document.createElement("div");
+    body.className = "doc mem-doc";
+    body.innerHTML = nodes[id].doc.innerHTML;
+    view.appendChild(body);
+    wireLinks();
+    paint();
+    if (scroll) reveal();
+  }
+
+  function askQuestion(li) {
+    state.touched = true;
+    if (state.mode !== "meaning") setMode("meaning", true);
+    state.doc = null;
+    state.q = { key: li.getAttribute("data-q"), nodes: li.getAttribute("data-nodes").split(" ") };
+    view.innerHTML = "";
+    view.appendChild(backButton("All questions"));
+    var asked = document.createElement("p");
+    asked.className = "mem-asked";
+    asked.textContent = li.querySelector(".q-btn").textContent;
+    view.appendChild(asked);
+    var ans = document.createElement("div");
+    ans.className = "mem-answer";
+    ans.innerHTML = li.querySelector(".q-answer").innerHTML;
+    view.appendChild(ans);
+    var sign = ans.querySelector("[data-signoff]");
+    if (sign) sign.addEventListener("click", function () {
+      sign.hidden = true;
+      ans.querySelector(".a-signed").hidden = false;
+    });
+    wireLinks();
+    paint();
+    reveal();
+  }
+
+  function wireQuestions() {
+    [].slice.call(view.querySelectorAll(".q")).forEach(function (li) {
+      li.querySelector(".q-btn").addEventListener("click", function () { askQuestion(li); });
+    });
+  }
+
+  // ---- controls
+  modeButtons.forEach(function (b) {
+    b.addEventListener("click", function () { state.touched = true; setMode(b.getAttribute("data-mode"), true); });
+  });
+  search.addEventListener("input", function () { state.query = search.value; paint(); });
+  root.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape" && (state.doc || state.q || state.query)) {
+      search.value = ""; state.query = "";
+      showIdle();
+    }
+  });
+
+  // ---- go live
+  root.classList.add("is-live");
+  bar.hidden = false;
+  canvas.hidden = false;
+  setMode("files", false);
+  wireQuestions();
+  paint();
+
+  // The one authored moment: once the map is in view, the files sort
+  // themselves into the work they serve.
+  if ("IntersectionObserver" in window) {
+    var seen = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      seen.disconnect();
+      setTimeout(function () { if (!state.touched && state.mode === "files") setMode("meaning", true); }, 1100);
+    }, { threshold: 0.6 });
+    seen.observe(canvas);
+  }
+})();
+
+/* What happens to a document: five steps as tabs. With scripting off every
+   step is simply shown one after another. */
+(function () {
+  [].slice.call(document.querySelectorAll("[data-flow]")).forEach(function (flow) {
+    var panels = [].slice.call(flow.querySelectorAll(".flow-panel"));
+    var list = document.createElement("div");
+    list.className = "flow-tabs";
+    list.setAttribute("role", "tablist");
+    var tabs = panels.map(function (panel, i) {
+      var tab = document.createElement("button");
+      tab.type = "button";
+      tab.className = "flow-tab";
+      tab.id = "flow-tab-" + i;
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-controls", "flow-panel-" + i);
+      tab.textContent = panel.getAttribute("data-title");
+      panel.id = "flow-panel-" + i;
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", tab.id);
+      list.appendChild(tab);
+      tab.addEventListener("click", function () { show(i, false); });
+      tab.addEventListener("keydown", function (ev) {
+        var to = ev.key === "ArrowRight" ? i + 1 : ev.key === "ArrowLeft" ? i - 1 : ev.key === "Home" ? 0 : ev.key === "End" ? panels.length - 1 : -1;
+        if (to < 0) return;
+        ev.preventDefault();
+        show((to + panels.length) % panels.length, true);
+      });
+      return tab;
+    });
+    function show(n, focus) {
+      panels.forEach(function (panel, i) { panel.hidden = i !== n; });
+      tabs.forEach(function (tab, i) {
+        tab.classList.toggle("is-past", i < n);
+        tab.setAttribute("aria-selected", String(i === n));
+        tab.tabIndex = i === n ? 0 : -1;
+      });
+      list.scrollLeft = Math.max(0, tabs[n].offsetLeft - list.clientWidth / 2 + tabs[n].offsetWidth / 2);
+      if (focus) tabs[n].focus();
+    }
+    flow.insertBefore(list, flow.firstChild);
+    flow.classList.add("is-flow");
+    show(0, false);
   });
 })();

@@ -61,7 +61,7 @@ async function sitemap(env, origin) {
   // as the page.
   const updated = "2026-10-08";
   const urls = [
-    { loc: `${base}/`, lastmod: updated, priority: "1.0" },
+    { loc: `${base}/`, lastmod: "2026-10-26", priority: "1.0" },
     { loc: `${base}/insurance`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/insurance/carriers`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/insurance/mgas`, lastmod: updated, priority: "0.9" },
@@ -78,8 +78,9 @@ async function sitemap(env, origin) {
     { loc: `${base}/platform/verification`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/evidence`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/isolation`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/explore`, lastmod: "2026-10-26", priority: "0.8" },
     { loc: `${base}/compare`, lastmod: updated, priority: "0.8" },
-    { loc: `${base}/how-we-work`, lastmod: updated, priority: "0.9" },
+    { loc: `${base}/how-we-work`, lastmod: "2026-10-26", priority: "0.9" },
     { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/security/vendor-review`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/demo`, lastmod: updated, priority: "0.8" },
