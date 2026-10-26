@@ -21,4 +21,5 @@ Decisions override the brief: @docs/brief/decisions.md
 - Before saying a change works, run the check and show the output.
 - Commands: install: none (no dependencies). Dev: `npm run dev` (wrangler on :8080). Build: `npm run build` (syncs partials, then checks dashes, titles, canonicals, sitemap, links, JSON-LD, inline styles). Check only: `npm run check`. Contrast: `npm run contrast`. There is no test or lint step; the full gate list is docs/ship-checklist.md.
 - A new indexable page needs an entry in the sitemap list in worker.js and a line in llms.txt.
+- Anderson reviews design only: visual sign-off (ship-checklist gate 13) and design decisions that need a call. Do not ask Anderson to review implementation (code, build output, check results, bugs, refactors); the gates, subagents and `/code-review` cover that. Settle implementation questions yourself and note the choice in the pull request.
 - When compacting, keep the list of modified files and the open decisions.

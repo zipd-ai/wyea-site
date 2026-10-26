@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T21:00:00Z",
+  "title": "Design System: WYEA",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fbfaf5",
+        "tonalRamp": [
+          "#373116",
+          "#605727",
+          "#8a7c37",
+          "#b4a248",
+          "#c6b770",
+          "#d6cc9a",
+          "#e7e1c3",
+          "#f8f6ed"
+        ]
+      },
+      "paper-warm": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#f4f2ea",
+        "tonalRamp": [
+          "#322d1a",
+          "#58502e",
+          "#7f7342",
+          "#a59556",
+          "#baae7c",
+          "#cec5a2",
+          "#e2ddc8",
+          "#f6f5ee"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Deep Paper",
+        "canonical": "#ebe8dc",
+        "tonalRamp": [
+          "#312d1c",
+          "#564e31",
+          "#7b7046",
+          "#a0925b",
+          "#b6ab80",
+          "#cbc4a5",
+          "#e1dcca",
+          "#f6f4ef"
+        ]
+      },
+      "paper-rule": {
+        "role": "neutral",
+        "displayName": "Paper Rule",
+        "canonical": "#d9d5c6",
+        "tonalRamp": [
+          "#2e2b1f",
+          "#514b36",
+          "#746c4d",
+          "#978c65",
+          "#afa687",
+          "#c6c0aa",
+          "#dddacd",
+          "#f5f4f0"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#434343",
+          "#616161",
+          "#7e7e7e",
+          "#9b9b9b",
+          "#b8b8b8",
+          "#d5d5d5",
+          "#f2f2f2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#2a2220",
+        "tonalRamp": [
+          "#2b2321",
+          "#4c3e3a",
+          "#6e5953",
+          "#8f736d",
+          "#a8938d",
+          "#c2b2ae",
+          "#dbd2cf",
+          "#f4f1f1"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Ink Soft",
+        "canonical": "#4a3f3b",
+        "tonalRamp": [
+          "#2b2422",
+          "#4b403c",
+          "#6b5b56",
+          "#8c7770",
+          "#a69690",
+          "#c0b4b0",
+          "#dad3d0",
+          "#f4f2f1"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#5b504b",
+        "tonalRamp": [
+          "#2a2523",
+          "#4a413d",
+          "#6a5d57",
+          "#8a7972",
+          "#a49791",
+          "#bfb5b1",
+          "#d9d4d1",
+          "#f3f2f1"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "#6b5f59",
+        "tonalRamp": [
+          "#2a2523",
+          "#4a413d",
+          "#695e58",
+          "#897a72",
+          "#a49892",
+          "#beb6b1",
+          "#d9d4d1",
+          "#f3f2f1"
+        ]
+      },
+      "ink-mist": {
+        "role": "neutral",
+        "displayName": "Ink Mist",
+        "canonical": "#d6cfc8",
+        "tonalRamp": [
+          "#2c2621",
+          "#4d433a",
+          "#6f6152",
+          "#907e6b",
+          "#a99b8c",
+          "#c2b8ae",
+          "#dbd5cf",
+          "#f4f2f0"
+        ]
+      },
+      "indigo": {
+        "role": "primary",
+        "displayName": "Indigo",
+        "canonical": "#3a3fe0",
+        "tonalRamp": [
+          "#0a0c42",
+          "#121574",
+          "#1a1ea7",
+          "#2228d9",
+          "#5256e4",
+          "#8487ec",
+          "#b7b8f4",
+          "#e9eafc"
+        ]
+      },
+      "indigo-wash": {
+        "role": "primary",
+        "displayName": "Indigo Wash",
+        "canonical": "#f1f1ff",
+        "tonalRamp": [
+          "#00004c",
+          "#000087",
+          "#0000c1",
+          "#0000fb",
+          "#3737ff",
+          "#7171ff",
+          "#ababff",
+          "#e5e5ff"
+        ]
+      },
+      "indigo-line": {
+        "role": "primary",
+        "displayName": "Indigo Line",
+        "canonical": "#c7c9ff",
+        "tonalRamp": [
+          "#00034c",
+          "#000587",
+          "#0007c1",
+          "#0009fb",
+          "#373eff",
+          "#7176ff",
+          "#abaeff",
+          "#e5e6ff"
+        ]
+      },
+      "indigo-on-ink": {
+        "role": "primary",
+        "displayName": "Indigo on Ink",
+        "canonical": "#a5b4fc",
+        "tonalRamp": [
+          "#020f4a",
+          "#041a82",
+          "#0625bb",
+          "#0831f3",
+          "#3d5df9",
+          "#768cfa",
+          "#aebbfc",
+          "#e6eafe"
+        ]
+      },
+      "glow-blush": {
+        "role": "tertiary",
+        "displayName": "Blush",
+        "canonical": "#f2c4cf",
+        "tonalRamp": [
+          "#3f0e19",
+          "#6e182d",
+          "#9e2340",
+          "#ce2d54",
+          "#db5b79",
+          "#e58ba0",
+          "#f0bac7",
+          "#faeaee"
+        ]
+      },
+      "glow-periwinkle": {
+        "role": "tertiary",
+        "displayName": "Periwinkle",
+        "canonical": "#c4cbf3",
+        "tonalRamp": [
+          "#0d1440",
+          "#172470",
+          "#2134a0",
+          "#2a43d1",
+          "#596cdd",
+          "#8997e7",
+          "#b9c2f1",
+          "#eaecfb"
+        ]
+      },
+      "glow-peach": {
+        "role": "tertiary",
+        "displayName": "Peach",
+        "canonical": "#f8d3b8",
+        "tonalRamp": [
+          "#462107",
+          "#7b3b0c",
+          "#b05411",
+          "#e56e17",
+          "#ed8e49",
+          "#f2af7e",
+          "#f7d0b3",
+          "#fdf1e8"
+        ]
+      },
+      "glow-sage": {
+        "role": "tertiary",
+        "displayName": "Sage",
+        "canonical": "#d3e0cf",
+        "tonalRamp": [
+          "#222e1e",
+          "#3c5235",
+          "#56754c",
+          "#6f9963",
+          "#8fb085",
+          "#b0c7a9",
+          "#d0decc",
+          "#f1f5f0"
+        ]
+      },
+      "found-green": {
+        "role": "secondary",
+        "displayName": "Found Green",
+        "canonical": "#166534",
+        "tonalRamp": [
+          "#0e3f20",
+          "#186f39",
+          "#239f52",
+          "#2dce6a",
+          "#5adb8b",
+          "#8ae6ad",
+          "#baf0cf",
+          "#eafaf0"
+        ]
+      },
+      "found-green-wash": {
+        "role": "secondary",
+        "displayName": "Green Wash",
+        "canonical": "#dcfce7",
+        "tonalRamp": [
+          "#06461c",
+          "#0b7c32",
+          "#0fb247",
+          "#14e85d",
+          "#46ef80",
+          "#7cf4a5",
+          "#b2f8ca",
+          "#e8fdef"
+        ]
+      },
+      "flag-rust": {
+        "role": "secondary",
+        "displayName": "Flag Rust",
+        "canonical": "#9a3412",
+        "tonalRamp": [
+          "#441708",
+          "#79290e",
+          "#ad3a14",
+          "#e14c1a",
+          "#ea734c",
+          "#f09c80",
+          "#f6c5b4",
+          "#fcede8"
+        ]
+      },
+      "flag-rust-wash": {
+        "role": "secondary",
+        "displayName": "Rust Wash",
+        "canonical": "#ffedd5",
+        "tonalRamp": [
+          "#4c2c00",
+          "#874d00",
+          "#c16e00",
+          "#fb9000",
+          "#ffa937",
+          "#ffc271",
+          "#ffdbab",
+          "#fff4e5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero h1 only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2, weight 300."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Scroll-lit mission paragraph."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "h3 and ledes."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs at 68ch maximum."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Button text and sheet titles, uppercase tracked."
+      }
+    },
+    "shadows": [
+      {
+        "name": "float",
+        "value": "0 30px 70px rgb(60 40 40 / 0.14)",
+        "purpose": "Sheets, example UIs, mega menu."
+      },
+      {
+        "name": "soft",
+        "value": "0 8px 22px rgb(60 40 40 / 0.07)",
+        "purpose": "Small embedded snippets."
+      },
+      {
+        "name": "glass",
+        "value": "backdrop-filter: blur(14px)",
+        "purpose": "Sheets and scrolled header over translucent white."
+      },
+      {
+        "name": "inset-ring",
+        "value": "inset 0 0 0 1px #d9d5c6",
+        "purpose": "Ghost buttons and source tags in place of a border."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Button, header and reveal transitions."
+      },
+      {
+        "name": "duration-base",
+        "value": "240ms",
+        "purpose": "Hover and state changes."
+      },
+      {
+        "name": "duration-drift",
+        "value": "22s",
+        "purpose": "Light field blob drift, alternating; off under reduced motion."
+      },
+      {
+        "name": "ticker",
+        "value": "48s linear infinite",
+        "purpose": "Phrase ticker; pausable, static under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "375px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink pill with drawn arrow; fills indigo on hover.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Book a demo</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 28px;border:0;border-radius:999px;font:500 13px/1 Geist,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background 240ms cubic-bezier(.16,1,.3,1),color 240ms cubic-bezier(.16,1,.3,1)}.ds-btn::after{content:'';width:14px;height:14px;background:currentColor;-webkit-mask:var(--arrow-mask) center/contain no-repeat;mask:var(--arrow-mask) center/contain no-repeat;transition:transform 240ms cubic-bezier(.16,1,.3,1)}.ds-btn:hover::after{transform:translateX(4px)}.ds-btn-primary{background:#2a2220;color:#fbfaf5}.ds-btn-primary:hover{background:#3a3fe0;color:#fff}.ds-btn-primary:focus-visible{outline:2px solid #3a3fe0;outline-offset:4px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent pill with an inset hairline ring.",
+      "html": "<button class=\"ds-btn ds-btn-ghost\">Vendor review</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 28px;border:0;border-radius:999px;font:500 13px/1 Geist,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background 240ms cubic-bezier(.16,1,.3,1),color 240ms cubic-bezier(.16,1,.3,1)}.ds-btn::after{content:'';width:14px;height:14px;background:currentColor;-webkit-mask:var(--arrow-mask) center/contain no-repeat;mask:var(--arrow-mask) center/contain no-repeat;transition:transform 240ms cubic-bezier(.16,1,.3,1)}.ds-btn:hover::after{transform:translateX(4px)}.ds-btn-ghost{background:transparent;color:#2a2220;box-shadow:inset 0 0 0 1px #d9d5c6}.ds-btn-ghost:hover{box-shadow:inset 0 0 0 1px #2a2220}.ds-btn-ghost:focus-visible{outline:2px solid #3a3fe0;outline-offset:4px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "White field with a hairline border; label above.",
+      "html": "<label class=\"ds-field\"><span>Work email</span><input class=\"ds-input\" type=\"email\"></label>",
+      "css": ".ds-field{display:block;font-family:Geist,system-ui,sans-serif}.ds-field span{display:block;font-size:15px;font-weight:600;margin-bottom:8px;color:#2a2220}.ds-input{display:block;width:100%;padding:12px 16px;border:1px solid #d9d5c6;border-radius:6px;background:#fff;color:#2a2220;font:17px Geist,system-ui,sans-serif}.ds-input:focus-visible{outline:2px solid #3a3fe0;outline-offset:1px;border-color:#2a2220}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Quiet header: tracked wordmark, faint links, outlined small CTA.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-mark\">WYEA</span><a href=\"#\">Insurers</a><a href=\"#\">Platform</a><a href=\"#\">Trust</a><a class=\"ds-cta\" href=\"#\">Book a demo</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:4px;height:72px;padding:0 16px;background:rgb(251 250 245/.82);border-bottom:1px solid #ebe8dc;font:15px Geist,system-ui,sans-serif}.ds-mark{font-size:22px;font-weight:500;letter-spacing:.34em;color:#2a2220;margin-right:auto}.ds-nav a{padding:0 12px;color:#6b5f59;text-decoration:none}.ds-nav a:hover{color:#2a2220}.ds-nav a:focus-visible{outline:2px solid #3a3fe0;outline-offset:4px}.ds-nav .ds-cta{margin-left:12px;padding:0 20px;height:40px;display:inline-flex;align-items:center;border-radius:999px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#2a2220;box-shadow:inset 0 0 0 1px #d9d5c6}.ds-nav .ds-cta:hover{background:#2a2220;color:#fbfaf5}"
+    },
+    {
+      "name": "Source Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Indigo wash pill naming where a line was read from.",
+      "html": "<span class=\"ds-chip\">Endorsement 3</span>",
+      "css": ".ds-chip{display:inline-block;font:12px Geist,system-ui,sans-serif;color:#3a3fe0;background:#f1f1ff;padding:2px 8px;border-radius:999px}"
+    },
+    {
+      "name": "Paper Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "Translucent floating sheet quoting an answer with its source.",
+      "html": "<div class=\"ds-sheet\"><span class=\"ds-title\">Answer</span><q>Notice of cancellation is forty-five days.</q><span class=\"ds-src\">Endorsement 3</span></div>",
+      "css": ".ds-sheet{display:grid;gap:12px;width:300px;padding:20px;background:rgb(255 255 255/.94);backdrop-filter:blur(14px);border:1px solid rgb(255 255 255/.8);border-radius:10px;box-shadow:0 30px 70px rgb(60 40 40/.14);transform:rotate(-1.5deg);font:15px/1.5 Geist,system-ui,sans-serif;color:#2a2220}.ds-title{font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#6b5f59}.ds-sheet q{font-size:22px;font-weight:300;letter-spacing:-.015em;line-height:1.25}.ds-src{justify-self:start;font-size:13px;padding:3px 12px;border-radius:999px;background:#fff;color:#4a3f3b;box-shadow:inset 0 0 0 1px #d9d5c6}"
+    },
+    {
+      "name": "Light Field Panel",
+      "kind": "custom",
+      "refersTo": "cap-panel",
+      "description": "White rounded panel with blurred blush and periwinkle light behind its content.",
+      "html": "<div class=\"ds-panel\"><i class=\"ds-blob ds-a\"></i><i class=\"ds-blob ds-b\"></i><h3>Read as amended</h3></div>",
+      "css": ".ds-panel{position:relative;isolation:isolate;overflow:hidden;width:360px;min-height:200px;padding:32px;background:#fff;border-radius:20px;font-family:Geist,system-ui,sans-serif}.ds-panel h3{position:relative;z-index:1;margin:0;font-size:34px;font-weight:300;line-height:1.04;letter-spacing:-.03em;color:#2a2220;max-width:12ch}.ds-blob{position:absolute;width:60%;aspect-ratio:1.15;border-radius:62% 38% 55% 45%/48% 58% 42% 52%;filter:blur(38px);z-index:0}.ds-a{left:-6%;top:6%;background:radial-gradient(closest-side,#f0b3c6,transparent)}.ds-b{right:-8%;top:30%;background:radial-gradient(closest-side,#aab6f2,transparent)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Paper in Daylight",
+    "overview": "The site is a warm paper ground with brown-black ink, and the only imagery is light: soft blurred fields of blush, periwinkle, peach and sage that drift behind large, light-weight Geist. The product is shown as translucent paper sheets that answer with their source, so the page proves the one claim the buyer cares about (every line shows where it came from) instead of describing it. The direction is modelled on the look and feel of ode.com, pinned by Anderson on 2026-10-20, and replaces Direction A (indigo, rounded cards).\n\nDensity is low and sections are asymmetric: a small label sits left, large copy sits right. Structure is carried by dotted hairlines and generous bands, not by boxes. The reader is an underwriting or claims lead who reads skeptically, so the quiet surface leaves room for the invented example sheets and the plain security facts to carry the weight.\n\nLight only. The site does not follow the OS dark setting; the single dark surface is an inset ink panel for the vendor-review block.",
+    "keyCharacteristics": [
+      "Warm paper ground (#fbfaf5), warm ink (#2a2220), never pure white or black as a page color.",
+      "Display type is Geist at weight 300 with tight negative tracking; weight 400 to 500 elsewhere.",
+      "Buttons are small, tracked, uppercase pills with a drawn arrow.",
+      "Light fields with fine grain are the imagery; no stock photography, no screenshots.",
+      "Product examples are always labeled \"Invented example\" and show a source chip.",
+      "Dotted hairlines divide open sections; solid hairlines only for forms, header and timeline cards."
+    ],
+    "rules": [
+      {
+        "name": "The Light Is the Image Rule",
+        "body": "Color enters the page as blurred light behind content, never as a flat block. If a surface needs color, it gets a `.lights` field, not a fill.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Accent Rule",
+        "body": "Indigo marks interaction (hover, focus, selection) and the single key step. It is not a section background and not a decorative color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Light Weight Rule",
+        "body": "Large type is weight 300. Weight 600 appears only in small functional text (field labels, source tags, table-like rows), never in headlines.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sentence Case Rule",
+        "body": "Uppercase with tracking is reserved for buttons and sheet titles. Section openers are plain headings, not tracked labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Floating Paper Rule",
+        "body": "Only things that behave like loose sheets of paper (sheets, example UIs, menus) may carry the Float shadow. Containers, bands and text blocks do not.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** use only the semantic tokens in `styles.css`; never place a raw color, size or spacing value in a page. A `style` attribute fails the build.",
+      "**Do** keep every example invented, labeled \"Invented example(s)\", and paired with a source tag or chip.",
+      "**Do** let light fields carry imagery, with content layered above at z-index 1.",
+      "**Do** use dotted hairlines (1px, Paper Rule) between open sections and list rows.",
+      "**Do** keep the page working with scripting off and under `prefers-reduced-motion`: drift, parallax, ticker and highlight all stop, and content stays visible.",
+      "**Do** draw button arrows with the CSS mask so they stay crisp and slide on hover."
+    ],
+    "donts": [
+      "**Don't** return to the Direction A look: indigo fills, rounded card grids, dark mode.",
+      "**Don't** put color in flat blocks; blush, periwinkle, peach and sage exist only as blurred light and the clause highlight.",
+      "**Don't** use weight 300 below the title size, or weight 600 or heavier in headlines.",
+      "**Don't** use black shadows; shadows carry the warm brown tint.",
+      "**Don't** add stock photography, screenshots, customer logos or client names.",
+      "**Don't** hard-code breakpoints in new CSS outside the 767px and 1023px queries."
+    ]
+  }
+}

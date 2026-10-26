@@ -1,0 +1,239 @@
+<section id="explorer" class="band-tight mem-band" data-memory>
+  <div class="wrap">
+    <div class="open-head mem-head">
+      <h2>Explore an invented insurer</h2>
+      <p class="lede">Ask a question, or click a document.</p>
+    </div>
+
+    <div class="mem">
+      <div class="mem-bar" hidden>
+        <div class="mem-modes" role="group" aria-label="How to arrange the documents">
+          <button type="button" class="mem-mode" data-mode="files" aria-pressed="true">Files and folders</button>
+          <button type="button" class="mem-mode" data-mode="meaning" aria-pressed="false">What it means</button>
+        </div>
+        <label class="mem-search"><span class="visually-hidden">Search the documents</span>
+          <input type="search" placeholder="Search documents" autocomplete="off" maxlength="60" data-search>
+        </label>
+      </div>
+
+      <div class="mem-body">
+        <div class="mem-stage">
+        <div class="mem-canvas" hidden>
+          <div class="lights" aria-hidden="true"><i class="blob blob-b"></i><i class="blob blob-c"></i><i class="grain"></i></div>
+          <svg class="mem-edges" viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="mem-zones" aria-hidden="true">
+            <span class="mem-zone" data-zone="cover">Cover</span>
+            <span class="mem-zone" data-zone="claims">Claims</span>
+            <span class="mem-zone" data-zone="underwriting">Underwriting</span>
+            <span class="mem-zone" data-zone="programs">Programs</span>
+          </div>
+          <div class="mem-nodes"></div>
+        </div>
+        <p class="mem-caption" aria-live="polite"></p>
+        </div>
+
+        <aside class="mem-panel" aria-label="Questions and document detail">
+          <div class="mem-view" aria-live="polite">
+            <h3 class="mem-title">Ask a question</h3>
+            <ul class="qs">
+              <li class="q" data-q="cancel" data-nodes="p-do e-3">
+                <button type="button" class="q-btn">What notice does the insurer give to cancel the Calloway D&amp;O policy?</button>
+                <div class="q-answer">
+                  <p class="a-line"><span class="ans-mark ans-ok">Found</span> <q>Forty-five (45) days' written notice.</q></p>
+                  <p><span class="src-tag">Endorsement 3, amending Condition 11</span></p>
+                  <p class="a-note">Condition 11 of the policy says sixty days. Endorsement 3 changes it, so the answer uses the amended wording and shows both pages.</p>
+                  <p class="a-src">Sources: <a href="#d-p-do" data-link="p-do">D&amp;O policy</a>, <a href="#d-e-3" data-link="e-3">Endorsement 3</a></p>
+                </div>
+              </li>
+              <li class="q" data-q="water" data-nodes="c-2041 p-prop e-5 c-note c-scan">
+                <button type="button" class="q-btn">Does the water damage claim fall within cover, and what is the excess?</button>
+                <div class="q-answer">
+                  <p class="a-line"><span class="ans-mark ans-ok">Found</span> <q>Section 2 covers sudden escape of water from a pipe.</q></p>
+                  <p><span class="src-tag">Property policy, Section 2</span></p>
+                  <p class="a-line"><span class="ans-mark ans-ok">Found</span> <q>The excess is $10,000 each loss.</q></p>
+                  <p><span class="src-tag">Endorsement 5</span></p>
+                  <p class="a-line"><span class="ans-mark ans-flag">For you</span> Page 3 of the scanned loss report could not be read.</p>
+                  <p class="a-note">The engine shows the wording that applies and what it could not read. Your adjuster decides the claim.</p>
+                  <p class="a-src">Sources: <a href="#d-c-2041" data-link="c-2041">Claim CL-2041</a>, <a href="#d-p-prop" data-link="p-prop">Property policy</a>, <a href="#d-e-5" data-link="e-5">Endorsement 5</a>, <a href="#d-c-note" data-link="c-note">Adjuster note</a>, <a href="#d-c-scan" data-link="c-scan">Scanned loss report</a></p>
+                </div>
+              </li>
+              <li class="q" data-q="draft" data-nodes="u-draft cl-war">
+                <button type="button" class="q-btn">Does the war exclusion draft use our approved wording?</button>
+                <div class="q-answer">
+                  <p class="a-line"><span class="ans-mark ans-ok">Found</span> <q>Draft 2 repeats clause 4.2 of your clause library word for word.</q></p>
+                  <p><span class="src-tag">Clause library, 4.2</span></p>
+                  <p class="a-note">The draft is ready. It is not issued until a reviewer signs off.</p>
+                  <p class="a-signoff"><button type="button" class="btn btn-ghost btn-sm js-only" data-signoff>Sign off as reviewer</button></p>
+                  <p class="a-signed" hidden><span class="ans-mark ans-ok">Signed off</span> Invented reviewer, just now. The engine still does not bind or send.</p>
+                  <p class="a-src">Sources: <a href="#d-u-draft" data-link="u-draft">War exclusion draft 2</a>, <a href="#d-cl-war" data-link="cl-war">War exclusion 4.2</a></p>
+                </div>
+              </li>
+              <li class="q" data-q="flood" data-nodes="g-treaty g-bind g-form">
+                <button type="button" class="q-btn">Is flood excluded under the Program A treaty?</button>
+                <div class="q-answer">
+                  <p class="a-line"><span class="ans-mark ans-flag">Not found</span> No passage in these files excludes flood.</p>
+                  <p class="a-note">The program form sets a flood sublimit of $250,000. A sublimit is not an exclusion, and the treaty does not mention flood. A passage it cannot find never becomes an answer, so the question goes to your reviewer.</p>
+                  <p class="a-src">Looked in: <a href="#d-g-treaty" data-link="g-treaty">Quota share treaty</a>, <a href="#d-g-bind" data-link="g-bind">Binding authority agreement</a>, <a href="#d-g-form" data-link="g-form">Program form</a></p>
+                </div>
+              </li>
+            </ul>
+            <p class="mem-hint">Or click any document on the map.</p>
+          </div>
+        </aside>
+      </div>
+
+      <p class="app-caption center"><span class="tag-invented">Invented example</span></p>
+
+      <ul class="doc-list" aria-label="All fourteen documents">
+        <li class="doc" id="d-p-do" data-id="p-do" data-group="cover" data-kind="Policy" data-file="Calloway DO v7.pdf" data-f="62,22" data-m="20,18">
+          <h3>D&amp;O policy</h3>
+          <p class="doc-kind">Policy, cover</p>
+          <p class="doc-took">Condition 11 lets the insurer cancel with sixty (60) days' written notice.</p>
+          <blockquote class="doc-passage">Condition 11. The Insurer may cancel this Policy by giving <mark>sixty (60) days'</mark> written notice.</blockquote>
+          <p class="doc-src"><span class="src-tag">Condition 11</span> <span class="chip">Amended by Endorsement 3</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-e-3" data-link="e-3">Is amended by Endorsement 3</a></li>
+            <li><a href="#d-u-sub" data-link="u-sub">Is the subject of the renewal submission</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-e-3" data-id="e-3" data-group="cover" data-kind="Endorsement" data-file="EndorsementFinal3.pdf" data-f="38,58" data-m="20,34">
+          <h3>Endorsement 3</h3>
+          <p class="doc-kind">Endorsement, cover</p>
+          <p class="doc-took">Notice of cancellation is now forty-five (45) days.</p>
+          <blockquote class="doc-passage">the period of notice in Condition 11 is amended to <mark>forty-five (45) days</mark></blockquote>
+          <p class="doc-src"><span class="src-tag">Endorsement 3, page 1</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-p-do" data-link="p-do">Amends Condition 11 of the D&amp;O policy</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-p-prop" data-id="p-prop" data-group="cover" data-kind="Policy" data-file="Calloway prop 2025.pdf" data-f="136,76" data-m="20,50">
+          <h3>Property policy</h3>
+          <p class="doc-kind">Policy, cover</p>
+          <p class="doc-took">Section 2 covers escape of water. The excess is set by endorsement.</p>
+          <blockquote class="doc-passage">Section 2. The Insurer will pay for <mark>loss caused by the sudden escape of water</mark> from any fixed tank, apparatus or pipe.</blockquote>
+          <p class="doc-src"><span class="src-tag">Section 2, Escape of water</span> <span class="chip">Amended by Endorsement 5</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-e-5" data-link="e-5">Is amended by Endorsement 5</a></li>
+            <li><a href="#d-c-2041" data-link="c-2041">Is cited by claim CL-2041</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-e-5" data-id="e-5" data-group="cover" data-kind="Endorsement" data-file="end5_signed.pdf" data-f="24,36" data-m="20,66">
+          <h3>Endorsement 5</h3>
+          <p class="doc-kind">Endorsement, cover</p>
+          <p class="doc-took">The excess for escape of water is $10,000 each loss.</p>
+          <blockquote class="doc-passage">the Excess applying to Section 2 is <mark>ten thousand dollars ($10,000)</mark> each and every loss</blockquote>
+          <p class="doc-src"><span class="src-tag">Endorsement 5, page 1</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-p-prop" data-link="p-prop">Amends Section 2 of the property policy</a></li>
+            <li><a href="#d-c-2041" data-link="c-2041">Is cited by claim CL-2041</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-cl-war" data-id="cl-war" data-group="cover" data-kind="Clause library" data-file="clauses_master.docx" data-f="92,66" data-m="20,82">
+          <h3>War exclusion 4.2</h3>
+          <p class="doc-kind">Clause library, cover</p>
+          <p class="doc-took">The approved war exclusion, kept by your legal team.</p>
+          <blockquote class="doc-passage">Clause 4.2. This Policy excludes loss arising from <mark>war, invasion or acts of foreign enemies</mark>, whether war be declared or not.</blockquote>
+          <p class="doc-src"><span class="src-tag">Clause library, 4.2</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-u-draft" data-link="u-draft">Is used by the war exclusion draft</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-c-2041" data-id="c-2041" data-group="claims" data-kind="Claim file" data-file="CL-2041 FNOL.msg" data-f="80,44" data-m="60,30">
+          <h3>Claim CL-2041</h3>
+          <p class="doc-kind">Claim file, claims</p>
+          <p class="doc-took">A water damage claim at the insured's premises, reported on 12 March.</p>
+          <blockquote class="doc-passage">Reported loss: burst supply pipe, <mark>ground floor stock room</mark>, found on opening.</blockquote>
+          <p class="doc-src"><span class="src-tag">Claim file, first notice</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-p-prop" data-link="p-prop">Cites Section 2 of the property policy</a></li>
+            <li><a href="#d-e-5" data-link="e-5">Cites the excess in Endorsement 5</a></li>
+            <li><a href="#d-c-note" data-link="c-note">Has an adjuster note</a></li>
+            <li><a href="#d-c-scan" data-link="c-scan">Includes a scanned loss report</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-c-note" data-id="c-note" data-group="claims" data-kind="Note" data-file="note_0314.txt" data-f="108,10" data-m="60,46">
+          <h3>Adjuster note</h3>
+          <p class="doc-kind">Note, claims</p>
+          <p class="doc-took">The cause looks like a failed supply pipe, with no sign of slow leakage.</p>
+          <blockquote class="doc-passage">Inspection on 14 March: <mark>sudden failure of a supply pipe</mark>. No sign of long term seepage.</blockquote>
+          <p class="doc-src"><span class="src-tag">Adjuster note, 14 March</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-c-2041" data-link="c-2041">Belongs to claim CL-2041</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-c-scan" data-id="c-scan" data-group="claims" data-kind="Scan" data-file="scan0042.pdf" data-f="14,78" data-m="60,62">
+          <h3>Scanned loss report</h3>
+          <p class="doc-kind">Scan, claims</p>
+          <p class="doc-took">Page 3 is too faint to read.</p>
+          <p class="doc-passage doc-passage-flag"><span class="ans-mark ans-flag">For you</span> The engine does not guess at a page it cannot read. It sends the page to a person.</p>
+          <p class="doc-src"><span class="src-tag">Loss report, page 3</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-c-2041" data-link="c-2041">Belongs to claim CL-2041</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-u-sub" data-id="u-sub" data-group="underwriting" data-kind="Submission" data-file="renewal_sub.pdf" data-f="148,56" data-m="100,18">
+          <h3>Renewal submission</h3>
+          <p class="doc-kind">Submission, underwriting</p>
+          <p class="doc-took">The D&amp;O renewal asks for a limit of $5,000,000.</p>
+          <blockquote class="doc-passage">Requested limit: <mark>$5,000,000</mark> any one claim and in the aggregate.</blockquote>
+          <p class="doc-src"><span class="src-tag">Submission, page 2</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-p-do" data-link="p-do">Renews the D&amp;O policy</a></li>
+            <li><a href="#d-u-guide" data-link="u-guide">Is checked against the appetite guideline</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-u-guide" data-id="u-guide" data-group="underwriting" data-kind="Guideline" data-file="UW guide FINAL (2).docx" data-f="142,24" data-m="100,38">
+          <h3>D&amp;O appetite guideline</h3>
+          <p class="doc-kind">Guideline, underwriting</p>
+          <p class="doc-took">Limits above $10,000,000 go to a senior underwriter.</p>
+          <blockquote class="doc-passage">Limits up to $10,000,000 may be quoted by an underwriter. <mark>Above $10,000,000</mark>, refer to a senior underwriter.</blockquote>
+          <p class="doc-src"><span class="src-tag">Guideline, section 3</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-u-sub" data-link="u-sub">Is applied to the renewal submission</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-u-draft" data-id="u-draft" data-group="underwriting" data-kind="Draft" data-file="draft2.docx" data-f="104,82" data-m="100,58">
+          <h3>War exclusion draft 2</h3>
+          <p class="doc-kind">Draft, underwriting</p>
+          <p class="doc-took">A draft endorsement that uses clause 4.2 from your own wording.</p>
+          <blockquote class="doc-passage">This Policy excludes loss arising from <mark>war, invasion or acts of foreign enemies</mark>, whether war be declared or not.</blockquote>
+          <p class="doc-src"><span class="src-tag">Draft 2, from clause library 4.2</span> <span class="ans-mark ans-flag">Reviewer signs off</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-cl-war" data-link="cl-war">Uses clause 4.2 from the clause library</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-g-bind" data-id="g-bind" data-group="programs" data-kind="Agreement" data-file="BA agreement ProgA.pdf" data-f="60,80" data-m="140,26">
+          <h3>Binding authority agreement</h3>
+          <p class="doc-kind">Agreement, programs</p>
+          <p class="doc-took">The MGA may bind property risks up to $2,000,000.</p>
+          <blockquote class="doc-passage">The Coverholder may bind risks with a limit not exceeding <mark>two million dollars ($2,000,000)</mark>.</blockquote>
+          <p class="doc-src"><span class="src-tag">Agreement, clause 6.1</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-g-form" data-link="g-form">Has a program form</a></li>
+            <li><a href="#d-g-treaty" data-link="g-treaty">Is referred to by the quota share treaty</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-g-form" data-id="g-form" data-group="programs" data-kind="Form" data-file="ProgA_form_v3.pdf" data-f="122,38" data-m="140,46">
+          <h3>Program form</h3>
+          <p class="doc-kind">Form, programs</p>
+          <p class="doc-took">The standard wording issued under the agreement. Flood is covered up to a sublimit.</p>
+          <blockquote class="doc-passage">Flood is covered up to <mark>a sublimit of $250,000</mark> in the annual aggregate.</blockquote>
+          <p class="doc-src"><span class="src-tag">Program form, section 5</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-g-bind" data-link="g-bind">Is issued under the binding authority agreement</a></li>
+          </ul>
+        </li>
+        <li class="doc" id="d-g-treaty" data-id="g-treaty" data-group="programs" data-kind="Treaty" data-file="QS treaty 25.pdf" data-f="20,12" data-m="140,66">
+          <h3>Quota share treaty</h3>
+          <p class="doc-kind">Treaty, programs</p>
+          <p class="doc-took">Cedes forty per cent of each risk written under the agreement. It does not mention flood.</p>
+          <blockquote class="doc-passage">The Reinsurer accepts <mark>forty per cent (40%)</mark> of each risk written under the Agreement.</blockquote>
+          <p class="doc-src"><span class="src-tag">Treaty, Article 3</span></p>
+          <ul class="doc-links">
+            <li><a href="#d-g-bind" data-link="g-bind">Refers to the binding authority agreement</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

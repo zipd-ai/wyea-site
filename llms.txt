@@ -28,10 +28,11 @@
 - [Grounding and verification](https://wyea.ai/platform/verification)
 - [Evidence and the record](https://wyea.ai/platform/evidence)
 - [Isolation](https://wyea.ai/platform/isolation)
+- [Explore an invented insurer's documents, linked and sourced](https://wyea.ai/explore)
 - [Shared product or your own engine](https://wyea.ai/compare)
 
 ## Security
-- [Security: what holds today and what is not finished](https://wyea.ai/security)
+- [Security](https://wyea.ai/security)
 - [Vendor review: each control, its source, and where WYEA stands](https://wyea.ai/security/vendor-review)
 
 ## Company

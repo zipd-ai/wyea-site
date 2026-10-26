@@ -133,7 +133,7 @@ function walkAll(dir, out = []) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
     if (statSync(p).isDirectory()) {
-      if (!["node_modules", ".git", ".wrangler", "brief", "fonts", "assets"].includes(name)) walkAll(p, out);
+      if (!["node_modules", ".git", ".wrangler", ".impeccable", "brief", "fonts", "assets"].includes(name)) walkAll(p, out);
     } else if (TEXT_EXT.test(name)) out.push(p);
   }
   return out;
