@@ -466,7 +466,19 @@
   var view = root.querySelector(".mem-view");
   var search = root.querySelector("[data-search]");
   var modeButtons = [].slice.call(root.querySelectorAll("[data-mode]"));
+  var head = root.querySelector(".pw-head");
+  var roleButtons = [].slice.call(root.querySelectorAll("[data-role]"));
+  var steps = [].slice.call(root.querySelectorAll(".pw-steps li"));
+  var status = root.querySelector(".pw-status");
   var idle = view.innerHTML;
+
+  // The work each role does: which groups of documents sit in front of them.
+  var ROLE_GROUPS = {
+    underwriting: ["underwriting", "cover"],
+    claims: ["claims", "cover"],
+    programs: ["programs", "cover"]
+  };
+  var STEP_TEXT = ["Connected 14 files", "Read each passage", "Linked what amends or cites what", "Answered, with sources", "Waiting for your reviewer"];
 
   var captions = {
     files: "Files and folders: where each file sits and what it is called. Nothing says what it means.",
@@ -551,7 +563,7 @@
     n.el = b;
   });
 
-  var state = { mode: "files", doc: null, q: null, query: "", touched: false };
+  var state = { mode: "files", doc: null, q: null, query: "", touched: false, role: "all" };
   var raf = 0;
 
   function place() {
@@ -617,9 +629,13 @@
       lit[state.doc] = true; hot[state.doc] = true;
       Object.keys(nodes[state.doc].neighbours).forEach(function (id) { lit[id] = true; });
     }
+    var off = {};
+    if (!lit && state.role !== "all") {
+      order.forEach(function (id) { if (ROLE_GROUPS[state.role].indexOf(nodes[id].group) === -1) off[id] = true; });
+    }
     order.forEach(function (id) {
       var el = nodes[id].el;
-      el.classList.toggle("is-dim", !!lit && !lit[id]);
+      el.classList.toggle("is-dim", (!!lit && !lit[id]) || !!off[id]);
       el.classList.toggle("is-source", !!source[id]);
       el.classList.toggle("is-near", !!lit && !!lit[id] && !source[id] && state.doc !== id && !q);
       el.setAttribute("aria-pressed", String(state.doc === id));
@@ -627,7 +643,7 @@
     edges.forEach(function (e) {
       var on = !!(hot && (state.q ? (hot[e.a] && hot[e.b]) : (e.a === state.doc || e.b === state.doc)));
       e.el.classList.toggle("is-hot", on && !q);
-      e.el.classList.toggle("is-dim", !!lit && !on);
+      e.el.classList.toggle("is-dim", (!!lit && !on) || !!off[e.a] || !!off[e.b]);
     });
   }
 
@@ -644,6 +660,7 @@
     state.doc = null; state.q = null;
     view.innerHTML = idle;
     wireQuestions();
+    runSteps(0);
     paint();
   }
 
@@ -679,7 +696,7 @@
     if (scroll) reveal();
   }
 
-  function askQuestion(li) {
+  function askQuestion(li, quiet) {
     state.touched = true;
     if (state.mode !== "meaning") setMode("meaning", true);
     state.doc = null;
@@ -698,13 +715,52 @@
     if (sign) sign.addEventListener("click", function () {
       sign.hidden = true;
       ans.querySelector(".a-signed").hidden = false;
+      status.textContent = "Signed off by your reviewer";
     });
     wireLinks();
     paint();
-    reveal();
+    runSteps(5);
+    if (!quiet) reveal();
+  }
+
+  // The steps a question goes through, lit one after another. Step 0 is the
+  // resting state: the files are connected and nothing has been asked.
+  var stepTimer = 0;
+  function runSteps(upTo) {
+    clearTimeout(stepTimer);
+    function light(n) {
+      steps.forEach(function (li, i) {
+        li.classList.toggle("is-done", i < n);
+        li.classList.toggle("is-now", i === n - 1 && n > 1);
+      });
+      status.textContent = n > 0 ? STEP_TEXT[n - 1] : "";
+    }
+    if (upTo <= 1 || reduced) { light(upTo <= 1 ? 1 : upTo); return; }
+    var n = 1;
+    light(1);
+    (function next() {
+      stepTimer = setTimeout(function () { n += 1; light(n); if (n < upTo) next(); }, 320);
+    })();
+  }
+
+  function applyRole() {
+    [].slice.call(view.querySelectorAll(".q")).forEach(function (li) {
+      var roles = (li.getAttribute("data-roles") || "all").split(" ");
+      li.hidden = roles.indexOf(state.role) === -1;
+    });
+  }
+
+  function setRole(role) {
+    state.touched = true; state.role = role; state.query = ""; search.value = "";
+    roleButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-role") === role)); });
+    showIdle();
+    if (state.mode !== "meaning") setMode("meaning", true);
+    var first = view.querySelector(".q:not([hidden])");
+    if (role !== "all" && first) askQuestion(first, true);
   }
 
   function wireQuestions() {
+    applyRole();
     [].slice.call(view.querySelectorAll(".q")).forEach(function (li) {
       li.querySelector(".q-btn").addEventListener("click", function () { askQuestion(li); });
     });
@@ -713,6 +769,9 @@
   // ---- controls
   modeButtons.forEach(function (b) {
     b.addEventListener("click", function () { state.touched = true; setMode(b.getAttribute("data-mode"), true); });
+  });
+  roleButtons.forEach(function (b) {
+    b.addEventListener("click", function () { setRole(b.getAttribute("data-role")); });
   });
   search.addEventListener("input", function () { state.query = search.value; paint(); });
   root.addEventListener("keydown", function (ev) {
@@ -725,7 +784,9 @@
   // ---- go live
   root.classList.add("is-live");
   bar.hidden = false;
+  head.hidden = false;
   canvas.hidden = false;
+  runSteps(0);
   setMode("files", false);
   wireQuestions();
   paint();
@@ -785,4 +846,28 @@
     flow.classList.add("is-flow");
     show(0, false);
   });
+})();
+
+/* A "Book a demo" pill that follows the visitor once they have scrolled past
+   the first screen. It steps aside on /demo and at the footer. */
+(function () {
+  var pill = document.querySelector("[data-pill]");
+  if (!pill || /^\/demo(\/|$)/.test(location.pathname)) return;
+  var footer = document.querySelector(".site-footer");
+  var past = false, atFooter = false;
+  function sync() {
+    var show = past && !atFooter;
+    if (show) pill.hidden = false;
+    pill.classList.toggle("is-shown", show);
+  }
+  window.addEventListener("scroll", function () {
+    var now = window.scrollY > window.innerHeight * 0.8;
+    if (now !== past) { past = now; sync(); }
+  }, { passive: true });
+  if (footer && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      atFooter = entries[0].isIntersecting;
+      sync();
+    }).observe(footer);
+  }
 })();

@@ -171,4 +171,6 @@ Every page. WYEA LLC, Newport Beach, California. Four link columns.
 - `.const` (partial `hero-graphic`): the drawn hero figure, invented documents joined by lines, one lit route to an answer card.
 - `[data-memory]` (partial `explorer`): the clickable document map and four questions. Edit the partial, then run `npm run build`; it syncs to the home page and /explore.
 - `.flow`: the five-step line on /explore.
+- `.pw` (inside the explorer partial): the product window. A frame with a drawn address bar, a role picker (`.mem-role`, `data-role`), and the five steps (`.pw-steps`) lit as a question is answered. Each `li.q` lists the roles it belongs to in `data-roles`; `all` is the default set.
+- `.demo-pill` (in the footer partial): the pinned "Book a demo" pill. It shows after the first screen, hides at the footer and on /demo, and links to /demo only.
 - No purple in light fields: `--field-b` is Sage and `--gradient-glow` is flat Deep Paper (Anderson, 2026-10-26). DESIGN.md is the reference for Direction B.
