@@ -877,7 +877,9 @@ const SITE_FOOTER = `<footer class="site-footer">
       <a href="/terms">Terms</a>
     </div>
   </div>
-</footer>`;
+</footer>
+
+<a class="btn btn-primary demo-pill" href="/demo" data-pill hidden>Book a demo</a>`;
 
 // Only what The Brief adds on top of /styles.css. Shared tokens, typography,
 // header, footer, and buttons all come from the stylesheet the rest of the
