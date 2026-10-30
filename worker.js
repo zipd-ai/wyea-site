@@ -59,9 +59,9 @@ async function sitemap(env, origin) {
   const base = "https://wyea.ai";
   // lastmod is the date each page last changed. Update it in the same commit
   // as the page.
-  const updated = "2026-10-08";
+  const updated = "2026-10-29";
   const urls = [
-    { loc: `${base}/`, lastmod: "2026-10-26", priority: "1.0" },
+    { loc: `${base}/`, lastmod: "2026-10-29", priority: "1.0" },
     { loc: `${base}/insurance`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/insurance/carriers`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/insurance/mgas`, lastmod: updated, priority: "0.9" },
@@ -72,18 +72,20 @@ async function sitemap(env, origin) {
     { loc: `${base}/insurance/reinsurance-treaty-wordings`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/build-or-buy`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/contract-certainty`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/insurance/claims-coverage-checks`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/insurance/cost`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform`, lastmod: updated, priority: "0.9" },
     { loc: `${base}/platform/sources`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/verification`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/evidence`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/platform/isolation`, lastmod: updated, priority: "0.8" },
-    { loc: `${base}/explore`, lastmod: "2026-10-26", priority: "0.8" },
+    { loc: `${base}/explore`, lastmod: "2026-10-29", priority: "0.8" },
     { loc: `${base}/compare`, lastmod: updated, priority: "0.8" },
-    { loc: `${base}/how-we-work`, lastmod: "2026-10-26", priority: "0.9" },
+    { loc: `${base}/how-we-work`, lastmod: "2026-10-29", priority: "0.9" },
     { loc: `${base}/security`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/security/vendor-review`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/demo`, lastmod: updated, priority: "0.8" },
+    { loc: `${base}/glossary`, lastmod: updated, priority: "0.7" },
     { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
     { loc: `${base}/privacy`, lastmod: "2026-09-30", priority: "0.3" },
     { loc: `${base}/terms`, lastmod: "2026-09-30", priority: "0.3" },

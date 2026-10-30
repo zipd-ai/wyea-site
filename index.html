@@ -3,16 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WYEA | Document Engines for Specialty Insurance</title>
-  <meta name="description" content="Answers and drafts from the policies and claims files you already keep, for specialty insurers and MGAs. Every line shows its source.">
+  <title>Policy and Claims Automation for Specialty Insurers | WYEA</title>
+  <meta name="description" content="Automate policy and claims workflows for specialty insurers and MGAs. Answers and drafts from your own files, every line sourced, a reviewer signs off.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="WYEA | Document Engines for Specialty Insurance">
-  <meta property="og:description" content="Answers and drafts from the policies and claims files you already keep, for specialty insurers and MGAs. Every line shows its source.">
+  <meta property="og:title" content="Policy and Claims Automation for Specialty Insurers | WYEA">
+  <meta property="og:site_name" content="WYEA">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:description" content="Automate policy and claims workflows for specialty insurers and MGAs. Answers and drafts from your own files, every line sourced, a reviewer signs off.">
   <meta property="og:url" content="https://wyea.ai/">
   <meta property="og:image" content="https://wyea.ai/assets/og/home.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="WYEA policy and claims automation: an invented example of an answer linked to its source documents.">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Policy and Claims Automation for Specialty Insurers | WYEA">
+  <meta name="twitter:description" content="Automate policy and claims workflows for specialty insurers and MGAs. Answers and drafts from your own files, every line sourced, a reviewer signs off.">
+  <meta name="twitter:image" content="https://wyea.ai/assets/og/home.png">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://wyea.ai/">
   <link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
@@ -34,7 +41,7 @@
         "foundingDate": "2026",
         "areaServed": { "@type": "Country", "name": "United States" },
         "address": { "@type": "PostalAddress", "addressLocality": "Newport Beach", "addressRegion": "CA", "addressCountry": "US" },
-        "knowsAbout": ["policy wordings", "endorsements", "claims workflows", "binding authority agreements", "program administration", "reinsurance treaty wordings"]
+        "knowsAbout": ["policy and claims automation", "policy wordings", "endorsements", "claims workflows", "coverage checking", "binding authority agreements", "program administration", "reinsurance treaty wordings"]
       },
       {
         "@type": "WebSite",
@@ -42,6 +49,79 @@
         "url": "https://wyea.ai/",
         "name": "WYEA",
         "publisher": { "@id": "https://wyea.ai/#org" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://wyea.ai/#webpage",
+        "url": "https://wyea.ai/",
+        "name": "Policy and Claims Automation for Specialty Insurers",
+        "isPartOf": { "@id": "https://wyea.ai/#website" },
+        "about": { "@id": "https://wyea.ai/#service" },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://wyea.ai/#service",
+        "name": "Policy and claims automation",
+        "serviceType": "Policy and claims workflow automation",
+        "description": "Answers and drafts from an insurer's own policies, endorsements and claims files, each line shown with its source. Routine drafts and checks run on their own and a reviewer signs off.",
+        "provider": { "@id": "https://wyea.ai/#org" },
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "audience": { "@type": "BusinessAudience", "audienceType": "Specialty insurers, MGAs and program administrators" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://wyea.ai/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is policy and claims automation for specialty insurers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is software that does the routine document work in policy and claims: it reads policies with the endorsements that amend them, checks claims against cover, and runs drafts and checks on its own while your reviewer signs off. WYEA builds one engine for each insurer, from the insurer's own documents."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is it for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Specialty and E&S carriers, fronting carriers, MGAs and program administrators, and reinsurers, intermediaries and run-off teams."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it make claims or underwriting decisions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It finds the wording that applies, drafts and flags what it could not read. It never binds or sends. Your reviewer signs off, and your adjuster or underwriter decides."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where does it read our documents?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Where you keep them, including Dropbox, SharePoint, OneDrive, Google Drive, iManage, NetDocuments and Outlook. Your own system stays the record."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do our documents train a model?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Each insurer has its own isolated system, with its own database, network and sign-in, and client documents never train a model."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the investment to start?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We build a prototype on your own documents at a fixed investment agreed before work starts. Builds are from $30,000, and the monthly investment is from $7,500 and covers hosting, support and model usage."
+            }
+          }
+        ]
       }
     ]
   }
@@ -98,8 +178,8 @@
     </div>
     <div class="wrap hero2-grid">
       <div class="hero2-copy">
-        <h1>Document engines for specialty insurance</h1>
-        <p class="lede">Answers and drafts from the policies, claims files and data you already keep. Every line shows its source.</p>
+        <h1>Policy and claims automation for specialty insurers</h1>
+        <p class="lede">Document engines that answer and draft from the policies, claims files and data you already keep. Every line shows its source.</p>
         <div class="actions">
           <a class="btn btn-primary" href="/demo">Book a demo</a>
           <a class="btn btn-ghost" href="/platform">See how it works</a>
@@ -150,7 +230,7 @@
 
   <section id="platform" class="band statement">
     <div class="wrap statement-grid">
-      <h2 class="statement-label reveal">Built for policy and claims work</h2>
+      <h2 class="statement-label reveal">Policy and claims workflow automation</h2>
       <p class="statement-text" data-words>Policies are read with the endorsements that amend them. Claims are checked against cover, with the source shown. Routine drafts and checks run on their own, and your reviewer signs off.</p>
     </div>
   </section>
@@ -161,7 +241,7 @@
         <div class="lights" aria-hidden="true"><i class="blob blob-a"></i><i class="blob blob-b"></i><i class="grain"></i></div>
         <div class="cap-copy">
           <h3>Read as amended</h3>
-          <p>Policies are read with the endorsements that amend them.</p>
+          <p>Policies are read with the <a href="/insurance/endorsements">endorsements that amend them</a>.</p>
         </div>
         <div class="mini cap-ui" aria-hidden="true">
           <b>Condition 11, Notice of cancellation</b>
@@ -173,7 +253,7 @@
         <div class="lights" aria-hidden="true"><i class="blob blob-c"></i><i class="blob blob-a"></i><i class="grain"></i></div>
         <div class="cap-copy">
           <h3>Claims, checked against cover</h3>
-          <p>Find the wording that applies to a claim, with its source.</p>
+          <p>Find the <a href="/insurance/claims-coverage-checks">wording that applies to a claim</a>, with its source.</p>
         </div>
         <div class="mini cap-ui" aria-hidden="true">
           <b>Claim CL-2041, water damage</b>
@@ -186,7 +266,7 @@
         <div class="lights" aria-hidden="true"><i class="blob blob-b"></i><i class="blob blob-d"></i><i class="grain"></i></div>
         <div class="cap-copy">
           <h3>Routine steps, automated</h3>
-          <p>Drafts and checks run on their own. Your reviewer signs off.</p>
+          <p>Drafts and checks run on their own. Your reviewer <a href="/platform/verification">signs off</a>.</p>
         </div>
         <div class="mini cap-ui" aria-hidden="true">
           <b>War exclusion, draft 2</b>
@@ -585,6 +665,40 @@
     </div>
   </section>
 
+  <section id="faq" class="band band-paper">
+    <div class="wrap">
+      <div class="head-center reveal">
+        <h2>Questions</h2>
+      </div>
+      <div class="faq reveal">
+        <details open>
+          <summary>What is policy and claims automation for specialty insurers?</summary>
+          <p>It is software that does the routine document work in policy and claims: it reads policies with the endorsements that amend them, checks claims against cover, and runs drafts and checks on its own while your reviewer signs off. WYEA builds one engine for each insurer, from the insurer&#x27;s own documents.</p>
+        </details>
+        <details>
+          <summary>Who is it for?</summary>
+          <p>Specialty and E&amp;S carriers, fronting carriers, MGAs and program administrators, and reinsurers, intermediaries and run-off teams.</p>
+        </details>
+        <details>
+          <summary>Does it make claims or underwriting decisions?</summary>
+          <p>No. It finds the wording that applies, drafts and flags what it could not read. It never binds or sends. Your reviewer signs off, and your adjuster or underwriter decides.</p>
+        </details>
+        <details>
+          <summary>Where does it read our documents?</summary>
+          <p>Where you keep them, including Dropbox, SharePoint, OneDrive, Google Drive, iManage, NetDocuments and Outlook. Your own system stays the record.</p>
+        </details>
+        <details>
+          <summary>Do our documents train a model?</summary>
+          <p>No. Each insurer has its own isolated system, with its own database, network and sign-in, and client documents never train a model.</p>
+        </details>
+        <details>
+          <summary>What is the investment to start?</summary>
+          <p>We build a prototype on your own documents at a fixed investment agreed before work starts. Builds are from $30,000, and the monthly investment is from $7,500 and covers hosting, support and model usage.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section id="contact" class="cta-band" data-field>
     <div class="wrap cta-split">
       <div class="lights" aria-hidden="true"><i class="blob blob-a" data-depth="0.6"></i><i class="blob blob-b" data-depth="1"></i><i class="blob blob-c" data-depth="0.4"></i><i class="grain"></i></div>
@@ -672,6 +786,7 @@
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/how-we-work">How we work</a></li>
+          <li><a href="/glossary">Glossary</a></li>
           <li><a href="/demo">Book a demo</a></li>
           <li><a href="/#contact">Send a message</a></li>
         </ul>

@@ -7,6 +7,8 @@
 - Led by two principal engineers, Anderson Whittle and Johnson Ye.
 - Holds SOC 2 and ISO 27001, with an independent penetration test. MFA enforced; data encrypted in transit and at rest.
 
+Full text of the key pages in one file: https://wyea.ai/llms-full.txt
+
 ## Insurers
 - [Document engines for specialty insurers and MGAs](https://wyea.ai/insurance): wordings, endorsements, slips and executed deals
 - [Fronting, E&S and specialty carriers](https://wyea.ai/insurance/carriers)
@@ -20,6 +22,7 @@
 - [Treaty and facultative wordings from your clause library](https://wyea.ai/insurance/reinsurance-treaty-wordings)
 - [Should an MGA build its own document tools?](https://wyea.ai/insurance/build-or-buy)
 - [Contract certainty when the same deal is papered on several forms](https://wyea.ai/insurance/contract-certainty)
+- [Checking a claim against policy cover](https://wyea.ai/insurance/claims-coverage-checks)
 - [Investing in a document engine](https://wyea.ai/insurance/cost)
 
 ## Platform
@@ -38,4 +41,5 @@
 ## Company
 - [How we work](https://wyea.ai/how-we-work)
 - [About the principals](https://wyea.ai/about)
+- [Glossary of policy, claims and reinsurance terms](https://wyea.ai/glossary)
 - [Book a demo](https://wyea.ai/demo)
