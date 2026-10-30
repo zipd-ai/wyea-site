@@ -19,6 +19,7 @@ const RATE_LIMIT_PER_HOUR = 5;
 // the site was rebuilt around the platform rather than around a list of
 // services. They were live long enough to be linked, so they redirect.
 const MOVED = {
+  "/about": "/how-we-work",
   "/what-we-build": "/platform",
   "/build/verified-drafting": "/platform/verification",
   "/build/discovery": "/platform/sources",
@@ -86,7 +87,6 @@ async function sitemap(env, origin) {
     { loc: `${base}/security/vendor-review`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/demo`, lastmod: updated, priority: "0.8" },
     { loc: `${base}/glossary`, lastmod: updated, priority: "0.7" },
-    { loc: `${base}/about`, lastmod: updated, priority: "0.7" },
     { loc: `${base}/privacy`, lastmod: "2026-09-30", priority: "0.3" },
     { loc: `${base}/terms`, lastmod: "2026-09-30", priority: "0.3" },
   ];

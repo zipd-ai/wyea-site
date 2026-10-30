@@ -40,6 +40,5 @@ Full text of the key pages in one file: https://wyea.ai/llms-full.txt
 
 ## Company
 - [How we work](https://wyea.ai/how-we-work)
-- [About the principals](https://wyea.ai/about)
 - [Glossary of policy, claims and reinsurance terms](https://wyea.ai/glossary)
 - [Book a demo](https://wyea.ai/demo)

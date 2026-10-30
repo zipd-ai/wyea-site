@@ -28,7 +28,6 @@ Every page loads two shared files, so a brand or navigation change lands once:
 /build/deployment          build/deployment.html
 /how-we-work               how-we-work.html           engagement model
 /security                  security.html
-/about                     about.html                 the principals
 /custom-ai-for-law-firms   custom-ai-for-law-firms.html   answer-first commercial page
 /privacy                   privacy.html
 /terms                     terms.html
