@@ -1,0 +1,1085 @@
+# WYEA, full text of key pages
+
+WYEA LLC, Newport Beach, California. Firm-owned document engines for specialty insurers, MGAs, program administrators and reinsurers, working on policy and claims workflows. Summary and page list: https://wyea.ai/llms.txt
+
+---
+
+## Policy and Claims Document Engines for Insurers
+https://wyea.ai/insurance
+
+WYEA / Insurers
+
+ Specialty insurers
+
+ Answers from your policies and claims
+
+ It reads the policies, claims files and data you already keep. It drafts from your own precedents.
+
+ Book a demo
+ See how it works
+
+ Invented example
+
+ Pick your side of the market
+
+ CarriersFronting, E&S and specialty carriers
+ MGAsMGAs and program administrators
+ ReinsurersReinsurers, intermediaries and run-off
+
+ Documents it reads
+
+ Policy wordingsManuscript and house wordings
+ EndorsementsRead with the policy they amend
+ Slips and MRCsTied to their wording and deal
+ Binding authority and program agreementsAcross your fronting carriers
+ Reinsurance wordingsTreaty and facultative
+ Executed dealsThe full set for each deal
+ Legacy and run-offOlder wordings on open business
+ Claims filesNotices, reports and correspondence
+ CorrespondenceMail filed against its deal
+
+ What it does
+
+ Answers across everything
+
+ Search wordings, endorsements and deals together.
+
+ Read with endorsements
+
+ Policies are read with the endorsements that amend them.
+
+ Scans go to your team
+
+ A page with no readable text is never guessed at.
+
+ Drafts from your precedents
+
+ Your forms and rules come first.
+
+ Decisions carry forward
+
+ The next draft follows what your reviewer approved.
+
+ Answers keep their version
+
+ Later edits to a form do not change past answers.
+
+ More policies and claims, same team
+
+ 40%
+ of commercial underwriters' time goes to non-core and admin work.
+ Accenture underwriting survey, 2021
+
+ $85B to $160B
+ in efficiency lost to that admin work over five years.
+ Accenture, 2021
+
+ 10 to 20 min
+ saved per claim when coverage checks were automated at one insurer.
+ Bain & Company, 2024
+
+ 20% to 25%
+ lower loss-adjusting expense, by Bain's estimate for automated claims handling.
+ Bain & Company estimate, 2024
+
+ Answers in minutes
+Ask across every wording at once. No day of reading.
+
+ More submissions quoted
+Less admin per deal means more deals per underwriter.
+
+ Claims checked faster
+The wording that applies, found with its source.
+
+ What slows insurers down
+
+ AM Best asked more than 150 insurers and MGAs in April 2026. The top hurdles were data, security and old systems.
+
+ 14% to 70%
+ “Insurers anticipate that their use of AI technologies will go from 14% today to 70% in the next three years.”
+ Survey of 430 underwriting executives. Accenture, 2025
+
+ In a survey of 200 US insurance executives, “The lack of business line support was deemed the most important factor that made implementation unsuccessful” (Deloitte, 2025). Your team reviews every draft.
+
+ Data readiness
+
+ It starts from the library you have. Scans go to your team.
+
+ How an answer is checked
+
+ Security and privacy
+
+ One system per insurer. Your documents never train a model.
+
+ Vendor review
+
+ Integration
+
+ Your document system stays the system of record.
+
+ Connected sources
+
+ What an engagement holds to
+
+ PrototypeOn your own wordings. Fixed investment, agreed before work starts
+ BuildFrom $30,000, with deliverables in writing
+ MonthlyFrom $7,500, with hosting, support and model usage included
+ Training on your contentNever
+
+ Questions
+
+ Which lines of business is this for?
+
+ Any line where the paper is written for the deal. If your documents are mostly standard forms, a shared product will usually serve you better, and we will say so on the first call.
+
+ Does the engine make underwriting or claims decisions?
+
+ No. It finds, drafts and flags. Your people make every decision.
+
+ Will you pass our vendor review?
+
+ We hold SOC 2 and ISO 27001, and the platform has had an independent penetration test. Send us your questionnaire and we answer it in writing.
+
+ Who owns what gets built?
+
+ What the system learns from your documents belongs to you. The terms for taking it with you are written into the agreement before the build starts.
+
+ What is the investment?
+
+ The prototype is a fixed investment, agreed before work starts. Builds from $30,000. Then from $7,500 a month, with hosting, support and model usage included.
+
+ Guides
+
+ Policy wordingsDrafting policy wordings from your own precedents
+ EndorsementsReading policies with the endorsements that amend them
+ Binding authorityBinding authority and program agreements across carriers
+ Treaty wordingsTreaty and facultative wordings from your clause library
+ Build or buyShould an MGA build its own document tools?
+ Contract certaintyContract certainty across several forms
+ ClaimsChecking a claim against policy cover
+ GlossaryPolicy, claims and reinsurance terms, defined
+ InvestmentInvesting in a document engine
+ CompareShared product or your own engine
+ Vendor reviewWhere we stand on each control
+
+---
+
+## Document Engines for Carriers
+https://wyea.ai/insurance/carriers
+
+WYEA / Insurers / Carriers
+
+ Fronting, E&S and specialty carriers
+
+ One deal on every entity's paper
+
+ It drafts the same deal on the forms of each entity you write through. It starts from your own precedents.
+
+ Book a demo
+ See how it works
+
+ Documents it reads
+
+ Wordings on each entity's paperThe same cover on each entity's forms
+ Program wordingsForms for the programs you front
+ Binding authority agreementsLimits and referral terms by coverholder
+ EndorsementsRead with the policy they amend
+ Reinsurance behind the programTreaty and facultative wordings
+ Executed dealsThe full set for each deal
+
+ What it does
+
+ Draft on each entity's forms
+
+ Your house wording comes first wherever it covers the point.
+
+ Check a program against its agreement
+
+ Find policies that sit outside a coverholder's authority.
+
+ Keep the wording in force
+
+ Policies are read with the endorsements that amend them.
+
+ Everything the engine does for insurers
+
+ The market you write in
+
+ $143.3B
+ Direct premium written by the US surplus lines market in 2025, a record and up 10.4% on the year before.
+ AM Best data, reported by Insurance Business, September 2026
+
+ 39%
+ Share of the US property and casualty industry's general liability premium written by surplus lines carriers in 2025.
+ AM Best data, reported by Insurance Business, September 2026
+
+ $30B+
+ Estimated premium generated through fronting arrangements in 2025.
+ AM Best fronting market review, reported by Insurance Business, September 2026
+
+ Questions
+
+ Can it draft the same deal for two of our entities?
+
+ Yes. Each draft follows that entity's own forms and house rules, and stays a draft until a reviewer approves it.
+
+ Does it read our program business as well as our direct book?
+
+ Yes. Program wordings, binding authority agreements and the policies under them are read together.
+
+ Does it bind or issue anything?
+
+ No. It finds, drafts and flags. Underwriting, binding and issuing stay with your people.
+
+ Keep reading
+
+ MGAsMGAs and program administrators
+ ReinsurersReinsurers, intermediaries and run-off
+ Vendor reviewWhere we stand on each control
+
+---
+
+## Document Engines for MGAs
+https://wyea.ai/insurance/mgas
+
+WYEA / Insurers / MGAs
+
+ MGAs and program administrators
+
+ Program forms across every carrier
+
+ It reads your program forms and each carrier's agreements. It re-papers from your own precedents when capacity moves.
+
+ Book a demo
+ See how it works
+
+ Documents it reads
+
+ Program formsYour wordings, and each carrier's version
+ Binding authority agreementsLimits, referral terms and lines by carrier
+ Issued policies and endorsementsRead with the forms they were issued under
+ Slips and MRCsTied to their program and deal
+ Carrier guidelinesUnderwriting and referral rules by carrier
+ CorrespondenceMail filed against its program
+
+ What it does
+
+ Re-paper when capacity moves
+
+ Draft a program's forms on the new carrier's paper.
+
+ Stay inside your authority
+
+ Find policies near or past a binding limit.
+
+ Answer carrier questions
+
+ Every line opens the document it came from.
+
+ Everything the engine does for insurers
+
+ Delegated authority is growing
+
+ $108.7B
+ Direct premium written by MGAs and other delegated underwriting authority enterprises in 2025, up from $92.3 billion in 2024.
+ AM Best market segment report, reported by Reinsurance News, July 2026
+
+ 12%
+ Growth in MGA direct premium reported through statutory filings in 2025, more than twice the broader property and casualty market's growth of about 5%.
+ Conning, July 2026
+
+ Questions
+
+ Can it work across more than one carrier's forms?
+
+ Yes. It reads each carrier's forms and binding authority agreement with your program wordings. A draft can follow each carrier's forms.
+
+ What happens to our documents if we change carriers?
+
+ Nothing moves. Your documents stay in your own document system, and what the engine learns from them belongs to you.
+
+ Does it make underwriting decisions?
+
+ No. It finds, drafts and flags. Underwriting, referrals and binding stay with your people.
+
+ Keep reading
+
+ CarriersFronting, E&S and specialty carriers
+ ReinsurersReinsurers, intermediaries and run-off
+ Vendor reviewWhere we stand on each control
+
+---
+
+## Document Engines for Reinsurers
+https://wyea.ai/insurance/reinsurers
+
+WYEA / Insurers / Reinsurers
+
+ Reinsurers, intermediaries and run-off
+
+ Treaty wordings from your clauses
+
+ It drafts from your own clause library. It answers with the wording as it read.
+
+ Book a demo
+ See how it works
+
+ Documents it reads
+
+ Treaty wordingsProportional and non-proportional, with each renewal's changes
+ Facultative certificatesRead with the policy they reinsure
+ Clause libraryYour standard clauses and their versions
+ Slips and MRCsTied to their wording and placement
+ Legacy wordingsOlder wordings on open business
+ CorrespondenceMail filed against its placement
+
+ What it does
+
+ Draft from your clause library
+
+ Suggested language is labeled until your team adopts it.
+
+ Compare renewals
+
+ See each changed clause from both versions, with its source.
+
+ Answer for legacy business
+
+ Find open treaties with a given exclusion or sunset clause.
+
+ Everything the engine does for insurers
+
+ The capital behind the market
+
+ $648B
+ Dedicated global reinsurance capital at the end of 2025, a record, up 11% while reinsurer revenue grew 1.4%.
+ Gallagher Re, First View, July 2026
+
+ Questions
+
+ Can it compare two versions of the same treaty?
+
+ Yes. Each answer points at the wording as it read that day. Two renewals can be compared clause by clause.
+
+ Can it read older scanned wordings?
+
+ Where a page has readable text, yes. A scan with no readable text comes back to your team, unguessed.
+
+ Is our book mixed with anyone else's?
+
+ No. Each client has its own database, network and sign-in. Nothing you put in trains a model.
+
+ Keep reading
+
+ CarriersFronting, E&S and specialty carriers
+ MGAsMGAs and program administrators
+ Vendor reviewWhere we stand on each control
+
+---
+
+## Checking a Claim Against Policy Cover
+https://wyea.ai/insurance/claims-coverage-checks
+
+WYEA / Specialty insurance / Claims coverage checks
+
+ Claims
+
+ Checking a claim against policy cover
+
+ By WYEAPublished October 29, 2026
+
+ To check a claim against cover, find the insuring clause that matches the reported cause of loss, read it with every endorsement in force on the date of loss, and note the exclusions, the excess or sublimit and any conditions. The checking is document work. The decision on the claim stays with your adjuster.
+
+ What a coverage check involves
+
+ A coverage check starts from the first notice of loss and ends with a list of wording the adjuster can rely on. For each claim it covers the same points.
+
+ The wording in force. The policy and every endorsement that amends it, as they read on the date of loss.
+
+ The insuring clause. The section that grants cover for the cause the claim reports, such as a sudden escape of water.
+
+ Exclusions and conditions. Anything that removes or limits cover, and any condition the insured had to meet, such as a notice period.
+
+ The excess and sublimits. These are often set by endorsement rather than in the base policy, so the base policy alone gives the wrong figure.
+
+ The facts in the claim file. The first notice, adjuster notes and loss reports, and which of them the wording depends on.
+
+ Why the check takes time by hand
+
+ The documents sit in different places. The policy is in one system, the endorsements in a folder or an email, and the loss report is a scan. The adjuster opens each, matches the cause of loss to a clause, then checks whether an endorsement changed the clause or the excess. For one claim that is manageable. Across a queue of claims the same reading repeats.
+
+ The risk is a missed endorsement. A base policy may set one excess and an endorsement may set another. Reading the base policy alone gives an answer that was once right and is now wrong.
+
+ How the engine checks a claim against cover
+
+ The engine links each claim to the policy it cites and to the endorsements that amend that policy. When you ask whether a claim falls within cover, it finds the clause that applies and quotes it with the page it came from. It quotes the endorsement that sets the excess beside the base clause. Each line opens the document it came from.
+
+ Routine checks run on their own, so the adjuster starts from a list of found wording. A passage has to be found in your documents before it is written as an answer. If it cannot be found, it is flagged. A page it cannot read, such as a faint scan, goes to a person rather than being guessed at.
+
+ Invented example The claim, policy and figures in this example are invented. No client material appears anywhere on this site.
+
+ What the engine does not do
+
+ It does not accept, reject or reserve a claim, and it does not send anything to the insured. It finds and quotes wording, links it to its source and flags what it could not read. Your adjuster decides the claim, and a reviewer signs off on any draft before it goes out.
+
+ Questions
+
+ How do you check a claim against a policy?
+
+ Find the insuring clause that matches the reported cause of loss, read it with every endorsement in force on the date of loss, then note the exclusions, the excess or sublimit and any conditions such as notice. Record the page each point came from.
+
+ What is a coverage check in claims?
+
+ A coverage check compares the facts in a claim file with the wording of the policy. It answers which clause applies, what limits and excess apply, and what still needs a person to decide.
+
+ Can software decide whether a claim is covered?
+
+ It can find and quote the wording that applies and flag what it could not read. The decision to accept, reject or reserve a claim stays with your adjuster. A WYEA engine makes no claims decisions.
+
+ What happens to a scanned page the engine cannot read?
+
+ It is flagged and sent to a person. A passage that cannot be found in your documents never becomes an answer.
+
+ When a shared product is the better fit
+
+ If your claims run on standard forms and a claims system already holds the policy terms for each claim, that system may serve you better than a firm-owned engine. We will say so on the first call.
+
+ See it on your own claim files
+
+ Pick a closed claim your team knows well, with an endorsement that changed the excess. After an NDA, we build a prototype on your own documents, at a fixed investment agreed before work starts, and you can check its answer against what your adjuster found.
+
+ Keep reading
+
+ EndorsementsReading policies with the endorsements that amend them
+ VerificationA passage it cannot find never becomes an answer
+ ExploreAn invented insurer's policy and claims files, linked
+
+---
+
+## Drafting Policy Wordings from Your Own Precedents
+https://wyea.ai/insurance/policy-wordings
+
+WYEA / Specialty insurance / Policy wordings
+
+ Specialty insurance
+
+ Drafting policy wordings from your own precedents
+
+ By WYEAPublished September 27, 2026Updated October 7, 2026
+
+ To draft a policy wording from your own precedents, start from the executed wording closest to the new deal and change only what the deal inputs and your current house rules require. Anything the precedent and your clause library do not cover is written as labeled suggested language, and the whole draft goes to a reviewer before anyone relies on it.
+
+ Why specialty wordings start from precedent
+
+ In specialty and financial lines, few wordings go out exactly as a published form. A D&O wording for a listed company and a marine cargo open cover for a commodity trader both carry terms negotiated for that insured, usually over several rounds with the broker. Market model wordings are a starting point, and the market bodies say so.
+
+ The Lloyd's Market Association describes its model wordings as "purely illustrative" and states that "Parties are free to amend LMA or Joint Committee wordings." The core section of the Lloyd's Wordings Repository holds around 2,100 live wordings, and the LMA publishes between 50 and 100 new or updated wordings each year.
+
+ So each house keeps its own layer on top. There is a house wording for each line, and a clause library holding the approved version of each clause. Then there are the executed deals, where brokers negotiated changes on real risks. The executed deals are usually the most useful precedent, because they show what was actually agreed. They are also the hardest to find.
+
+ Where the time goes when a wording is drafted by hand
+
+ The drafting itself is rarely the slow part. Most of the time goes on finding the starting point and checking it.
+
+ Finding the precedent. Someone remembers that the Calloway renewal in 2024 had the carve-back the broker is now asking for. The file sits in a folder named after the broker, under a year, as a PDF called "final v3 agreed".
+
+ Reading it with its endorsements. The executed wording may have been amended mid-term. If the carve-back was added by Endorsement 4, the base wording alone will not show it.
+
+ Checking it against current house rules. The precedent may carry a version of the sanctions clause your house replaced last year. Every clause copied forward has to be checked against the library.
+
+ Conforming the draft. A changed definition affects every clause that uses the defined term, and cross-references to renumbered conditions have to be fixed by hand.
+
+ An experienced wordings technician does all of this well. It takes time because each step is reading, and the reading starts again on every deal.
+
+ How the engine drafts from your precedents
+
+ The engine is set up from your forms, clause library, executed deals and house rules, read where they already live in your document system. To draft, your team gives it the deal inputs, such as the insured, limits, retention, period and any extensions agreed at quote, and names the precedent to start from.
+
+ The draft starts from that precedent read with the endorsements that amend it, so a change agreed mid-term on the precedent carries into the new draft. Where your forms and rules cover a point, the draft follows them. If your house rule says the current sanctions clause replaces any earlier version, the draft uses the current one even when the precedent carries the old one. Where nothing in your documents covers a point, the draft offers suggested language and labels it as suggested until your team adopts it.
+
+ Every clause in the draft opens the document it came from, including clauses taken from the precedent's endorsements or from the clause library. A passage has to be found in one of your documents before it appears as drawn from them. If it cannot be found, it is flagged. A page with no readable text, such as a scanned endorsement, goes to a person instead of being guessed at.
+
+ Invented example The insureds, clauses and dates in this example are invented. No client material appears anywhere on this site.
+
+ A draft stays a draft until a reviewer approves it. The engine does not issue, bind or send anything, and it makes no underwriting or pricing decisions. When a reviewer approves a clause or corrects one, the next draft follows that choice. Those choices are kept as rules and records in your own system, and none of it trains a model.
+
+ The same deal can also be drafted on the forms of each carrier entity or market you write through, which matters when one deal is issued on more than one entity's paper.
+
+ When a shared product is the better fit
+
+ If most of what you issue is a standard form with a schedule and a short list of standard endorsements, drafting from precedent is a small part of the work. Your policy administration system or a shared document product will usually serve you better, and we will say so on the first call. The engine is built for wordings negotiated deal by deal, such as manuscript D&O and cyber wordings, where the executed deal is the precedent your team actually uses.
+
+ See it on your own documents
+
+ The quickest test is one recent deal. After an NDA, we build a prototype on your own wordings, at a fixed investment agreed before work starts. Give it the inputs of a deal your team has already papered and the precedent they started from, then compare its draft with the wording that went out. Book a demo.
+
+ Keep reading
+
+ Specialty insuranceDocument engines for specialty insurers and MGAs
+ EndorsementsFinding the wording in force after mid-term endorsements
+ Binding authorityReading each carrier's agreement with the addenda that amend it
+
+---
+
+## Reading Policies with Their Endorsements
+https://wyea.ai/insurance/endorsements
+
+WYEA / Specialty insurance / Endorsements
+
+ Specialty insurance
+
+ Reading policies with the endorsements that amend them
+
+ By WYEAPublished September 27, 2026Updated October 7, 2026
+
+ To know what a policy says today, read the base wording together with every endorsement that amends it, in order of effective date, and take the latest agreed text of each clause. An answer drawn from the base wording alone will be wrong for any clause that was changed mid-term.
+
+ What endorsements change
+
+ An endorsement records a change to an issued policy. In specialty lines the changes are routine. An additional insured is added, a limit is increased for one location, a notice period is shortened, or an exclusion is deleted by agreement with the broker. By the end of its term, a cyber or D&O policy can carry several endorsements.
+
+ Endorsements are also written in different ways, and each kind has to be read against the policy in its own way.
+
+ Amending one clause by number. An endorsement that amends the notice period in Condition 11 to forty-five days changes one figure and leaves the rest of the condition standing.
+
+ Deleting and replacing a section. A new business interruption section replaces the old one whole, including its waiting period and its exclusions.
+
+ Changing a definition. A new definition of Claim changes every clause that uses the word, even though none of those clauses is mentioned.
+
+ Amending an earlier endorsement. The order of effective dates then decides what the policy says.
+
+ What market guidance says about changes
+
+ The London market's Contract Certainty Code of Practice states that "Contract changes need to be certain and documented promptly." Its guidance adds that changes are made by documented mutual agreement, "clearly identifying the effective date of the change."
+
+ The effective date is what lets anyone reconstruct the wording in force on a given day, and it is also where mistakes creep in. An endorsement issued in March may take effect from January. Two endorsements may amend the same condition, and the reader has to work out which one stands. A question about a claim notified in February needs the wording in force at that date, which may differ from what the full file says today.
+
+ How the reading is usually done by hand
+
+ A wordings technician asked about one clause on one policy pulls the file, lists the endorsements, sorts them by effective date and reads each one for the clause in question. For one policy that is manageable.
+
+ A question across a book is harder. Asking which in-force cyber policies have a waiting period under twelve hours means doing the same reading for every policy. Endorsements are often stored apart from the policy they amend, in a separate folder or as an email attachment, and some arrive as scans. At renewal the question comes back: if terms carry forward "as expiring", someone has to decide which mid-term endorsements the renewal wording picks up.
+
+ How the engine reads a policy with its endorsements
+
+ The engine works out which endorsement amends which policy and keeps that link, along with which deal each document belongs to and who the parties are. It does this once, and the link is there for every later question.
+
+ When you ask about a clause, the answer reflects the wording in force. It quotes the endorsement that changed the clause, with its effective date, next to the base clause it amends. Each line opens the document it came from.
+
+ Invented example The insureds, clauses and dates in this example are invented. No client material appears anywhere on this site.
+
+ A passage has to be found in one of your documents before it is written as an answer. If it cannot be found, it is flagged. A scanned endorsement with no readable text goes to a person unanswered, because an unread endorsement could change the result.
+
+ An answer points at the documents as they read that day, so a later edit to a file does not change what was relied on. Copies of the pages an answer relied on are kept past your storage provider's file history. Every answer records who asked, who approved it, and when.
+
+ The engine finds and quotes the wording in force. Whether a loss is covered under that wording is a decision for your people, and the engine makes no claims or underwriting decisions.
+
+ When a shared product is the better fit
+
+ If your policies are standard forms with endorsements chosen from a fixed list, your policy administration system probably already records which endorsements attach to each policy. A shared product will usually serve you better, and we will say so on the first call. The engine is built for books where endorsements are negotiated and manuscript, and are kept as files in your document system.
+
+ See it on your own documents
+
+ Pick a policy your team knows well, with several endorsements and a clause that changed mid-term. After an NDA, we build a prototype on your own documents, at a fixed investment agreed before work starts, and you can check its answer against what your team already knows. Book a demo.
+
+ Keep reading
+
+ Specialty insuranceDocument engines for specialty insurers and MGAs
+ Binding authorityReading each carrier's agreement with the addenda that amend it
+ Treaty wordingsDrafting renewals from the clauses your team has approved
+
+---
+
+## Binding Authority and Program Agreements
+https://wyea.ai/insurance/binding-authority-and-program-agreements
+
+WYEA / Specialty insurance / Binding authority
+
+ Specialty insurance
+
+ Binding authority and program agreements across carriers
+
+ By WYEAPublished September 27, 2026Updated October 7, 2026
+
+ To know what each carrier has authorized, read its signed agreement together with every addendum that amends it, and quote the clause. The document engine we build does that reading across all of an MGA's carrier agreements, and returns each answer with the agreement and clause it came from.
+
+ What a binding authority or program agreement sets out
+
+ A binding authority agreement delegates underwriting authority from a carrier to an agent. At Lloyd's, the carrier side is a managing agent acting for a syndicate, and the agent is a coverholder. In US program business the same arrangement is usually called a program agreement, signed between an MGA or program administrator and an insurer. That insurer is often a fronting carrier that cedes most of the risk to reinsurers.
+
+ Delegation carries a large share of the business at Lloyd's. Lloyd's says delegated underwriting accounts for "approximately 45% of the market's premium income."
+
+ The agreement usually has a main body and several schedules. The schedules hold the terms an underwriter works to each day: the classes that may be written, maximum limits, territories, the rating basis, the premium the agent may write in a year, the risks that must be referred before binding, and the policy forms and endorsements the carrier has approved. Claims authority, bordereaux reporting and the carrier's audit rights sit in the main body or in schedules of their own.
+
+ In the United States, the NAIC's model Managing General Agents Act requires a written contract between the MGA and the insurer. Section 4 lists the underwriting guidelines it must contain, including the maximum annual premium volume, the basis of rates, the types of risks, maximum limits of liability, exclusions, territorial limitations, cancellation provisions and the maximum policy period. Section 5 requires the insurer, at least semi-annually, to "conduct an on-site review of the underwriting and claims processing operations" of the MGA.
+
+ Why several carriers make the terms harder to hold
+
+ Many MGAs write the same class through more than one carrier. A cyber program might be split between two carriers by size of risk, with a third added for capacity at the top of the book. Each carrier negotiates its own agreement, so the referral limit, the excluded territories and the approved wording can all differ for the same class.
+
+ The agreements also change during the year. An addendum raises the limit for one class, or replaces the approved cyber form with a new edition from a stated date. The signed agreement and its addenda are the terms. The summary grid on the team's shared drive is someone's reading of them, and it drifts as addenda arrive.
+
+ Errors from that drift tend to surface much later, in the carrier's audit or in a claim. A typical one is a policy issued on the wrong carrier's endorsement, or on a form edition that an addendum had already replaced.
+
+ Reading each agreement with the addenda that amend it
+
+ The engine reads the agreements, schedules, addenda and approved forms where your team already keeps them. Dropbox is the first connector, and your document system stays the system of record.
+
+ It works out which addendum amends which agreement, and which issued policy was written under which agreement, and it keeps that. An answer about a referral limit reflects the schedule as amended and quotes the clause. Every line opens the document it came from. A passage has to be found in one of your documents before it is written as an answer. An addendum that is a signed scan with no readable text goes to a person, unanswered.
+
+ Invented example The carriers, clauses and dates in this example are invented. No client material appears anywhere on this site.
+
+ The engine reports what each agreement says. Whether a risk falls within authority, and whether to bind or refer it, stays with your underwriters. The engine does not issue, bind or send anything, and it makes no underwriting, pricing or claims decisions.
+
+ Drafting on each carrier's approved forms
+
+ The engine drafts from your own precedents, given the deal inputs and the precedent to start from. The same deal can be drafted on the forms of each carrier entity you write through, so a risk moved from one carrier to another starts on the second carrier's approved wording.
+
+ Where the carrier's approved forms and your house rules cover a point, the draft follows them. Language the engine suggests beyond them is labeled until your team adopts it. When a reviewer approves or corrects a clause, the next draft follows that choice. What the engine learns is kept as rules and records in your own system, and none of it trains a model. Drafts stay drafts until a reviewer approves them.
+
+ Carrier audits and the record behind an answer
+
+ Carriers audit the agents they delegate to, and the NAIC model act sets a minimum frequency for it. Many audit questions are about documents: what the agreement allowed on the date a policy was bound, and which form edition went out with it.
+
+ An answer from the engine points at the document as it read that day, and later edits do not change it. Copies of the pages you relied on are kept past your storage provider's file history. Every answer records who asked, who approved it, and when.
+
+ When a shared product is the better fit
+
+ If your program writes on one carrier's standard forms under a short agreement, a shared product will usually serve you better, and we say so on the first call. Bordereaux validation and premium accounting belong in delegated authority software built for that work. The engine reads and drafts documents.
+
+ See it on your own documents
+
+ Book a demo. After an NDA, we build a prototype on your binding authority and program agreements, their addenda and the forms each carrier has approved. If a build follows, it is agreed as a fixed investment, with deliverables in writing, before work starts.
+
+ Keep reading
+
+ Specialty insuranceDocument engines for specialty insurers and MGAs
+ Treaty wordingsDrafting renewals from the clauses your team has approved
+ Build or buyBuy a product, build in-house, or have a system built that you own
+
+---
+
+## Drafting Treaty and Facultative Wordings
+https://wyea.ai/insurance/reinsurance-treaty-wordings
+
+WYEA / Specialty insurance / Treaty wordings
+
+ Specialty insurance
+
+ Treaty and facultative wordings from your clause library
+
+ By WYEAPublished September 27, 2026Updated October 7, 2026
+
+ A treaty or facultative wording drafted from your clause library starts from the precedent you choose and uses the clause versions your team has approved, with anything outside the library labeled for review. The document engine we build drafts that way, and answers questions across the treaties and certificates you have already signed.
+
+ How a treaty wording comes together
+
+ A treaty reinsures a portfolio for a period, usually a year, and is renegotiated at each renewal. The terms are agreed first on a slip or MRC. The full wording follows, and contract certainty means its terms are agreed in full before the treaty incepts.
+
+ Many wording teams build from a clause library. It holds approved versions of the clauses that recur across treaties, such as insolvency, arbitration, access to records, sanctions and the loss occurrence definition, along with the exclusions the house applies to every property treaty. The library changes over time. When a clause is revised after a dispute or a change in regulation, the old version stays in every treaty signed before the change.
+
+ Each reinsurer on a panel can ask for its own version of a clause as a condition of its line. When lines on the same layer carry different terms, the placement is non-concurrent, and one loss can be paid differently by reinsurers who expected to share it on the same basis. At the January 2024 renewal, Guy Carpenter reported that the market "increased contract-level consistency on both wording and structural variations," and credited early discussion of subjectivities such as strike, riot and civil commotion, terror and cyber with material concurrency improvements.
+
+ Clauses a regulator reads
+
+ Some clauses decide whether a US ceding company can take credit for a treaty on its balance sheet, and a wording team needs to know they are present in every treaty in force.
+
+ Under the NAIC's Credit for Reinsurance Model Regulation, Section 15, a ceding insurer is allowed no credit for reinsurance unless the agreement includes a proper insolvency clause. That clause must make reinsurance "payable directly to the liquidator or successor without diminution," whatever the status of the ceding company.
+
+ Ask the engine which in-force treaties carry an insolvency clause, and it returns the clause as it appears in each treaty, with the treaty it sits in, so your team can compare each one with the current library version. A passage has to be found in one of your documents before it is written as an answer. A treaty where no such clause can be found is flagged for a person, and so is any page with no readable text, such as a signed scan.
+
+ Drafting a renewal from the library
+
+ You give the engine the deal inputs, such as the layer, retention, limit, reinstatements and period, and the precedent to start from, usually last year's signed wording. Where your library and house rules cover a clause, the draft follows them. Where your team kept a negotiated variation last year, the draft can carry it forward from the precedent. Language the engine suggests beyond those sources is labeled until your team adopts it.
+
+ Invented example The companies, clauses and dates in this example are invented. No client material appears anywhere on this site.
+
+ When a reviewer approves or corrects a clause, the next draft follows that choice. If your team accepts a reinsurer's amended arbitration clause, that decision is kept as a rule in your own system, and the next draft for that reinsurer starts from it. None of it trains a model.
+
+ A group that buys one treaty for several of its insurance companies can have the same deal drafted on the paper of each carrier entity. The draft stays a draft until a reviewer approves it. The engine does not sign, bind or send anything to market, and it makes no underwriting or pricing decisions.
+
+ Facultative certificates and the policy underneath
+
+ Facultative reinsurance covers one risk, and many certificates adopt the terms of the original policy. A question about what a certificate covers therefore often turns on the original policy and the endorsements added to it. The engine reads a policy with the endorsements that amend it, so an answer reflects the wording in force. Whether a later endorsement binds the reinsurer depends on the certificate, and the engine returns both passages for your team to read together.
+
+ Old treaties and the questions that come back
+
+ A question about a casualty treaty from ten years ago can arrive during a commutation or an arbitration, after the wording team has changed.
+
+ The engine answers across the executed treaties and certificates you hold, from any year. An answer points at the document as it read that day, and later edits do not change it. Copies of the pages you relied on are kept past your storage provider's file history. Every answer records who asked, who approved it, and when.
+
+ Each client has its own system, with its own database, network and sign-in, run by us on our infrastructure. We sign an NDA before any document is shared. We hold SOC 2 and ISO 27001. Vendor review.
+
+ When a shared product is the better fit
+
+ If most of your treaties are written on market-standard wordings with few changes, and your facultative business goes out on a standard certificate, a shared wording or contract management product will usually serve you better. We say so on the first call.
+
+ See it on your own documents
+
+ A useful test is a renewal your team has just finished. Book a demo. After an NDA, we build a prototype on your own clause library and signed treaties, and you can compare its draft with the wording your team agreed. If a build follows, it is agreed as a fixed investment, with deliverables in writing, before work starts.
+
+ Keep reading
+
+ Specialty insuranceDocument engines for specialty insurers and MGAs
+ Build or buyBuy a product, build in-house, or have a system built that you own
+ Contract certaintyKeeping one deal's agreed terms the same on every entity's form
+
+---
+
+## Contract Certainty Across Several Forms
+https://wyea.ai/insurance/contract-certainty
+
+WYEA / Specialty insurance / Contract certainty
+
+ Specialty insurance
+
+ Contract certainty when the same deal is papered on several forms
+
+ By WYEAPublished September 27, 2026Updated October 7, 2026
+
+ When one deal is issued on the forms of several carrier entities or markets, contract certainty means each of those documents states the agreed terms before inception, so every form has to be checked against the slip and against the others. The usual problem is a term agreed in the slip that reaches one entity's wording and misses another's, because each form carries its own defaults.
+
+ What contract certainty asks for
+
+ The London market's Contract Certainty Code of Practice defines it as the "complete and final agreement of all terms between the insured and insurer" by the time they enter into the contract, with documentation provided promptly after. Lloyd's notes that the Financial Conduct Authority requires "clear, comprehensive and fully-agreed policy wordings before inception".
+
+ The code's sample checklist asks whether the contract contains or references the specific wordings and clauses. It also asks whether a wording that depends on another, such as one agreed "as expiring" or "as original", clearly identifies the wording it depends on. For one policy on one form, those checks are quick. When the same deal is written on three forms, each check is done three times, and the answers have to agree with each other.
+
+ Why one deal ends up on several forms
+
+ Multi-entity paper is ordinary in specialty lines. A group may write through a UK insurance company, a Lloyd's syndicate and a US surplus lines company, and split a deal between them for licensing or capacity reasons. An MGA running a program may write through two fronting carriers, each of which requires its own policy form and mandatory endorsements. In each case one set of agreed terms has to be carried onto several sets of paper.
+
+ Each form comes with its own defaults. The definition of Claim can differ between forms. One entity's cancellation condition gives thirty days' notice and another's gives sixty. The choice of law clause and the version of the sanctions clause can differ too. When the slip terms are applied, every default they touch has to be overridden on every form, and every default they leave alone has to be read to see whether it conflicts with the deal.
+
+ Where the forms drift apart
+
+ A term agreed in the slip is applied on the lead entity's form and missed on the second, because the second form has no clause for it to replace.
+
+ A mid-term endorsement agreed on one entity's policy is never issued on the other's.
+
+ At renewal, "as expiring" is read against a different entity's expiring wording than the one the broker meant.
+
+ A house form is revised, and the next deal drafted on it picks up the new default while the other entity's form keeps the old one.
+
+ Each of these tends to surface when a claim or a broker query makes someone read the documents side by side, often long after inception.
+
+ How the engine drafts one deal on each entity's forms
+
+ Given the deal inputs and the precedent to start from, the engine drafts the same deal on the forms of each carrier entity or market you write through. On each form, where that entity's forms and rules cover a point, the draft follows them. Where nothing covers it, the draft carries suggested language, labeled until your team adopts it.
+
+ The drafts and the slip can then be read together. Ask what each document says about cancellation notice or the retroactive date, and the answer returns the passage from each document, with each line opening the page it came from. A passage has to be found in one of your documents before it is given as an answer, and a point a document does not address is flagged. The engine remembers which documents belong to which deal, so a later endorsement or question attaches to the whole set.
+
+ Invented example The insureds, clauses and dates in this example are invented. No client material appears anywhere on this site.
+
+ The drafts stay drafts until a reviewer approves them. The engine does not issue, bind or send anything, and whether a difference between forms is acceptable is your team's decision. When a reviewer approves or corrects a clause, the next draft on that entity's form follows that choice.
+
+ Every answer records who asked, who approved it, and when, and points at the documents as they read that day. Copies of the pages it relied on are kept past your storage provider's file history. If someone later asks what was agreed and on which paper, the answer and those pages are still there to open.
+
+ When a shared product is the better fit
+
+ If you write through one entity on its standard forms, one deal rarely ends up on several sets of paper, and a shared product will usually serve you better. We will say so on the first call.
+
+ See it on your own documents
+
+ A useful test is one deal your team has already issued on more than one entity's paper. After an NDA, we build a prototype on your own documents, at a fixed investment agreed before work starts, draft that deal on each form, and you can compare the drafts with what went out. Book a demo.
+
+ Keep reading
+
+ Specialty insuranceDocument engines for specialty insurers and MGAs
+ InvestmentHow the build investment works and what the monthly investment covers
+ Policy wordingsStarting each new wording from the executed deal closest to it
+
+---
+
+## How a Document Engine Works
+https://wyea.ai/platform
+
+WYEA / Platform
+
+ How the engine works
+
+ It reads the files you already keep. Every answer shows where it came from.
+
+ Book a demo
+ How we work
+
+ Invented example
+
+ System of recordYour document system. Nothing to upload.
+ AccessRead with the permissions you grant.
+ What we keepA copy of each page an answer used. No rival library.
+
+ Four parts
+
+ Connected sourcesYour own system stays the record.
+ Checked quotesA quote is found in the source or flagged.
+ EvidenceEach answer keeps the version it came from.
+ IsolationOne system per client. Nothing shared.
+
+ Made for specialty insurance
+
+ For specialty insurers
+ Shared product or your own engine
+
+ Keep reading
+
+ SourcesWhat it reads from
+ VerificationHow a quote is checked
+ SecurityWhat we can claim today
+
+---
+
+## Document Engine Security for Insurers
+https://wyea.ai/security
+
+WYEA / Security
+
+ What holds today
+
+ One system per insurer. Nothing you send trains a model. SOC 2 and ISO 27001.
+
+ Book a demo
+ Vendor review
+
+ Last reviewed October 8, 2026
+
+ Four things hold
+
+ Every line opens its source
+A line is found word for word, or flagged.
+
+ Answers keep their version
+Later edits don't change past answers.
+
+ One system per insurer
+Its own database, network and sign-in.
+
+ A reviewer signs off
+It never issues, binds or sends.
+
+ Your documents
+
+ Training on your contentNever, by us or our model providers
+ Secondary useNone
+ Database and networkOne set per insurer
+ Sign-inYour identity provider
+ Access to your filesOnly what you grant
+ Encryption at restYes, by the platform
+ Your document systemStays the system of record
+ OperatorWYEA, on our infrastructure
+
+ Send us your vendor questionnaire.
+
+ We answer in writing.
+
+ Vendor review table
+
+ Access controls and MFAHolds today
+ Encryption in transit and at restHolds today
+ Notice of a cybersecurity eventHolds today
+ Security representations and warrantiesHolds today
+ No training on client contentHolds today
+ Data isolationHolds today
+
+ What security teams ask
+
+ Do you train on our documents?
+
+ No. Nothing you put in trains a model, ours or a provider's. The agreement says so too.
+
+ Where does our content live?
+
+ Your document system stays the system of record. We run your system on our infrastructure.
+
+ Can we see an audit trail?
+
+ Events go to an append-only record.
+
+ What happens if we stop working with you?
+
+ We return or destroy content on your instruction and confirm it in writing.
+
+ Do you have SOC 2?
+
+ Yes. We hold a SOC 2 report and an ISO 27001 certificate, and the platform has had an independent penetration test.
+
+---
+
+## How We Work
+https://wyea.ai/how-we-work
+
+How we work
+
+ WYEA builds document engines for specialty insurers. We start with a call, an NDA, then a prototype on your own documents.
+
+ Book a demo
+ See how it works
+
+ Invented example
+
+ What you can count on
+
+ A fixed investment in writing, two engineers, and a system of your own.
+
+ Agreed before it starts
+A fixed investment, in writing.
+
+ Built by two engineers
+The same two people, start to finish.
+
+ Owned by you
+Terms to take it with you are set first.
+
+ Your own system
+Its own database, network and sign-in.
+
+ The investment
+
+ BuildFrom $30,000
+ Monthly, hosting and model usage includedFrom $7,500
+
+ First callNo charge.
+ PrototypeA fixed investment, agreed before work starts.
+ Multi-entity groupsScoped as a fixed investment after the prototype.
+
+ What we ask of you
+
+ 01A half day with your team
+Once, at the start.
+
+ 02Real documents, under NDA
+The wordings and files you handle.
+
+ 03One person to try it
+On live work, telling us what gets in the way.
+
+ Questions
+
+ How long does it take?
+
+ The prototype comes first, on your own documents. The build scope is written with dates before work starts.
+
+ What if the prototype does not convince us?
+
+ Then it ends there. Your investment stops at the prototype.
+
+ Who trains our staff?
+
+ The two engineers who wrote the software, at no separate charge, for new staff too.
+
+ What happens when something breaks?
+
+ You write to the people who built it. There is no support queue.
+
+ What about multi-entity groups?
+
+ Each is scoped as a fixed investment after the prototype.
+
+---
+
+## Specialty Insurance Glossary: Policy and Claims
+https://wyea.ai/glossary
+
+WYEA / Glossary
+
+ Glossary
+
+ Policy, claims and reinsurance terms, defined
+
+ By WYEAPublished October 29, 2026
+
+ The terms specialty insurers, MGAs, program administrators and reinsurers use for the documents a document engine reads. Plain definitions, written for people who work with these documents.
+
+ Policy wording
+
+ The text of an insurance policy: the insuring clauses, definitions, exclusions and conditions that set what is covered. A manuscript wording is one written for a single client or program rather than taken from a standard form.
+
+ Endorsement
+
+ A document that changes an issued policy, for example by adding an insured, changing a limit or amending a clause. A policy has to be read together with its endorsements to know what it says today.
+
+ Clause library
+
+ An insurer's collection of approved clauses, kept so that drafts reuse wording the legal team has already agreed.
+
+ House wording
+
+ An insurer's own standard policy wording, as opposed to a form written for one client or taken from the market.
+
+ Precedent
+
+ A previously executed deal or wording that a new draft starts from.
+
+ Slip
+
+ In the London market, the document that sets out the terms of a risk for underwriters to subscribe to. A market reform contract (MRC) is the standard layout for it.
+
+ MRC (market reform contract)
+
+ The standard structure for a London market contract, which sets out the terms of a placement in a consistent order.
+
+ Binding authority agreement
+
+ A contract in which an insurer gives a coverholder or MGA authority to bind risks on its behalf within set limits.
+
+ Delegated authority
+
+ Authority an insurer gives another firm, such as an MGA or coverholder, to underwrite, bind or handle claims on its behalf.
+
+ Coverholder
+
+ A firm authorised by an insurer, usually under a binding authority agreement, to bind risks and issue policies on the insurer's behalf.
+
+ MGA (managing general agent)
+
+ A firm that underwrites and administers insurance on behalf of one or more insurers under delegated authority.
+
+ Program administrator
+
+ A firm that manages an insurance program for a defined class of business, often on several carriers' paper under a binding authority or program agreement.
+
+ Fronting carrier
+
+ A licensed insurer that issues policies and passes most or all of the risk to reinsurers or other capacity providers.
+
+ E&S (excess and surplus lines)
+
+ Insurance for risks that standard admitted insurers do not write, placed with insurers not bound by the same form and rate filing rules.
+
+ Treaty reinsurance
+
+ A reinsurance contract covering a whole class or portfolio of business under agreed terms, rather than one risk.
+
+ Facultative reinsurance
+
+ Reinsurance bought for a single risk or policy, with terms agreed for that risk.
+
+ Legacy and run-off
+
+ Business that an insurer no longer writes new policies for but still has to administer and pay claims on.
+
+ Contract certainty
+
+ The principle that the terms of an insurance contract are agreed and documented before the risk starts. The London market's Contract Certainty Code of Practice sets out how.
+
+ FNOL (first notice of loss)
+
+ The first report of a loss to the insurer, which opens a claim file.
+
+ Excess
+
+ The part of a loss the insured bears before the insurer pays. It is also called the deductible, and it is often set by endorsement.
+
+ Sublimit
+
+ A lower limit that applies to one type of loss within the overall policy limit, such as flood.
+
+ Where these documents meet an engine
+
+ A WYEA document engine reads these documents where you keep them, links each one to the others, and shows the source of every line it writes. Read how a document engine works or how it is used for policies and claims.
+
+ Keep reading
+
+ Specialty insuranceDocument engines for specialty insurers and MGAs
+ Policy wordingsDrafting policy wordings from your own precedents
+ Contract certaintyWhen the same deal is papered on several forms

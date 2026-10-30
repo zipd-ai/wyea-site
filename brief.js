@@ -865,6 +865,7 @@ const SITE_FOOTER = `<footer class="site-footer">
         <ul>
           <li><a href="/about">About</a></li>
           <li><a href="/how-we-work">How we work</a></li>
+          <li><a href="/glossary">Glossary</a></li>
           <li><a href="/demo">Book a demo</a></li>
           <li><a href="/#contact">Send a message</a></li>
         </ul>
