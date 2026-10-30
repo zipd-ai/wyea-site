@@ -919,13 +919,13 @@ How we work
 
  What you can count on
 
- A fixed investment in writing, two engineers, and a system of your own.
+ A fixed investment in writing, a team of engineers, and a system of your own.
 
  Agreed before it starts
 A fixed investment, in writing.
 
- Built by two engineers
-The same two people, start to finish.
+ Built by our engineers
+The same team, start to finish.
 
  Owned by you
 Terms to take it with you are set first.
@@ -965,7 +965,7 @@ On live work, telling us what gets in the way.
 
  Who trains our staff?
 
- The two engineers who wrote the software, at no separate charge, for new staff too.
+ The engineers who wrote the software, at no separate charge, for new staff too.
 
  What happens when something breaks?
 
