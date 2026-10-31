@@ -818,7 +818,6 @@ const SITE_HEADER = `<a class="skip-link" href="#main">Skip to content</a>
       </div>
       <a class="nav-link" href="/security">Security</a>
       <a class="nav-link" href="/how-we-work">How we work</a>
-      <a class="nav-link" href="/about">About</a>
       <a class="btn btn-primary btn-sm nav-cta" href="/demo">Book a demo</a>
     </nav>
   </div>
@@ -863,7 +862,6 @@ const SITE_FOOTER = `<footer class="site-footer">
       <div class="footer-col">
         <h2>Company</h2>
         <ul>
-          <li><a href="/about">About</a></li>
           <li><a href="/how-we-work">How we work</a></li>
           <li><a href="/glossary">Glossary</a></li>
           <li><a href="/demo">Book a demo</a></li>

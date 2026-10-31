@@ -120,9 +120,6 @@ The first block of every page. Needs an eyebrow, one h1 carrying the category wo
 ### Source-answer card (`.app` + `.ans`)
 Home and /insurance, under the hero. Needs the question in the bar, the read and matched counts, three found rows with a quoted passage and its source line, one flagged row for a document that could not be read, and the `.tag-invented` label beside the caption. Every name, clause and date is invented. Never internal vocabulary: no hashes, offsets, version ids or connector names.
 
-### Principals band (`.people`, `.person-photo`, `.principals-head`)
-Home, /insurance and /about. Needs both principals with photo, name, role and one-line credential. It stands where a logo wall would. Never a customer logo, quote or metric.
-
 ### Trust pillars (`.pillars`)
 Home and /security. Exactly four: every line opens its source; answers keep their version; one system per insurer; a reviewer signs off. Each needs one or two sentences and a link to the page that backs it. Never a certification claim.
 
